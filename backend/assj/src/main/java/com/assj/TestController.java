@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/user")
 public class TestController {
 	
 	private User user;
@@ -16,7 +15,7 @@ public class TestController {
 		this.user = user;
 	}
 	
-	@GetMapping("")
+	@GetMapping("/api/user")
 	public String showResult() {
 		ConnTest ct = new ConnTest();
 		String result = "";
