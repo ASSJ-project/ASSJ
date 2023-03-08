@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheets" href="../src/stylesheets/index.css">
+    <title>React App</title>
+    <script></script>
+    <style>
+      .logintext {
+        font-size: 70px;
+        color: #9588E0;
+        text-align: center;
+        margin-top: 400px;
+        font-weight: 900;
+      }
+      .id-text {
+        font-size: 30px;
+        color: #9588E0;
+        margin-top: 120px;
+        margin-left: 100px;
+        margin-bottom: 10px;
+      }
+      .id-input {
+        border: 0;
+        width: 80%;
+        height: 120px;
+        background: #D8D8DD;
+        border-radius: 20px;
+        margin-left: 100px;
+        font-size: 26px;
+      }
+      .pw-text {
+        font-size: 30px;
+        color: #9588E0;
+        margin-left: 100px;
+        margin-bottom: 10px;
+      }
+      .pw-input {
+        border: 0;
+        width: 80%;
+        height: 120px;
+        background: #D8D8DD;
+        border-radius: 20px;
+        margin-left: 100px;
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+
+      .onoff-switch-container {
+        margin-left: 100px;
+        display:inline;
+        width: 140px;
+        height: 30px;
+        position:relative;
+      }
+      .onoff-switch-container input[type="checkbox"]{
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+      }
+      .onoff-switch-container label{
+        padding-left: 70px;
+        line-height: 30px;
+      }
+      .onoff-switch-container label::after{  
+        position:absolute;
+        top:3px;
+        left:4px;
+        content:'';
+        width: 34px;
+        height: 34px;
+        background: white;
+        border-radius: 100%;
+        transition: all 0.3s   
+      }
+      .onoff-switch-container label::before{
+        position:absolute;
+        top:0;
+        left:0;
+        content:'';
+        width: 70px;
+        height: 40px;
+        border:1px solid #d1d1d1;
+        border-radius: 20px;
+        background: gray;
+        box-sizing: border-box;
+      }
+      .onoff-switch-container input[type="checkbox"]:checked + label::after {
+        transform: translateX(28px);
+        background: #9588E0;
+      }
+      .onoff-switch-container input[type="checkbox"]:checked + label::before {
+        background: #fff;
+      }
+      .toggle-text {
+        font-size: 22px;
+        color: gray;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="logintext">Login</p>
+    <div>      
+      <p class="id-text">Email</p>
+      <input class="id-input" placeholder="   Email Address">
+    </div>
+    <img src="" />
+    <div>
+      <p class="pw-text">Password</p>
+      <input class="pw-input" placeholder="   Password">
+    </div>
+    <div class="onoff-switch-container">
+      <input type="checkbox" name="onoff-switch" id="onoff-switch1" />
+      <label for="onoff-switch1"></label> 
+      <span class="toggle-text">Remember me</span>
+      <a>forgot password?</a>
+    </div>
+  </body>
+</html>
