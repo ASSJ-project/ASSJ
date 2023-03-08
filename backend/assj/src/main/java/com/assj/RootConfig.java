@@ -16,7 +16,11 @@ public class RootConfig {
 		hikariConfig.setJdbcUrl("jdbc:mariadb://192.168.0.205:3306/mysql");
 		hikariConfig.setUsername("root");
 		hikariConfig.setPassword("assj");
+		hikariConfig.setMinimumIdle(10);
 		hikariConfig.setMaximumPoolSize(10);
+		hikariConfig.setConnectionTimeout(3000);
+		hikariConfig.setValidationTimeout(3000);
+		hikariConfig.setMaxLifetime(58000);
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		return dataSource;
 	}
