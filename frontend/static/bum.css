@@ -1,0 +1,139 @@
+.main{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 430px;
+    height: 931px;
+    left: 0px;
+    top: -11px;
+
+    background: #FDFEFF;
+    border: 1px solid #000000;
+}
+
+.Hug{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 19.66px;
+    height: 16px;
+    left: 21px;
+    top: 67px;
+}
+
+.App-logo {
+    display: flex;
+    margin-top: 200px;
+    width: 404px;
+    height: 360px;
+}
+
+.App-title {
+    position: absolute;
+    width: 90px;
+    height: 32px;
+    left: 60px;
+    top: 59px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    /* identical to box height, or 145% */
+
+
+    color: #0A013D;
+
+}  
+
+.sorry{
+    display:flex;
+    justify-content : center;
+    align-items: center;
+}
+
+.yami{
+   /* Button */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 24px;
+gap: 10px;
+
+position: absolute;
+width: 120px;
+height: 32px;
+left: 316px;
+top: 59px;
+
+/* Colors/Base/00 */
+background: #FFFFFF;
+/* Colors/Primary/Primary/400 */
+border: 1px solid #4A72FF;
+/* Focus/md/primary/50 */
+box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+border-radius: 6px;
+
+
+/* Text */
+
+width: 97px;
+height: 32px;
+
+/* Paragraph: 2/Medium */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 32px;
+/* identical to box height, or 160% */
+letter-spacing: -0.3px;
+
+/* Colors/Primary/Primary/500 */
+color: #1B4DFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+.retry{/* Button */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 10px;
+
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 15px;
+    top: 750px;
+
+    /* Colors/Base/00 */
+/* background: #FFFFFF; */
+/* Colors/Primary/Primary/400 */
+/* border: 1px solid #4A72FF; */
+/* Focus/md/primary/50 */
+box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+border-radius: 6px;
+
+}
