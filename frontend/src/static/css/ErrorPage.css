@@ -77,7 +77,7 @@ left: 316px;
 top: 59px;
 
 /* Colors/Base/00 */
-background: #FFFFFF;
+background: #9588E0;
 /* Colors/Primary/Primary/400 */
 border: 1px solid #4A72FF;
 /* Focus/md/primary/50 */
@@ -100,7 +100,7 @@ line-height: 32px;
 letter-spacing: -0.3px;
 
 /* Colors/Primary/Primary/500 */
-color: #1B4DFF;
+color: #ffffff;
 
 
 /* Inside auto layout */
@@ -128,12 +128,15 @@ flex-grow: 0;
     left: 15px;
     top: 750px;
 
-    /* Colors/Base/00 */
-/* background: #FFFFFF; */
-/* Colors/Primary/Primary/400 */
-/* border: 1px solid #4A72FF; */
-/* Focus/md/primary/50 */
 box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
 border-radius: 6px;
 
+background-color: #9588E0;
+color : #ffffff;
+
+}
+
+.retry:hover{
+    background-color:#ec15e2;
+      transition: 0.7s;
 }
