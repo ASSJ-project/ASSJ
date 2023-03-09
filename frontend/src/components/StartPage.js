@@ -1,5 +1,5 @@
-import "./StartPage.css";
-import logo from "./static/logo-img.png";
+import "./static/css/StartPage.css";
+import logo from "./static/images/logo-img.png";
 
 function StartPage() {
   return (
