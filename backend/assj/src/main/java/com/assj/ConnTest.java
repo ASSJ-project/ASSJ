@@ -20,7 +20,7 @@ public class ConnTest {
 	
 	private static Logger log = LoggerFactory.getLogger(ConnTest.class);
 	
-	public Connection test(){
+	public Connection getConnect(){
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
@@ -35,7 +35,7 @@ public class ConnTest {
 	}
 	
 	public String getTest() throws Exception{
-		Connection conn = test();
+		Connection conn = getConnect();
 		
 		String sql = "select username from user where uuid=1";
 		PreparedStatement pstmt;
@@ -49,7 +49,8 @@ public class ConnTest {
 				result = rs.getString("username");
 			}
 		}
-		
 		return result;
 	}
+
+	
 }
