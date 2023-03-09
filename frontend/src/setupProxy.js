@@ -17,4 +17,12 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    "/opi/opi",
+    createProxyMiddleware({
+      target: "https://openapi.work.go.kr",
+      changeOrigin: true,
+    })
+  );
 };
