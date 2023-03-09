@@ -20,6 +20,19 @@ function LoginPage() {
         <span class="toggle-text">Remember me</span>
         <a>forgot password?</a>
       </div>
+      <div>
+      <button class="login-btn">Login</button>
+    </div>
+    
+    <div class="api-btn">
+      <button></button>
+      <button></button>
+      <button></button>
+    </div>
+
+    <div class="signup-div">
+      <p>Don't have an account? <span class="signup"> Sign up</span></p>
+    </div>
     </>
   );
 }
