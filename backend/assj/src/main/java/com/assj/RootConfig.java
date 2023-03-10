@@ -13,7 +13,7 @@ public class RootConfig {
 	public DataSource datasource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("org.mariadb.jdbc.Driver");
-		hikariConfig.setJdbcUrl("jdbc:mariadb://192.168.0.205:3306/mysql");
+		hikariConfig.setJdbcUrl("jdbc:mariadb://192.168.0.205:3306/assj");
 		hikariConfig.setUsername("root");
 		hikariConfig.setPassword("assj");
 		hikariConfig.setMinimumIdle(10);
