@@ -1,5 +1,6 @@
 import "../static/css/StartPage.css";
 import logo from "../static/images/nuki02.png";
+import { Link } from "react-router-dom";
 
 function StartPage() {
   return (
@@ -7,17 +8,19 @@ function StartPage() {
       <div className="item">
         <img id="logo" src={logo} alt="logo-img" />
       </div>
+
+      {/* 버튼: 로그인, 회원가입 */}
       <div className="item">
-        <a href="http://naver.com">
-          <button className="btn" onClick="<Home />">
-            Log in
+        <Link to="/login">
+          <button className="btn">
+            <h1>Log in</h1>
           </button>
-        </a>
-        <a href="http://naver.com">
-          <button className="btn" onClick="<Home />">
-            Sigh up
+        </Link>
+        <Link to="/SignUp">
+          <button className="btn">
+            <h1>Sign up</h1>
           </button>
-        </a>
+        </Link>
       </div>
     </div>
   );
