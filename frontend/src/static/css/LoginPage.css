@@ -1,14 +1,29 @@
+body {
+  background-image: url(../images/login-bg-img.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: auto;
+  height: auto;
+}
+.container {
+  display: flexbox;
+}
+
 .logintext {
-  font-size: 70px;
+  margin: 0px;
+  font-size: 6em;
   color: #9588E0;
   text-align: center;
-  margin-top: 400px;
   font-weight: 900;
+  margin-top: 300px;
+  margin-bottom: 80px;
 }
+
 .id-text {
-  margin-left: 100px;
-  left: 10%;
-  font-size: 30px;
+  position: relative;
+  left: 3em;
+  width: 30px;
+  font-size: 2em;
   color: #9588E0;
   font-family: 'Lato';
   font-style: normal;
@@ -17,19 +32,22 @@
 }
 .id-input {
   position: relative;
-  left: 10%;
+  left: 3em;
   border: 0;
-  left: 10%;
   width: 80%;
   height: 120px;
   background: #D8D8DD;
   border-radius: 20px;
-  font-size: 26px;
+  font-size: 2em;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
 }
 .pw-text {
-  margin-left: 100px;
-  left: 10%;
-  font-size: 30px;
+  position: relative;
+  left: 3em;
+  width: 30px;
+  font-size: 2em;
   color: #9588E0;
   font-family: 'Lato';
   font-style: normal;
@@ -38,24 +56,27 @@
 }
 .pw-input {
   position: relative;
-  left: 10%;
+  left: 3em;
   border: 0;
   width: 80%;
   height: 120px;
   background: #D8D8DD;
   border-radius: 20px;
-  font-size: 26px;
+  font-size: 2em;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
 }
 
 .onoff-switch-container {
-  margin-left: 100px;
+  position: relative;
+  left: 6em;
   display:inline;
   width: 140px;
   height: 30px;
-  position:relative;
 }
 .onoff-switch-container input[type="checkbox"]{
-  position: absolute;
   width: 0px;
   height: 0px;
   overflow: hidden;
@@ -95,46 +116,58 @@
   background: #fff;
 }
 .toggle-text {
-  font-size: 25px;
+  
+  font-size: 2em;
   color: #9588E0;
-  position: relative;
-  left: 10px;
-  top: 10px;
 }
 .find-pw {
-  position: relative;
-  left: 34%;
   color: #9588E0;
-  font-size: 27px;
+  font-size: 2em;
 }
 .login-btn {
   position: relative;
   left: 10%;
-  top: 50px;
+  border: 0;
   width: 80%;
   height: 120px;
   background: #9588E0;
   border-radius: 20px;
-  font-size: 38px;
+  font-size: 3em;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   line-height: 27px;
   color: #fff;
+  margin-top: 60px;
 }
 .api-btn {
-  display: inline;
   position: relative;
-  top: 200px;
+  left: 10%;
+  display: inline;
 }
 .api-btn button {
+  margin-top: 40px;
   background-color: rgb(0, 0, 0, 0);
   border: none;
 }
 .api-btn img{
-  position: relative;
-  left: 45%;
   display: inline;
   width: 240px;
   border-radius: 20px;
 }
+
+.signup-div {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2em;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #D8D8DD;
+
+}
+.signup-div span {
+  color: #9588E0;
+}
+
