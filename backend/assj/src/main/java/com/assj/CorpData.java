@@ -16,9 +16,8 @@ public class CorpData {
   private String region;
   private String holidayTpNm;
   private String minEdubg;
-  private String maxEdubg;
   private String career;
-  private String redDt;
+  private String regDt;
   private String closeDt;
   private String infoSvc;
   private String wantedInfoUrl;
@@ -30,6 +29,4 @@ public class CorpData {
   private String detailAddr;
   private String empTpCd;
   private String jobsCd;
-  private String prefCd;
-
 }

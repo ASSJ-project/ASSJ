@@ -1,8 +1,21 @@
-import { apiXmlToJson } from "./functions";
+import { callApi, dataSet } from "./functions";
 
 function App() {
-  const url = `opi/opi/opia/wantedApi.do?authKey=WNLEZKDC8ZBGBIZXCMBHQ2VR1HJ&callTp=L&returnType=XML&startPage=1&display=10&region=11000`;
-  apiXmlToJson(url);
+  const url = "api/getCorpData/address=gangnam/jobsCode=1";
+  callApi(url);
+
+  //console.log(dataSet);
+
+  const titleList = dataSet.map((data) => data.title);
+  const addressList = dataSet.map((data) => data.basicAddr);
+
+  let result;
+  for (let i; i < titleList.length; i++) {
+    result[i] = { title: titleList[i], address: addressList[i] };
+  }
+
+  console.log(result);
+
   return <div></div>;
 }
 
