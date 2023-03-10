@@ -1,22 +1,20 @@
-import { callApi, dataSet } from "./functions";
+import { callApi } from "./functions";
+// import { useState } from "react";
+import React from "react";
 
 function App() {
   const url = "api/getCorpData/address=gangnam/jobsCode=1";
-  callApi(url);
+  async function fetchData() {
+    const dataList = await callApi(url);
+    const addr = await dataList.map((item) => {
+      return { title: item.title, address: item.basicAddr };
+    });
+    console.log(addr);
 
-  //console.log(dataSet);
-
-  const titleList = dataSet.map((data) => data.title);
-  const addressList = dataSet.map((data) => data.basicAddr);
-
-  let result;
-  for (let i; i < titleList.length; i++) {
-    result[i] = { title: titleList[i], address: addressList[i] };
+    // return addr;
   }
-
-  console.log(result);
-
-  return <div></div>;
+  fetchData();
+  return <div> </div>;
 }
 
 export default App;
