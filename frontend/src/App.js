@@ -1,9 +1,20 @@
-import { apiXmlToJson } from "./functions";
+import { callApi } from "./functions";
+// import { useState } from "react";
+import React from "react";
 
 function App() {
-  const url = `opi/opi/opia/wantedApi.do?authKey=WNLEZKDC8ZBGBIZXCMBHQ2VR1HJ&callTp=L&returnType=XML&startPage=1&display=10&region=11000`;
-  apiXmlToJson(url);
-  return <div></div>;
+  const url = "api/getCorpData/address=gangnam/jobsCode=1";
+  async function fetchData() {
+    const dataList = await callApi(url);
+    const addr = await dataList.map((item) => {
+      return { title: item.title, address: item.basicAddr };
+    });
+    console.log(addr);
+
+    // return addr;
+  }
+  fetchData();
+  return <div> </div>;
 }
 
 export default App;
