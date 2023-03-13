@@ -1,18 +1,18 @@
 /* global kakao */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 
 export default function KakaoMap(props) {
-  const { markerPositions, size } = props;
+  const { markerPositions, size, company } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
   const [, setMarkers] = useState([]);
 
   const container = useRef();
 
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src =
-      'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false';
+      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false";
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -71,7 +71,7 @@ export default function KakaoMap(props) {
       // let response;
       // 마커 이미지 생성
       var imageSrc =
-          'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png", // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
         imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
@@ -83,10 +83,10 @@ export default function KakaoMap(props) {
       );
 
       console.log(positions);
-
-      var iwContent = '<div style="padding:5px;">Hello World!</div>';
+      console.log(company);
+      // var iwContent = `<div style="padding:5px;">${company}</div>`;
       // assign new markers
-      return positions.map((position) => {
+      return positions.map((position, index) => {
         var marker = new kakao.maps.Marker({
           map: kakaoMap,
           position,
@@ -96,7 +96,7 @@ export default function KakaoMap(props) {
         var infowindow = new kakao.maps.InfoWindow({
           map: kakaoMap,
           position,
-          content: iwContent,
+          content: `<div style="padding:5px;">${company[index]}</div>`,
         });
         infowindow.open(kakaoMap, marker);
         return marker;
