@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CorpData {
+  private String company;
   private String title;
   private String salTpNm;
   private String sal;
