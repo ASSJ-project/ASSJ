@@ -139,11 +139,13 @@ body {
   line-height: 27px;
   color: #fff;
   margin-top: 60px;
+  margin-bottom: 30px;
 }
 .api-btn {
   position: relative;
   left: 10%;
   display: inline;
+  margin-left: 10px;
 }
 .api-btn button {
   margin-top: 40px;

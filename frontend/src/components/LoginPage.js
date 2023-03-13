@@ -1,8 +1,6 @@
 import "../static/css/LoginPage.css";
-import googlebtn from "../static/images/googlebtn.png"
-import applebtn from "../static/images/applebtn.png"
-import facebookbtn from "../static/images/facebookbtn.png"
-import KakaoLogin from "./LoginApi/KakaoLogin";
+import React from 'react';
+import SocialLogin from "./SocialLogin";
 
 function LoginPage() {
   return (
@@ -31,9 +29,7 @@ function LoginPage() {
       </div>
       
       <div class="api-btn">
-        <button><img src={googlebtn}></img></button>
-        <button><img src={applebtn}></img></button>
-        <button onClick={KakaoLogin}><img src={facebookbtn}></img></button>
+        <SocialLogin />
       </div>
 
       <div class="signup-div">
