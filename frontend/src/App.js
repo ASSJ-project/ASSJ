@@ -1,6 +1,5 @@
 import { callApi } from "./functions";
 import { useState, useEffect } from "react";
-// import { useState } from "react";
 import React from "react";
 
 function App() {
@@ -21,6 +20,7 @@ function App() {
     }
     fetchData();
   }, []);
+
   console.log(addrData);
   return <div> </div>;
 }
