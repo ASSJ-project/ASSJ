@@ -17,6 +17,7 @@ export default function KakaoMap(props) {
 
     script.onload = () => {
       kakao.maps.load(() => {
+        // 사용자 주소 좌표 넣기
         const center = new kakao.maps.LatLng(37.50802, 127.062835);
         const options = {
           center,
