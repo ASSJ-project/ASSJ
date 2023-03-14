@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+
 .main{
     box-sizing: border-box;
 
@@ -27,34 +30,17 @@
 
 .App-logo {
     display: flex;
-    margin-top: 200px;
+    margin-top: 50px;
     width: 404px;
     height: 360px;
 }
 
-.App-title {
-    position: absolute;
-    width: 90px;
-    height: 32px;
-    left: 60px;
-    top: 59px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 32px;
-    /* identical to box height, or 145% */
-
-
-    color: #0A013D;
-
-}  
 
 .sorry{
     display:flex;
     justify-content : center;
     align-items: center;
+    font-family: 'Song Myung', serif;
 }
 
 .yami{
@@ -139,4 +125,10 @@ color : #ffffff;
 .retry:hover{
     background-color:#ec15e2;
       transition: 0.7s;
+}
+
+.Logo{
+    display:flex;
+    margin-top: 50px;
+    margin-left: 60px;
 }

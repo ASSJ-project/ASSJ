@@ -3,7 +3,7 @@ import KakaoLogin from 'react-kakao-login';
 import GoogleLogin from 'react-google-login';
 import GoogleImg from '../static/images/googlebtn.png'
 import NaverImg from '../static/images/naverbtn.png'
-import KakaoImg from '../static/images/kakaobtn.png'
+import KakaoImg from '../static/images/'
 
 
 export default function SocialLogin() {

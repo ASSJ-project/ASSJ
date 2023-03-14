@@ -26,6 +26,7 @@ function App() {
 
   console.log(addrData);
   return <div>{isLoading && <MapData add={addrData} />}</div>;
+ 
 }
 
 export default App;
