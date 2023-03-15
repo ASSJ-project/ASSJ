@@ -1,13 +1,8 @@
 package com.assj;
 
-import org.springframework.stereotype.Service;
+import lombok.Data;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Service
-@Getter
-@Setter
+@Data
 public class User {
 	private String username;
 	private String email;
