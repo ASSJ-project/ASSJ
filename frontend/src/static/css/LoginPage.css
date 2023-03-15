@@ -12,7 +12,7 @@ body {
 .logintext {
   margin: 0px;
   font-size: 6em;
-  color: #9588E0;
+  color: #484848;
   text-align: center;
   font-weight: 900;
   margin-top: 300px;
@@ -24,7 +24,7 @@ body {
   left: 3em;
   width: 30px;
   font-size: 2em;
-  color: #9588E0;
+  color: #484848;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
@@ -34,7 +34,7 @@ body {
   position: relative;
   left: 3em;
   border: 0;
-  width: 80%;
+  width: 75%;
   height: 120px;
   background: #D8D8DD;
   border-radius: 20px;
@@ -42,13 +42,26 @@ body {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
+  padding-left: 30px
+}
+.errorMessage {
+  color: red;
+  font-size: 1.5em;
+  margin-top: 3px;
+  position: relative;
+  left: 5em;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  width: 600px;
+  
 }
 .pw-text {
   position: relative;
   left: 3em;
   width: 30px;
   font-size: 2em;
-  color: #9588E0;
+  color: #484848;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
@@ -58,7 +71,7 @@ body {
   position: relative;
   left: 3em;
   border: 0;
-  width: 80%;
+  width: 75%;
   height: 120px;
   background: #D8D8DD;
   border-radius: 20px;
@@ -67,6 +80,8 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
+  margin-bottom: 3PX;
+  padding-left: 30px
 }
 
 .onoff-switch-container {
@@ -110,27 +125,29 @@ body {
 }
 .onoff-switch-container input[type="checkbox"]:checked + label::after {
   transform: translateX(28px);
-  background: #9588E0;
+  background: #484848;
 }
 .onoff-switch-container input[type="checkbox"]:checked + label::before {
   background: #fff;
 }
 .toggle-text {
-  
+  vertical-align: middle;
   font-size: 2em;
-  color: #9588E0;
+  color: #484848;
 }
 .find-pw {
-  color: #9588E0;
+  margin-left: 200px;
+  color: #484848;
   font-size: 2em;
+  vertical-align: middle;
 }
 .login-btn {
   position: relative;
   left: 10%;
   border: 0;
-  width: 80%;
+  width: 78%;
   height: 120px;
-  background: #9588E0;
+  background: #484848;
   border-radius: 20px;
   font-size: 3em;
   font-family: 'Lato';
@@ -170,6 +187,6 @@ body {
 
 }
 .signup-div span {
-  color: #9588E0;
+  color: #484848;
 }
 
