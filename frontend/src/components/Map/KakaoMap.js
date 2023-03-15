@@ -1,9 +1,8 @@
 /* global kakao */
 
 import React, { useEffect, useState, useRef } from "react";
-
 export default function KakaoMap(props) {
-  const { markerPositions, size, company } = props;
+  const { data, size } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
   const [, setMarkers] = useState([]);
 
@@ -12,10 +11,11 @@ export default function KakaoMap(props) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false";
+      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false&libraries=services";
     document.head.appendChild(script);
 
     script.onload = () => {
+      console.log(data);
       kakao.maps.load(() => {
         // 사용자 주소 좌표 넣기
         const center = new kakao.maps.LatLng(37.50802, 127.062835);
@@ -24,7 +24,14 @@ export default function KakaoMap(props) {
           level: 3,
         };
         const map = new kakao.maps.Map(container.current, options);
-        //setMapCenter(center);
+
+        for (let i = 0; i < data.length; i++) {
+          let coords = new kakao.maps.LatLng(data[i].y, data[i].x);
+          let marker = new kakao.maps.Marker({
+            map: map,
+            position: coords,
+          });
+        }
         setKakaoMap(map);
       });
     };
@@ -51,68 +58,72 @@ export default function KakaoMap(props) {
     kakaoMap.setCenter(center);
   }, [kakaoMap, size]);
 
-  useEffect(() => {
-    if (kakaoMap === null) {
-      return;
-    }
+  useEffect(() => {}, [data]);
 
-    console.log(`markerPositions: ${markerPositions}, markerPositions`);
-    const positions = markerPositions.map((pos) => {
-      return new kakao.maps.LatLng(...pos);
-    });
+  // useEffect(() => {
+  //   if (kakaoMap === null) {
+  //     return;
+  //   }
 
-    console.log(`positions: ${positions}`, positions);
+  //console.log(`markerPositions: ${markerPositions}, markerPositions`);
+  // const positions = markerPositions.map((pos) => {
+  //   return new kakao.maps.LatLng(...pos);
+  // });
 
-    // console.log(positions[0]['La']);
+  //     console.log(`positions: ${positions}`, positions);
 
-    setMarkers((markers) => {
-      // clear prev markers
-      markers.forEach((marker) => marker.setMap(null));
+  //     // console.log(positions[0]['La']);
 
-      // let response;
-      // 마커 이미지 생성
-      var imageSrc =
-          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png", // 마커이미지의 주소입니다
-        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+  //     setMarkers((markers) => {
+  //       // clear prev markers
+  //       markers.forEach((marker) => marker.setMap(null));
 
-      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-      var markerImage = new kakao.maps.MarkerImage(
-        imageSrc,
-        imageSize,
-        imageOption
-      );
+  //       // let response;
+  //       // 마커 이미지 생성
+  //       var imageSrc =
+  //           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png", // 마커이미지의 주소입니다
+  //         imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
+  //         imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-      console.log(positions);
-      console.log(company);
-      // var iwContent = `<div style="padding:5px;">${company}</div>`;
-      // assign new markers
-      return positions.map((position, index) => {
-        var marker = new kakao.maps.Marker({
-          map: kakaoMap,
-          position,
-          image: markerImage,
-        });
+  //       // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+  //       var markerImage = new kakao.maps.MarkerImage(
+  //         imageSrc,
+  //         imageSize,
+  //         imageOption
+  //       );
 
-        var infowindow = new kakao.maps.InfoWindow({
-          map: kakaoMap,
-          position,
-          content: `<div style="padding:5px;">${company[index]}</div>`,
-        });
-        infowindow.open(kakaoMap, marker);
-        return marker;
-      });
-    });
+  //       //console.log(positions);
+  //       //console.log(company);
+  //       // var iwContent = `<div style="padding:5px;">${company}</div>`;
+  //       // assign new markers
+  //       return positions.map((position, index) => {
+  //         var marker = new kakao.maps.Marker({
+  //           map: kakaoMap,
+  //           position,
+  //           image: markerImage,
+  //         });
 
-    if (positions.length > 0) {
-      const bounds = positions.reduce(
-        (bounds, latlng) => bounds.extend(latlng),
-        new kakao.maps.LatLngBounds()
-      );
+  //         var infowindow = new kakao.maps.InfoWindow({
+  //           map: kakaoMap,
+  //           position,
+  //           content: `<div style="padding:5px;">${company[index]}</div>`,
+  //         });
+  //         infowindow.open(kakaoMap, marker);
+  //         return marker;
+  //       });
+  //     });
 
-      kakaoMap.setBounds(bounds);
-    }
-  }, [kakaoMap, markerPositions]);
+  //     if (positions.length > 0) {
+  //       const bounds = positions.reduce(
+  //         (bounds, latlng) => bounds.extend(latlng),
+  //         new kakao.maps.LatLngBounds()
+  //       );
+
+  //       kakaoMap.setBounds(bounds);
+  //     }
+  //   }, [kakaoMap, markerPositions, company]);
 
   return <div id="container" ref={container} />;
+
+  // }
 }

@@ -1,12 +1,9 @@
 package com.assj;
-import org.springframework.stereotype.Service;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Service
-@Getter
-@Setter
+
+@Data
 public class CorpData {
   private String company;
   private String title;
@@ -30,4 +27,6 @@ public class CorpData {
   private String detailAddr;
   private String empTpCd;
   private String jobsCd;
+  private Double x;
+  private Double y;
 }

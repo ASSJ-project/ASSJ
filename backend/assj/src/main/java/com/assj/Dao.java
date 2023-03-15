@@ -1,21 +1,31 @@
 package com.assj;
 
+
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Dao {
-	
-	final RootConfig cf = new RootConfig();
-	
-	@Autowired
+
+	private final RootConfig cf = new RootConfig();
 	final DataSource ds = cf.datasource();
 	
 	private static Logger log = LoggerFactory.getLogger(Dao.class);
@@ -58,20 +68,14 @@ public class Dao {
 	 * @param job 직업코드
 	 * @return 회사정보 
 	 */
-	public List<CorpData> getCorp(String addr, String job) throws Exception{
+	public List<CorpData> getCorp() throws Exception{
 		
 		List<CorpData> lcd = new ArrayList<>();
 		Connection conn = getConnect();
-		
-		String address = "";
+	
 		PreparedStatement pstmt;
-		switch(addr){
-			case "gangnam":
-				address = "강남구";
-			break;
-		}
-
-		String sql = "SELECT * FROM corp WHERE basicAddr LIKE '%" + address + "%'";
+	
+		String sql = "SELECT * FROM corp";// WHERE basicAddr LIKE '%" + address + "%'";
 		pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 
@@ -100,6 +104,8 @@ public class Dao {
 				cd.setEmpTpCd(rs.getString("empTpCd"));
 				cd.setJobsCd(rs.getString("jobsCd"));
 				cd.setCompany(rs.getString("company"));
+				cd.setX(rs.getDouble("x"));
+				cd.setY(rs.getDouble("y"));
 
 				lcd.add(cd);
 			}
@@ -108,27 +114,56 @@ public class Dao {
 		
 	}
 
-	/*
-	 * 워크넷 API 요청하여 자동으로 DB에 넣어주는 메서드
-	 */
-	// public void setCoprData() throws Exception{
-	// 	Connection conn = getConnect();
+	
+	public List<Double> getGeo(String address){
+		String REST_KEY = "KakaoAK 50bbb5205dc8fcc9c2611542015a54d5";
+		String addr = address;
+		HashMap<String, Object> map = new HashMap<>();
+		KakaoGeoRes bodyJson = null;
+		List<Double> result = new ArrayList<>();
+		try {
+			String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json?&query=" + URLEncoder.encode(addr, "UTF-8");
+			
+			HttpResponse<kong.unirest.JsonNode> response = Unirest.get(apiUrl)
+			.header("Authorization", REST_KEY)
+			.asJson();
+
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+
+			bodyJson = mapper.readValue(response.getBody().toString(), KakaoGeoRes.class);
+			result.add(bodyJson.getDocuments().get(0).getX());
+			result.add(bodyJson.getDocuments().get(0).getY());
+
+		} catch (Exception e) {
+			log.info(e.toString());
+		}
+		
+		return result;
+	}
+
+	// public void setCorpData() throws Exception{
+  //   Dao dao = new Dao();
+	// 	Connection conn = dao.getConnect();
 	// 	RestTemplate restTemplate = new RestTemplate();
 	// 	CorpData cd = new CorpData();
+  //   Logger log = LoggerFactory.getLogger(this.getClass());
 	// 	/* 최초 페이지 수를 얻기 위해 1개만을 API 요청하는 조건의 URL  */
 	// 	String url = "https://openapi.work.go.kr/opi/opi/opia/wantedApi.do?"
 	// 	+"authKey=WNLEZKDC8ZBGBIZXCMBHQ2VR1HJ&callTp=L&returnType=XML&startPage=1&display=1&region=11000";
 	// 	String sql = "";
 	// 	PreparedStatement pstmt = null;
+  //   int updateCount = 0;
+
 	// 	JSONObject jobj = new JSONObject(); // 1depth 제이슨 오브젝트 
 	// 	JSONObject robj = new JSONObject(); // 2depth 제이슨 오브젝트 
-	// 	JSONArray result = new JSONArray(); // 결과값으로 내줄 제이슨 어레이 
+	// 	JSONArray result = new JSONArray(); // 제이슨 어레이로 만든 결과값 
 	// 	String response = restTemplate.getForObject(url, String.class);
 	// 	jobj = XML.toJSONObject(response);
 	// 	jobj = jobj.getJSONObject("wantedRoot");
 	// 	// 1 페이지에 최대 100개를 불러올 수 있고 페이지수는 총 개수에서 100을 나눈것에 1을 더한 값  
 	// 	int pageNum = jobj.getInt("total") / 100 + 1; 
-
+  //   //utf-8 컨버팅
 	// 	restTemplate.getMessageConverters()
   //       .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
 		
@@ -137,9 +172,7 @@ public class Dao {
 	// 		+"authKey=WNLEZKDC8ZBGBIZXCMBHQ2VR1HJ&callTp=L&returnType=XML&startPage="+i+"&display=100&region=11000";
 	// 		response = restTemplate.getForObject(url, String.class);
 		
-	// 		jobj = XML.toJSONObject(response);
-	// 		jobj = jobj.getJSONObject("wantedRoot");
-	// 		result = jobj.getJSONArray("wanted");
+	// 		result = XML.toJSONObject(response).getJSONObject("wantedRoot").getJSONArray("wanted");
 
 	// 		for(int j = 0; j < result.length(); j++){
 	// 			robj = (JSONObject)result.get(j);
@@ -166,10 +199,14 @@ public class Dao {
 	// 			cd.setDetailAddr(robj.get("detailAddr").toString());
 	// 			cd.setEmpTpCd(robj.get("empTpCd").toString());
 	// 			cd.setJobsCd(robj.get("jobsCd").toString());
+	// 			if(!getGeo(cd.getBasicAddr()).isEmpty()){
+	// 				cd.setX(getGeo(cd.getBasicAddr()).get(0));
+	// 				cd.setY(getGeo(cd.getBasicAddr()).get(1));
+	// 			}
 				
 	// 			sql = "insert into corp(title, salTpNm, sal, minSal, maxSal, region, holidayTpNm, minEdubg,"+
 	// 			"career, regDt, closeDt, infoSvc, wantedInfoUrl, wantedMobileInfoUrl, smodifyDtm, zipCd, strtnmCd, basicAddr,"+
-	// 			"detailAddr, empTpCd, jobsCd, company) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	// 			"detailAddr, empTpCd, jobsCd, company, x, y) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	// 			pstmt = conn.prepareStatement(sql);
 	
 	// 			pstmt.setString(1, cd.getTitle());
@@ -194,13 +231,18 @@ public class Dao {
 	// 			pstmt.setString(20, cd.getEmpTpCd());
 	// 			pstmt.setString(21, cd.getJobsCd());
 	// 			pstmt.setString(22, cd.getCompany());
+	// 			pstmt.setDouble(23, cd.getX());
+	// 			pstmt.setDouble(24, cd.getY());
 				
 	// 			if (pstmt.executeUpdate() == 0) {
 	// 				throw new Exception("회사DB추가에러");
-	// 			}
+	// 			}else{
+  //         updateCount++;
+  //       }
 	// 			pstmt.close();
 	// 		}
 	// 	 }
+  //    log.info(updateCount +"건 회사 DB 업데이트 완료");
 	// 	 conn.close();
 	//  }
 }
