@@ -18,8 +18,8 @@ function App() {
         const dataList = await callApi(url);
         //console.log(dataList);
         const addr = await dataList
-          .filter((item) => item.basicAddr.includes("서초"))
-          // .filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
+          .filter((item) => item.basicAddr.includes("강남"))
+          //.filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
           .map((item) => {
             return {
               company: item.company,
