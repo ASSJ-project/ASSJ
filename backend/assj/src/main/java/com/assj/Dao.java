@@ -64,10 +64,7 @@ public class Dao {
 
 	/**
 	 * 회사 정보 얻는 메소드
-	 * @param addr 회사 지역 (구 단위)
-	 * @param job 직업코드
-	 * @return 회사정보 
-	 */
+  */
 	public List<CorpData> getCorp() throws Exception{
 		
 		List<CorpData> lcd = new ArrayList<>();

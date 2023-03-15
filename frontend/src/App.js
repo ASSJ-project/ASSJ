@@ -37,8 +37,6 @@ function App() {
     fetchData();
   }, []);
 
-  //console.log(addrData);
-  //console.log(isError);
   return (
     <div>
       {isError && <ErrorPage />}
