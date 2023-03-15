@@ -18,7 +18,7 @@ function App() {
         const dataList = await callApi(url);
         //console.log(dataList);
         const addr = await dataList
-          .filter((item) => item.basicAddr.includes("강남"))
+          .filter((item) => item.basicAddr.includes("강남구"))
           //.filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
           .map((item) => {
             return {

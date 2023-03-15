@@ -1,6 +1,6 @@
 /* global kakao */
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 export default function KakaoMap(props) {
   const { data, size } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
@@ -9,15 +9,16 @@ export default function KakaoMap(props) {
   const container = useRef();
 
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false&libraries=services";
+      'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false&libraries=services,clusterer,drawing';
     document.head.appendChild(script);
     let marker;
     let infowindow;
     script.onload = () => {
       console.log(data);
       kakao.maps.load(() => {
+        let markers_for_clusterer = [];
         // 사용자 주소 좌표 넣기
         const center = new kakao.maps.LatLng(37.50802, 127.062835);
         const options = {
@@ -25,6 +26,12 @@ export default function KakaoMap(props) {
           level: 3,
         };
         const map = new kakao.maps.Map(container.current, options);
+
+        var clusterer = new kakao.maps.MarkerClusterer({
+          map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+          averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+          minLevel: 5, // 클러스터 할 최소 지도 레벨
+        });
 
         for (let i = 0; i < data.length; i++) {
           let coords = new kakao.maps.LatLng(data[i].y, data[i].x);
@@ -39,16 +46,18 @@ export default function KakaoMap(props) {
           });
           kakao.maps.event.addListener(
             marker,
-            "mouseover",
+            'mouseover',
             makeOverListener(map, marker, infowindow)
           );
           kakao.maps.event.addListener(
             marker,
-            "mouseout",
+            'mouseout',
             makeOutListener(infowindow)
           );
+          markers_for_clusterer.push(marker);
         }
 
+        clusterer.addMarkers(markers_for_clusterer);
         setKakaoMap(map);
         // 마커에 클릭이벤트를 등록합니다
       });
