@@ -51,13 +51,13 @@ public class ApiController {
 		return obj;
 	}
 
-	// @GetMapping("/api/setCorpData")
-	// public void setCorpData(){
-	// 	try {
-	// 		dao.setCorpData();
-	// 	} catch (Exception e) {
-	// 		// TODO Auto-generated catch block
-	// 		e.printStackTrace();
-	// 	}
-	// }
+	@GetMapping("/api/setCorpData")
+	public void setCorpData(){
+		try {
+			dao.setCorpData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

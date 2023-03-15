@@ -27,6 +27,6 @@ public class CorpData {
   private String detailAddr;
   private String empTpCd;
   private String jobsCd;
-  private Double x;
-  private Double y;
+  private String x;
+  private String y;
 }

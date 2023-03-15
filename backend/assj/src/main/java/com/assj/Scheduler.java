@@ -77,9 +77,9 @@ public class Scheduler{
 				cd.setEmpTpCd(robj.get("empTpCd").toString());
 				cd.setJobsCd(robj.get("jobsCd").toString());
 				if(!dao.getGeo(cd.getBasicAddr()).isEmpty()){
-					cd.setX(dao.getGeo(cd.getBasicAddr()).get(0));
-					cd.setY(dao.getGeo(cd.getBasicAddr()).get(1));
-				}
+					cd.setX(dao.getGeo(cd.getBasicAddr()).get(0).toString());
+					cd.setY(dao.getGeo(cd.getBasicAddr()).get(1).toString());
+				}else continue;
 				
 				sql = "insert into corp(title, salTpNm, sal, minSal, maxSal, region, holidayTpNm, minEdubg,"+
 				"career, regDt, closeDt, infoSvc, wantedInfoUrl, wantedMobileInfoUrl, smodifyDtm, zipCd, strtnmCd, basicAddr,"+
@@ -108,8 +108,8 @@ public class Scheduler{
 				pstmt.setString(20, cd.getEmpTpCd());
 				pstmt.setString(21, cd.getJobsCd());
 				pstmt.setString(22, cd.getCompany());
-				pstmt.setDouble(23, cd.getX());
-				pstmt.setDouble(24, cd.getY());
+				pstmt.setString(23, cd.getX());
+				pstmt.setString(24, cd.getY());
 				
 				if (pstmt.executeUpdate() == 0) {
 					throw new Exception("회사DB추가에러");
