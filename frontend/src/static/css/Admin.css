@@ -7,7 +7,8 @@
   margin: 0;
   padding: 0;
 }
-.container {
+
+.admin_container {
   margin: 8em 4em;
 }
 
@@ -20,6 +21,10 @@
 .header {
   font-size: 4em;
   margin-bottom: 1em;
+}
+
+#title_img {
+  margin: 0.15em 0.3em;
 }
 
 .admin-title {
@@ -42,20 +47,41 @@
   border: none;
 }
 
-.focus_btn {
-  font-size: 2.8em;
-  width: 6em;
-  padding: 0.4em;
-  margin-right: 0.6em;
-  background: var(--main-color);
-  border-radius: 20px;
-  margin-bottom: 0.6em;
-  border: none;
-}
-
 .member_info {
   font-size: 1.8em;
   background: var(--soft-color);
   border-radius: 20px;
+}
+
+.menu {
+  list-style: none;
+}
+
+.null {
+  height: 0em;
+}
+
+.radio_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio_box input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  width: 4.1em;
+  font-size: 2.8em;
+  padding: 0.4em;
+  background: var(--soft-color);
+  border-radius: 20px;
   margin-bottom: 0.6em;
+  border: none;
+  text-align: center;
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--main-color);
 }

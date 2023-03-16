@@ -1,5 +1,4 @@
 import "../static/css/Admin.css";
-import frame from "../static/images/Error-Frame1.png";
 import { Link } from "react-router-dom";
 import React from "react";
 import AdminMemberInfo from "./AdminMemberInfo";
@@ -15,7 +14,7 @@ function Admin() {
 
   return (
     <>
-      <div className="container">
+      <div className="admin_container">
         {/* 햄버거 메뉴아이콘, 타이틀 */}
         <div className="header">
           <FiMenu />
