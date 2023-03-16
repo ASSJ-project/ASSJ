@@ -2,9 +2,9 @@ package com.assj;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -56,8 +56,16 @@ public class ApiController {
 		try {
 			dao.setCorpData();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@GetMapping("/api/login.do/{id}/{password}")
+	public String login(@PathVariable("id") String id, @PathVariable("password") String password){
+		JwtToken jt = new JwtToken();
+		
+		String token = jt.createJwtToken();
+
+		return token;
 	}
 }
