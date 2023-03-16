@@ -26,7 +26,8 @@ function Admin() {
         <div>
           <div className="admin-title">&nbsp;&nbsp;Admin</div>
 
-          {/* 회원정보 / 통계 메뉴 버튼 */}
+          {/* 회원정보 / 통계 메뉴 버튼 
+          ㅇㅅㅇ*/}
           <div>
             <button
               style={{
