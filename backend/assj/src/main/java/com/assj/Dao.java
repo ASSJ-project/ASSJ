@@ -24,9 +24,7 @@ import kong.unirest.Unirest;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Dao {
 
 	private final RootConfig cf = new RootConfig();
@@ -41,9 +39,7 @@ public class Dao {
 			log.info("Connection 객체 '" + conn + "'");
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
+			log.info(e.toString());
 		}
 		return conn;
 	}
@@ -76,7 +72,7 @@ public class Dao {
 	
 		PreparedStatement pstmt;
 	
-		String sql = "SELECT * FROM corp";// WHERE basicAddr LIKE '%" + address + "%'";
+		String sql = "SELECT * FROM corp";
 		pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 
@@ -112,14 +108,12 @@ public class Dao {
 			}
 			return lcd;
 		}
-		
 	}
 
 	
 	public List<Double> getGeo(String address){
 		String REST_KEY = "KakaoAK 50bbb5205dc8fcc9c2611542015a54d5";
 		String addr = address;
-		HashMap<String, Object> map = new HashMap<>();
 		KakaoGeoRes bodyJson = null;
 		List<Double> result = new ArrayList<>();
 		try {
@@ -242,7 +236,7 @@ public class Dao {
         }
 				pstmt.close();
 			}
-		 }
+		}
      log.info(updateCount +"건 회사 DB 업데이트 완료");
 		 conn.close();
 	 }

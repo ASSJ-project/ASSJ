@@ -1,17 +1,30 @@
-body {
+.login {
   background-image: url(../images/login-bg-img.png);
   background-size: cover;
   background-repeat: no-repeat;
-  width: auto;
-  height: auto;
 }
+
 .container {
-  display: flexbox;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.id-container {
+  width: 75%;
+  text-align: center;
+}
+.pw-container {
+  width: 75%;
+  text-align: center;
 }
 
 .logintext {
   margin: 0px;
-  font-size: 6em;
+  font-size: 3em;
   color: #484848;
   text-align: center;
   font-weight: 900;
@@ -20,29 +33,31 @@ body {
 }
 
 .id-text {
+  width: 50%;
   position: relative;
-  left: 3em;
-  width: 30px;
+  left: 2em;
+  /* width: 30px; */
   font-size: 2em;
   color: #484848;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
 }
 .id-input {
-  position: relative;
+  width: 50%;
+  /* position: relative; */
   left: 3em;
   border: 0;
-  width: 75%;
+  /* width: 75%; */
   height: 120px;
-  background: #D8D8DD;
+  background: #d8d8dd;
   border-radius: 20px;
   font-size: 2em;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  padding-left: 30px
+  padding-left: 30px;
 }
 .errorMessage {
   color: red;
@@ -50,75 +65,78 @@ body {
   margin-top: 3px;
   position: relative;
   left: 5em;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   width: 600px;
-  
 }
 .pw-text {
+  width: 50%;
   position: relative;
   left: 3em;
-  width: 30px;
+  /* width: 30px; */
   font-size: 2em;
   color: #484848;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
 }
 .pw-input {
-  position: relative;
+  width: 50%;
+  /* position: relative; */
   left: 3em;
   border: 0;
-  width: 75%;
+  /* width: 75%; */
   height: 120px;
-  background: #D8D8DD;
+  background: #d8d8dd;
   border-radius: 20px;
   font-size: 2em;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
-  margin-bottom: 3PX;
-  padding-left: 30px
+  margin-bottom: 3px;
+  padding-left: 30px;
 }
 
 .onoff-switch-container {
-  position: relative;
-  left: 6em;
-  display:inline;
-  width: 140px;
+  /* position: relative;
+  left: -12em; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
   height: 30px;
 }
-.onoff-switch-container input[type="checkbox"]{
+.onoff-switch-container input[type="checkbox"] {
   width: 0px;
   height: 0px;
   overflow: hidden;
 }
-.onoff-switch-container label{
+.onoff-switch-container label {
   padding-left: 70px;
   line-height: 30px;
 }
-.onoff-switch-container label::after{  
-  position:absolute;
-  top:3px;
-  left:4px;
-  content:'';
+.onoff-switch-container label::after {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  content: "";
   width: 34px;
   height: 34px;
   background: white;
   border-radius: 100%;
-  transition: all 0.3s   
+  transition: all 0.3s;
 }
-.onoff-switch-container label::before{
-  position:absolute;
-  top:0;
-  left:0;
-  content:'';
+.onoff-switch-container label::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
   width: 70px;
   height: 40px;
-  border:1px solid #d1d1d1;
+  border: 1px solid #d1d1d1;
   border-radius: 20px;
   background: gray;
   box-sizing: border-box;
@@ -131,6 +149,7 @@ body {
   background: #fff;
 }
 .toggle-text {
+  width: 3em;
   vertical-align: middle;
   font-size: 2em;
   color: #484848;
@@ -145,12 +164,12 @@ body {
   position: relative;
   left: 10%;
   border: 0;
-  width: 78%;
+  /* width: 78%; */
   height: 120px;
   background: #484848;
   border-radius: 20px;
   font-size: 3em;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 27px;
@@ -169,24 +188,22 @@ body {
   background-color: rgb(0, 0, 0, 0);
   border: none;
 }
-.api-btn img{
+.api-btn img {
   display: inline;
   width: 240px;
   border-radius: 20px;
 }
 
 .signup-div {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 2em;
   line-height: 26px;
   text-align: center;
   letter-spacing: 0.02em;
-  color: #D8D8DD;
-
+  color: #d8d8dd;
 }
 .signup-div span {
   color: #484848;
 }
-

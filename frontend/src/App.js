@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ErrorPage from "./components/ErrorPage";
 import MapData from "./components/Map/MapData";
 import React from "react";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const url = "api/getCorpData";
@@ -16,9 +17,8 @@ function App() {
     async function fetchData() {
       try {
         const dataList = await callApi(url);
-        //console.log(dataList);
         const addr = await dataList
-          .filter((item) => item.region.includes("금천구"))
+          .filter((item) => item.region.includes("강남구"))
           //.filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
           .map((item) => {
             return {
@@ -39,8 +39,9 @@ function App() {
 
   return (
     <div>
-      {isError && <ErrorPage />}
-      {isLoading && <MapData addrdata={addrData} />}
+      <LoginPage />
+      {/* {isError && <ErrorPage />}
+      {isLoading && <MapData addrdata={addrData} />} */}
     </div>
   );
 }
