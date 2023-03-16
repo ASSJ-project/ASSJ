@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.member_info_container {
+  display: flex;
+}
+
+.box {
+  border: 1px solid black;
+}
