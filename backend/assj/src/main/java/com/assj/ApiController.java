@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.assj.domain.company.startfulldao;
 
 
 @RestController
 public class ApiController {
+	final startfulldao ex;
 	final Dao dao;
 
 	public ApiController(){
 		dao = new Dao();
+		ex = new startfulldao();
 	}
 
 	@GetMapping("/api/user")
