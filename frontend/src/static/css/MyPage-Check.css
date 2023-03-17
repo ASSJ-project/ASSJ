@@ -87,6 +87,38 @@ background: #9588E0;
  order: 0;
  flex-grow: 0;
  } 
+
+ .my-record3{ 
+    /* 조회기록 css임 ㅎㅎ */
+ box-sizing: border-box;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ padding: 16px 24px;
+ gap: 10px;
+ position: absolute;
+ width: 120px;
+ height: 32px;
+ left: 220px;
+ top: 200px;
+background: #9588E0;
+ border: 1px solid #4A72FF;
+ box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+ border-radius: 6px;
+ width: 190px;
+ height: 32px;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 500;
+ font-size: 12px;
+ line-height: 32px;
+ letter-spacing: -0.3px;
+ color: #ffffff;
+ flex: none;
+ order: 0;
+ flex-grow: 0;
+ } 
  
 .my-information2:hover{
     background-color:#ec15e2;
@@ -115,4 +147,8 @@ border-radius: 20px;
 font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 
+}
+
+.dod{
+    margin-top: 200px;
 }

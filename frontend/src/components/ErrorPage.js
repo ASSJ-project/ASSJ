@@ -2,43 +2,29 @@ import "../static/css/ErrorPage.css";
 import logo2 from "../static/images/Error-logo.PNG";
 import logo from "../static/images/mainlogo.png";
 import { Link } from "react-router-dom";
-import React from "react";
 
-const ErrorPage = () => {
+const ErrorPage =() => {
   return (
-    <div className="main">
-      <Head />
-      <Body />
-    </div>
+      <div className="Error">
+          <div className="Error-logo">
+            <img src={logo} alt="logo" className="logo1"/>
+          </div>  
+          <div className="Error-logo">  
+            <img src={logo2} alt="logo2" className="logo2"/>
+          </div>        
+          <div className="text-wrap">
+            <h2>주소가 잘못입력되었습니다!</h2>
+            <h3>주소를 다시 입력하시거나<br/>
+            홈 버튼을 눌러주세요! </h3>
+          </div>
+          <Link to="/" className="noe" >Home</Link>
+        </div>
   );
-};
+}
+
 export default ErrorPage;
 
-// 물병 밑에 나오는 부분 컴포넌트입니다 ^0^
-function Body() {
-  return (
-    <>
-      <h2 className="sorry">
-        주소가 잘못입력되었습니다!
-        <br />
-      </h2>
-      <p className="sorry">주소를 다시 입력하시거나</p>
-      <p className="sorry"> 홈 버튼을 눌러주세요! </p>
-      <Link to="/" className="retry">
-        Home
-      </Link>
-    </>
-  );
-}
 
-// 위에있는 이미지 첨가부분입니다.
-function Head() {
-  return (
-    <>
-      <header className="App-header">
-        <img src={logo} className="Logo" alt="logo" />
-        <img src={logo2} className="App-logo" alt="App-logo" />
-      </header>
-    </>
-  );
-}
+/* <div className="logo2">
+          <img src={logo2} alt="logo2"/>
+          </div> */
