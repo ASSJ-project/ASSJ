@@ -1,30 +1,34 @@
 package com.assj;
 
+import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
 @Configuration
-public class RootConfig{
+public class RootConfig {
 
-	@Bean
-	DataSource datasource() {
-		HikariConfig hikariConfig = new HikariConfig();
-		hikariConfig.setDriverClassName("org.mariadb.jdbc.Driver");
-		hikariConfig.setJdbcUrl("jdbc:mariadb://192.168.0.205:3306/assj");
-		hikariConfig.setUsername("root");
-		hikariConfig.setPassword("assj"); 
-		hikariConfig.setMinimumIdle(10);
-		hikariConfig.setMaximumPoolSize(10);
-		hikariConfig.setConnectionTimeout(3000);
-		hikariConfig.setValidationTimeout(3000);
-		hikariConfig.setMaxLifetime(58000);
-		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
-		return dataSource;
-	}
+    @Value("${spring.datasource.url}")
+    private String url;
 
+    @Value("${spring.datasource.username}")
+    private String username;
 
+    @Value("${spring.datasource.password}")
+    private String password;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driverClassName;
+
+    @Bean
+    public DataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        dataSource.setDriverClassName(driverClassName);
+        // Set other HikariCP configurations here
+        return dataSource;
+    }
 }
