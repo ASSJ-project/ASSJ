@@ -1,13 +1,8 @@
 package com.assj.domain.company;
 
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.sql.DataSource;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
@@ -18,14 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.assj.CorpData;
 import com.assj.Dao;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import kong.unirest.HttpResponse;
-import kong.unirest.Unirest;
-
-import java.util.List;
-import java.util.ArrayList;
 
 public class startfulldao {
     public void setCorpData() throws Exception{
