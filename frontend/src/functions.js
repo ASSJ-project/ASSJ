@@ -30,3 +30,20 @@ export async function loginDo(e, p) {
 
   console.log(token);
 }
+
+export async function registerDo(e, p, a) {
+  const url = "api/register.do";
+  let result = false;
+  await axios
+    .post(url, {
+      email: e,
+      password: p,
+      user_address: a,
+    })
+    .then((response) => {
+      result = response.data;
+    })
+    .catch((error) => console.log(error));
+
+  console.log(result);
+}

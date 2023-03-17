@@ -14,7 +14,8 @@
   border: solid 2px black;
 }
 .idbox,
-.pwbox {
+.pwbox,
+.addressbox {
   width: 50%;
   height: 20%;
   background-color: aqua;
