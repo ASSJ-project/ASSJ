@@ -1,21 +1,16 @@
 package com.assj;
 
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.XML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
+import com.assj.utils.KakaoGeoRes;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,7 +22,8 @@ import java.util.ArrayList;
 
 public class Dao {
 	
-	private DataSource ds;
+	private RootConfig rc = new RootConfig();
+	private DataSource ds = rc.datasource();
 
 	private static Logger log = LoggerFactory.getLogger(Dao.class);
 	

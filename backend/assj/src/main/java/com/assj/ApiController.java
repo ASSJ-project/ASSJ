@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.assj.domain.company.startfulldao;
+import com.assj.utils.JwtToken;
 
 
 @RestController
@@ -54,20 +56,20 @@ public class ApiController {
 		return obj;
 	}
 
-	@GetMapping("/api/setCorpData")
-	public void setCorpData(){
-		try {
-			ex.setCorpData();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	// @GetMapping("/api/setCorpData")
+	// public void setCorpData(){
+	// 	try {
+	// 		dao.setCorpData();
+	// 	} catch (Exception e) {
+	// 		e.printStackTrace();
+	// 	}
+	// }
 
-	@GetMapping("/api/login.do/{id}/{password}")
-	public String login(@PathVariable("id") String id, @PathVariable("password") String password){
+	@PostMapping("/api/login.do")
+	public String login(@RequestBody User user){
 		JwtToken jt = new JwtToken();
-		
-		String token = jt.createJwtToken();
+		System.out.println(user);
+		String token = jt.createJwtToken(user);
 
 		return token;
 	}
