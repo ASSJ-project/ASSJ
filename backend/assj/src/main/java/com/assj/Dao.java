@@ -9,6 +9,9 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.assj.utils.KakaoGeoRes;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -20,13 +23,26 @@ import kong.unirest.Unirest;
 import java.util.List;
 import java.util.ArrayList;
 
+@Component
 public class Dao {
 	
-	private RootConfig rc = new RootConfig();
-	private DataSource ds = rc.datasource();
+	private RootConfig rc;
+	private DataSource ds;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	public Dao(){
+		rc = new RootConfig();
+		ds = rc.datasource();
+		
+	}
 
 	private static Logger log = LoggerFactory.getLogger(Dao.class);
 	
+	/**
+	 * Connection 객체 얻는 메소드
+	 */
 	public Connection getConnect(){
 		Connection conn = null;
 		try {
@@ -39,22 +55,69 @@ public class Dao {
 		return conn;
 	}
 	
-	public String getTest() throws Exception{
+	/**
+	 * DB에 회원 email이 존재하는지 검사하는 메소드
+	 */
+	public boolean checkEmail(String email) throws Exception{
 		Connection conn = getConnect();
-		
-		String sql = "select username from user where uuid=1";
+		Boolean result = false;
+		String sql = "select email from user where email = '"+ email + "'";
 		PreparedStatement pstmt;
-		String result = "";
+		
 		
 		pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
 		try(conn;pstmt;rs){
-			while(rs.next()) {
-				result = rs.getString("username");
-			}
+			result = rs.next() ? true : false;
 		}
 		return result;
+	}
+
+	public boolean checkPassword(User user) throws Exception{
+		Connection conn = getConnect();
+		Boolean result = false;
+		String sql = "select password from user where email = '"+ user.getEmail() + "'";
+		PreparedStatement pstmt;
+
+		pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+
+		try(conn;pstmt;rs){
+			if(rs.next()){
+				String encodedPassword = rs.getString("password");
+				System.out.println(encodedPassword);
+				System.out.println(user.getPassword());
+				System.out.println(passwordEncoder);
+				//String hashPassWord = passwordEncoder.encode(user.getPassword());
+				//System.out.println(hashPassWord);
+				result = passwordEncoder.matches(user.getPassword(), encodedPassword);
+				//result = encodedPassword.matches(hashPassWord);
+				return result;
+			}
+		}catch(Exception e){
+			log.info(e.toString());
+		}
+		return result;
+	}
+
+	/**
+	 * 유저를 DB에 추가하는 메서드
+   */
+	public void addUser(User user) throws Exception{
+		Connection conn = getConnect();
+		String sql = "Insert into user(email, password, user_address) values(?,?,?)";
+		try (PreparedStatement pstmt = conn.prepareStatement(sql); conn) {
+			pstmt.setString(1, user.getEmail());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getUser_address());
+
+			if(pstmt.executeUpdate() == 0){
+				throw new Exception("유저를 DB에 추가하지 못하였습니다.");
+			}
+		} catch (SQLException e) {
+			log.info(e.toString());
+		};
 	}
 
 	/**
@@ -105,7 +168,9 @@ public class Dao {
 		}
 	}
 
-	
+	/**
+	 * 주소를 바탕으로 카카오 맵 좌표 정보를 요청하여 x, y 좌표를 구하는 메소드 
+	 */
 	public List<Double> getGeo(String address){
 		String REST_KEY = "KakaoAK 50bbb5205dc8fcc9c2611542015a54d5";
 		String addr = address;
