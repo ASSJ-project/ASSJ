@@ -3,27 +3,55 @@ import "../static/css/MyPage-Info.css";
 import frame from "../static/images/Error-Frame1.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-// let [user, setuser] = useState(data)
-// import UserList from './UserList';
 
 //로그인이 성공했다 가정하고 
 sessionStorage.setItem("key1", 10);
 //로그인 성공했을 떄 유저DB에 있는 기본키값이나 아이디값을 가져와서 세션이나 로컬에 저장해야할거같습니다.
-var ok = sessionStorage.getItem("key1");  
+const ok = sessionStorage.getItem("key1");  
 
 const MyPage =() => {
-  // let[로그인정보] = useState(["이진범" , "ahso0@naver.com" , "효성동이랍니다" , "1234"]);
-    // let {id} = useParams();
     const[users , setUsers] = useState([]);
+    const[company] = useState(['구글','네이버','한국','중국'])
+    const[number,setNumber] = useState(0)
+    
+    //버튼 클릭했을 때 로컬스토리지에 저장하는거
+    // 메인페이지에서 마커 클릭했을 때 로컬스토리지에 저장한다는 가정 마이페이지 테스트용
+    const fix1=()=>{ 
+      setNumber(number+1)
+      let textbox1 = document.getElementById('my_company1').value;
+      let get_local = localStorage.getItem("data"); //get_local은 로컬에 키가 data로 저장된 value값을 가져온다.
+      if (get_local == null) { // 값이 비어있다면
+        get_local = []; //빈배열로만들어주고
+      } else {
+        get_local = JSON.parse(get_local); // 값이 있다면 배열로만들어준다 로컬스토리지에는 key,value로 밖에 저장되지 않아서 JSON.parse 를 이용해야 한다.
+      }
 
-      
-    const fix=()=>{
-      sessionStorage.setItem("company","안녕")
+      get_local.push(textbox1);
+      get_local = new Set(get_local);
+      get_local = [...get_local];
+      localStorage.setItem("data", JSON.stringify(get_local));
     }
 
+    //버튼 클릭했을 때 로컬스토리지에 저장하는거
+    // 메인페이지에서 마커 클릭했을 때 로컬스토리지에 저장한다는 가정 마이페이지 테스트용
+    const fix2=()=>{ 
+      let textbox2 = document.getElementById('my_company2').value;
+
+      let get_local = localStorage.getItem("key"); //get_local은 로컬에 키가 data로 저장된 value값을 가져온다.
+      if (get_local == null) { // 값이 비어있다면
+        get_local = []; //빈배열로만들어주고
+      } else {
+        get_local = JSON.parse(get_local); // 값이 있다면 배열로만들어준다 로컬스토리지에는 key,value로 밖에 저장되지 않아서 JSON.parse 를 이용해야 한다.
+      }
+
+      get_local.push(textbox2);
+      get_local = new Set(get_local);
+      get_local = [...get_local];
+      localStorage.setItem("key", JSON.stringify(get_local));
+    }
 
     useEffect(() => {
-      axios.get('https://jsonplaceholder.typicode.com/users/'+ok) //여기에 api요청하면 될거같습니다. 이건 임시로 사이트에서했어영
+      axios.get('https://jsonplaceholder.typicode.com/users/'+ok) //여기에 api요청하면 될거같습니다.
           .then(response => {
               setUsers(response.data);
           });
@@ -31,23 +59,28 @@ const MyPage =() => {
 
 
     return (
-      <div className="main">
-        <Head/>
-        <Link to='/Main' className="home" style={{ textDecoration: "none" }}>Home</Link>
-        <div className="my-information">내정보</div>
-        <Link to='/MyPage2' className="my-record" style={{ textDecoration: "none" }}>최근 조회 기록</Link>
-        <p className="mypage">MY PAGE</p> 
+      <div className="MyPage-Main">
+        <div className="MyPage-Head">
+          <Link to="/SideBar" className="left-items"><img src={frame} className="oo"/></Link>
+          <div className="left-items2">알쓸신잡</div>
+          <Link to='/Main' className="right-items" style={{ textDecoration: "none" }}>Home</Link>
+        </div>
+
+        <div className='MyPage'>MY PAGE</div>
+
+        <div className="ff">
+          <div className="myinfo1">내정보</div>
+          <Link to='/MyPage2' className="myinfo2" style={{ textDecoration: "none" }}>최근 조회 기록</Link>
+        </div>
         <div className="ee">
-          <Yam/>
-          <div className="yam">
-            <div className="yas">{users.name}</div>
-            <div className="yas">{users.username}</div>
-            <div className="yas">{users.email}</div>
-            <div className="yas">{users.phone}</div>
-            <div className="yas">새비밀번호</div>
-            <div className="yas">비밀번호확인</div>
-            <button onClick={fix}>1 </button>
-          </div>
+            <div className="all">이름 : {users.name}</div>
+            <div className="all">메일 : {users.username}</div>
+            <div className="all">주소 : {users.email}</div>
+            <div className="all">현재 비밀번호 :{users.phone}</div>
+            <div className="all">새비밀번호</div>
+            <div className="all">비밀번호확인</div>
+            <button onClick={fix1} id="my_company1" value={company[number]} > 날 클릭해봐 </button>
+            <button onClick={fix2} id="my_company2" value={company}> key </button>
         </div>
       </div>
     );
@@ -55,27 +88,5 @@ const MyPage =() => {
 
 export default MyPage;
 
-function Yam(){  // 이친구는 왼쪽 컴포넌트에용
-  return(
-    <div className="yam">
-      <div className="yas">이름</div>
-      <div className="yas">메일</div>
-      <div className="yas">주소</div>
-      <div className="yas">현재비밀번호</div>
-      <div className="yas">새비밀번호</div>
-      <div className="yas">비밀번호확인</div>
-      <div className="yas">수정</div>
-    </div>
-  );
-}
-
-function Head(){ // 이 친구는 윗부분에 있는 컴포넌트에용
-  return(
-    <>
-  <span className="App-title">알쓸신잡</span>
-  <header className="App-header">
-    <Link to="/SideBar"><img src={frame} className="Hug"/></Link>
-  </header>
-  </>
-  );
-}
+ /* <div className='ssss'>안뇽 
+<div><Link to='/MyPage2' className="my-record" style={{ textDecoration: "none" }}>최근 조회 기록</Link></div> */
