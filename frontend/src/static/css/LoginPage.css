@@ -1,4 +1,8 @@
-.login {
+body {
+  margin: 0;
+}
+
+#root {
   background-image: url(../images/login-bg-img.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -21,21 +25,24 @@
   width: 75%;
   text-align: center;
 }
-
+/*
 .logintext {
   margin: 0px;
   font-size: 3em;
   color: #484848;
   text-align: center;
   font-weight: 900;
-  margin-top: 300px;
   margin-bottom: 80px;
+} */
+
+.loginlogo {
+  width: 35em;
+  margin-bottom: 40px;
 }
 
 .id-text {
   width: 50%;
   position: relative;
-  left: 2em;
   /* width: 30px; */
   font-size: 2em;
   color: #484848;
@@ -43,9 +50,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
+  text-align: left;
 }
 .id-input {
-  width: 50%;
+  width: 100%;
   /* position: relative; */
   left: 3em;
   border: 0;
@@ -64,16 +72,14 @@
   font-size: 1.5em;
   margin-top: 3px;
   position: relative;
-  left: 5em;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  width: 600px;
+  text-align: left;
 }
 .pw-text {
   width: 50%;
   position: relative;
-  left: 3em;
   /* width: 30px; */
   font-size: 2em;
   color: #484848;
@@ -81,9 +87,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
+  text-align: left;
 }
 .pw-input {
-  width: 50%;
+  width: 100%;
   /* position: relative; */
   left: 3em;
   border: 0;
@@ -99,70 +106,33 @@
   margin-bottom: 3px;
   padding-left: 30px;
 }
-
-.onoff-switch-container {
-  /* position: relative;
-  left: -12em; */
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  height: 30px;
-}
-.onoff-switch-container input[type="checkbox"] {
-  width: 0px;
-  height: 0px;
-  overflow: hidden;
-}
-.onoff-switch-container label {
-  padding-left: 70px;
-  line-height: 30px;
-}
-.onoff-switch-container label::after {
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  content: "";
-  width: 34px;
-  height: 34px;
-  background: white;
-  border-radius: 100%;
-  transition: all 0.3s;
-}
-.onoff-switch-container label::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-  width: 70px;
-  height: 40px;
-  border: 1px solid #d1d1d1;
-  border-radius: 20px;
-  background: gray;
-  box-sizing: border-box;
-}
-.onoff-switch-container input[type="checkbox"]:checked + label::after {
-  transform: translateX(28px);
-  background: #484848;
-}
-.onoff-switch-container input[type="checkbox"]:checked + label::before {
-  background: #fff;
-}
 .toggle-text {
   width: 3em;
   vertical-align: middle;
   font-size: 2em;
   color: #484848;
 }
+
+.find-pw-container {
+  width: 80%;
+  text-align: right;
+}
+
 .find-pw {
-  margin-left: 200px;
+  padding: 0;
+  margin: 0;
   color: #484848;
   font-size: 2em;
-  vertical-align: middle;
 }
-.login-btn {
+
+.login-container {
+  width: 75%;
+  text-align: center;
+}
+
+.login-btn{
   position: relative;
-  left: 10%;
+  width: 100%;
   border: 0;
   /* width: 78%; */
   height: 120px;
@@ -174,20 +144,23 @@
   font-weight: 700;
   line-height: 27px;
   color: #fff;
-  margin-top: 60px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 67px;
 }
+
 .api-btn {
   position: relative;
-  left: 10%;
   display: inline;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
+
 .api-btn button {
   margin-top: 40px;
   background-color: rgb(0, 0, 0, 0);
   border: none;
 }
+
 .api-btn img {
   display: inline;
   width: 240px;
@@ -204,6 +177,7 @@
   letter-spacing: 0.02em;
   color: #d8d8dd;
 }
+
 .signup-div span {
   color: #484848;
 }
