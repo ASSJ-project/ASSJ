@@ -3,16 +3,17 @@ package com.assj;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+
+//@EnableWebSecurity
 @Configuration
-@EnableWebSecurity
-public class Config {
+public class RootConfig {
 
 	@Bean
 	DataSource datasource() {
@@ -30,9 +31,9 @@ public class Config {
 		return dataSource;
 	}
 
-	@Bean
-	PasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	PasswordEncoder getPasswordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 
 }

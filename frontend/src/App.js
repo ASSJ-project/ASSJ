@@ -41,9 +41,9 @@ function App() {
   return (
     <div>
       {/* <LoginPage /> */}
-      <Test />
-      {/* {isError && <ErrorPage />}
-      {isLoading && <MapData addrdata={addrData} />} */}
+      {/* <Test /> */}
+      {isError && <ErrorPage />}
+      {isLoading && <MapData addrdata={addrData} />}
     </div>
   );
 }

@@ -3,7 +3,6 @@ package com.assj.domain.company;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;

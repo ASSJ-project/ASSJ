@@ -1,7 +1,6 @@
 package com.assj;
 
 import java.net.URLEncoder;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,8 +9,8 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.assj.utils.KakaoGeoRes;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,10 +21,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Dao {
-
-	@Autowired
-	private DataSource ds;
 	
+	private RootConfig rc = new RootConfig();
+	private DataSource ds = rc.datasource();
+
 	private static Logger log = LoggerFactory.getLogger(Dao.class);
 	
 	public Connection getConnect(){

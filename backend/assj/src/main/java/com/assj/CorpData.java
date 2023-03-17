@@ -2,7 +2,6 @@ package com.assj;
 
 import lombok.Data;
 
-
 @Data
 public class CorpData {
   private String company;
