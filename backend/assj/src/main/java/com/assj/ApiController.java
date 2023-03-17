@@ -8,14 +8,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.assj.domain.company.startfulldao;
 
 
 @RestController
 public class ApiController {
-	final Dao dao ;
+	final startfulldao ex;
+	final Dao dao;
 
 	public ApiController(){
 		dao = new Dao();
+		ex = new startfulldao();
 	}
 
 	@GetMapping("/api/user")
@@ -54,7 +57,7 @@ public class ApiController {
 	@GetMapping("/api/setCorpData")
 	public void setCorpData(){
 		try {
-			dao.setCorpData();
+			ex.setCorpData();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
