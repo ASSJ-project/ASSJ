@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import ErrorPage from "./components/ErrorPage";
 import MapData from "./components/Map/MapData";
 import React from "react";
-import LoginPage from "./components/LoginPage";
+//import LoginPage from "./components/LoginPage";
+import Test from "./Test";
 
 function App() {
   const url = "api/getCorpData";
@@ -39,7 +40,8 @@ function App() {
 
   return (
     <div>
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <Test />
       {/* {isError && <ErrorPage />}
       {isLoading && <MapData addrdata={addrData} />} */}
     </div>

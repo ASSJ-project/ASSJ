@@ -1,0 +1,22 @@
+.testcontainer {
+  display: flex;
+  flex-direction: column;
+  background-color: brown;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.box {
+  width: 50%;
+  height: 60%;
+  background-color: aqua;
+  border: solid 2px black;
+}
+.idbox,
+.pwbox {
+  width: 50%;
+  height: 20%;
+  background-color: aqua;
+  border: solid 2px black;
+}
