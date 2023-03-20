@@ -1,3 +1,4 @@
+// coding by 'ikki'
 import React from "react";
 
 function AdminMemberInfo() {
