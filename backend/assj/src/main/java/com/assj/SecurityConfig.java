@@ -18,10 +18,11 @@ public class SecurityConfig{
 	}
   @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      http.csrf().disable(); // disable 해주지 않으면 post 요청 받을 수 없음 
-      
+           
       http.authorizeRequests()
-      .antMatchers("/api").permitAll();
+      .antMatchers("/api").permitAll()
+      .antMatchers("/api/users").permitAll()
+      .and().csrf().disable();
     
 
       return http.build();
