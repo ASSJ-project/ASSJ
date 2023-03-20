@@ -1,13 +1,5 @@
-// coding by 'ikki'
-import React from "react";
-import "../static/css/Admin.css";
-
-function AdminStats() {
-  return (
-    <>
-      <div>
-        {/* 일간 주간 월간 라디오박스 생성-> 버튼처럼 보이도록'ㅅ'  */}
-        <form className="stats_radio_box">
+const RadioBtn = (id, name, defaultChecked ) => {
+    <form className="stats_radio_box">
           <input
             type="radio"
             id="day"
@@ -27,10 +19,6 @@ function AdminStats() {
             월간
           </label>
         </form>
-      </div>
-      <div></div>
-    </>
-  );
 }
 
-export default AdminStats;
+export default RadioBtn();

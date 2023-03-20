@@ -1,3 +1,4 @@
+// coding by 'ikki'
 import "../static/css/StartPage.css";
 import logo from "../static/images/nuki02.png";
 import { Link } from "react-router-dom";

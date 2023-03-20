@@ -1,3 +1,4 @@
+// coding by 'ikki'
 import React from "react";
 import "../static/css/Admin.css";
 import UserInfo from "./UserInfo";
