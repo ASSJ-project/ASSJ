@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.assj.domain.company.CorpData;
 import com.assj.utils.KakaoGeoRes;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,174 +27,95 @@ import java.util.ArrayList;
 @Component
 public class Dao {
 	
-	private RootConfig rc;
-	private DataSource ds;
+	// private RootConfig rc;
+	// private DataSource ds;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	public Dao(){
-		rc = new RootConfig();
-		ds = rc.datasource();
-		
+		// rc = new RootConfig();
+		// ds = rc.dataSource();
 	}
 
 	private static Logger log = LoggerFactory.getLogger(Dao.class);
 	
-	/**
-	 * Connection 객체 얻는 메소드
-	 */
-	public Connection getConnect(){
-		Connection conn = null;
-		try {
-			conn = ds.getConnection();
-			log.info("Connection 객체 '" + conn + "'");
+
+
+	// /**
+	//  * 회사 정보 얻는 메소드
+  // */
+	// public List<CorpData> getCorp() throws Exception{
+		
+	// 	List<CorpData> lcd = new ArrayList<>();
+	// 	Connection conn = getConnect();
+	
+	// 	PreparedStatement pstmt;
+	
+	// 	String sql = "SELECT * FROM corp";
+	// 	pstmt = conn.prepareStatement(sql);
+	// 	ResultSet rs = pstmt.executeQuery();
+
+	// 	try(conn; pstmt; rs){
+	// 		while(rs.next()){
+	// 			CorpData cd = new CorpData();
+	// 			cd.setCareer(rs.getString("career"));
+	// 			cd.setTitle(rs.getString("title"));
+	// 			cd.setSalTpNm(rs.getString("salTpNm"));
+	// 			cd.setSal(rs.getString("sal"));
+	// 			cd.setMinSal(rs.getString("minSal"));
+	// 			cd.setMaxSal(rs.getString("maxSal"));
+	// 			cd.setRegion(rs.getString("region"));
+	// 			cd.setHolidayTpNm(rs.getString("holidayTpNm"));
+	// 			cd.setMinEdubg(rs.getString("minEdubg"));
+	// 			cd.setRegDt(rs.getString("regDt"));
+	// 			cd.setCloseDt(rs.getString("closeDt"));
+	// 			cd.setInfoSvc(rs.getString("infoSvc"));
+	// 			cd.setWantedInfoUrl(rs.getString("wantedInfoUrl"));
+	// 			cd.setWantedMobileInfoUrl(rs.getString("wantedMobileInfoUrl"));
+	// 			cd.setSmodifyDtm(rs.getString("smodifyDtm"));
+	// 			cd.setZipCd(rs.getString("zipCd"));
+	// 			cd.setStrtnmCd(rs.getString("strtnmCd"));
+	// 			cd.setBasicAddr(rs.getString("basicAddr"));
+	// 			cd.setDetailAddr(rs.getString("detailAddr"));
+	// 			cd.setEmpTpCd(rs.getString("empTpCd"));
+	// 			cd.setJobsCd(rs.getString("jobsCd"));
+	// 			cd.setCompany(rs.getString("company"));
+	// 			cd.setX(rs.getString("x"));
+	// 			cd.setY(rs.getString("y"));
+
+	// 			lcd.add(cd);
+	// 		}
+	// 		return lcd;
+	// 	}
+	// }
+
+	// /**
+	//  * 주소를 바탕으로 카카오 맵 좌표 정보를 요청하여 x, y 좌표를 구하는 메소드 
+	//  */
+	// public List<Double> getGeo(String address){
+	// 	String REST_KEY = "KakaoAK 50bbb5205dc8fcc9c2611542015a54d5";
+	// 	String addr = address;
+	// 	KakaoGeoRes bodyJson = null;
+	// 	List<Double> result = new ArrayList<>();
+	// 	try {
+	// 		String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json?&query=" + URLEncoder.encode(addr, "UTF-8");
 			
-		} catch (SQLException e) {
-			log.info(e.toString());
-		}
-		return conn;
-	}
-	
-	/**
-	 * DB에 회원 email이 존재하는지 검사하는 메소드
-	 */
-	public boolean checkEmail(String email) throws Exception{
-		Connection conn = getConnect();
-		Boolean result = false;
-		String sql = "select email from user where email = '"+ email + "'";
-		PreparedStatement pstmt;
+	// 		HttpResponse<kong.unirest.JsonNode> response = Unirest.get(apiUrl)
+	// 		.header("Authorization", REST_KEY)
+	// 		.asJson();
+
+	// 		ObjectMapper mapper = new ObjectMapper();
+	// 		mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+
+	// 		bodyJson = mapper.readValue(response.getBody().toString(), KakaoGeoRes.class);
+	// 		result.add(bodyJson.getDocuments().get(0).getX());
+	// 		result.add(bodyJson.getDocuments().get(0).getY());
+
+	// 	} catch (Exception e) {
+	// 		log.info(e.toString());
+	// 	}
 		
-		
-		pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
-		
-		try(conn;pstmt;rs){
-			result = rs.next() ? true : false;
-		}
-		return result;
-	}
-
-	public boolean checkPassword(User user) throws Exception{
-		Connection conn = getConnect();
-		Boolean result = false;
-		String sql = "select password from user where email = '"+ user.getEmail() + "'";
-		PreparedStatement pstmt;
-
-		pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
-
-		try(conn;pstmt;rs){
-			if(rs.next()){
-				String encodedPassword = rs.getString("password");
-				System.out.println(encodedPassword);
-				System.out.println(user.getPassword());
-				System.out.println(passwordEncoder);
-				//String hashPassWord = passwordEncoder.encode(user.getPassword());
-				//System.out.println(hashPassWord);
-				result = passwordEncoder.matches(user.getPassword(), encodedPassword);
-				//result = encodedPassword.matches(hashPassWord);
-				return result;
-			}
-		}catch(Exception e){
-			log.info(e.toString());
-		}
-		return result;
-	}
-
-	/**
-	 * 유저를 DB에 추가하는 메서드
-   */
-	public void addUser(User user) throws Exception{
-		Connection conn = getConnect();
-		String sql = "Insert into user(email, password, user_address) values(?,?,?)";
-		try (PreparedStatement pstmt = conn.prepareStatement(sql); conn) {
-			pstmt.setString(1, user.getEmail());
-			pstmt.setString(2, user.getPassword());
-			pstmt.setString(3, user.getUser_address());
-
-			if(pstmt.executeUpdate() == 0){
-				throw new Exception("유저를 DB에 추가하지 못하였습니다.");
-			}
-		} catch (SQLException e) {
-			log.info(e.toString());
-		};
-	}
-
-	/**
-	 * 회사 정보 얻는 메소드
-  */
-	public List<CorpData> getCorp() throws Exception{
-		
-		List<CorpData> lcd = new ArrayList<>();
-		Connection conn = getConnect();
-	
-		PreparedStatement pstmt;
-	
-		String sql = "SELECT * FROM corp";
-		pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
-
-		try(conn; pstmt; rs){
-			while(rs.next()){
-				CorpData cd = new CorpData();
-				cd.setCareer(rs.getString("career"));
-				cd.setTitle(rs.getString("title"));
-				cd.setSalTpNm(rs.getString("salTpNm"));
-				cd.setSal(rs.getString("sal"));
-				cd.setMinSal(rs.getString("minSal"));
-				cd.setMaxSal(rs.getString("maxSal"));
-				cd.setRegion(rs.getString("region"));
-				cd.setHolidayTpNm(rs.getString("holidayTpNm"));
-				cd.setMinEdubg(rs.getString("minEdubg"));
-				cd.setRegDt(rs.getString("regDt"));
-				cd.setCloseDt(rs.getString("closeDt"));
-				cd.setInfoSvc(rs.getString("infoSvc"));
-				cd.setWantedInfoUrl(rs.getString("wantedInfoUrl"));
-				cd.setWantedMobileInfoUrl(rs.getString("wantedMobileInfoUrl"));
-				cd.setSmodifyDtm(rs.getString("smodifyDtm"));
-				cd.setZipCd(rs.getString("zipCd"));
-				cd.setStrtnmCd(rs.getString("strtnmCd"));
-				cd.setBasicAddr(rs.getString("basicAddr"));
-				cd.setDetailAddr(rs.getString("detailAddr"));
-				cd.setEmpTpCd(rs.getString("empTpCd"));
-				cd.setJobsCd(rs.getString("jobsCd"));
-				cd.setCompany(rs.getString("company"));
-				cd.setX(rs.getString("x"));
-				cd.setY(rs.getString("y"));
-
-				lcd.add(cd);
-			}
-			return lcd;
-		}
-	}
-
-	/**
-	 * 주소를 바탕으로 카카오 맵 좌표 정보를 요청하여 x, y 좌표를 구하는 메소드 
-	 */
-	public List<Double> getGeo(String address){
-		String REST_KEY = "KakaoAK 50bbb5205dc8fcc9c2611542015a54d5";
-		String addr = address;
-		KakaoGeoRes bodyJson = null;
-		List<Double> result = new ArrayList<>();
-		try {
-			String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json?&query=" + URLEncoder.encode(addr, "UTF-8");
-			
-			HttpResponse<kong.unirest.JsonNode> response = Unirest.get(apiUrl)
-			.header("Authorization", REST_KEY)
-			.asJson();
-
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-
-			bodyJson = mapper.readValue(response.getBody().toString(), KakaoGeoRes.class);
-			result.add(bodyJson.getDocuments().get(0).getX());
-			result.add(bodyJson.getDocuments().get(0).getY());
-
-		} catch (Exception e) {
-			log.info(e.toString());
-		}
-		
-		return result;
-	}
+	// 	return result;
+	// }
 }

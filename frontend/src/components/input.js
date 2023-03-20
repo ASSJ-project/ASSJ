@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Input = styled.input`    
+const Input = styled.input`
   width: 100%;
   left: 3em;
   border: 0;
@@ -12,18 +12,21 @@ const Input = styled.input`
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  padding-left: 30px; 
-  `
+  padding-left: 30px;
+`;
 
-const inputprops = (props) => {
-    return(
+const inputprops = (props, inputText = (f) => f) => {
+  return (
     <>
-        <Input placeholder={props.placeholder} type={props.type} />
+      <Input
+        placeholder={props.placeholder}
+        type={props.type}
+        onChange={(e) => {
+          inputText(e.target.value);
+        }}
+      />
     </>
-    )
-}
+  );
+};
 
-export default inputprops
-
- 
-
+export default inputprops;

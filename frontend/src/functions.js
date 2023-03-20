@@ -16,12 +16,12 @@ export async function callApi(url) {
 }
 
 export async function loginDo(e, p) {
-  const url = "api/login.do";
+  const url = "api/users/login.do";
   let token = null;
   await axios
     .post(url, {
-      email: e,
-      password: p,
+      userEmail: e,
+      userPassword: p,
     })
     .then((response) => {
       token = response.data;
@@ -32,13 +32,13 @@ export async function loginDo(e, p) {
 }
 
 export async function registerDo(e, p, a) {
-  const url = "api/register.do";
+  const url = "api/users/register.do";
   let result = false;
   await axios
     .post(url, {
-      email: e,
-      password: p,
-      user_address: a,
+      userEmail: e,
+      userPassword: p,
+      userAddress: a,
     })
     .then((response) => {
       result = response.data;
