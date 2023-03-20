@@ -3,7 +3,7 @@ package com.assj.domain.company;
 import lombok.Data;
 
 @Data
-public class CorpData {
+public class Company {
   private String company;
   private String title;
   private String salTpNm;

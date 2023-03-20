@@ -2,38 +2,36 @@ package com.assj.domain.company;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
 
-public class CompanyRowMapper implements RowMapper<CorpData>{
-
-  @Override
-  public CorpData mapRow(ResultSet rs, int row) throws SQLException {
-    CorpData corpObj = new CorpData();
-    corpObj.setBasicAddr(rs.getString("basicAddr"));
-    corpObj.setCareer(rs.getString("career"));
-    corpObj.setCloseDt(rs.getString("closeDt"));
-    corpObj.setCompany(rs.getString("company"));
-    corpObj.setDetailAddr(rs.getString("detailAddr"));
-    corpObj.setEmpTpCd(rs.getString("empTpCd"));
-    corpObj.setHolidayTpNm(rs.getString("holidayTpNm"));
-    corpObj.setInfoSvc(rs.getString("infoSvc"));
-    corpObj.setJobsCd(rs.getString("jobsCd"));
-    corpObj.setMaxSal(rs.getString("maxSal"));
-    corpObj.setMinEdubg(rs.getString("minEdubg"));
-    corpObj.setMinSal(rs.getString("minSal"));
-    corpObj.setRegDt(rs.getString("regDt"));
-    corpObj.setRegion(rs.getString("region"));
-    corpObj.setSal(rs.getString("sal"));
-    corpObj.setSalTpNm(rs.getString("salTpNm"));
-    corpObj.setSmodifyDtm(rs.getString("smodifyDtm"));
-    corpObj.setTitle(rs.getString("title"));
-    corpObj.setWantedInfoUrl(rs.getString("wantedInfoUrl"));
-    corpObj.setWantedMobileInfoUrl(rs.getString("wantedMobileInfoUrl"));
-    corpObj.setX(rs.getString("x"));
-    corpObj.setY(rs.getString("y"));
-    corpObj.setZipCd(rs.getString("zipCd"));
-    return corpObj;
-  }
-  
+public class CompanyRowMapper implements RowMapper<Company> {
+    @Override
+    public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Company cd = new Company();
+        cd.setCareer(rs.getString("career"));
+        cd.setTitle(rs.getString("title"));
+        cd.setSalTpNm(rs.getString("salTpNm"));
+        cd.setSal(rs.getString("sal"));
+        cd.setMinSal(rs.getString("minSal"));
+        cd.setMaxSal(rs.getString("maxSal"));
+        cd.setRegion(rs.getString("region"));
+        cd.setHolidayTpNm(rs.getString("holidayTpNm"));
+        cd.setMinEdubg(rs.getString("minEdubg"));
+        cd.setRegDt(rs.getString("regDt"));
+        cd.setCloseDt(rs.getString("closeDt"));
+        cd.setInfoSvc(rs.getString("infoSvc"));
+        cd.setWantedInfoUrl(rs.getString("wantedInfoUrl"));
+        cd.setWantedMobileInfoUrl(rs.getString("wantedMobileInfoUrl"));
+        cd.setSmodifyDtm(rs.getString("smodifyDtm"));
+        cd.setZipCd(rs.getString("zipCd"));
+        cd.setStrtnmCd(rs.getString("strtnmCd"));
+        cd.setBasicAddr(rs.getString("basicAddr"));
+        cd.setDetailAddr(rs.getString("detailAddr"));
+        cd.setEmpTpCd(rs.getString("empTpCd"));
+        cd.setJobsCd(rs.getString("jobsCd"));
+        cd.setCompany(rs.getString("company"));
+        cd.setX(rs.getString("x"));
+        cd.setY(rs.getString("y"));
+        return cd;
+    }
 }
