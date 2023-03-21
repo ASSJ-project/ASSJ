@@ -21,6 +21,7 @@ function useCallAddress() {
               address: item.basicAddr,
             };
           });
+        console.log(addr);
         setAddrData(addr);
         setLoading(true);
       } catch (error) {
@@ -29,7 +30,7 @@ function useCallAddress() {
     }
     fetchData();
   }, []);
-
+  console.log(`addrData: ${addrData}`, addrData)
   return [addrData, isLoading, isError];
 }
 

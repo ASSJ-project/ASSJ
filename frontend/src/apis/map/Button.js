@@ -11,7 +11,12 @@ const Button = ({ text, onClick, disabled }) => {
         color: '#fff',
         borderRadius: '4px',
         border: 'none',
-        cursor: disabled ? 'not-allowed' : 'pointer'
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        margin: '20px',
+        top: '10px',
+        left: '10px',
+        height: '30px',
+        width: '30px',
       }}
     >
       {text}

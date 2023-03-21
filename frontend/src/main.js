@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MapPage from './pages/MapPage';
 import LoginPage from './pages/LoginPage';
+import ErrorPage from './pages/ErrorPage';
+import UseCallAddress from './hooks/useCallAddress'
 
 const router = createBrowserRouter([
   {
@@ -14,8 +16,12 @@ const router = createBrowserRouter([
     element: <MapPage />,
   },
   {
-    path: '/login',
-    element: <LoginPage />,
+    path: '/error',
+    element: <ErrorPage />,
+  },
+  {
+    path: '/call',
+    element: <UseCallAddress />
   }
 ]);
 
