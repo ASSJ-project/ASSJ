@@ -19,57 +19,36 @@ body {
 
 .id-container {
   width: 75%;
+  height: 20%;
   text-align: center;
 }
 .pw-container {
   width: 75%;
+  height: 20%;
   text-align: center;
 }
-/*
-.logintext {
-  margin: 0px;
-  font-size: 3em;
-  color: #484848;
-  text-align: center;
-  font-weight: 900;
-  margin-bottom: 80px;
-} */
-
 .loginlogo {
-  width: 35em;
+  width: 40%;
+  height: 20%;
   margin-bottom: 40px;
 }
 
 .id-text {
-  width: 50%;
+  width: 20%;
   position: relative;
   /* width: 30px; */
-  font-size: 2em;
-  color: #484848;
+  font-size: 1.5em;
+  color: #2c2b2b;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
   text-align: left;
-}
-.id-input {
-  width: 100%;
-  /* position: relative; */
-  left: 3em;
-  border: 0;
-  /* width: 75%; */
-  height: 120px;
-  background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 2em;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  padding-left: 30px;
+  text-shadow: 0px 1px whitesmoke;
 }
 .errorMessage {
   color: red;
-  font-size: 1.5em;
+  font-size: 1em;
   margin-top: 3px;
   position: relative;
   font-family: "Lato";
@@ -78,51 +57,36 @@ body {
   text-align: left;
 }
 .pw-text {
-  width: 50%;
+  width: 20%;
   position: relative;
   /* width: 30px; */
-  font-size: 2em;
-  color: #484848;
+  font-size: 1.5em;
+  color: #2c2b2b;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
   text-align: left;
-}
-.pw-input {
-  width: 100%;
-  /* position: relative; */
-  left: 3em;
-  border: 0;
-  /* width: 75%; */
-  height: 120px;
-  background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 2em;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  line-height: 21px;
-  margin-bottom: 3px;
-  padding-left: 30px;
+  text-shadow: 0px 1px whitesmoke;
 }
 .toggle-text {
   width: 3em;
   vertical-align: middle;
-  font-size: 2em;
+  font-size: 1em;
   color: #484848;
 }
 
 .find-pw-container {
-  width: 80%;
+  width: 75%;
   text-align: right;
 }
 
 .find-pw {
   padding: 0;
   margin: 0;
-  color: #484848;
-  font-size: 2em;
+  color: #181717;
+  font-size: 1.2em;
+  text-shadow: 0px 1px whitesmoke;
 }
 
 .login-container {
@@ -130,15 +94,15 @@ body {
   text-align: center;
 }
 
-.login-btn{
+.login-btn {
   position: relative;
   width: 100%;
   border: 0;
   /* width: 78%; */
-  height: 120px;
+  height: 50%;
   background: #484848;
   border-radius: 20px;
-  font-size: 3em;
+  font-size: 1.3em;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
@@ -146,6 +110,11 @@ body {
   color: #fff;
   margin-top: 40px;
   margin-bottom: 67px;
+  box-shadow: black 4px 4px 4px;
+  transition: 0.2s;
+}
+.login-btn:active {
+  box-shadow: none;
 }
 
 .api-btn {
@@ -171,7 +140,7 @@ body {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 1em;
   line-height: 26px;
   text-align: center;
   letter-spacing: 0.02em;

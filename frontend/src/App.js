@@ -1,13 +1,13 @@
 import { callApi } from "./functions";
 import { useState, useEffect } from "react";
-import ErrorPage from "./components/ErrorPage";
-import MapData from "./components/Map/MapData";
+// import ErrorPage from "./components/ErrorPage";
+// import MapData from "./components/Map/MapData";
 import React from "react";
 import LoginPage from "./components/LoginPage";
-import Test from "./Test";
+// import Test from "./Test";
 
 function App() {
-  const url = 'http://localhost:8080/api/getCorpData';
+  const url = "/api/getCorpData";
   const [addrData, setAddrData] = useState();
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
@@ -40,10 +40,10 @@ function App() {
 
   return (
     <div>
-      {/* <LoginPage /> */}
+      <LoginPage />
       {/* <Test /> */}
       {/* {isError && <ErrorPage /> */}
-      {isLoading && <MapData addrdata={addrData} />} 
+      {/* {isLoading && <MapData addrdata={addrData} />} */}
     </div>
   );
 }
