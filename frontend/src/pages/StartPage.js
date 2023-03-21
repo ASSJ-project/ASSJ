@@ -1,6 +1,6 @@
 // coding by 'ikki'
-import "../static/css/StartPage.css";
-import logo from "../static/images/nuki02.png";
+import "../components/domain/Start/StartPage.css";
+import logo from "../assets/images/nuki02.png";
 import { Link } from "react-router-dom";
 
 function StartPage() {
@@ -17,7 +17,7 @@ function StartPage() {
             <h1>Log in</h1>
           </button>
         </Link>
-        <Link to="/SignUp">
+        <Link to="/register">
           <button className="btn">
             <h1>Sign up</h1>
           </button>

@@ -64,4 +64,15 @@ public class UserController {
             log.info(e.toString());
         }
     }
+
+    @PostMapping("/emailCheck.do")
+    public Boolean emailCheck(@RequestBody User user){
+        try{
+            return userService.checkEmail(user.getUserEmail());
+        }
+        catch(Exception e) {
+            log.info(e.toString());
+            return false;
+        }
+    }
 }

@@ -29,9 +29,8 @@ public class UserService {
     public boolean checkEmail(String email) throws Exception{
 			String sql = "select * from user where email = '"+ email + "'";
 			List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
-			Boolean result = (users.size() != 0) ? true : false;
 			
-			return result;
+			return (users.size() != 0) ? true : false;
 		}
 
 	/**

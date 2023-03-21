@@ -29,11 +29,8 @@ export async function loginDo(e, p) {
     .catch((error) => console.log(error));
   //로그인 성공
   if (token != null) {
-    sessionStorage.setItem(e, token);
-    sessionStorage.setItem(token, true);
+    sessionStorage.setItem("access_token", token);
   }
-  // console.log(token);
-  // return token;
 }
 
 export async function registerDo(e, p, a) {
