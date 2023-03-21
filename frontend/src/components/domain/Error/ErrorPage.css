@@ -1,0 +1,60 @@
+.Error{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 10vh;
+}
+
+.Error-logo {
+    /* max-width: 400px; */
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    /* background-color: #4A72FF; */
+}
+
+/* .logo img{
+    justify-content: center;
+} */
+
+.text-wrap{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+
+.noe{
+
+    /* align-items: center; */
+width: 60%;
+height : 10%;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 2rem;
+
+background-color: #9588E0;
+color : #ffffff;
+
+}
+
+.retry:hover{
+    background-color:#ec15e2;
+      transition: 0.7s;
+}
+
+.logo1{
+    width: 40%;
+    height: 50%;
+}
+
+.logo2{
+    width: 50%;
+    height: 90%;
+}
+
+h3 {
+    margin-top: 5vh;
+}
