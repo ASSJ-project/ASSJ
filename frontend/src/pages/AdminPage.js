@@ -3,14 +3,14 @@
 import "../static/css/Admin.css";
 import { Link } from "react-router-dom";
 import React from "react";
-import AdminUserInfo from "./AdminUserInfo";
-import AdminStats from "./AdminStats";
+import AdminUserInfo from "../components/AdminUserInfo";
+import AdminStats from "../components/AdminStats";
 import title_img from "../static/images/title-nuki.png";
 import { FiMenu } from "react-icons/fi";
 import { BiHomeHeart } from "react-icons/bi";
 import { useState } from "react";
 
-function Admin() {
+function AdminPage() {
   const [adminUserPage, SetAdminUserPage] = useState(true);
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
 
@@ -60,4 +60,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AdminPage;

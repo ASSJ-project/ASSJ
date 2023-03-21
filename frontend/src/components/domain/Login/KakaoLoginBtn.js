@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import KakaoLogin from "react-kakao-login";
-import KakaoImg from "../../static/images/kakaobtn.png";
+import KakaoImg from "../../../assets/images/kakaobtn.png";
 
 export default function KakaoLoginBtn() {
   const clientId = "5308bfd7191289f8e5ccd2c1224835eb";

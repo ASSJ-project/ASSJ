@@ -1,12 +1,5 @@
-:root {
-  --main-color: #9588e0;
-  --soft-color: #e2dff8;
-}
+/* coding by 'ikki' */
 
-* {
-  margin: 0;
-  padding: 0;
-}
 .container {
   margin: 8em 4em;
 }

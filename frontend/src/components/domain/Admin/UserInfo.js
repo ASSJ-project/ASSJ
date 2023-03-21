@@ -1,4 +1,5 @@
-import "../static/css/UserInfo.css";
+// coding by 'ikki'
+import "./UserInfo.css";
 
 function UserInfo() {
   return (

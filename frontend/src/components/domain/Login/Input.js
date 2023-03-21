@@ -13,7 +13,7 @@ const Input = styled.input`
   font-weight: 700;
 `;
 
-const inputprops = ({ placeholder, type, inputText = (f) => f }) => (
+const Inputprops = ({ placeholder, type, inputText = (f) => f }) => (
   <>
     <Input
       placeholder={placeholder}
@@ -25,4 +25,4 @@ const inputprops = ({ placeholder, type, inputText = (f) => f }) => (
   </>
 );
 
-export default inputprops;
+export default Inputprops;
