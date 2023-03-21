@@ -2,7 +2,7 @@ import "../components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
 import NaverLoginBtn from "../components/domain/Login/NaverLoginBtn";
-import MainLogo from "../assets/images/nuki02.png";
+import MainLogo from "../assets/images/logo.svg";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
 import { Link } from "react-router-dom";
@@ -52,19 +52,19 @@ function LoginPage() {
 
   return (
     <>
-      <div className="container">
+      <div className="login-container">
         <img className="loginlogo" src={MainLogo} alt="메인로고" />
         <div className="id-container">
           <p className="id-text">Email</p>
           <input
             className="input"
-            placeholder="Email"
+            placeholder="이메일"
             type="email"
             value={email}
             onChange={emailChange}
           />
           {!emailVisable && (
-            <div className="errorMessage">Please verify your email</div>
+            <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
 
@@ -72,18 +72,20 @@ function LoginPage() {
           <p className="pw-text">Password</p>
           <input
             className="input"
-            placeholder="Password"
+            placeholder="비밀번호"
             type="password"
             value={password}
             onChange={passwordChange}
           />
           {!passwordVisable && (
-            <div className="errorMessage">Please verify your password</div>
+            <div className="errorMessage">
+              비밀번호는 영문자+숫자 8글자 이상이여야 합니다
+            </div>
           )}
         </div>
 
         <div className="find-pw-container">
-          <p className="find-pw">forgot password?</p>
+          <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
         <div className="login-container">
           <button
@@ -104,9 +106,9 @@ function LoginPage() {
 
         <div className="signup-div">
           <p>
-            Don't have an account?{" "}
+            계정이 없으신가요?{" "}
             <span className="signup-btn">
-              <Link to="/Signup">Sign up</Link>
+              <Link to="/register">회원가입</Link>
             </span>
           </p>
         </div>

@@ -6,31 +6,31 @@ body {
   background-image: url(../../../assets/images/login-bg-img.png);
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.login-container {
+  width: 480px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
 .id-container {
   width: 75%;
-  height: 20%;
+  height: 15%;
   text-align: center;
 }
 .pw-container {
   width: 75%;
-  height: 20%;
+  height: 15%;
   text-align: center;
-}
-.loginlogo {
-  width: 40%;
-  height: 20%;
-  margin-bottom: 40px;
+  margin-bottom: 1em;
 }
 
 .input {
@@ -45,11 +45,14 @@ body {
   font-weight: 700;
 }
 
+.input::placeholder {
+  padding-left: 10px;
+}
+
 .id-text {
   width: 20%;
   position: relative;
-  /* width: 30px; */
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #2c2b2b;
   font-family: "Lato";
   font-style: normal;
@@ -60,7 +63,7 @@ body {
 }
 .errorMessage {
   color: red;
-  font-size: 1em;
+  font-size: 0.7em;
   margin-top: 3px;
   position: relative;
   font-family: "Lato";
@@ -72,7 +75,7 @@ body {
   width: 20%;
   position: relative;
   /* width: 30px; */
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #2c2b2b;
   font-family: "Lato";
   font-style: normal;
@@ -94,10 +97,9 @@ body {
 }
 
 .find-pw {
-  padding: 0;
-  margin: 0;
+  margin-top: 20px;
   color: #181717;
-  font-size: 1.2em;
+  font-size: 1em;
   text-shadow: 0px 1px whitesmoke;
 }
 
@@ -111,7 +113,7 @@ body {
   width: 100%;
   border: 0;
   /* width: 78%; */
-  height: 50%;
+  height: 30%;
   background: #484848;
   border-radius: 20px;
   font-size: 1.3em;
