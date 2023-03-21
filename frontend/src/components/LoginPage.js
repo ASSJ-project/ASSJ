@@ -23,7 +23,7 @@ function LoginPage() {
         <div className="id-container">
           <p className="id-text">Email</p>
           <InputProps
-            placeholder="Email"
+            placeholder="이메일"
             type="email"
             inputText={(email) => setEmail(email)}
           />
@@ -33,7 +33,7 @@ function LoginPage() {
         <div className="pw-container">
           <p className="pw-text">Password</p>
           <InputProps
-            placeholder="Password"
+            placeholder="비밀번호"
             type="password"
             inputText={(password) => setPassword(password)}
           />

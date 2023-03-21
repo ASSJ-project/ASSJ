@@ -3,30 +3,26 @@ import styled from "styled-components";
 
 const Input = styled.input`
   width: 100%;
-  left: 3em;
-  border: 0;
-  height: 120px;
+  height: 40%;
+  border: none;
   background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 2em;
+  border-radius: 10px;
+  font-size: 1.1em;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  padding-left: 30px;
 `;
 
-const inputprops = (props, inputText = (f) => f) => {
-  return (
-    <>
-      <Input
-        placeholder={props.placeholder}
-        type={props.type}
-        onChange={(e) => {
-          inputText(e.target.value);
-        }}
-      />
-    </>
-  );
-};
+const inputprops = ({ placeholder, type, inputText = (f) => f }) => (
+  <>
+    <Input
+      placeholder={placeholder}
+      type={type}
+      onChange={(e) => {
+        inputText(e.target.value);
+      }}
+    />
+  </>
+);
 
 export default inputprops;
