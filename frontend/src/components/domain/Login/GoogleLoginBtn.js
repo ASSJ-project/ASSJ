@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
-import GoogleImg from "../../static/images/googlebtn.png";
+import GoogleImg from "../../../assets/images/googlebtn.png";
 
 export default function GoogleLoginBtn() {
   const clientId =
