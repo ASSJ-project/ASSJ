@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import NaverImg from "../../static/images/naverbtn.png";
+import React from "react";
+import NaverImg from "../../../assets/images/naverbtn.png";
 import NaverLogin from "react-naver-login";
 
 export default function GoogleLoginBtn() {
