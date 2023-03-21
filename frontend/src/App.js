@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // import ErrorPage from "./components/ErrorPage";
 // import MapData from "./components/Map/MapData";
 import React from "react";
-import LoginPage from "./components/LoginPage";
+import LoginPage from "./pages/LoginPage";
 // import Test from "./Test";
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
   const [addrData, setAddrData] = useState();
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
-
   /* DB에 데이터 요청하는 함수 */
 
   useEffect(() => {
