@@ -1,7 +1,7 @@
-// import "../static/css/LoginPage.css";
-// import GoogleLoginBtn from "./GoogleLoginBtn";
-// import KakaoLoginBtn from "./KakaoLoginBtn";
-// import NaverLoginBtn from "./NaverLoginBtn";
+import "../static/css/LoginPage.css";
+import GoogleLoginBtn from "./GoogleLoginBtn";
+import KakaoLoginBtn from "./KakaoLoginBtn";
+import NaverLoginBtn from "./NaverLoginBtn";
 import MainLogo from "../static/images/nuki02.png";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
@@ -90,9 +90,9 @@ function LoginPage() {
           </button>
         </div>
         <div className="api-btn">
-          {/* <GoogleLoginBtn />
+          <GoogleLoginBtn />
           <KakaoLoginBtn />
-          <NaverLoginBtn />  */}
+          <NaverLoginBtn /> 
         </div>
 
         <div className="signup-div">
