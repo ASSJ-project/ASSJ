@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MapPage from './pages/MapPage';
 import LoginPage from './pages/LoginPage';
 import ErrorPage from './pages/ErrorPage';
-import UseCallAddress from './hooks/useCallAddress'
+import RegisterPage from './pages/RegisterPage';
+import Test from './test/Test';
 
 const router = createBrowserRouter([
   {
@@ -16,13 +17,17 @@ const router = createBrowserRouter([
     element: <MapPage />,
   },
   {
-    path: '/error',
-    element: <ErrorPage />,
+    path: '/login',
+    element: <LoginPage />,
   },
   {
-    path: '/call',
-    element: <UseCallAddress />
-  }
+    path: '/test',
+    element: <Test />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
