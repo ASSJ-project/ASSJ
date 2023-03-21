@@ -1,6 +1,24 @@
-/* coding by 'ikki' */
+/* GraphPage Css */
 
-.date {
-  display: flex;
-  text-align: center;
+.graph_container {
+  font-size: 3em;
+  background-color: var(--soft-color);
+  border-radius: 20px;
+  padding: 0.4em;
+  margin-bottom: 0.6em;
 }
+
+/* Calendar Css */
+.graph_date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6em;
+}
+
+/* datePicker 클래스명 찾아서 수정 */
+.react-datepicker__input-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* DatePicker Css */

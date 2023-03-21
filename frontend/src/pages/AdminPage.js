@@ -1,33 +1,19 @@
-// coding by 'ikki'
-
 import "../static/css/Admin.css";
-import { Link } from "react-router-dom";
 import React from "react";
-import AdminUserInfo from "../components/AdminUserInfo";
-import AdminStats from "../components/AdminStats";
-import title_img from "../static/images/title-nuki.png";
-import { FiMenu } from "react-icons/fi";
-import { BiHomeHeart } from "react-icons/bi";
+import AdminUserInfo from "./AdminUserInfo";
+import AdminStats from "./AdminStats";
+import Header from "./Header";
 import { useState } from "react";
 
-function AdminPage() {
+function Admin() {
   const [adminUserPage, SetAdminUserPage] = useState(true);
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
 
   return (
     <>
-      <div className="admin_container">
-        {/* 햄버거 메뉴아이콘, 타이틀 */}
-        <div className="admin_header">
-          <FiMenu />
-          <Link to="/">
-            <img id="title_img" src={title_img} alt="title_img" />
-            <BiHomeHeart className="home_icon" />
-          </Link>
-        </div>
+      <Header title="Admin" />
+      <div className="menu_container">
         <div>
-          <div className="admin-title">&nbsp;&nbsp;Admin</div>
-
           {/* 회원정보 / 통계 메뉴 버튼 */}
           <div>
             <button
@@ -60,4 +46,4 @@ function AdminPage() {
   );
 }
 
-export default AdminPage;
+export default Admin;
