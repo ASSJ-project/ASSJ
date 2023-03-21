@@ -1,7 +1,8 @@
+// coding by 'ikki'
 import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
 import DatePicker from "react-datepicker";
 import Calendar from "./Calendar";
-import "../static/css/Calendar.css";
+import "./Calendar.css";
 
 function StatsGraph() {
   return (
