@@ -2,39 +2,40 @@ import { callApi } from '../functions';
 import { useState, useEffect } from 'react';
 import MapData from '../components/Map/MapData';
 import React from 'react';
+import Button from '../apis/map/Button';
+import useCallAddress from '../hooks/useCallAddress';
 
 /* DB에 데이터 요청하는 함수 */
 
 function MapPage() {
-  const url = '/api/getCorpData';
-  const [addrData, setAddrData] = useState();
-  const [isError, setError] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const dataList = await callApi(url);
-        const addr = await dataList
-          .filter((item) => item.region.includes('강남구'))
-          //.filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
-          .map((item) => {
-            return {
-              company: item.company,
-              x: item.x,
-              y: item.y,
-              address: item.basicAddr,
-            };
-          });
-        setAddrData(addr);
-        setLoading(true);
-      } catch (error) {
-        setError(true);
-      }
-    }
-    fetchData();
-  }, []);
+  const [addrData, isLoading, isError] = useCallAddress();
 
-  return <div>{isLoading && <MapData addrdata={addrData} />}</div>;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error occured!</div>;
+  }
+
+  return (
+    <ul>
+      {addrData.map((addr, index) => (
+        <li key={index}>
+          <p>{addr.company}</p>
+          <p>{addr.address}</p>
+        </li>
+      ))}
+    </ul>
+  );
 }
+
+//   return (
+//     <div>
+//       {isLoading && <MapData addrdata={addrData} />}
+//       <Button />
+//     </div>
+//   );
+// }
 
 export default MapPage;
