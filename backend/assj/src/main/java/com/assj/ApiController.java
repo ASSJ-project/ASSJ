@@ -9,13 +9,13 @@ import com.assj.domain.user.UserController;
 @Controller
 public class ApiController {
 
-	@Autowired
-	UserController userController;
+// 	@Autowired
+// 	UserController userController;
 
-	@GetMapping("/")
-  public String root(){
-    return "";
-  }
+// 	@GetMapping("/")
+//   public String root(){
+//     return "";
+//   }
 
 	// @PostMapping("/user")
 	// public String loginApi(@RequestBody User user){
