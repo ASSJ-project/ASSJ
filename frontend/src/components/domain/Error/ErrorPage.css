@@ -8,16 +8,10 @@
 }
 
 .Error-logo {
-    /* max-width: 400px; */
     width: 100%;
     height: 20%;
     text-align: center;
-    /* background-color: #4A72FF; */
 }
-
-/* .logo img{
-    justify-content: center;
-} */
 
 .text-wrap{
     width: 100%;
@@ -26,17 +20,16 @@
 }
 
 .noe{
+    max-width: 400px;
+    width: 60%;
+    height : 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
 
-    /* align-items: center; */
-width: 60%;
-height : 10%;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 2rem;
-
-background-color: #9588E0;
-color : #ffffff;
+    background-color: #9588E0;
+    color : #ffffff;
 
 }
 
@@ -45,12 +38,13 @@ color : #ffffff;
       transition: 0.7s;
 }
 
-.logo1{
-    width: 40%;
+.Error-logo1{
+    width: 100%;
     height: 50%;
 }
 
-.logo2{
+.Error-logo2{
+    max-width: 400px;
     width: 50%;
     height: 90%;
 }
