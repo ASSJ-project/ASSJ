@@ -17,7 +17,7 @@ function StartPage() {
             <h1>Log in</h1>
           </button>
         </Link>
-        <Link to="/SignUp">
+        <Link to="/register">
           <button className="btn">
             <h1>Sign up</h1>
           </button>

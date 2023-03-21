@@ -1,4 +1,5 @@
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.2.js"></script>
+{
+  /* <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.2.js"></script>
 window.onload = function () {
     document.getElementById("kakao").addEventListener("click", function () {
       //주소입력칸을 클릭하면
@@ -15,4 +16,16 @@ window.onload = function () {
         },
       }).open();
     });
-  };
+  }; */
+}
+/* global daum */
+export function postalSeach() {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+      document.getElementById("address").value = data.address;
+      document.getElementById("address_detail").focus();
+    },
+  }).open();
+}
