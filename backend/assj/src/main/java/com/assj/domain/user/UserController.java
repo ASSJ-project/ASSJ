@@ -41,8 +41,8 @@ public class UserController {
                 String token = jt.createJwtToken(user);
                 return token;
             }
-            else return "failed";
-        }else return "failed";
+            else return null;
+        }else return null;
                 
         } catch (Exception e) {
             log.info(e.toString());

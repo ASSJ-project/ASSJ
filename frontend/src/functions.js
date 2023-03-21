@@ -27,8 +27,13 @@ export async function loginDo(e, p) {
       token = response.data;
     })
     .catch((error) => console.log(error));
-
-  console.log(token);
+  //로그인 성공
+  if (token != null) {
+    sessionStorage.setItem(e, token);
+    sessionStorage.setItem(token, true);
+  }
+  // console.log(token);
+  // return token;
 }
 
 export async function registerDo(e, p, a) {
