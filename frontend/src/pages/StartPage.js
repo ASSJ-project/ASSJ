@@ -1,6 +1,6 @@
 // coding by 'ikki'
-import "../static/css/StartPage.css";
-import logo from "../static/images/nuki02.png";
+import "../components/domain/Start/StartPage.css";
+import logo from "../assets/images/nuki02.png";
 import { Link } from "react-router-dom";
 
 function StartPage() {
