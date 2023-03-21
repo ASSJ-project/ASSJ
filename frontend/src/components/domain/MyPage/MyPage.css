@@ -1,0 +1,308 @@
+.MyPage-Main2 {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+    font-family: Georgia, "맑은 고딕", serif;
+}
+
+.MyPage-Head2{
+    height: 5%;
+    width: 100%;
+    max-width: 1440px;
+    display:flex;
+    margin:2px;
+    font-size: 16px;
+}
+
+
+.MyPage2
+ {
+    max-width: 1440px;
+    width: 100%;
+    font-size: 100vw;
+    height: 5%;
+    border-style: none;
+    font-size: 100%;
+    background-color: #E2DFF8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.ff , .MyPage3 {
+    display: flex;
+    flex: 0, 1, 0, 1;
+    height: 5%;
+    max-width: 1440px;
+    width: 100%;
+}
+
+
+.myinfo3 {
+    width: 50%;
+    background-color: #E2DFF8;
+    flex: 0, 1, 0, 0;
+    border-style: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.myinfo4 {
+    width: 50%;
+    border-style: none;
+    background-color: #9588E0;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.my-record{
+    width: 100%;
+    height: 100%;
+}
+
+.left-items3 {
+    width: 5%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.left-items4 {
+    width: 15%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content :center;
+    align-items: center;
+    font-size: 12px;
+    margin-right: auto;
+}
+
+
+.right-items2{
+    margin-left:40%;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-left: auto;
+    background: #FFFFFF;    
+    border: 1px solid #4A72FF;
+    box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+}
+
+.woo{
+    max-width: 1440px;
+    background-color: rgba(226, 223, 248, 0.7);
+    margin-top: 10px;
+    width: 100%;
+    height: 10%;
+    border-style: none;
+    font-size: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.btn-delete{
+    margin-left: auto;
+    padding: 1.5%;
+    background-color: #9588E0;
+    border: solid;
+}
+
+.mypage-text{
+    /* background-color: #E2DFF8; */
+    /* border: 1px solid; */
+    width: 200px;
+    color:#000000;
+}
+
+.btn-delete:hover{
+    background-color: aqua;
+}
+
+
+
+.My-records{
+    background: #Ffffff;
+    width: 18%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size : 8px;
+    margin-top: 5px;
+}
+
+.my-record3{
+    margin-left: auto;
+    background: rgba(226, 223, 248, 0.7);
+    width: 12%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size : 10px;
+    box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+    border: 1px solid #4A72FF;
+    margin-top: 5px;
+}
+
+
+
+.MyPage-Main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    border: 1px solid green;
+    padding: 2%;
+    align-items: center;
+    font-family: Georgia, "맑은 고딕", serif;
+}
+
+.MyPage-Head{
+    height: 5%;
+    width: 100%;
+    max-width: 1440px;
+    display:flex;
+    margin:2px;
+    font-size: 16px;
+}
+
+
+.MyPage
+ {
+    max-width: 1440px;
+    width: 100%;
+    font-size: 100vw;
+    height: 5%;
+    border-radius: 2em;
+    border-style: none;
+    font-size: 100%;
+    background-color: #E2DFF8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.ee {
+    max-width: 1440px;
+    width: 100%;
+    flex: 1, 0 ,1 ,0;
+    height: 60%;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.ff {
+    display: flex;
+    flex: 0, 1, 0, 1;
+    height: 5%;
+    max-width: 1440px;
+    width: 100%;
+}
+
+
+.myinfo1 {
+    width: 50%;
+    background-color: #9588E0;
+    flex: 0, 1, 0, 0;
+    border-radius: 2em;
+    border-style: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.myinfo2 {
+    width: 50%;
+    border-radius: 2em;
+    border-style: none;
+    background-color: #E2DFF8;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+
+.my-record{
+    width: 100%;
+    height: 100%;
+}
+
+.all{
+    width: 100%;
+    height: 20%;
+    border-radius: 2em;
+    border-style: none;
+    background-color: #9588E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 1rem;
+    /* visibility: hidden; */
+}
+
+
+.left-items {
+  width: 5%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  /* justify-content: center;  */
+  align-items: center;
+}
+
+.left-items2 {
+    width: 15%;
+    height: 100%;
+    /* text-align: left; */
+    background: #fff;
+    display: flex;
+    justify-content :center;
+    align-items: center;
+    font-size: 16px;
+    margin-right: auto;
+} 
+
+
+.right-items{
+    margin-left:40%;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: auto;
+    background: #FFFFFF;    
+    border: 1px solid #4A72FF;
+    box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+    border-radius: 6px;
+}
+
+/* .oo{
+    width: 60%;
+    height: 60%;
+} */

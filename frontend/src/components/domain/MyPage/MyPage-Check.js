@@ -1,10 +1,10 @@
 //여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
 import { useEffect,useState } from "react";
-import "../static/css/MyPage-Check.css";
-import frame from "../static/images/Error-Frame1.png";
+import "../domain/MyPage/MyPage.css"
 import { Link } from "react-router-dom";
+import MpHeader from "../../MyPage/MyPage-Header";
 
-const MyPage2 = () =>{
+const MyPageCheck = () =>{
   //최근조회기록을 눌렀을 때 
   let [company,setcompany] = useState([]);
   useEffect(()=>{
@@ -36,10 +36,18 @@ const MyPage2 = () =>{
     let arr=[];
     for (let i =0; i<company.length; i++){
       arr.unshift(
-          <div key={i}>{company[i]}<button onClick={()=>lol(i)}>삭제</button></div>
+          <div key={i} className="woo">
+            <div className="mypage-text">{company[i]}</div>
+            <button onClick={()=>lol(i)} className='btn-delete'>삭제</button></div>
       )
     }
-    return arr;
+    //만약 arr이 삭제하거나 전체삭제하거나 원래 빈배열이라면 최근조회한 기록이 없는걸 나오게하고
+    //내역이있다면 내용이나오게
+    if(arr.length<1){
+      return <div className="Nothing">최근 조회한 기록이 없어요</div>
+    }else{
+      return arr;
+    }
   }
   
   //검색어 전체 삭제
@@ -49,17 +57,13 @@ const MyPage2 = () =>{
   }
 
   return (
-    <div className="main">
-        <Head/>
-        <Link to="/Main" className="home" style={{ textDecoration: "none" }}>Home</Link>
-        <Link to="/MyPage" className="my-information2"style={{ textDecoration: "none" }}>내정보</Link>
-        <button className="my-record2">최근 조회 기록</button>
-        <p className="mypage">MY PAGE</p>
-        <button className="my-record3" onClick={handleClearKeywords}>전체삭제</button>
-        <div className="dod">
-        {repaetTitle(company)}
+    <>
+        <div className="MyPage3">
+         <div className="My-records">최근조회내역</div>
+         <button className="my-record3" onClick={handleClearKeywords}>전체삭제</button>
         </div>
-    </div>
+        {repaetTitle(company)}
+    </>
     );
   
 }
@@ -67,16 +71,6 @@ const MyPage2 = () =>{
 
 
 
-export default MyPage2; 
+export default MyPageCheck; 
 
-function Head(){ // 이 친구는 윗부분에 있는 컴포넌트에용
-  return(
-    <>
-  <span className="App-title">알쓸신잡</span>
-  <header className="App-header">
-    <Link to="/SideBar" style={{ textDecoration: "none" }}><img src={frame} className="Hug"/></Link>
-  </header>
-  </>
-  );
-}
 
