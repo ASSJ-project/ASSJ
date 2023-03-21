@@ -1,38 +1,36 @@
 import { Link } from "react-router-dom";
-import frame from ".../assets/images/Error-Frame1.png";
-// import { useState } from "react";
+import frame from "../../../assets/images/Error-Frame1.png"
+import mypagelogo from "../../../assets/images/logo_only_word.svg"
+import { useState } from "react";
+import "../MyPage/MyPage.css"
 
+export default function MyPageHeader(props){
 
-export default function MyPageHeader(yam){
+  const[tab, setTab] = useState(false)
 
-    // let[yam,setYam] = useState(false)
+    const mypage1 = () => {
+      props.getMyPage1(false);
+      setTab(false);
+    }
 
-    // function info(){
-    //   return(
-    //   setYam(true)
-    //   );
-    // }
+    const mypage2 = () =>{
+      props.getMyPage2(true);
+      setTab(true);
+    }
 
-    // function yam(){
-    //   return(
-    //     setYam(false)
-    //   )
-    // }
-
-
-
+  
     return(
         <>
-        <div className="MyPage-Head2">
-          <Link to="/SideBar" className="left-items3"><img src={frame} className="oo"/></Link>
-          <div className="left-items4">알쓸신잡</div>
-          <Link to='/Main' className="right-items2" style={{ textDecoration: "none" }}>Home</Link>
-        </div>
-        <div className='MyPage2'>MY PAGE</div>
-        <div className="ff">
-          <button className="myinfo3" >내정보</button>
-          <button className="myinfo4" style={{ textDecoration: "none" }}>최근 조회 기록</button>
-        </div>
-        </>
+          <div className="mypage-head">
+        <Link to="/Sidebar" className="mypage-head-left-items"><img src={frame}/></Link>
+        <div className="mypage-head-left-items2"><img src={mypagelogo} className="mypagelogo"></img></div>
+        <Link to='/Main' className="mypage-head-right-items" style={{ textDecoration: "none" }}>Home</Link>
+      </div>
+      <div className='mypage-mypage'>MY PAGE</div>
+      <div className="mypage-clickmenu">
+        <button className={tab[0] ? "mypage-myinfo2" : "mypage-myinfo1"} onClick={mypage1}>내정보</button>
+        <button className={tab[1] ? "mypage-myinfo1" : "mypage-myinfo2"} style={{ textDecoration: "none" }} onClick={mypage2}>최근 조회 기록</button>
+      </div>
+      </>
     );
 };

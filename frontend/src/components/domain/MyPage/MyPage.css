@@ -1,4 +1,4 @@
-.MyPage-Main2 {
+.mypage-main {
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -8,7 +8,7 @@
     font-family: Georgia, "맑은 고딕", serif;
 }
 
-.MyPage-Head2{
+.mypage-head{
     height: 5%;
     width: 100%;
     max-width: 1440px;
@@ -17,23 +17,21 @@
     font-size: 16px;
 }
 
-
-.MyPage2
- {
+.mypage-mypage{
     max-width: 1440px;
     width: 100%;
     font-size: 100vw;
     height: 5%;
     border-style: none;
     font-size: 100%;
-    background-color: #E2DFF8;
+    background-color: #9588E0;
     display: flex;
     justify-content: center;
     align-items: center;
     margin:2px;
 }
 
-.ff , .MyPage3 {
+.mypage-clickmenu {
     display: flex;
     flex: 0, 1, 0, 1;
     height: 5%;
@@ -41,58 +39,37 @@
     width: 100%;
 }
 
-
-.myinfo3 {
-    width: 50%;
-    background-color: #E2DFF8;
-    flex: 0, 1, 0, 0;
-    border-style: none;
-    font-size: 1rem;
+.mypage-searchmenu{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
-}
-
-.myinfo4 {
-    width: 50%;
-    border-style: none;
-    background-color: #9588E0;
-    font-size: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
-}
-
-.my-record{
+    height: 5%;
+    max-width: 1440px;
     width: 100%;
-    height: 100%;
 }
 
-.left-items3 {
-    width: 5%;
+.mypage-head-left-items {
+    width: 15%;
     height: 100%;
     text-align: center;
     display: flex;
     align-items: center;
-}
-
-.left-items4 {
-    width: 15%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    justify-content :center;
-    align-items: center;
-    font-size: 12px;
     margin-right: auto;
 }
 
-
-.right-items2{
-    margin-left:40%;
+.mypage-head-left-items2 {
     width: 20%;
+    height: 50%;
+    background: #fff;
+    display: flex;  
+    justify-content :center;
+    align-items: center;
+    font-size: 12px;
+    margin: auto;
+}
+
+
+.mypage-head-right-items , .mypage-checkeditems-alldeletebtn{
+    margin-left:auto;
+    width: 15%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -100,11 +77,11 @@
     font-size: 12px;
     margin-left: auto;
     background: #FFFFFF;    
-    border: 1px solid #4A72FF;
-    box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
+    border: 0.5px solid #4A72FF;
+    /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
 }
 
-.woo{
+.mypage-checkeditems{
     max-width: 1440px;
     background-color: rgba(226, 223, 248, 0.7);
     margin-top: 10px;
@@ -117,40 +94,40 @@
     align-items: center;
 }
 
-.btn-delete{
+.mypage-chekeditem-deletebtn{
     margin-left: auto;
-    padding: 1.5%;
+    padding: 1%;
     background-color: #9588E0;
-    border: solid;
+    border:none;
 }
 
-.mypage-text{
+.mypage-checked-text{
     /* background-color: #E2DFF8; */
     /* border: 1px solid; */
     width: 200px;
     color:#000000;
 }
 
-.btn-delete:hover{
-    background-color: aqua;
+.mypage-chekeditem-deletebtn:hover{
+    background-color: #6f6897;
 }
 
 
 
-.My-records{
+.mypage-recently{
     background: #Ffffff;
     width: 18%;
     height: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    font-size : 8px;
+    font-size : 12px;
     margin-top: 5px;
 }
 
-.my-record3{
+/* .mypage-checkeditems-alldeletebtn{
     margin-left: auto;
-    background: rgba(226, 223, 248, 0.7);
+    background: #ffffff;
     width: 12%;
     height: 90%;
     display: flex;
@@ -160,48 +137,9 @@
     box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
     border: 1px solid #4A72FF;
     margin-top: 5px;
-}
+} */
 
-
-
-.MyPage-Main {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
-    border: 1px solid green;
-    padding: 2%;
-    align-items: center;
-    font-family: Georgia, "맑은 고딕", serif;
-}
-
-.MyPage-Head{
-    height: 5%;
-    width: 100%;
-    max-width: 1440px;
-    display:flex;
-    margin:2px;
-    font-size: 16px;
-}
-
-
-.MyPage
- {
-    max-width: 1440px;
-    width: 100%;
-    font-size: 100vw;
-    height: 5%;
-    border-radius: 2em;
-    border-style: none;
-    font-size: 100%;
-    background-color: #E2DFF8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
-}
-
-.ee {
+.mypage-myinformations {
     max-width: 1440px;
     width: 100%;
     flex: 1, 0 ,1 ,0;
@@ -210,21 +148,9 @@
     flex-direction: column;
 }
 
-
-.ff {
-    display: flex;
-    flex: 0, 1, 0, 1;
-    height: 5%;
-    max-width: 1440px;
-    width: 100%;
-}
-
-
-.myinfo1 {
+.mypage-myinfo1 {
     width: 50%;
     background-color: #9588E0;
-    flex: 0, 1, 0, 0;
-    border-radius: 2em;
     border-style: none;
     font-size: 1rem;
     display: flex;
@@ -233,76 +159,35 @@
     margin:2px;
 }
 
-.myinfo2 {
+.mypage-myinfo2 {
     width: 50%;
-    border-radius: 2em;
-    border-style: none;
     background-color: #E2DFF8;
-    font-size: 1em;
+    border-style: none;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin:2px;
 }
 
-.my-record{
-    width: 100%;
-    height: 100%;
-}
-
-.all{
+.mypage-myinformation{
     width: 100%;
     height: 20%;
-    border-radius: 2em;
     border-style: none;
-    background-color: #9588E0;
+    background-color: #E2DFF8;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin-top: 10px;
     font-size: 1rem;
     /* visibility: hidden; */
 }
 
-
-.left-items {
-  width: 5%;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  /* justify-content: center;  */
-  align-items: center;
+.mypagelogo{
+    width: 100%;
+    height: 100%;
 }
 
-.left-items2 {
-    width: 15%;
-    height: 100%;
-    /* text-align: left; */
-    background: #fff;
-    display: flex;
-    justify-content :center;
-    align-items: center;
-    font-size: 16px;
-    margin-right: auto;
-} 
-
-
-.right-items{
-    margin-left:40%;
-    width: 20%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    margin-left: auto;
-    background: #FFFFFF;    
-    border: 1px solid #4A72FF;
-    box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF;
-    border-radius: 6px;
+.mypage-myinfo1:hover, .mypage-myinfo2:hover, .mypage-head-right-items:hover{
+    background-color: #9588E0;
 }
-
-/* .oo{
-    width: 60%;
-    height: 60%;
-} */

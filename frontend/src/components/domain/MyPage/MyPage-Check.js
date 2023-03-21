@@ -1,8 +1,6 @@
 //여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
 import { useEffect,useState } from "react";
-import "../domain/MyPage/MyPage.css"
-import { Link } from "react-router-dom";
-import MpHeader from "../../MyPage/MyPage-Header";
+import "../MyPage/MyPage.css"
 
 const MyPageCheck = () =>{
   //최근조회기록을 눌렀을 때 
@@ -36,9 +34,9 @@ const MyPageCheck = () =>{
     let arr=[];
     for (let i =0; i<company.length; i++){
       arr.unshift(
-          <div key={i} className="woo">
-            <div className="mypage-text">{company[i]}</div>
-            <button onClick={()=>lol(i)} className='btn-delete'>삭제</button></div>
+          <div key={i} className="mypage-checkeditems">
+            <div className="mypage-checked-text">{company[i]}</div>
+            <button onClick={()=>lol(i)} className='mypage-chekeditem-deletebtn'>삭제</button></div>
       )
     }
     //만약 arr이 삭제하거나 전체삭제하거나 원래 빈배열이라면 최근조회한 기록이 없는걸 나오게하고
@@ -58,9 +56,9 @@ const MyPageCheck = () =>{
 
   return (
     <>
-        <div className="MyPage3">
-         <div className="My-records">최근조회내역</div>
-         <button className="my-record3" onClick={handleClearKeywords}>전체삭제</button>
+        <div className="mypage-searchmenu">
+         <div className="mypage-recently">최근조회내역</div>
+         <button className="mypage-checkeditems-alldeletebtn" onClick={handleClearKeywords}>전체삭제</button>
         </div>
         {repaetTitle(company)}
     </>
@@ -72,5 +70,3 @@ const MyPageCheck = () =>{
 
 
 export default MyPageCheck; 
-
-

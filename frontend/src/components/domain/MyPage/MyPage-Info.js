@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../domain/MyPage/MyPage.css"
-import { Link } from "react-router-dom";
+import "../MyPage/MyPage.css"
 import axios from 'axios';
 
 //로그인이 성공했다 가정하고 
@@ -13,6 +12,7 @@ const MyPageInfo =() => {
     const[company] = useState(['구글','네이버','한국','중국']); //지도클릭가정 ^0^
     const[number,setNumber] = useState(0);
     const[pw,setPw] = useState('');
+    const[stat,setStat] = useState(false);
     
     // 마이페이지(내정보)상태로 들어오면 api를 요청하여 아이디정보를 가져온다
     useEffect(() => {
@@ -44,27 +44,26 @@ const MyPageInfo =() => {
       setPw(e.target.value);
     };
 
-    // // 비밀번호가 동일하면 보이게 안보이게 하려고합니다.
-    // const checkPw = () =>{
-    //   if(pw==users.phone){
-    //     .all{
-
-    //     }
-    //   }
-    // }
+    // 비밀번호가 동일하면 보이게 안보이게 하려고합니다.
+    const checkPw = () =>{
+      if(pw==users.phone){
+        return(
+          setStat(true)
+        );
+      }
+    }
 
     return (
-        <div className="ee">
-            <div className='all'>현재비밀번호 확인:<input placeholder='비밀번호를 입력하세요' type={'password'} onChange={onChange} ></input><button>확인</button></div>
-            <div className="all">이름 : {users.name}</div>
-            <div className="all">메일 : {users.email}</div>
-            <div className="all">현재 비밀번호 :{users.phone}</div>
-            <div className="all">주소 : {users.id}</div>
+        <div className="mypage-myinformations">
+            <div className='mypage-myinformation'>현재비밀번호 확인:<input placeholder='비밀번호를 입력하세요' type={'password'} onChange={onChange} ></input><button onClick={checkPw}>확인</button></div>
+            <div className={!stat? {"display": "none"} :"mypage-myinformation"}>이름 : {users.name}</div>
+            <div className={!stat? {"display": "none"} :"mypage-myinformation"}>메일 : {users.email}</div>
+            <div className={!stat? {"display": "none"} :"mypage-myinformation"}>현재 비밀번호 :{users.phone}</div>
+            <div className={!stat? {"display": "none"} :"mypage-myinformation"}>주소 : {users.id}</div>
             <button onClick={fix1} id="my_company1" value={company[number]} > 날 클릭해봐(지도클릭이라고 가정이요^0^) </button>
         </div>    
     );
   }
 
 export default MyPageInfo;
-
 
