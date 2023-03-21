@@ -11,4 +11,5 @@ public class User {
     private String userPassword;
     private Date regDate;
     private String userAddress;
+    private String userName;
 }
