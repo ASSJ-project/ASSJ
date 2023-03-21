@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MapPage from './pages/MapPage';
-import LoginPage from './pages/LoginPage';
-import ErrorPage from './pages/ErrorPage';
-import RegisterPage from './pages/RegisterPage';
-import Test from './test/Test';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MapPage from "./pages/MapPage";
+import LoginPage from "./pages/LoginPage";
+import StartPage from "./pages/StartPage";
+import RegisterPage from "./pages/RegisterPage";
+import Test from "./test/Test";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: '/test',
+    path: "/test",
     element: <Test />,
   },
   {
-    path: '/register',
+    path: "/register",
     element: <RegisterPage />,
   },
 ]);
