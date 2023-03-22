@@ -1,4 +1,4 @@
-import "../static/css/Admin.css";
+import "../components/domain/Admin/Admin.css";
 import React from "react";
 import AdminUserInfo from "../components/domain/Admin/AdminUserInfo";
 import AdminStats from "../components/domain/Admin/AdminStats";
@@ -10,12 +10,12 @@ function Admin() {
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
 
   return (
-    <>
+    <div className="admin_container">
       <Header title="Admin" />
       <div className="menu_container">
         <div>
           {/* 회원정보 / 통계 메뉴 버튼 */}
-          <div>
+          <div className="button_container">
             <button
               style={{
                 backgroundColor: adminUserPage
@@ -42,7 +42,7 @@ function Admin() {
         </div>
         {adminUserPage == true ? <AdminUserInfo /> : <AdminStats />}
       </div>
-    </>
+    </div>
   );
 }
 

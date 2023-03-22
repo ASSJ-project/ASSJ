@@ -19,7 +19,7 @@
   font-size: 3em;
   font-weight: bold;
   background: var(--soft-color);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.4em;
   margin-bottom: 0.6em;
 }
@@ -30,7 +30,7 @@
   padding: 0.4em;
   margin-right: 0.6em;
   background: var(--soft-color);
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 0.6em;
   border: none;
 }
@@ -41,7 +41,7 @@
   padding: 0.4em;
   margin-right: 0.6em;
   background: var(--main-color);
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 0.6em;
   border: none;
 }
@@ -49,6 +49,6 @@
 .member_info {
   font-size: 1.8em;
   background: var(--soft-color);
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 0.6em;
 }

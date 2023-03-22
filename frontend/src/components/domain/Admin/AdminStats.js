@@ -1,6 +1,8 @@
 // coding by 'ikki'
 import React from "react";
+import DatePicker from "react-datepicker";
 import "./Admin.css";
+import GraphPage from "./GraphPage";
 
 function AdminStats() {
   return (
@@ -28,7 +30,11 @@ function AdminStats() {
           </label>
         </form>
       </div>
-      <div></div>
+      <div>
+        <div className="stats_container">
+          <GraphPage />
+        </div>
+      </div>
     </>
   );
 }
