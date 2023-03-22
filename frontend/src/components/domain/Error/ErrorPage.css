@@ -13,13 +13,13 @@
     text-align: center;
 }
 
-.text-wrap{
+.Error-text{
     width: 100%;
     height: 30%;
     text-align: center;
 }
 
-.noe{
+.Error-home{
     max-width: 400px;
     width: 60%;
     height : 10%;
@@ -28,13 +28,13 @@
     align-items: center;
     border-radius: 2rem;
 
-    background-color: #9588E0;
-    color : #ffffff;
+    background-color: #E2DFF8;
+    color : #000000;
 
 }
 
-.retry:hover{
-    background-color:#ec15e2;
+.Error-home:hover{
+    background-color:#9588E0;
       transition: 0.7s;
 }
 
