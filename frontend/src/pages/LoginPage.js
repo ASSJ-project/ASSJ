@@ -71,7 +71,7 @@ function LoginPage() {
         <div className="find-pw-container">
           <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
-        <div className="login-container">
+        <div className="login-btn-container">
           <button
             className="login-btn"
             onClick={() => {

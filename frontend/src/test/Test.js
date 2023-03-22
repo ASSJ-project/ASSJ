@@ -103,8 +103,9 @@ export default function Test() {
           <InputBox text="name" inputText={(name) => setName(name)} />
         </div>
         <Register />
-
+        {/* 
         <button onClick={() => emailCheck(email)}>이메일체크</button>
+        {sessionStorage.getItem("email_check")} */}
         {/* {accessToken ? <Logout /> : <Login />} */}
         {/* <button onClick={() => registerDo(email, pw, add)}>회원가입</button> */}
         {/* <p>{email}</p> */}
