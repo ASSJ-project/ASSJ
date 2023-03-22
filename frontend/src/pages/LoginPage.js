@@ -101,7 +101,7 @@ function LoginPage() {
         <div className="api-btn">
           {/* <GoogleLoginBtn />
           <KakaoLoginBtn />
-          <NaverLoginBtn />  */}
+          <NaverLoginBtn /> */}
         </div>
 
         <div className="signup-div">
