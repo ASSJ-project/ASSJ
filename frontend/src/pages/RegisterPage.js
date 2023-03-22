@@ -2,7 +2,7 @@
 import "../components/domain/Register/register.css";
 import { postalSeach } from "../components/domain/Register/RegisterApi";
 import { useEffect, useState } from "react";
-import { emailCheck } from "../apis/emailCheck/emailCheck";
+
 
 function Register() {
   const [name, setName] = useState("");
@@ -63,54 +63,67 @@ function Register() {
     <div className="signup-container">
       <span className="signuptext">회원가입</span>
       <div className="input-container">
+        <p className="text_box">이름</p>
+        <input className="total_input" 
+          placeholder="User name" 
+          type="text" 
+          onChange={nameChange}/>
+        {!nameVisable && name.length > 0 &&(
+            <div className="errorMessage">이름 형식을 확인해주세요</div>
+        )}
+      </div>
+      <div className="input-container">
         <p className="text_box">이메일</p>
         <input
           className="total_input"
           placeholder="Email Address"
           type="email"
+          onChange={emailChange}
         />
-        {/* <button onClick={() => emailCheck()}>이메일확인</button> */}
+        {!emailVisable && email.length > 0 &&(
+            <div className="errorMessage">이메일 형식을 확인해주세요</div>
+        )}
       </div>
-      {/* {emailCheck && ( */}
-      <div className="other">
-        <div className="input-container">
-          <p className="text_box">이름</p>
-          <input className="total_input" placeholder="User name" type="text" />
-        </div>
+      <div className="input-container">
+        <p className="text_box">주소</p>
+        <input
+          className="total_input"
+          placeholder="User Address"
+          onClick={() => postalSeach()}
+        />
+      </div>
+      <div className="input-container">
+        <p className="text_box">상세주소</p>
+        <input className="total_input" placeholder="Detailed Address" />
+      </div>
+      <div className="input-container">
+        <p className="text_box">비밀번호</p>
+        <input 
+          className="total_input" 
+          placeholder="Password" 
+          type="password" 
+          onChange={passwordChange}
+        />
+        {!passwordVisable && password.length > 0 &&(
+            <div className="errorMessage">비밀번호 형식을 확인해주세요</div>
+        )}
+      </div>
 
-        <div className="input-container">
-          <p className="text_box">주소</p>
-          <input
-            className="total_input"
-            placeholder="User Address"
-            onClick={() => postalSeach()}
-          />
-        </div>
-        <div className="input-container">
-          <p className="text_box">상세주소</p>
-          <input className="total_input" placeholder="Detailed Address" />
-        </div>
-        <div className="input-container">
-          <p className="text_box">비밀번호</p>
-          <input
-            className="total_input"
-            placeholder="Password"
-            type="password"
-          />
-        </div>
-        <div className="input-container">
-          <p className="text_box">비밀번호 확인</p>
-          <input
-            className="total_input"
-            placeholder="Confirm password"
-            type="password"
-          />
-        </div>
-        <div>
-          <button className="Signup-btn">회원가입</button>
-        </div>
+      <div className="input-container">
+        <p className="text_box">비밀번호 확인</p>
+        <input
+          className="total_input"
+          placeholder="Confirm password"
+          type="password"
+          onChange={checkPasswordChange}
+        />
+        {!checkPasswordVisable && checkPassword.length > 0 && (
+            <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
+        )}
       </div>
-      {/* )} */}
+      <div>
+        <button className="Signup-btn">회원가입</button>
+      </div>
     </div>
   );
 }
