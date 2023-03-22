@@ -16,9 +16,11 @@ export default function(){
     }
     
     return(
-        <div className="MyPage-Main">
+        <>
+        <div className="mypage-main">
             <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2}/>
             {value == true ? <MyPageCheck/> : <MyPageInfo/> }
         </div>
+        </>
     );
 }

@@ -22,14 +22,14 @@ export default function MyPageHeader(props){
     return(
         <>
           <div className="mypage-head">
-        <Link to="/Sidebar" className="mypage-head-left-items"><img src={frame}/></Link>
+        <Link to="/sidebar" className="mypage-head-left-items"><img src={frame}/></Link>
         <div className="mypage-head-left-items2"><img src={mypagelogo} className="mypagelogo"></img></div>
-        <Link to='/Main' className="mypage-head-right-items" style={{ textDecoration: "none" }}>Home</Link>
+        <Link to='/map' className="mypage-head-right-items" style={{ textDecoration: "none" }}>Home</Link>
       </div>
       <div className='mypage-mypage'>MY PAGE</div>
       <div className="mypage-clickmenu">
-        <button className={tab[0] ? "mypage-myinfo2" : "mypage-myinfo1"} onClick={mypage1}>내정보</button>
-        <button className={tab[1] ? "mypage-myinfo1" : "mypage-myinfo2"} style={{ textDecoration: "none" }} onClick={mypage2}>최근 조회 기록</button>
+        <button className={tab ? "mypage-myinfo2" : "mypage-myinfo1"} onClick={mypage1}>내정보</button>
+        <button className={tab ? "mypage-myinfo1" : "mypage-myinfo2"} style={{ textDecoration: "none" }} onClick={mypage2}>최근 조회 기록</button>
       </div>
       </>
     );
