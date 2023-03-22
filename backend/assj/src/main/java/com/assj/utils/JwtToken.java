@@ -25,7 +25,7 @@ public class JwtToken {
       RSAPrivateKey privateKey = (RSAPrivateKey) kp.getPrivate();
    
       Algorithm algorithm = Algorithm.RSA256(publicKey,privateKey);
-      token = JWT.create().withIssuer(user.getUserEmail()).sign(algorithm);
+      token = JWT.create().withIssuer("assj").withPayload(null).sign(algorithm);
   
     }catch(Exception e){
       log.info(e.toString());

@@ -9,15 +9,7 @@
 }
 .box {
   width: 50%;
-  height: 60%;
-  background-color: aqua;
-  border: solid 2px black;
-}
-.idbox,
-.pwbox,
-.addressbox {
-  width: 50%;
-  height: 20%;
+  height: 10%;
   background-color: aqua;
   border: solid 2px black;
 }

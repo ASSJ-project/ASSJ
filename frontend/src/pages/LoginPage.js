@@ -1,12 +1,12 @@
 import "../components/domain/Login/LoginPage.css";
-import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
-import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
-import NaverLoginBtn from "../components/domain/Login/NaverLoginBtn";
+// import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
+// import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
+// import NaverLoginBtn from "../components/domain/Login/NaverLoginBtn";
 import MainLogo from "../assets/images/logo.svg";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
 import { Link } from "react-router-dom";
-import Inputprops from "../components/domain/Login/Input";
+//import Inputprops from "../components/domain/Login/Input";
 
 /* <InputProps
   placeholder="Email"
@@ -46,10 +46,6 @@ function LoginPage() {
       setPasswordVisable(false);
     }
   };
-
-  //정규식 확인 후 true 그대로 진행, false일 경우 에러메세지 호출
-  const onClickSignUp = () => {};
-
   return (
     <>
       <div className="login-container">
@@ -91,7 +87,6 @@ function LoginPage() {
           <button
             className="login-btn"
             onClick={() => {
-              onClickSignUp();
               loginDo(email, password);
             }}
           >
@@ -101,7 +96,7 @@ function LoginPage() {
         <div className="api-btn">
           {/* <GoogleLoginBtn />
           <KakaoLoginBtn />
-          <NaverLoginBtn />
+          <NaverLoginBtn /> */}
         </div>
 
         <div className="signup-div">

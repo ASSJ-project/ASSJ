@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function findPassword(email) {
+export async function emailCheck(email) {
   const url = "api/users/emailCheck.do";
   let result = false;
   await axios
