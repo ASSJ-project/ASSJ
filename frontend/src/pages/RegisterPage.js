@@ -2,7 +2,7 @@
 import "../components/domain/Register/register.css";
 import { postalSeach } from "../components/domain/Register/RegisterApi";
 import { useEffect, useState } from "react";
-
+import { emailCheck } from "../apis/emailCheck/emailCheck";
 
 function Register() {
   const [name, setName] = useState("");
