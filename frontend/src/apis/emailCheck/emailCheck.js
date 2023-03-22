@@ -2,14 +2,13 @@ import axios from "axios";
 
 export async function emailCheck(email) {
   const url = "api/users/emailCheck.do";
-  let result = false;
+
   await axios
     .post(url, {
       userEmail: email,
     })
     .then((response) => {
-      result = response.data;
-      sessionStorage.setItem("email_check", result);
+      sessionStorage.setItem("email_check", response.data);
     })
     .catch((error) => console.log(error));
 }

@@ -1,3 +1,4 @@
+import axios from "axios";
 export async function registerDo(e, p, a, n) {
   const url = "api/users/register.do";
   let result = false;

@@ -6,18 +6,6 @@ import MainLogo from "../assets/images/logo.svg";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
 import { Link } from "react-router-dom";
-//import Inputprops from "../components/domain/Login/Input";
-
-/* <InputProps
-  placeholder="Email"
-  type="email"
-  value={email} onChange={emailChange}
-/> */
-// <InputProps
-//   placeholder="Password"
-//   type="password"
-//   value={password} onChange={passwordChange}
-// />
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -59,7 +47,7 @@ function LoginPage() {
             value={email}
             onChange={emailChange}
           />
-          {!emailVisable && (
+          {!emailVisable && email.length > 0 && (
             <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
@@ -73,7 +61,7 @@ function LoginPage() {
             value={password}
             onChange={passwordChange}
           />
-          {!passwordVisable && (
+          {!passwordVisable && password.length > 0 && (
             <div className="errorMessage">
               비밀번호는 영문자+숫자 8글자 이상이여야 합니다
             </div>
