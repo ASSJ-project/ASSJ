@@ -74,7 +74,7 @@ function Register() {
       {/* {emailCheck && ( */}
       <div className="other">
         <div className="input-container">
-          <p className="text_box">이름</p>
+            <p className="text_box">이름</p>
           <input className="total_input" placeholder="User name" type="text" />
         </div>
 
