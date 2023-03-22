@@ -6,6 +6,9 @@ import LoginPage from "./pages/LoginPage";
 import StartPage from "./pages/StartPage";
 import RegisterPage from "./pages/RegisterPage";
 import Test from "./test/Test";
+import MyPage from "./pages/MyPage";
+import ErrorPage from "./pages/ErrorPage";
+import SideBar from "./pages/SideBar";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
   },
+  {
+    path: "/mypage",
+    element: <MyPage/>
+  },
+  {
+    path: "/*",
+    element : <ErrorPage/>
+  },
+  {
+    path : "/sidebar",
+    element : <SideBar/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
