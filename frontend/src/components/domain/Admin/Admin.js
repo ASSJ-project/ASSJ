@@ -1,8 +1,8 @@
 import "../static/css/Admin.css";
 import React from "react";
-import AdminUserInfo from "../components/domain/Admin/AdminUserInfo";
-import AdminStats from "../components/domain/Admin/AdminStats";
-import Header from "../components/domain/Admin/Header";
+import AdminUserInfo from "./AdminUserInfo";
+import AdminStats from "./AdminStats";
+import Header from "./Header";
 import { useState } from "react";
 
 function Admin() {
@@ -10,7 +10,7 @@ function Admin() {
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
 
   return (
-    <>
+    <div className="admin_container">
       <Header title="Admin" />
       <div className="menu_container">
         <div>
@@ -18,14 +18,14 @@ function Admin() {
           <div>
             <button
               style={{
-                backgroundColor: adminUserPage
-                  ? "var(--main-color)"
-                  : "var(--soft-color)",
+                backgroundColor: adminStatsPage
+                  ? "var(--soft-color)"
+                  : "var(--main-color)",
               }}
               className="admin_btn"
               onClick={() => (SetAdminUserPage(true), SetStatsAdminPage(false))}
             >
-              회원정보
+              회원 정보
             </button>
             <button
               style={{
@@ -42,7 +42,7 @@ function Admin() {
         </div>
         {adminUserPage == true ? <AdminUserInfo /> : <AdminStats />}
       </div>
-    </>
+    </div>
   );
 }
 

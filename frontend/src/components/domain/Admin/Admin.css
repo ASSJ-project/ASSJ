@@ -1,6 +1,7 @@
 :root {
   --main-color: #9588e0;
   --soft-color: #e2dff8;
+  --shadow-color: #2b083f;
 }
 
 * {
@@ -11,44 +12,49 @@
 /* Header Css */
 .header_container {
   margin: 0 4em;
-  margin-top: 8em;
+  margin-top: 5em;
 }
 
 .header {
   display: flex;
-  font-size: 4em;
+  font-size: 2em;
   justify-content: space-around;
 }
 
-.title_img {
+#title_img {
+  width: 5em;
   vertical-align: top;
 }
 
 .title {
-  font-size: 3em;
+  font-size: 1.5em;
   font-weight: bold;
   background: var(--soft-color);
   border-radius: 20px;
   padding: 0.4em 0.8em;
-  margin-bottom: 0.6em;
+  margin-top: 0.6em;
+  width: 100%;
 }
 
 .home_link {
-  font-size: 0.5em;
   text-decoration: none;
   color: black;
 }
 
 /* Admin Css */
+.admin_container {
+  font-size: 1.2em;
+  width: 480px;
+  height: 100vh;
+  border: 1px solid purple;
+}
+
 .menu_container {
   margin: 2em 4em;
 }
 
 .admin_btn {
-  font-size: 2.8em;
-  width: 6em;
-  padding: 0.4em;
-  margin-right: 0.6em;
+  width: 50%;
   background: var(--soft-color);
   border-radius: 20px;
   margin-bottom: 0.6em;
@@ -67,7 +73,6 @@
 .stats_radio_box input[type="radio"] + label {
   display: inline-block;
   width: 4.1em;
-  font-size: 2.8em;
   padding: 0.4em;
   background: var(--soft-color);
   border-radius: 20px;

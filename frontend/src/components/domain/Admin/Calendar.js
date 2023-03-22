@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
-import "../static/css/Calendar.css";
+import "./Calendar.css";
 
 const ReactDatePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
