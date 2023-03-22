@@ -58,9 +58,10 @@ public class UserService {
 	 * 회원가입 성공시 DB에 유저를 추가하는 메소드
 	 */
 	public void addUser(User user) throws DataAccessException{
-		String sql = "Insert into user(email, password, user_address) values(?,?,?)";
+		String sql = "Insert into user(email, password, address, name) values(?,?,?,?)";
 		System.out.println(user);
-		jdbcTemplate.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserAddress());
+		jdbcTemplate.update(sql, user.getUserEmail(), user.getUserPassword(), 
+			user.getUserAddress(), user.getUserName());
 
 	}
 }

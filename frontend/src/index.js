@@ -4,4 +4,4 @@ import App from "./main";
 import MyPage from "./pages/MyPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<MyPage />);
+root.render(<App />);

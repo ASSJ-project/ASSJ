@@ -3,7 +3,6 @@ body {
 }
 
 #root {
-  background-image: url(../../../assets/images/login-bg-img.png);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

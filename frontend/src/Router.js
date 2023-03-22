@@ -7,13 +7,13 @@ const Router = () => {
       {accessToken ? (
         <Route element={<NavLayout />}>
           <Route path="/error" element={<ErrorPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={<Navigate to="/reservation" />} />
         </Route>
       ) : (
         <>
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="*" element={<Navigate to="/signin" />} />
         </>
