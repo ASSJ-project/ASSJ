@@ -1,6 +1,6 @@
 import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
 import Calendar from "./Calendar";
-import "../static/css/Calendar.css";
+import "./Calendar.css";
 
 function GraphPage() {
   return (
