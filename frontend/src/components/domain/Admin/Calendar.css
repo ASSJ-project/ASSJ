@@ -22,3 +22,16 @@
 }
 
 /* DatePicker Css */
+.date_picker {
+  text-align: center;
+  font-size: 0.5em;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: white;
+  margin: 0.5em;
+}
+
+.graph_date {
+  font-size: 0.8em;
+}

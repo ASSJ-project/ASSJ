@@ -1,3 +1,4 @@
+import "./Admin.css";
 import { FiMenu, FiHome } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import title_img from "../../../assets/images/logo_only_word.svg";

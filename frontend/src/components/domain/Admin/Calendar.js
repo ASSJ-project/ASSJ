@@ -12,11 +12,12 @@ const ReactDatePicker = () => {
       selected={startDate}
       dateFormat={"  yyyy년  MM월  dd일"}
       onChange={(date) => setStartDate(date)}
-      locale={ko}
+      locale={ko} // 한글화 ( 상단 import )
       popperModifiers={{
+        // 모바일 웹 화면에서 벗어나지 않게 함
         preventOverflow: { enabled: true },
       }}
-      popperPlacement="auto"
+      popperPlacement="auto" // 달력을 중앙에 띄움
     />
   );
 };
