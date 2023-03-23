@@ -1,10 +1,16 @@
 export default function Button({ title, index, clicked = (f) => f, selected }) {
   const btStyle1 = {
-    background: "red",
+    background: "var(--main-color)",
+    border: "none",
+    borderRadius: "10px",
+    fontSize: "1.5em",
   };
 
   const btStyle2 = {
-    background: "blue",
+    background: "var(--soft-color)",
+    border: "none",
+    borderRadius: "10px",
+    fontSize: "1.5em",
   };
 
   return (

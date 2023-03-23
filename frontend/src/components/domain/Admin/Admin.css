@@ -7,32 +7,6 @@
   margin: 0;
   padding: 0;
 }
-/* Header Css */
-.header {
-  display: flex;
-  font-size: 2em;
-  justify-content: space-between;
-}
-
-#title_img {
-  width: 5em;
-  vertical-align: top;
-}
-
-.title {
-  font-size: 1.5em;
-  font-weight: bold;
-  background: var(--soft-color);
-  border-radius: 10px;
-  padding: 0.4em 0.8em;
-  margin-top: 0.6em;
-  margin-bottom: 0.6em;
-}
-
-.home_link {
-  text-decoration: none;
-  color: black;
-}
 
 /* Admin Css */
 .admin_container {
