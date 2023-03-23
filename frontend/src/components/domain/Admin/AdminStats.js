@@ -1,6 +1,5 @@
 // coding by 'ikki'
 import React from "react";
-import DatePicker from "react-datepicker";
 import "./Admin.css";
 import GraphPage from "./GraphPage";
 

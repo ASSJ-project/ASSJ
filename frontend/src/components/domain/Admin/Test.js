@@ -1,48 +1,6 @@
 import "./test.css";
-import InputBox from "./InputBox";
-import { useState, useEffect } from "react";
-import { findPassword } from "../apis/findPassword/findPassword";
-import { loginDo } from "../apis/login/loginDo";
-import { Link, useLocation } from "react-router-dom";
-import { registerDo } from "../functions";
 import Button from "./button";
 export default function Test() {
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-  const [name, setName] = useState("");
-  const [addr, setAddr] = useState("");
-  const accessToken = sessionStorage.getItem("access_token");
-  const Logout = () => (
-    <button
-      onClick={() => {
-        sessionStorage.clear();
-        window.location.reload();
-      }}
-    >
-      로그아웃
-    </button>
-  );
-
-  const Login = () => (
-    <button
-      onClick={() => {
-        loginDo(email, pw);
-      }}
-    >
-      로그인
-    </button>
-  );
-
-  const Register = () => {
-    <button
-      onClick={() => {
-        registerDo(email, pw, addr, name);
-      }}
-    >
-      회원가입
-    </button>;
-  };
-
   const [index, setIndex] = useState(0);
 
   const tab = [
