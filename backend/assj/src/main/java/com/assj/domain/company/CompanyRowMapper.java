@@ -7,31 +7,27 @@ import org.springframework.jdbc.core.RowMapper;
 public class CompanyRowMapper implements RowMapper<Company> {
     @Override
     public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Company cd = new Company();
-        cd.setCareer(rs.getString("career"));
-        cd.setTitle(rs.getString("title"));
-        cd.setSalTpNm(rs.getString("salTpNm"));
-        cd.setSal(rs.getString("sal"));
-        cd.setMinSal(rs.getString("minSal"));
-        cd.setMaxSal(rs.getString("maxSal"));
-        cd.setRegion(rs.getString("region"));
-        cd.setHolidayTpNm(rs.getString("holidayTpNm"));
-        cd.setMinEdubg(rs.getString("minEdubg"));
-        cd.setRegDt(rs.getString("regDt"));
-        cd.setCloseDt(rs.getString("closeDt"));
-        cd.setInfoSvc(rs.getString("infoSvc"));
-        cd.setWantedInfoUrl(rs.getString("wantedInfoUrl"));
-        cd.setWantedMobileInfoUrl(rs.getString("wantedMobileInfoUrl"));
-        cd.setSmodifyDtm(rs.getString("smodifyDtm"));
-        cd.setZipCd(rs.getString("zipCd"));
-        cd.setStrtnmCd(rs.getString("strtnmCd"));
-        cd.setBasicAddr(rs.getString("basicAddr"));
-        cd.setDetailAddr(rs.getString("detailAddr"));
-        cd.setEmpTpCd(rs.getString("empTpCd"));
-        cd.setJobsCd(rs.getString("jobsCd"));
-        cd.setCompany(rs.getString("company"));
-        cd.setX(rs.getString("x"));
-        cd.setY(rs.getString("y"));
-        return cd;
+        Company company = new Company();
+        company.setCompany(rs.getString("company"));
+        company.setTitle(rs.getString("title"));
+        company.setSalTpNm(rs.getString("salTpNm"));
+        company.setSal(rs.getString("sal"));
+        company.setMinSal(rs.getString("minSal"));
+        company.setMaxSal(rs.getString("maxSal"));
+        company.setRegion(rs.getString("region"));
+        company.setHolidayTpNm(rs.getString("holidayTpNm"));
+        company.setMinEdubg(rs.getString("minEdubg"));
+        company.setCareer(rs.getString("career"));
+        company.setRegDt(rs.getString("regDt"));
+        company.setCloseDt(rs.getString("closeDt"));
+        company.setZipCd(rs.getString("zipCd"));
+        company.setStrtnmCd(rs.getString("strtnmCd"));
+        company.setBasicAddr(rs.getString("basicAddr"));
+        company.setDetailAddr(rs.getString("detailAddr"));
+        company.setEmpTpCd(rs.getString("empTpCd"));
+        company.setJobsCd(rs.getString("jobsCd"));
+        company.setX(rs.getString("x"));
+        company.setY(rs.getString("y"));
+        return company;
     }
 }
