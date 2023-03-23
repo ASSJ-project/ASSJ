@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FixedSizeList } from 'react-window';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.ul`
   margin: 0;
@@ -10,8 +11,9 @@ const Item = styled.div`
   background-color: #f5f5f5;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
-  margin-bottom: 16px;
-  padding: 16px;
+  margin: 30px;
+  padding: 5px;
+  cursor: pointer;
 `;
 
 const Title = styled.p`
@@ -27,16 +29,31 @@ const Content = styled.p`
   margin: 8px 0 0 0;
 `;
 
+const Box = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 function CompanyList({ data }) {
   const itemSize = 120;
   const itemCount = data.length;
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/test');
+  }
 
   const Row = ({ index, style }) => (
     <Container style={style}>
-      <Item>
+      <Item onClick={handleClick}>
         <Title>{data[index].company}</Title>
-        <Content>{data[index].title}</Content>
-        <Content>급여: {data[index].sal}</Content>
+        <Content style={{ marginBottom: '2em' }}>{data[index].title}</Content>
+        <Box>
+          <Content>
+            {data[index].salTpNm} {data[index].sal}
+          </Content>
+          <Content style={{ fontSize: '0.3em' }}>{data[index].closeDt}</Content>
+        </Box>
       </Item>
     </Container>
   );

@@ -74,6 +74,7 @@ export default function KakaoMap(props) {
           markers_for_clusterer.push(marker);
         }
 
+        console.log(`test: ${markers_for_clusterer}`, markers_for_clusterer);
         clusterer.addMarkers(markers_for_clusterer);
         setKakaoMap(map);
         // 마커에 클릭이벤트를 등록
