@@ -4,6 +4,8 @@ import { TailSpin } from 'react-loader-spinner';
 import styled from 'styled-components';
 import useFetchData from '../hooks/useFetchData';
 import KakaoMapTest from '../components/domain/Map/KakaoMapTest';
+import KakaoMap from '../components/domain/Map/KakaoMap';
+import Footer from '../components/domain/Map/Footer';
 
 const LoadingContainer = styled.div`
   // display: flex;
@@ -13,13 +15,14 @@ const LoadingContainer = styled.div`
   height: 100vh;
 `;
 
-const Root = styled.section``;
+const MainContainer = styled.div``;
 
 const Container = styled.section`
   display: flex;
   flex-direction: row-reverse;
   @media (max-width: 780px) {
     flex-direction: column;
+    justify-content: space-between;
   }
   border: 1px solid black;
   justify-content: center;
@@ -40,13 +43,6 @@ const Nav = styled.nav`
   background-color: #444;
 `;
 
-const Footer = styled.footer`
-  color: white;
-  width: 100%;
-  height: 60px;
-  background-color: #555;
-`;
-
 const MapContainer = styled.div`
   display: flex;
 
@@ -56,9 +52,10 @@ const MapContainer = styled.div`
   }
 `;
 
-const MapBorder = styled.div`
-  height: 500px;
-  width: 500px;
+const MapBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
   border: 1px solid black;
 `;
 
@@ -81,13 +78,15 @@ function MapPage() {
     <>
       <Header>Header</Header>
       <Nav>Navigation</Nav>
-      {/* <Container>
-        <MapBorder className="map">
-          <KakaoMapTest />
-        </MapBorder>
+      <MainContainer>main</MainContainer>
+      <Container>
+        <MapBoundary>
+          <KakaoMapTest data={data} />
+          {/* <MapData data={data} /> */}
+        </MapBoundary>
         <CompanyList data={data} />
-      </Container> */}
-      <Footer>Footer</Footer>
+      </Container>
+      <Footer />
     </>
   );
 }

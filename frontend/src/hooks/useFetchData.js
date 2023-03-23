@@ -18,7 +18,10 @@ const useFetchData = () => {
             y: data.y,
             address: data.basicAddr,
             title: data.title,
+            salTpNm: data.salTpNm,
             sal: data.sal,
+            basicAddr: data.basicAddr,
+            closeDt: data.closeDt,
           };
         });
       setData(filteredData);
