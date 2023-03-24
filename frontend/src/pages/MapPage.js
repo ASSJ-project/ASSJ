@@ -6,6 +6,7 @@ import useFetchData from '../hooks/useFetchData';
 import KakaoMapTest from '../components/domain/Map/KakaoMapTest';
 import KakaoMap from '../components/domain/Map/KakaoMap';
 import Footer from '../components/domain/Map/Footer';
+import Header from '../components/domain/Admin/Header'
 
 const LoadingContainer = styled.div`
   // display: flex;
@@ -29,12 +30,12 @@ const Container = styled.section`
   align-items: center;
 `;
 
-const Header = styled.header`
-  color: white;
-  width: 100%;
-  height: 60px;
-  background-color: #333;
-`;
+// const Header = styled.header`
+//   color: white;
+//   width: 100%;
+//   height: 60px;
+//   background-color: #333;
+// `;
 
 const Nav = styled.nav`
   color: white;

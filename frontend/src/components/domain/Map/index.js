@@ -1,29 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MapPage from './pages/MapPage';
-import StartPage from './pages/StartPage';
 import 'normalize.css'; // import normalize.css
-import ComponentPage from './pages/ComponentPage';
 import RegisterPage from './pages/RegisterPage';
+import MapPage from "./pages/MapPage";
+import LoginPage from "./pages/LoginPage";
+import StartPage from "./pages/StartPage";
+import RegisterPage from "./pages/RegisterPage";
+import Test from "./test/Test";
+import MyPage from "./pages/MyPage";
+import ErrorPage from "./pages/ErrorPage";
+import SideBar from "./pages/SideBar";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
+    element: <StartPage />,
+  },
+  {
+    path: "/map",
     element: <MapPage />,
   },
   {
-    path: '/map',
-    element: <MapPage />,
+    path: "/login",
+    element: <LoginPage />,
   },
   {
-    path: '/component',
-    element: <ComponentPage />,
+    path: "/test",
+    element: <Test />,
   },
   {
-    path: '/register',
+    path: "/register",
     element: <RegisterPage />,
   },
+  {
+    path: "/mypage",
+    element: <MyPage/>
+  },
+  {
+    path: "/*",
+    element : <ErrorPage/>
+  },
+  {
+    path : "/sidebar",
+    element : <SideBar/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
