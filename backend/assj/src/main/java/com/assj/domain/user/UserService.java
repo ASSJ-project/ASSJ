@@ -30,7 +30,7 @@ public class UserService {
 			String sql = "select * from user where email = '"+ email + "'";
 			List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
 			
-			return (users.size() != 0) ? true : false;
+			return (users.size() <= 0) ? true : false;
 		}
 
 	/**

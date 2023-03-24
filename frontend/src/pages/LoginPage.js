@@ -68,7 +68,9 @@ function LoginPage() {
             </div>
           )}
         </div>
-        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
+        <p style="color:red">
+          {loginError && "이메일과 비밀번호를 확인해주세요"}
+        </p>
         <div className="find-pw-container">
           <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
