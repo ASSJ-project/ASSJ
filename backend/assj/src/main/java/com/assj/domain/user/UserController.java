@@ -47,7 +47,7 @@ public class UserController {
         } catch (Exception e) {
             log.info(e.toString());
         }
-            return "failed";
+            return null;
     } 
 
     @PostMapping("/register.do")
