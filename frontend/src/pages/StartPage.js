@@ -1,29 +1,31 @@
 // coding by 'ikki'
 import "../components/domain/Start/StartPage.css";
-import logo from "../assets/images/nuki02.png";
-import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.svg";
 
 function StartPage() {
   return (
-    <div className="start_page">
-      <div className="item">
-        <img id="logo" src={logo} alt="logo-img" />
-      </div>
+    <>
+      <div className="start-container">
+        <div className="logo-item">
+          <img id="logo" src={logo} alt="logo-img" />
+        </div>
 
-      {/* 버튼: 로그인, 회원가입 */}
-      <div className="item">
-        <Link to="/login">
-          <button className="btn">
-            <h1>Log in</h1>
+        <div className="btn-item">
+          <button
+            className="btn"
+            onClick={() => (window.location.href = "/login")}
+          >
+            <h1>로그인</h1>
           </button>
-        </Link>
-        <Link to="/register">
-          <button className="btn">
-            <h1>Sign up</h1>
+          <button
+            className="btn"
+            onClick={() => (window.location.href = "/register")}
+          >
+            <h1>회원가입</h1>
           </button>
-        </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

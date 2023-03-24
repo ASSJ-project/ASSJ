@@ -6,24 +6,13 @@ import MainLogo from "../assets/images/logo.svg";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
 import { Link } from "react-router-dom";
-//import Inputprops from "../components/domain/Login/Input";
-
-/* <InputProps
-  placeholder="Email"
-  type="email"
-  value={email} onChange={emailChange}
-/> */
-// <InputProps
-//   placeholder="Password"
-//   type="password"
-//   value={password} onChange={passwordChange}
-// />
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailVisable, setEmailVisable] = useState(true);
   const [passwordVisable, setPasswordVisable] = useState(true);
+  const [loginError, setLoginError] = useState(false);
 
   const emailRegex =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
@@ -59,7 +48,7 @@ function LoginPage() {
             value={email}
             onChange={emailChange}
           />
-          {!emailVisable && (
+          {!emailVisable && email.length > 0 && (
             <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
@@ -73,21 +62,21 @@ function LoginPage() {
             value={password}
             onChange={passwordChange}
           />
-          {!passwordVisable && (
+          {!passwordVisable && password.length > 0 && (
             <div className="errorMessage">
               비밀번호는 영문자+숫자 8글자 이상이여야 합니다
             </div>
           )}
         </div>
-
+        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
         <div className="find-pw-container">
           <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
-        <div className="login-container">
+        <div className="login-btn-container">
           <button
             className="login-btn"
             onClick={() => {
-              loginDo(email, password);
+              setLoginError(loginDo(email, password));
             }}
           >
             Login

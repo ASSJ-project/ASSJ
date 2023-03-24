@@ -1,40 +1,34 @@
-body {
-  margin: 0;
-}
-
-#root {
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+@import url("../../../styles/global.css");
 .login-container {
   width: 480px;
-  height: 80vh;
+  height: 100vh;
   display: flex;
+  flex: none;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin: auto;
   padding-top: 30px;
 }
 
 .id-container {
+  display: flex;
+  flex-direction: column;
+  flex: none;
   width: 75%;
   height: 15%;
-  text-align: center;
 }
 .pw-container {
+  display: flex;
+  flex-direction: column;
+  flex: none;
   width: 75%;
   height: 15%;
-  text-align: center;
   margin-bottom: 1em;
 }
 
 .input {
-  width: 100%;
-  height: 40%;
+  padding: 1em;
   border: none;
   background: #d8d8dd;
   border-radius: 10px;
@@ -49,8 +43,8 @@ body {
 }
 
 .id-text {
-  width: 20%;
-  position: relative;
+  width: 30%;
+
   font-size: 1.2em;
   color: #2c2b2b;
   font-family: "Lato";
@@ -64,23 +58,20 @@ body {
   color: red;
   font-size: 0.7em;
   margin-top: 3px;
-  position: relative;
+
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  text-align: left;
 }
 .pw-text {
   width: 20%;
-  position: relative;
-  /* width: 30px; */
   font-size: 1.2em;
   color: #2c2b2b;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
-  text-align: left;
+
   text-shadow: 0px 1px whitesmoke;
 }
 .toggle-text {
@@ -102,7 +93,7 @@ body {
   text-shadow: 0px 1px whitesmoke;
 }
 
-.login-container {
+.login-btn-container {
   width: 75%;
   text-align: center;
 }
@@ -111,7 +102,6 @@ body {
   position: relative;
   width: 100%;
   border: 0;
-  /* width: 78%; */
   height: 30%;
   background: #484848;
   border-radius: 20px;

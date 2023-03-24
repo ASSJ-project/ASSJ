@@ -1,4 +1,4 @@
-package com.assj.domain.company;
+package com.assj.utils;
 
 public final class Constants {
   public static final int DEFAULT_PAGE_SIZE = 10;

@@ -53,7 +53,7 @@ function Register() {
 
   const checkPasswordChange = (e) => {
     setcheckPassword(e.target.value);
-    if (password == checkPassword) {
+    if (password === checkPassword) {
       setcheckPasswordVisable(true);
     } else {
       setcheckPasswordVisable(false);
@@ -127,8 +127,8 @@ function Register() {
             <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
-        <input value={random} name="random" />
-        <button onClick={num}>인증번호전송</button>
+        <input value={random} name="random" type="hidden" />
+        <button onClick={num}>인증번호 전송</button>
       </form>
       <div className="input-container">
         <p className="text_box">주소</p>
@@ -166,7 +166,7 @@ function Register() {
           type="password"
           onChange={checkPasswordChange}
         />
-        {password != checkPassword && checkPassword.length > 0 && (
+        {password !== checkPassword && checkPassword.length > 0 && (
           <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
         )}
       </div>

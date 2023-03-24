@@ -3,7 +3,11 @@
   width: 480px;
   height: 100vh;
   display: flex;
+  flex: none;
   flex-direction: column;
+  justify-items: center;
+  margin: auto;
+  /* align-items: center; */
 }
 .input-container {
   display: flex;

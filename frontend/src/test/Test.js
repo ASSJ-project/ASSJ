@@ -1,10 +1,10 @@
 import "./test.css";
 import InputBox from "./InputBox";
 import { useState, useEffect } from "react";
-// import { findPassword } from "../apis/emailCheck/emailCheck";
+import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { loginDo } from "../apis/login/loginDo";
 import { Link, useLocation } from "react-router-dom";
-import { registerDo } from "../functions";
+import { registerDo } from "../apis/register/registerDo";
 import Button from "./button";
 export default function Test() {
   const [email, setEmail] = useState("");
@@ -33,15 +33,15 @@ export default function Test() {
     </button>
   );
 
-  const Register = () => {
+  const Register = () => (
     <button
       onClick={() => {
         registerDo(email, pw, addr, name);
       }}
     >
       회원가입
-    </button>;
-  };
+    </button>
+  );
 
   const [index, setIndex] = useState(0);
 
@@ -103,8 +103,9 @@ export default function Test() {
           <InputBox text="name" inputText={(name) => setName(name)} />
         </div>
         <Register />
-
-        {/* <button onClick={() => findPassword(email)}>이메일체크</button> */}
+        {/* 
+        <button onClick={() => emailCheck(email)}>이메일체크</button>
+        {sessionStorage.getItem("email_check")} */}
         {/* {accessToken ? <Logout /> : <Login />} */}
         {/* <button onClick={() => registerDo(email, pw, add)}>회원가입</button> */}
         {/* <p>{email}</p> */}
