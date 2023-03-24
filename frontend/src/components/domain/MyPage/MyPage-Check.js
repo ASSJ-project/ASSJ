@@ -5,6 +5,7 @@ import "../MyPage/MyPage.css"
 const MyPageCheck = () =>{
   //최근조회기록을 눌렀을 때 
   let [company,setcompany] = useState([]);
+  
   useEffect(()=>{
     let info = localStorage.getItem('data')
     if(info == null){
