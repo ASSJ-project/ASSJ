@@ -1,4 +1,3 @@
-@import url("../../../styles/global.css");
 .login-container {
   width: 480px;
   height: 100vh;
@@ -137,6 +136,11 @@
   display: inline;
   width: 100px;
   border-radius: 20px;
+  box-shadow: black 4px 4px 4px;
+  transition: 0.2s;
+}
+.api-btn img:active {
+  box-shadow: none;
 }
 
 .signup-div {

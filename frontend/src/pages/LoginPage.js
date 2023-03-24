@@ -1,7 +1,6 @@
 import "../components/domain/Login/LoginPage.css";
-// import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
-// import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
-// import NaverLoginBtn from "../components/domain/Login/NaverLoginBtn";
+import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
+import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
 import MainLogo from "../assets/images/logo.svg";
 import React, { useState } from "react";
 import { loginDo } from "../functions";
@@ -68,9 +67,7 @@ function LoginPage() {
             </div>
           )}
         </div>
-        <p style="color:red">
-          {loginError && "이메일과 비밀번호를 확인해주세요"}
-        </p>
+        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
         <div className="find-pw-container">
           <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
@@ -85,9 +82,8 @@ function LoginPage() {
           </button>
         </div>
         <div className="api-btn">
-          {/* <GoogleLoginBtn />
+          <GoogleLoginBtn />
           <KakaoLoginBtn />
-          <NaverLoginBtn /> */}
         </div>
 
         <div className="signup-div">

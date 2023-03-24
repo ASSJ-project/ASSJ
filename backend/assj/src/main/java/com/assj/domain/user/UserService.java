@@ -46,9 +46,6 @@ public class UserService {
 			String inDbPassword = users.get(0).getUserPassword(); // db 에 저장된 패스워드
 			String inputPassword = user.getUserPassword();
 			result = passwordEncoder.matches(inputPassword, inDbPassword);
-			System.out.println(inputPassword);
-			System.out.println(inDbPassword);
-			System.out.println(result);
 			return result;
 		}else result = false;
 		return result;
