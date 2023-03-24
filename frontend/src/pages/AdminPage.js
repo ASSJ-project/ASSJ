@@ -9,6 +9,16 @@ function Admin() {
   const [adminUserPage, SetAdminUserPage] = useState(true);
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
 
+  // const [search, setSearch] = useState("");
+  // const onChangeSearch = (e) => {
+  //   setSearch(e.target.value);
+  // };
+  // const onSearch = (e) => {
+  //   e.prevntDefault();
+  //   (search == null || search == '') ? '' :
+  // };
+  // 데이터 어디잇냥냥ㅇㅇㅇㅇ...
+
   return (
     <div className="admin_container">
       <Header title="Admin" />
@@ -39,8 +49,18 @@ function Admin() {
               통계
             </button>
           </div>
+          {/* <form onSubmit={(e) => onSearch(e)}>
+            <input
+              type="text"
+              value={search}
+              placeholder="메일주소 입력"
+              onChange={onChangeSearch}
+            />
+            <button type="submit">검색</button>
+          </form> */}
         </div>
-        {adminUserPage == true ? <AdminUserInfo /> : <AdminStats />}
+        <AdminUserInfo />
+        {/* {adminUserPage == true ? <AdminUserInfo /> : <AdminStats />} */}
       </div>
     </div>
   );
