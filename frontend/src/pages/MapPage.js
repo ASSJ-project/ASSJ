@@ -6,8 +6,8 @@ import useFetchData from '../hooks/useFetchData';
 import KakaoMapTest from '../components/domain/Map/KakaoMapTest';
 import KakaoMap from '../components/domain/Map/KakaoMap';
 import Footer from '../components/domain/Map/Footer';
-import Header from '../components/domain/Admin/Header'
-
+import CategoryDropdown from '../components/domain/Map/CategoryDropdown_mui';
+import { useState } from 'react';
 const LoadingContainer = styled.div`
   // display: flex;
 
@@ -30,12 +30,12 @@ const Container = styled.section`
   align-items: center;
 `;
 
-// const Header = styled.header`
-//   color: white;
-//   width: 100%;
-//   height: 60px;
-//   background-color: #333;
-// `;
+const Header = styled.header`
+  color: white;
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+`;
 
 const Nav = styled.nav`
   color: white;
@@ -62,6 +62,26 @@ const MapBoundary = styled.div`
 
 function MapPage() {
   const { data, loading, error } = useFetchData();
+  const [searchText, setSearchText] = useState('');
+  const [salary, setSalary] = useState('');
+  const [companySize, setCompanySize] = useState('');
+  const [filteredData, setFilteredData] = useState(data);
+
+  const handleSearch = () => {
+    let filtered = data.filter((item) => {
+      // if (salary && item.salary !== salary) {
+      //   return false;
+      // }
+      // if (companySize && item.companySize !== companySize) {
+      //   return false;
+      // }
+      if (searchText && !item.basicAddr.includes(searchText)) {
+        return false;
+      }
+      return true;
+    });
+    setFilteredData(filtered);
+  };
 
   if (loading) {
     return (
@@ -82,8 +102,21 @@ function MapPage() {
       <MainContainer>main</MainContainer>
       <Container>
         <MapBoundary>
-          <KakaoMapTest data={data} />
-          {/* <MapData data={data} /> */}
+          {' '}
+          <div>
+            <input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <button onClick={handleSearch}>검색</button>
+          </div>
+          <CategoryDropdown />
+        </MapBoundary>
+
+        <MapBoundary>
+          <KakaoMapTest data={filteredData} />
         </MapBoundary>
         <CompanyList data={data} />
       </Container>
