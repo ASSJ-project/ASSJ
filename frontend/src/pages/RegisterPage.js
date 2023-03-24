@@ -15,7 +15,7 @@ function Register() {
   const [nameVisable, setNameVisable] = useState("");
   const [emailVisable, setEmailVisable] = useState("");
   const [passwordVisable, setPasswordVisable] = useState("");
-  const [checkPasswordVisable, setcheckPasswordVisable] = useState("");
+  const [registerSuccess, setregisterSuccess] = useState(false);
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
   const emailRegex =
@@ -24,40 +24,25 @@ function Register() {
 
   const nameChange = (e) => {
     setName(e.target.value);
-    if (nameRegex.test(name)) {
-      setNameVisable(true);
-    } else {
-      setNameVisable(false);
-    }
+    nameRegex.test(name) ? setNameVisable(true) : setNameVisable(false);
   };
   const emailChange = (e) => {
     setEmail(e.target.value);
-    if (emailRegex.test(email)) {
-      setEmailVisable(true);
-    } else {
-      setEmailVisable(false);
-    }
+    emailRegex.test(email) ? setEmailVisable(true) : setEmailVisable(false);
   };
 
-  const addressChange = (e) => {
-    setAddress(e.target.value);
+  const addressChange = () => {
+    setAddress(document.getElementById("address").value);
   };
   const passwordChange = (e) => {
     setPassword(e.target.value);
-    if (passwordRegex.test(password)) {
-      setPasswordVisable(true);
-    } else {
-      setPasswordVisable(false);
-    }
+    passwordRegex.test(password)
+      ? setPasswordVisable(true)
+      : setPasswordVisable(false);
   };
 
   const checkPasswordChange = (e) => {
     setcheckPassword(e.target.value);
-    if (password === checkPassword) {
-      setcheckPasswordVisable(true);
-    } else {
-      setcheckPasswordVisable(false);
-    }
   };
 
   useEffect(() => {
@@ -127,8 +112,8 @@ function Register() {
             <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
-        <input value={random} name="random" type="hidden" />
-        <button onClick={num}>인증번호 전송</button>
+        {/* <input value={random} name="random" type="hidden" />
+        <button onClick={num}>인증번호 전송</button> */}
       </form>
       <div className="input-container">
         <p className="text_box">주소</p>
@@ -136,13 +121,8 @@ function Register() {
           className="total_input"
           id="address"
           placeholder="User Address"
-          onClick={() => postalSeach()}
-          onChange={addressChange}
+          onFocus={() => postalSeach()}
         />
-      </div>
-      <div className="input-container">
-        <p className="text_box">상세주소</p>
-        <input className="total_input" placeholder="Detailed Address" />
       </div>
       <div className="input-container">
         <p className="text_box">비밀번호</p>
@@ -152,6 +132,7 @@ function Register() {
           placeholder="Password"
           type="password"
           onChange={passwordChange}
+          onFocus={addressChange}
         />
         {!passwordVisable && password.length > 0 && (
           <div className="errorMessage">비밀번호 형식을 확인해주세요</div>
@@ -176,7 +157,12 @@ function Register() {
        
        */}
       <div>
-        <button className="Signup-btn" onClick={checkSuccess}>
+        <button
+          className="Signup-btn"
+          onClick={() => {
+            setregisterSuccess(checkSuccess);
+          }}
+        >
           {" "}
           회원가입
         </button>
