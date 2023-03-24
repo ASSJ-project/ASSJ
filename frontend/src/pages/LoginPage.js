@@ -12,6 +12,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [emailVisable, setEmailVisable] = useState(true);
   const [passwordVisable, setPasswordVisable] = useState(true);
+  const [loginError, setLoginError] = useState(false);
 
   const emailRegex =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
@@ -67,7 +68,7 @@ function LoginPage() {
             </div>
           )}
         </div>
-
+        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
         <div className="find-pw-container">
           <p className="find-pw">비밀번호를 잊으셨나요?</p>
         </div>
@@ -75,7 +76,7 @@ function LoginPage() {
           <button
             className="login-btn"
             onClick={() => {
-              loginDo(email, password);
+              setLoginError(loginDo(email, password));
             }}
           >
             Login

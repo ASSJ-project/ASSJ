@@ -1,10 +1,10 @@
 // import Address from "./SignupApi/SignupAddress";
 import "../components/domain/Register/register.css";
 import { postalSeach } from "../components/domain/Register/RegisterApi";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { registerDo } from "../functions";
-import InputContainer from "../components/domain/Register/InputContainer";
+import emailjs from "@emailjs/browser";
 
 function Register() {
   const [name, setName] = useState("");
@@ -22,10 +22,8 @@ function Register() {
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-  const checkRegex = (regex, name) => {};
-
   const nameChange = (e) => {
-    setName(e);
+    setName(e.target.value);
     if (nameRegex.test(name)) {
       setNameVisable(true);
     } else {
@@ -33,7 +31,7 @@ function Register() {
     }
   };
   const emailChange = (e) => {
-    setEmail(e);
+    setEmail(e.target.value);
     if (emailRegex.test(email)) {
       setEmailVisable(true);
     } else {
@@ -42,10 +40,10 @@ function Register() {
   };
 
   const addressChange = (e) => {
-    setAddress(e);
+    setAddress(e.target.value);
   };
   const passwordChange = (e) => {
-    setPassword(e);
+    setPassword(e.target.value);
     if (passwordRegex.test(password)) {
       setPasswordVisable(true);
     } else {
@@ -54,8 +52,8 @@ function Register() {
   };
 
   const checkPasswordChange = (e) => {
-    setcheckPassword(e);
-    if (password == checkPassword) {
+    setcheckPassword(e.target.value);
+    if (password === checkPassword) {
       setcheckPasswordVisable(true);
     } else {
       setcheckPasswordVisable(false);
@@ -73,59 +71,105 @@ function Register() {
     registerDo(email, password, address, name);
   };
 
+  const [random, setRandom] = useState("000000");
+
+  function num() {
+    setRandom(String(Math.floor(Math.random() * 1000000)).padStart(6, "0"));
+  }
+
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_bhg1fi8",
+        "template_hi33sxj",
+        form.current,
+        "1TUNz-cyWeI9OUyAH"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div className="signup-container">
       <span className="signuptext">회원가입</span>
-      <InputContainer
-        title="이름"
-        change={(name) => nameChange(name)}
-        type="text"
-        placeHolder="User name"
-      />
-      {!nameVisable && name.length > 0 && (
-        <div className="errorMessage">이름 형식을 확인해주세요</div>
-      )}
-      <InputContainer
-        title="이메일"
-        change={(email) => emailChange(email)}
-        type="email"
-        placeHolder="User email"
-      />
-      {!emailVisable && email.length > 0 && (
-        <div className="errorMessage">이메일 형식을 확인해주세요</div>
-      )}
-      <InputContainer
-        title="주소"
-        change={(address) => addressChange(address)}
-        click={() => postalSeach()}
-        type="text"
-        placeHolder="User address"
-        id="address"
-      />
-      <InputContainer
-        title="상세주소"
-        placeHolder="Detailed Address"
-        id="address_detail"
-      />
-      <InputContainer
-        title="비밀번호"
-        change={(password) => passwordChange(password)}
-        type="password"
-        placeHolder="Password"
-      />
-      {!passwordVisable && password.length > 0 && (
-        <div className="errorMessage">비밀번호 형식을 확인해주세요</div>
-      )}
-      <InputContainer
-        title="비밀번호 확인"
-        change={(checkPassword) => checkPasswordChange(checkPassword)}
-        type="password"
-        placeHolder="Confirm password"
-      />
-      {password != checkPassword && checkPassword.length > 0 && (
-        <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
-      )}
+      <div className="input-container">
+        <p className="text_box">이름</p>
+        <input
+          className="total_input"
+          placeholder="User name"
+          type="text"
+          onChange={nameChange}
+        />
+        {!nameVisable && name.length > 0 && (
+          <div className="errorMessage">이름 형식을 확인해주세요</div>
+        )}
+      </div>
+      <form ref={form} onSubmit={sendEmail}>
+        <div className="input-container">
+          <p className="text_box">이메일</p>
+          <input
+            className="total_input"
+            placeholder="Email Address"
+            type="email"
+            onChange={emailChange}
+            name="user_email"
+          />
+          {!emailVisable && email.length > 0 && (
+            <div className="errorMessage">이메일 형식을 확인해주세요</div>
+          )}
+        </div>
+        <input value={random} name="random" type="hidden" />
+        <button onClick={num}>인증번호 전송</button>
+      </form>
+      <div className="input-container">
+        <p className="text_box">주소</p>
+        <input
+          className="total_input"
+          id="address"
+          placeholder="User Address"
+          onClick={() => postalSeach()}
+          onChange={addressChange}
+        />
+      </div>
+      <div className="input-container">
+        <p className="text_box">상세주소</p>
+        <input className="total_input" placeholder="Detailed Address" />
+      </div>
+      <div className="input-container">
+        <p className="text_box">비밀번호</p>
+        <input
+          className="total_input"
+          id="address_detail"
+          placeholder="Password"
+          type="password"
+          onChange={passwordChange}
+        />
+        {!passwordVisable && password.length > 0 && (
+          <div className="errorMessage">비밀번호 형식을 확인해주세요</div>
+        )}
+      </div>
 
+      <div className="input-container">
+        <p className="text_box">비밀번호 확인</p>
+        <input
+          className="total_input"
+          placeholder="Confirm password"
+          type="password"
+          onChange={checkPasswordChange}
+        />
+        {password !== checkPassword && checkPassword.length > 0 && (
+          <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
+        )}
+      </div>
       {/* 커밋 버튼 활성화 조건 
        1. 이메일 체크가 끝나야 함 => 일단 활성화 
        2. 모든 입력칸이 길이가 0 이상이여야 함 

@@ -1,6 +1,5 @@
 // coding by 'ikki'
 import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
-import DatePicker from "react-datepicker";
 import Calendar from "./Calendar";
 import "./Calendar.css";
 

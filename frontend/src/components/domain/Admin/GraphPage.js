@@ -1,15 +1,15 @@
-import { BiCaretLeft, BiCaretRight } from "react-icons/bi";
-import Calendar from "./Calendar";
-import "../static/css/Calendar.css";
+// import { BiChevronLeft, BiChevronsLeft } from "react-icons/bi";
+import ReactDatePicker from "./Calendar";
+import "./Calendar.css";
 
 function GraphPage() {
   return (
     <div className="graph_container">
       {/* 날짜 (기간) , 달력 */}
       <div className="graph_date">
-        <BiCaretLeft />
-        <Calendar />
-        <BiCaretRight />
+        {/* <BiChevronLeft /> */}
+        <ReactDatePicker />
+        {/* <BiChevronsLeft /> */}
       </div>
       {/* 꺾은선 그래프 */}
       <div></div>
