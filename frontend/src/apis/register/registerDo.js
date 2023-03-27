@@ -10,7 +10,9 @@ export async function registerDo(e, p, a, n) {
       userName: n,
     })
     .then((response) => {
-      result = response.data;
+      if (response.data) window.location.href = "login";
+      return true;
+      return true;
     })
     .catch((error) => console.log(error));
 

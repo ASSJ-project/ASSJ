@@ -3,19 +3,20 @@ import axios from "axios";
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
-  let token = null;
+  sessionStorage.removeItem("access_token");
   await axios
     .post(url, {
       userEmail: e,
       userPassword: p,
     })
     .then((response) => {
-      token = response.data;
+      if (response.data) {
+        sessionStorage.setItem("access_token", response.data);
+        window.location.href = "map";
+        return true;
+      } else {
+        return false;
+      }
     })
     .catch((error) => console.log(error));
-  //로그인 성공
-  if (token != null) {
-    sessionStorage.setItem("access_token", token);
-    window.location.href = "/map";
-  }
 }

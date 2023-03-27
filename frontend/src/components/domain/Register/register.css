@@ -1,4 +1,3 @@
-@import url("../../../styles/global.css");
 .signup-container {
   width: 480px;
   height: 100vh;
@@ -7,51 +6,61 @@
   flex-direction: column;
   justify-items: center;
   margin: auto;
-  /* align-items: center; */
 }
 .input-container {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 2em;
+}
+.addressSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .signuptext {
   font-size: 3em;
   margin-top: 0.5em;
-  color: var(--main-color);
+  color: var(--text-color);
   text-align: center;
   font-weight: 700;
 }
 .text_box {
   font-size: 1.2em;
-  color: var(--main-color);
+  color: var(--text-color);
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
 }
 .total_input {
-  border: 0;
-  background: var(--soft-color);
+  border: 1px white solid;
+  background: var(--input-color);
   border-radius: 10px;
   padding: 1.5em;
 }
+.total_input:focus {
+  border: 1px solid;
+  border-color: var(--button-color);
+  outline: none;
+}
+.signUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
 .Signup-btn {
-  border: 0;
   text-align: center;
   width: 80%;
-  margin-top: 7%;
-  margin-left: 10%;
-  background: var(--main-color);
-  border-radius: 10px;
-  font-size: 1.5em;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  color: #fff;
-  padding: 0.5em;
-  box-shadow: grey 4px 4px 4px;
-  transition: 0.2s;
+  background-color: var(--button-color);
 }
-.Signup-btn:active {
-  box-shadow: none;
+.Signup-btn:hover {
+  background-color: var(--button-hover);
+}
+.addressButton {
+  margin: 0px;
+  height: 2em;
+  background-color: var(--button-color);
+}
+.addressButton:hover {
+  background-color: var(--button-hover);
 }
