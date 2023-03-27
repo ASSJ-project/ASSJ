@@ -7,24 +7,18 @@ import Header from './Header';
 import Footer from '@/components/Structure/Footer/Footer';
 
 export default function(){
-    const [value, setValue] = useState(false);
-
-    const getMyPage1 = (text) =>{
-        setValue(text);
-    }
-
-    const getMyPage2 = (text) =>{
-        setValue(text);
-    }
+const getMyPage2 = (text) => {
+    setValue(text);
+    };
     
-    return(
+    return (
         <>
-        <Header/>
-        <div className="mypage-main">
-            <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2}/>
-            {value == true ? <MyPageCheck/> : <MyPageInfo/> }
-        </div>
-        <Footer />
+          <Header />
+          <div className="mypage-main">
+            <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2} />
+            {value == true ? <MyPageCheck /> : <MyPageInfo />}
+          </div>
+          <Footer />
         </>
     );
 }
