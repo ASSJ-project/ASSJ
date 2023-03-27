@@ -35,7 +35,6 @@ const Box = styled.div`
 `;
 
 function CompanyList({ data }) {
-  console.log(data);
   const itemSize = 120;
   const itemCount = data.length;
   const navigate = useNavigate();
