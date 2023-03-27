@@ -35,6 +35,7 @@ const Box = styled.div`
 `;
 
 function CompanyList({ data }) {
+  console.log(data);
   const itemSize = 120;
   const itemCount = data.length;
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function CompanyList({ data }) {
       <Item onClick={handleClick}>
         <Title>{data[index].company}</Title>
         <Content style={{ marginBottom: '2em' }}>{data[index].title}</Content>
+        <Content>{data[index].jobsCd}</Content>
         <Box>
           <Content>
             {data[index].salTpNm} {data[index].sal}

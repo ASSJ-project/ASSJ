@@ -10,7 +10,7 @@ const useFetchData = () => {
       const response = await fetch('/api/company/get');
       const result = await response.json();
       const filteredData = result
-        .filter((item) => item.region === '서울 구로구')
+        // .filter((item) => item.region === '서울')
         .map((data) => {
           return {
             company: data.company,
@@ -22,6 +22,7 @@ const useFetchData = () => {
             sal: data.sal,
             basicAddr: data.basicAddr,
             closeDt: data.closeDt,
+            jobsCd: data.jobsCd,
           };
         });
       setData(filteredData);
