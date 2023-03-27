@@ -150,7 +150,7 @@ function MapPage() {
         <MapBoundary>
           <KakaoMapTest data={filteredData} />
         </MapBoundary>
-        <CompanyList data={filteredData} />
+        <CompanyList data={data} />
       </Container>
       <Footer />
     </>
