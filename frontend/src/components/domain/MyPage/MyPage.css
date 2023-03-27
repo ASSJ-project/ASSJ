@@ -1,7 +1,7 @@
 .mypage-main {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     flex-direction: column;
     padding: 2%;
     align-items: center;

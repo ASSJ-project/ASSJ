@@ -21,11 +21,11 @@ export default function MyPageHeader(props){
   
     return(
         <>
-          <div className="mypage-head">
+          {/* <div className="mypage-head">
         <Link to="/sidebar" className="mypage-head-left-items"><img src={frame}/></Link>
         <div className="mypage-head-left-items2"><img src={mypagelogo} className="mypagelogo"></img></div>
         <Link to='/map' className="mypage-head-right-items" style={{ textDecoration: "none" }}>Home</Link>
-      </div>
+      </div> */}
       <div className='mypage-mypage'>MY PAGE</div>
       <div className="mypage-clickmenu">
         <button className={tab ? "mypage-myinfo2" : "mypage-myinfo1"} onClick={mypage1}>내정보</button>
