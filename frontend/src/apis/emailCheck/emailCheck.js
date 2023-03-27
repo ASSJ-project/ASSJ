@@ -8,7 +8,8 @@ export async function emailCheck(email) {
       userEmail: email,
     })
     .then((response) => {
-      sessionStorage.setItem("email_check", response.data);
+      console.log(response.data);
+      return response.data;
     })
     .catch((error) => console.log(error));
 }
