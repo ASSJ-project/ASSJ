@@ -1,6 +1,6 @@
-import "../components/domain/Error/ErrorPage.css"
-import logo2 from "../assets/images/Error-logo.PNG";
-import logo from "../assets/images/logo_only_word.svg";
+import "@/components/domain/Error/ErrorPage.css"
+import logo2 from "assets/images/Error-logo.PNG";
+import logo from "assets/images/logo_only_word.svg";
 import { Link } from "react-router-dom";
 
 const ErrorPage =() => {

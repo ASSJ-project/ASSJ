@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../MyPage/MyPage.css"
+import "@/components/domain/MyPage/MyPage.css"
 import axios from 'axios';
 
 sessionStorage.setItem("key1", 10);                           //로그인이 성공했다 가정하고 세션스토리지에 저장되있는 값을 불러옵니다. / 토큰이라던가 키값으로 구성이 되겠지용
@@ -61,7 +61,7 @@ const MyPageInfo =() => {
             <div className={!stat? "mypage-none" : "mypage-myinformation"}>메일 : {users.email}</div>
             <div className={!stat? "mypage-none" : "mypage-myinformation"}>주소 : {users.id}</div>
             <div className={!stat? "mypage-none" : "mypage-myinformation"}>비밀번호 변경: (예정 안할지도)</div>
-            <div className={!stat? "mypage-none" : "mypage-myinformation"}>비밀번호 확인: (예정 안할지도)</div>
+            {/* <div className={!stat? "mypage-none" : "mypage-myinformation"}>비밀번호 확인: (예정 안할지도)</div> */}
             <button onClick={fix1} id="my_company1" value={company[number]} > 날 클릭해봐(지도클릭이라고 가정이요^0^) </button>
             <div>비밀번호는 현재 024-648-3804입니다.</div>
         </div>    

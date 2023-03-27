@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import useFetchData from '@/hooks/useFetchData';
 import KakaoMapTest from '@/components/domain/Map/KakaoMapTest';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
-import Footer from '@/components/domain/Map/Footer';
-import CategoryDropdown from '@/components/domain/Map/CategoryDropdown_mui_redux';
+import Footer from '@/components/Structure/Footer/Footer';
+import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
 import { useState } from 'react';
 import backbtn from 'assets/images/backbtn.png';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from '@/store/store';
 
 const LoadingContainer = styled.div`
@@ -50,7 +50,7 @@ const Nav = styled.nav`
 
 const MapContainer = styled.div`
   display: flex;
-
+  
   flex-direction: row-reverse;
   @media (max-width: 780px) {
     flex-direction: column;
@@ -95,14 +95,16 @@ function MapPage() {
   const [companySize, setCompanySize] = useState('');
   const [filteredData, setFilteredData] = useState(data);
 
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+
   const handleSearch = () => {
     let filtered = data.filter((item) => {
       // if (salary && item.salary !== salary) {
       //   return false;
       // }
-      // if (companySize && item.companySize !== companySize) {
-      //   return false;
-      // }
+      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
+        return false;
+      }
       if (searchText && !item.basicAddr.includes(searchText)) {
         return false;
       }
@@ -129,19 +131,22 @@ function MapPage() {
       <Nav>Navigation</Nav>
       <img src={backbtn} className="backbtn" />
       <MainContainer>main</MainContainer>
+      <Provider store={store}>
+        <p>{selectedSubcategory}</p>
+      </Provider>
       <Container>
-        <Provider store={store}>
-          <SearchContainer>
-            <SearchInput
-              type="text"
-              placeholder="검색어를 입력하세요"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <SearchButton onClick={handleSearch}>검색</SearchButton>
-            <CategoryDropdown />
-          </SearchContainer>
-        </Provider>
+        <SearchContainer>
+          <SearchInput
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+
+          <SearchButton onClick={handleSearch}>검색</SearchButton>
+          <CategoryDropdown />
+        </SearchContainer>
+
         <MapBoundary>
           <KakaoMapTest data={filteredData} />
         </MapBoundary>

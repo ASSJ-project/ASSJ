@@ -1,6 +1,6 @@
 //여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
 import { useEffect,useState } from "react";
-import "../MyPage/MyPage.css"
+import "@/components/domain/MyPage/MyPage.css"
 
 const MyPageCheck = () =>{
   //최근조회기록을 눌렀을 때 
