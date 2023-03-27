@@ -1,10 +1,13 @@
-import "../components/domain/Login/LoginPage.css";
-import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
-import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
-import MainLogo from "../assets/images/logo.svg";
+import "@/components/domain/Login/LoginPage.css";
+import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
+import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
+import MainLogo from "assets/images/logo.svg";
 import React, { useState } from "react";
-import { loginDo } from "../functions";
+import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
+
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -69,17 +72,20 @@ function LoginPage() {
         </div>
         <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
         <div className="find-pw-container">
-          <p className="find-pw">비밀번호를 잊으셨나요?</p>
+          <p className="find-pw">비밀번호 찾기</p>
         </div>
         <div className="login-btn-container">
-          <button
+          <Button
             className="login-btn"
+            variant="contained"
+            endIcon={<SendIcon />}
             onClick={() => {
               setLoginError(loginDo(email, password));
             }}
           >
+            {" "}
             Login
-          </button>
+          </Button>
         </div>
         <div className="api-btn">
           <GoogleLoginBtn />

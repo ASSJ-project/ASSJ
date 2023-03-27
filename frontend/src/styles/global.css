@@ -1,5 +1,7 @@
 /* 전역 CSS */
 :root {
-  --main-color: #9588e0;
-  --soft-color: #e2dff8;
+  --text-color: #303f9f;
+  --input-color: #e8eaf6;
+  --button-color: #5c6bc0;
+  --button-hover: #283593;
 }

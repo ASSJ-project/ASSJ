@@ -3,8 +3,11 @@ import "../components/domain/Register/register.css";
 import { postalSeach } from "../components/domain/Register/RegisterApi";
 import React, { useEffect, useState, useRef } from "react";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
-import { registerDo } from "../functions";
+import { registerDo } from "@/apis/register/registerDo";
 import emailjs from "@emailjs/browser";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import { purple } from "@mui/material/colors";
 
 function Register() {
   const [name, setName] = useState("");
@@ -15,7 +18,7 @@ function Register() {
   const [nameVisable, setNameVisable] = useState("");
   const [emailVisable, setEmailVisable] = useState("");
   const [passwordVisable, setPasswordVisable] = useState("");
-  const [registerSuccess, setregisterSuccess] = useState(false);
+  const [registerSuccess, setregisterSuccess] = useState();
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
   const emailRegex =
@@ -83,6 +86,12 @@ function Register() {
       );
   };
 
+  const button_color = purple[200];
+
+  const error = (message = <>&nbsp;</>) => {
+    return <div className="errorMessage">{message}</div>;
+  };
+
   return (
     <div className="signup-container">
       <span className="signuptext">회원가입</span>
@@ -94,9 +103,9 @@ function Register() {
           type="text"
           onChange={nameChange}
         />
-        {!nameVisable && name.length > 0 && (
-          <div className="errorMessage">이름 형식을 확인해주세요</div>
-        )}
+        {!nameVisable && name.length > 0
+          ? error("이름 형식을 확인해주세요")
+          : error()}
       </div>
       <form ref={form} onSubmit={sendEmail}>
         <div className="input-container">
@@ -108,20 +117,28 @@ function Register() {
             onChange={emailChange}
             name="user_email"
           />
-          {!emailVisable && email.length > 0 && (
-            <div className="errorMessage">이메일 형식을 확인해주세요</div>
-          )}
+          {!emailVisable && email.length > 0
+            ? error("이메일 형식을 확인해주세요")
+            : error()}
         </div>
         {/* <input value={random} name="random" type="hidden" />
         <button onClick={num}>인증번호 전송</button> */}
       </form>
       <div className="input-container">
-        <p className="text_box">주소</p>
+        <div className="addressSearch">
+          <p className="text_box">주소</p>
+          <Button
+            className="addressButton"
+            variant="contained"
+            onClick={() => postalSeach()}
+          >
+            주소검색
+          </Button>
+        </div>
         <input
           className="total_input"
           id="address"
           placeholder="User Address"
-          onFocus={() => postalSeach()}
         />
       </div>
       <div className="input-container">
@@ -134,9 +151,9 @@ function Register() {
           onChange={passwordChange}
           onFocus={addressChange}
         />
-        {!passwordVisable && password.length > 0 && (
-          <div className="errorMessage">비밀번호 형식을 확인해주세요</div>
-        )}
+        {!passwordVisable && password.length > 0
+          ? error("비밀번호 형식을 확인하세요")
+          : error()}
       </div>
 
       <div className="input-container">
@@ -147,25 +164,36 @@ function Register() {
           type="password"
           onChange={checkPasswordChange}
         />
-        {password !== checkPassword && checkPassword.length > 0 && (
-          <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
-        )}
+        {password !== checkPassword && checkPassword.length > 0
+          ? error("비밀번호가 일치하지 않습니다")
+          : error()}
       </div>
-      {/* 커밋 버튼 활성화 조건 
-       1. 이메일 체크가 끝나야 함 => 일단 활성화 
-       2. 모든 입력칸이 길이가 0 이상이여야 함 
-       
-       */}
-      <div>
-        <button
+      <div className="signUp">
+        {registerSuccess === false
+          ? error("입력 항목의 빈칸을 확인해주세요")
+          : error()}
+        <Button
           className="Signup-btn"
+          variant="contained"
+          endIcon={<SendIcon />}
           onClick={() => {
-            setregisterSuccess(checkSuccess);
+            if (
+              name.length > 0 &&
+              email.length > 0 &&
+              password.length > 0 &&
+              address.length > 0 &&
+              checkPassword.length > 0 &&
+              password === checkPassword
+            ) {
+              setregisterSuccess(checkSuccess);
+            } else {
+              setregisterSuccess(false);
+            }
           }}
         >
           {" "}
           회원가입
-        </button>
+        </Button>
       </div>
     </div>
   );

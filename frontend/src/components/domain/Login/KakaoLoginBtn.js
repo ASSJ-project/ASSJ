@@ -7,8 +7,10 @@ export default function KakaoLoginBtn() {
 
   const responseKakao = (response) => {
     sessionStorage.removeItem("access_token");
-    sessionStorage.setItem("access_token", response.accessToken);
-    if (sessionStorage.getItem("access_token")) window.location.href = "map";
+    if (response) {
+      sessionStorage.setItem("access_token", response.response.access_token);
+      window.location.href = "map";
+    }
     //차후 refresh token 적용 필요
   };
 
