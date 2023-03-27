@@ -1,13 +1,17 @@
-import CompanyList from '../components/domain/Map/CompanyList';
-import MapData from '../components/domain/Map/MapData';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import MapData from '@/components/domain/Map/MapData';
 import { TailSpin } from 'react-loader-spinner';
 import styled from 'styled-components';
-import useFetchData from '../hooks/useFetchData';
-import KakaoMapTest from '../components/domain/Map/KakaoMapTest';
-import KakaoMap from '../components/domain/Map/KakaoMap';
-import Footer from '../components/domain/Map/Footer';
-import CategoryDropdown from '../components/domain/Map/CategoryDropdown_mui';
+import useFetchData from '@/hooks/useFetchData';
+import KakaoMapTest from '@/components/domain/Map/KakaoMapTest';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
+import Footer from '@/components/domain/Map/Footer';
+import CategoryDropdown from '@/components/domain/Map/CategoryDropdown_mui_redux';
 import { useState } from 'react';
+import backbtn from 'assets/images/backbtn.png';
+import { Provider } from 'react-redux';
+import store from '@/store/store';
+
 const LoadingContainer = styled.div`
   // display: flex;
 
@@ -60,6 +64,30 @@ const MapBoundary = styled.div`
   border: 1px solid black;
 `;
 
+const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px;
+`;
+
+const SearchInput = styled.input`
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+`;
+
+const SearchButton = styled.button`
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+`;
+
 function MapPage() {
   const { data, loading, error } = useFetchData();
   const [searchText, setSearchText] = useState('');
@@ -99,22 +127,21 @@ function MapPage() {
     <>
       <Header>Header</Header>
       <Nav>Navigation</Nav>
+      <img src={backbtn} className="backbtn" />
       <MainContainer>main</MainContainer>
       <Container>
-        <MapBoundary>
-          {' '}
-          <div>
-            <input
+        <Provider store={store}>
+          <SearchContainer>
+            <SearchInput
               type="text"
               placeholder="검색어를 입력하세요"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
-            <button onClick={handleSearch}>검색</button>
-          </div>
-          <CategoryDropdown />
-        </MapBoundary>
-
+            <SearchButton onClick={handleSearch}>검색</SearchButton>
+            <CategoryDropdown />
+          </SearchContainer>
+        </Provider>
         <MapBoundary>
           <KakaoMapTest data={filteredData} />
         </MapBoundary>
