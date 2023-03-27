@@ -1,185 +1,190 @@
 .mypage-main {
-    display: flex;
-    width: 100vw;
-    height: 70vh;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "맑은 고딕", serif;
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  font-family: Georgia, '맑은 고딕', serif;
 }
 
-.mypage-head{
-    height: 5%;
-    width: 100%;
-    max-width: 1440px;
-    display:flex;
-    margin:2px;
-    font-size: 16px;
+.mypage-head {
+  height: 5%;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  margin: 2px;
+  font-size: 16px;
 }
 
-.mypage-mypage{
-    max-width: 1440px;
-    width: 100%;
-    font-size: 100vw;
-    height: 4vh;
-    border-style: none;
-    font-size: 100%;
-    background-color: #9588E0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
+.mypage-mypage {
+  max-width: 1440px;
+  width: 100%;
+  font-size: 100vw;
+  height: 5%;
+  border-style: none;
+  font-size: 100%;
+  background-color: #9588e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
 }
 
 .mypage-clickmenu {
-    display: flex;
-    flex: 0, 1, 0, 1;
-    height: 4vh;
-    max-width: 1440px;
-    width: 100%;
+  display: flex;
+  flex: 0, 1, 0, 1;
+  height: 5%;
+  max-width: 1440px;
+  width: 100%;
 }
 
-.mypage-searchmenu{
-    display: flex;
-    height: 5%;
-    max-width: 1440px;
-    width: 100%;
+.mypage-searchmenu {
+  display: flex;
+  height: 5%;
+  max-width: 1440px;
+  width: 100%;
 }
 
 .mypage-head-left-items {
-    width: 15%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    margin-right: auto;
+  width: 15%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
 }
 
 .mypage-head-left-items2 {
-    width: 20%;
-    height: 50%;
-    background: #fff;
-    display: flex;  
-    justify-content :center;
-    align-items: center;
-    font-size: 12px;
-    margin: auto;
+  width: 20%;
+  height: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin: auto;
 }
 
-
-.mypage-head-right-items , .mypage-checkeditems-alldeletebtn{
-    margin-left:auto;
-    width: 15%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    margin-left: auto;
-    background: #FFFFFF;    
-    border: 0.5px solid #4A72FF;
-    /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
+.mypage-head-right-items,
+.mypage-checkeditems-alldeletebtn {
+  margin-left: auto;
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: auto;
+  background: #ffffff;
+  border: 0.5px solid #4a72ff;
+  /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
 }
 
-.mypage-checkeditems{
-    max-width: 1440px;
-    background-color: rgba(226, 223, 248, 0.7);
-    margin-top: 10px;
-    width: 100%;
-    height: 10%;
-    border-style: none;
-    font-size: 20px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+.mypage-checkeditems {
+  max-width: 1440px;
+  background-color: rgba(226, 223, 248, 0.7);
+  margin-top: 10px;
+  width: 100%;
+  height: 10%;
+  border-style: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .mypage-chekeditem-deletebtn {
-    margin-left: auto;
-    padding: 1%;
-    background-color: #ffffff;
-    border: 0.5px solid #4A72FF;
+  margin-left: auto;
+  padding: 1%;
+  background-color: #ffffff;
+  border: 0.5px solid #4a72ff;
 }
 
-.mypage-checked-text{
-    /* background-color: #E2DFF8; */
-    /* border: 1px solid; */
-    width: 200px;
-    color:#000000;
+.mypage-checked-text {
+  /* background-color: #E2DFF8; */
+  /* border: 1px solid; */
+  width: 200px;
+  color: #000000;
 }
 
-.mypage-chekeditem-deletebtn:hover{
-    background-color: #6f6897;
+.mypage-chekeditem-deletebtn:hover {
+  background-color: #6f6897;
 }
 
-.mypage-recently{
-    background: #Ffffff;
-    width: 18%;
-    height: 90%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    font-size : 12px;
-    margin-top: 5px;
+.mypage-recently {
+  background: #ffffff;
+  width: 18%;
+  height: 90%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .mypage-myinformations {
-    max-width: 1440px;
-    width: 100%;
-    flex: 1, 0 ,1 ,0;
-    height: 60%;
-    align-items: center;
-    flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
+  flex: 1, 0, 1, 0;
+  height: 70%;
+  align-items: center;
+  flex-direction: column;
 }
 
 .mypage-myinfo1 {
-    width: 50%;
-    background-color: #9588E0;
-    border-style: none;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
+  width: 50%;
+  background-color: #9588e0;
+  border-style: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
 }
 
 .mypage-myinfo2 {
-    width: 50%;
-    background-color: #E2DFF8;
-    border-style: none;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:2px;
+  width: 50%;
+  background-color: #e2dff8;
+  border-style: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
 }
 
-.mypage-myinformation{
-    width: 100%;
-    height: 30%;
-    border-style: none;
-    background-color: #E2DFF8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 1rem;
-    /* visibility: hidden; */
+.mypage-myinformation {
+  width: 100%;
+  height: 20%;
+  border-style: none;
+  background-color: #e2dff8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  /* visibility: hidden; */
 }
 
-.mypagelogo{
-    width: 100%;
-    height: 100%;
+.mypagelogo {
+  width: 100%;
+  height: 100%;
 }
 
-.mypage-myinfo1:hover, .mypage-myinfo2:hover, .mypage-head-right-items:hover, .mypage-chekeditem-deletebtn:hover, .mypage-checkeditems-alldeletebtn:hover ,.mypage-pwcheck:hover{
-    background-color: #9588E0;
+.mypage-myinfo1:hover,
+.mypage-myinfo2:hover,
+.mypage-head-right-items:hover,
+.mypage-chekeditem-deletebtn:hover,
+.mypage-checkeditems-alldeletebtn:hover,
+.mypage-pwcheck:hover {
+  background-color: #9588e0;
 }
 
-.mypage-none{
-    display: none;
+.mypage-none {
+  display: none;
 }
 
-.mypage-pwcheck{
-    border: 0.5px solid blue;
-    background-color: white; 
+.mypage-pwcheck {
+  border: 0.5px solid blue;
+  background-color: white;
 }
