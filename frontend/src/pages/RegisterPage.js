@@ -19,6 +19,8 @@ function Register() {
   const [emailVisable, setEmailVisable] = useState("");
   const [passwordVisable, setPasswordVisable] = useState("");
   const [registerSuccess, setregisterSuccess] = useState();
+  const [emailInDB, setEmailInDB] = useState(false);
+  const [emailChecked, setEmailChecked] = useState(false);
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
   const emailRegex =
@@ -67,6 +69,7 @@ function Register() {
 
   const form = useRef();
   const sendEmail = (e) => {
+    num();
     e.preventDefault();
 
     emailjs
@@ -107,23 +110,30 @@ function Register() {
           ? error("이름 형식을 확인해주세요")
           : error()}
       </div>
-      <form ref={form} onSubmit={sendEmail}>
+      <div ref={form}>
         <div className="input-container">
           <p className="text_box">이메일</p>
           <input
             className="total_input"
             placeholder="Email Address"
             type="email"
-            onChange={emailChange}
+            onChange={(e) => {
+              emailChange(e);
+            }}
             name="user_email"
           />
-          {!emailVisable && email.length > 0
-            ? error("이메일 형식을 확인해주세요")
-            : error()}
         </div>
-        {/* <input value={random} name="random" type="hidden" />
-        <button onClick={num}>인증번호 전송</button> */}
-      </form>
+        <input value={random} name="random" type="hidden" />
+        {!emailVisable && email.length > 0 ? (
+          <Button variant="contained" disabled>
+            이메일 형식을 확인해주세요
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={sendEmail}>
+            인증번호 전송
+          </Button>
+        )}
+      </div>
       <div className="input-container">
         <div className="addressSearch">
           <p className="text_box">주소</p>
@@ -139,6 +149,7 @@ function Register() {
           className="total_input"
           id="address"
           placeholder="User Address"
+          disabled
         />
       </div>
       <div className="input-container">
@@ -172,28 +183,44 @@ function Register() {
         {registerSuccess === false
           ? error("입력 항목의 빈칸을 확인해주세요")
           : error()}
-        <Button
-          className="Signup-btn"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={() => {
-            if (
-              name.length > 0 &&
-              email.length > 0 &&
-              password.length > 0 &&
-              address.length > 0 &&
-              checkPassword.length > 0 &&
-              password === checkPassword
-            ) {
-              setregisterSuccess(checkSuccess);
-            } else {
-              setregisterSuccess(false);
-            }
-          }}
-        >
-          {" "}
-          회원가입
-        </Button>
+        {email.length > 0 && emailInDB
+          ? error("이미 존재하는 이메일 입니다")
+          : error()}
+        {emailChecked ? (
+          <Button
+            className="Signup-btn"
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={() => {
+              setEmailInDB(emailCheck(email));
+              if (
+                name.length > 0 &&
+                email.length > 0 &&
+                password.length > 0 &&
+                address.length > 0 &&
+                checkPassword.length > 0 &&
+                password === checkPassword
+              ) {
+                setregisterSuccess(checkSuccess);
+              } else {
+                console.log("회원가입실패");
+                setregisterSuccess(false);
+              }
+            }}
+          >
+            {" "}
+            회원가입
+          </Button>
+        ) : (
+          <Button
+            className="Signup-btn"
+            variant="contained"
+            endIcon={<SendIcon />}
+            disabled
+          >
+            회원가입
+          </Button>
+        )}{" "}
       </div>
     </div>
   );

@@ -18,7 +18,7 @@
   align-items: center;
 }
 .signuptext {
-  font-size: 3em;
+  font-size: 2em;
   margin-top: 0.5em;
   color: var(--text-color);
   text-align: center;
@@ -51,16 +51,12 @@
 .Signup-btn {
   text-align: center;
   width: 80%;
-  background-color: var(--button-color);
 }
-.Signup-btn:hover {
-  background-color: var(--button-hover);
-}
+
 .addressButton {
   margin: 0px;
   height: 2em;
-  background-color: var(--button-color);
 }
-.addressButton:hover {
-  background-color: var(--button-hover);
+#address {
+  background: #e0e0e0;
 }
