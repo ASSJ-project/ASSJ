@@ -1,9 +1,8 @@
 .mypage-main {
     display: flex;
     width: 100vw;
-    height: 80vh;
+    height: 70vh;
     flex-direction: column;
-    padding: 2%;
     align-items: center;
     font-family: Georgia, "맑은 고딕", serif;
 }
@@ -21,7 +20,7 @@
     max-width: 1440px;
     width: 100%;
     font-size: 100vw;
-    height: 5%;
+    height: 4vh;
     border-style: none;
     font-size: 100%;
     background-color: #9588E0;
@@ -34,7 +33,7 @@
 .mypage-clickmenu {
     display: flex;
     flex: 0, 1, 0, 1;
-    height: 5%;
+    height: 4vh;
     max-width: 1440px;
     width: 100%;
 }

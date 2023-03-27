@@ -50,7 +50,7 @@ const Nav = styled.nav`
 
 const MapContainer = styled.div`
   display: flex;
-
+  
   flex-direction: row-reverse;
   @media (max-width: 780px) {
     flex-direction: column;
