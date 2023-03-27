@@ -78,7 +78,6 @@ function LoginPage() {
           <Button
             className="login-btn"
             variant="contained"
-            endIcon={<SendIcon />}
             onClick={() => {
               setLoginError(loginDo(email, password));
             }}
