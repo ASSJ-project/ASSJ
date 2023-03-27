@@ -3,6 +3,7 @@ import MapData from '@/components/domain/Map/MapData';
 import { TailSpin } from 'react-loader-spinner';
 import styled from 'styled-components';
 import useFetchData from '@/hooks/useFetchData';
+// import KakaoMapTest from '@/components/domain/Map/KakaoMap_example';
 import KakaoMapTest from '@/components/domain/Map/KakaoMapTest';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
 import Footer from '@/components/Structure/Footer/Footer';
