@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import data from './job_code.json';
+import { setSubcategory } from '@/actions/actions';
 
 const CategoryDropdown = () => {
   const [categories, setItems] = useState(data);
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
-  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+
+  const dispatch = useDispatch();
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+  // const [selectedSubcategory, setSelectedSubcategory] = useState('');
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
-    setSelectedSubcategory('');
+    dispatch(setSubcategory(''));
   };
 
   const handleSubcategoryChange = (event) => {
-    setSelectedSubcategory(event.target.value);
+    setSubcategory(event.target.value);
   };
 
   const selectedCategoryObj = categories.find(
