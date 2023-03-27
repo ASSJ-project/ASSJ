@@ -1,9 +1,9 @@
-import "../components/domain/Login/LoginPage.css";
-import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
-import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
-import MainLogo from "../assets/images/logo.svg";
+import "@/components/domain/Login/LoginPage.css";
+import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
+import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
+import MainLogo from "assets/images/logo.svg";
 import React, { useState } from "react";
-import { loginDo } from "../functions";
+import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
 
 function LoginPage() {
