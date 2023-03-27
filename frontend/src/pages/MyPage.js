@@ -1,10 +1,10 @@
-import MyPageInfo from "../components/domain/MyPage/MyPage-Info";
-import MyPageCheck from "../components/domain/MyPage/MyPage-Check";
-import MyPageHeader from "../components/domain/MyPage/MyPage-Header";
-import { useState } from "react";
-import "../components/domain/MyPage/MyPage.css";
-import Header from "./Header";
-import Footer from "@/components/Structure/Footer/Footer";
+import MyPageInfo from '../components/domain/MyPage/MyPage-Info';
+import MyPageCheck from '../components/domain/MyPage/MyPage-Check';
+import MyPageHeader from '../components/domain/MyPage/MyPage-Header';
+import { useState } from 'react';
+import '../components/domain/MyPage/MyPage.css';
+import Header from './Header';
+import Footer from '@/components/Structure/Footer/Footer';
 
 export default function () {
   const [value, setValue] = useState(false);
