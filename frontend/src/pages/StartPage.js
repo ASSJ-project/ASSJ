@@ -15,13 +15,13 @@ function StartPage() {
             className="btn"
             onClick={() => (window.location.href = "/login")}
           >
-            <h1>로그인</h1>
+            <p>로그인</p>
           </button>
           <button
             className="btn"
             onClick={() => (window.location.href = "/register")}
           >
-            <h1>회원가입</h1>
+            <p>회원가입</p>
           </button>
         </div>
       </div>
