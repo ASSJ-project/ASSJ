@@ -1,7 +1,7 @@
 @import url("../../../styles/global.css");
 @import url("../../../styles/normalize.css");
 .start-container {
-  background-image: url(../../../assets/images/start-bg-img.png);
+  /* background-image: url(../../../assets/images/start-bg-img.png); */
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -51,9 +51,15 @@
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  width: 20em;
-  height: 8em;
+  width: 5em;
+  height: 5em;
   margin-right: 20px;
   border-radius: 20px;
   border: 0;
+}
+
+@media (min-width: 780px) {
+  .btn-item button {
+    width: 8em;
+  }
 }
