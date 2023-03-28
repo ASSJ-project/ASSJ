@@ -1,53 +1,37 @@
-/* Admin Css */
+/* AdminPage Css */
 .admin_container {
   padding: 2em 1em;
   font-size: 1em;
   width: 480px;
-  height: 100vh;
+  height: 80vh;
   border: 1px solid purple;
+  margin: auto;
 }
 
 .button_container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.6em;
 }
 .admin_btn {
   width: 49%;
   font-size: 1.5em;
   align-items: center;
   padding: 1%;
-  background: var(--soft-color);
+  background: var(--);
   border-radius: 10px;
   margin-bottom: 0.6em;
   border: none;
 }
 
-.stats_radio_box {
-  display: flex;
-  justify-content: space-between;
+/* Graph Css */
+.graph_container {
+  border: 1px solid coral;
 }
 
-.stats_radio_box input[type="radio"] {
-  display: none;
-}
-
-.stats_radio_box input[type="radio"] + label {
-  font-size: 1.5em;
-  display: inline-block;
-  width: 30%;
-  padding: 1%;
-  background: var(--soft-color);
-  border-radius: 10px;
-  margin-bottom: 0.6em;
-  border: none;
+.stats_title {
   text-align: center;
-}
-
-.stats_radio_box input[type="radio"]:checked + label {
-  background-color: var(--main-color);
-}
-
-.stats_container {
-  background-color: var(--soft-color);
-  border-radius: 10px;
+  font-size: 1.2em;
+  margin-bottom: 0.6em;
+  font-weight: bold;
 }
