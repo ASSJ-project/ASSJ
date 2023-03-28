@@ -1,38 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import logo from 'assets/images/logo_only_word.svg';
 import { Link } from 'react-router-dom';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
-  const [userToggled, setUserToggled] = useState(false);
-  //   const [login,setLogin] = useState("true");
 
-  // useEffect(()=>{
-  //   if(sessionStorage.getItem("key1")){
-  //     setLogin(false);
-  //   };
-  // },[]);
+  function logout() {
+    sessionStorage.clear();
+    alert('로그아웃되었습니다.');
+  }
 
   const Nav = styled.nav`
-    background-color: White;
     color: #878982;
+    width: 100vw;
 
     .header__menulist {
-      width: 100%;
+    width: 100%;  
     margin: 0 auto;
     padding: 15px 0;
     display: flex;
     justify-content: space-around;
     list-style : none;
     border: solid 1px #dfe2d5
-    
-    }
-
-    .header__menulist li{
-      
     }
 
     @media screen and (max-width: 768px) {
@@ -43,14 +36,12 @@ function Header() {
         flex-direction: row;
         width: 100%;
         height : 100%;
-        
-        
       }
     `;
 
   const Head = styled.div`
     width: 100vw;
-    height: 100%;
+    height: 60px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -64,12 +55,8 @@ function Header() {
     }
 
     img {
-      width: 150px;
+      width: 200px;
       height: 60px;
-    }
-
-    .header__left {
-      display: flex;
     }
 
     .header__right {
@@ -89,33 +76,21 @@ function Header() {
     .toggle {
       display: none;
       font-size: 20px;
-    }
-
-    .user {
-      display: none;
-      font-size: 20px;
+      margin-left: 3px;
     }
 
     @media screen and (max-width: 768px) {
-      img {
-        margin: auto;
-        display: block;
-      }
-
       .header__right {
-        display: ${(props) => (props.userToggled ? 'flex' : 'none')};
         flex-direction: row;
         width: 100px;
       }
 
       .header__right li {
-        font-size: 8px;
+        font-size: 20px;
       }
 
-      .toggle {
-        display: block;
-      }
-
+      img,
+      .toggle,
       .user {
         display: block;
       }
@@ -124,7 +99,7 @@ function Header() {
 
   return (
     <>
-      <Head isToggled={isToggled} userToggled={userToggled}>
+      <Head isToggled={isToggled}>
         {/* 햄버거 버튼(bar) */}
         <div
           className="toggle"
@@ -143,24 +118,18 @@ function Header() {
         {/* User 메뉴 리스트 */}
         <ul className="header__right">
           <li>
-            <Link to="/mypage">info</Link>
+            <Link to="/mypage">
+              <FaUserCircle />{' '}
+            </Link>
           </li>
           <li>
-            <button onClick={() => sessionStorage.clear()}>logout</button>
+            <button onClick={logout}>
+              <AiOutlineLogout />
+            </button>
           </li>
         </ul>
-        {/* User 버튼 */}
-        <div
-          className="user"
-          onClick={() => {
-            setUserToggled(!userToggled);
-          }}
-        >
-          {!userToggled ? <FaUserCircle /> : <FiX />}
-        </div>
       </Head>
-
-      <Nav isToggled={isToggled} userToggled={userToggled}>
+      <Nav isToggled={isToggled}>
         {/* 메뉴 리스트 */}
         <ul className="header__menulist">
           <li>
@@ -173,7 +142,12 @@ function Header() {
             <Link to="/mypage">Secciones</Link>
           </li>
           <li>
-            <Link>로그아웃</Link>
+            <button
+              onClick={logout}
+              style={{ border: '0', backgroundColor: 'transparent' }}
+            >
+              logout
+            </button>
           </li>
         </ul>
       </Nav>
