@@ -1,13 +1,12 @@
-// import Address from "./SignupApi/SignupAddress";
 import "../components/domain/Register/register.css";
 import { postalSeach } from "../components/domain/Register/RegisterApi";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { registerDo } from "@/apis/register/registerDo";
 import emailjs from "@emailjs/browser";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
-import { purple } from "@mui/material/colors";
+import TextField from "@mui/material/TextField";
 
 function Register() {
   const [name, setName] = useState("");
@@ -20,7 +19,10 @@ function Register() {
   const [passwordVisable, setPasswordVisable] = useState("");
   const [registerSuccess, setregisterSuccess] = useState();
   const [emailInDB, setEmailInDB] = useState(false);
+  const [emailSend, setEmailSend] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
   const [emailChecked, setEmailChecked] = useState(false);
+  const [random, setRandom] = useState("000000");
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
   const emailRegex =
@@ -45,7 +47,6 @@ function Register() {
       ? setPasswordVisable(true)
       : setPasswordVisable(false);
   };
-
   const checkPasswordChange = (e) => {
     setcheckPassword(e.target.value);
   };
@@ -61,38 +62,44 @@ function Register() {
     registerDo(email, password, address, name);
   };
 
-  const [random, setRandom] = useState("000000");
-
-  function num() {
-    setRandom(String(Math.floor(Math.random() * 1000000)).padStart(6, "0"));
-  }
-
-  const form = useRef();
-  const sendEmail = (e) => {
-    num();
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_bhg1fi8",
-        "template_hi33sxj",
-        form.current,
-        "1TUNz-cyWeI9OUyAH"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+  //인증번호 6자리 생성 함수
+  var generateRandom = function () {
+    var ranNum = Math.floor(Math.random() * (999999 - 111111 + 1)) + 111111;
+    return ranNum;
   };
 
-  const button_color = purple[200];
+  //사용자 이메일에 메일보내기
+  const sendEmail = (inDB) => {
+    emailjs.init("O8bUvMyNJhc1Z6tVI");
+    const ranNum = generateRandom();
+    setRandom(ranNum);
+    console.log(ranNum);
+    let templateParams = {
+      sendemail: email,
+      number: ranNum,
+    };
+    console.log(inDB);
+    if (!inDB) {
+      emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
+      setEmailSend(true);
+    } else {
+      setEmailSend(false);
+    }
+  };
 
   const error = (message = <>&nbsp;</>) => {
     return <div className="errorMessage">{message}</div>;
+  };
+
+  const emailCheckInput = (e) => {
+    setEmailInput(e.target.value);
+  };
+
+  const emailSubmit = () => {
+    if (emailInput.match(random)) setEmailChecked(true);
+    else
+      document.getElementById("email-check-number-input").innerText =
+        "번호를 확인해주세요";
   };
 
   return (
@@ -110,29 +117,66 @@ function Register() {
           ? error("이름 형식을 확인해주세요")
           : error()}
       </div>
-      <div ref={form}>
-        <div className="input-container">
-          <p className="text_box">이메일</p>
+
+      <div className="input-container">
+        <p className="text_box">이메일</p>
+        <div>
           <input
             className="total_input"
             placeholder="Email Address"
             type="email"
             onChange={(e) => {
-              emailChange(e);
+              // emailChange(e);
+              setEmailInDB(emailCheck(e.target.value));
+              console.log(emailInDB);
             }}
             name="user_email"
+            autoComplete="off"
           />
+          <input value={random} name="random" type="hidden" />
         </div>
-        <input value={random} name="random" type="hidden" />
-        {!emailVisable && email.length > 0 ? (
-          <Button variant="contained" disabled>
-            이메일 형식을 확인해주세요
-          </Button>
-        ) : (
-          <Button variant="contained" onClick={sendEmail}>
-            인증번호 전송
-          </Button>
-        )}
+        {email.length > 0 && emailInDB
+          ? error("이미 존재하는 이메일 입니다")
+          : error("")}
+        <div className="email-check-button">
+          {!emailVisable && email.length > 0 ? (
+            <Button
+              variant="contained"
+              className="send-email-disabled"
+              disabled
+            >
+              이메일 형식을 확인해주세요
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              onClick={() => {
+                sendEmail(emailInDB);
+              }}
+              className="send-email"
+            >
+              인증번호 전송
+            </Button>
+          )}
+          {emailSend && (
+            <>
+              <TextField
+                id="email-check-number-input"
+                placeholder="인증 번호 입력"
+                size="small"
+                variant="standard"
+                onChange={emailCheckInput}
+              />
+              <Button
+                variant="contained"
+                className="email-number-button"
+                onClick={emailSubmit}
+              >
+                확인
+              </Button>
+            </>
+          )}
+        </div>
       </div>
       <div className="input-container">
         <div className="addressSearch">
@@ -183,16 +227,12 @@ function Register() {
         {registerSuccess === false
           ? error("입력 항목의 빈칸을 확인해주세요")
           : error()}
-        {email.length > 0 && emailInDB
-          ? error("이미 존재하는 이메일 입니다")
-          : error()}
         {emailChecked ? (
           <Button
             className="Signup-btn"
             variant="contained"
             endIcon={<SendIcon />}
             onClick={() => {
-              setEmailInDB(emailCheck(email));
               if (
                 name.length > 0 &&
                 email.length > 0 &&

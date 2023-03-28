@@ -9,8 +9,10 @@
 }
 .input-container {
   display: flex;
-  width: 100%;
+  margin-left: 5%;
+  max-width: 90%;
   flex-direction: column;
+  justify-items: center;
 }
 .addressSearch {
   display: flex;
@@ -35,6 +37,7 @@
   border: 1px white solid;
   background: var(--input-color);
   border-radius: 10px;
+  width: 90%;
   padding: 1.5em;
 }
 .total_input:focus {
@@ -52,11 +55,30 @@
   text-align: center;
   width: 80%;
 }
+.send-email {
+  height: 2em;
+  width: fit-content;
+}
+.send-email-disabled {
+  height: 2em;
+  width: fit-content;
+}
 
 .addressButton {
-  margin: 0px;
   height: 2em;
 }
 #address {
   background: #e0e0e0;
+}
+
+.email-check-button {
+  display: flex;
+  justify-content: space-between;
+}
+.email-check-number-input {
+  width: fit-content;
+}
+.email-number-button {
+  width: fit-content;
+  height: 2em;
 }
