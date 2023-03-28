@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './map.css';
-import marker from 'assets/images/marker_img.png';
 
 const KakaoMapContainer = styled.div`
   width: 100%;
@@ -41,17 +40,6 @@ export default function KakaoMap(props) {
       return;
     }
 
-    const imageSrc = marker, // 마커이미지의 주소입니다
-      imageSize = new kakao.maps.Size(25, 40), // 마커이미지의 크기입니다
-      imageOption = { offset: new kakao.maps.Point(30, 40) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    const markerImage = new kakao.maps.MarkerImage(
-      imageSrc,
-      imageSize,
-      imageOption
-    );
-
     const geocoder = new kakao.maps.services.Geocoder();
 
     // 기존에 생성된 마커 제거
@@ -62,60 +50,42 @@ export default function KakaoMap(props) {
     });
     setMarkers([]);
     const newMarkers = data.map((item, index) => {
-      const content = document.createElement('div');
-      content.className = 'label';
-      content.innerHTML = `<span class="center">"로딩 중"</span>`;
-      // const center = document.createElement('span');
-      // center.className = 'center';
-      // center.textContent = '로딩 중';
-      // content.appendChild(center);
+      let newContent = null; // newContent 변수를 초기화합니다.
+      // WTM 좌표를 WGS84 좌표계의 좌표로 변환합니다
+      geocoder.transCoord(item.x, item.y, transCoordCB, {
+        input_coord: kakao.maps.services.Coords.WGS84, // 변환을 위해 입력한 좌표계 입니다
+        output_coord: kakao.maps.services.Coords.WTM, // 변환 결과로 받을 좌표계 입니다
+      });
 
-      // 거리 정보를 계산하여 content에 추가합니다.
-      setTimeout(() => {
-        geocoder.transCoord(
-          item.x,
-          item.y,
-          (result, status) => {
-            transCoordCB(result, status, content);
-          },
-          {
-            input_coord: kakao.maps.services.Coords.WGS84, // 변환을 위해 입력한 좌표계 입니다
-            output_coord: kakao.maps.services.Coords.WTM, // 변환 결과로 받을 좌표계 입니다
-          }
-        );
-      }, Math.floor(index / 20) * 200);
+      function transCoordCB(result, status) {
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+          let distance = calculateDistance(
+            result[0].x,
+            result[0].y,
+            187803.21000005602,
+            451046.9699993003
+          );
+        }
+      }
 
+      // return (newContent = `<div>${distance}</div>`);
+      console.log(`거리: ${newContent}`);
       return {
         overlay: new kakao.maps.CustomOverlay({
           map: kakaoMap,
           position: new kakao.maps.LatLng(item.y, item.x),
-          content: content,
-          yAnchor: 1,
+          content: newContent,
         }),
         marker: new kakao.maps.Marker({
           map: kakaoMap,
           position: new kakao.maps.LatLng(item.y, item.x),
-          image: markerImage,
         }),
       };
     });
 
     setMarkers(newMarkers);
   }, [kakaoMap, data]);
-
-  function transCoordCB(result, status, content) {
-    // 정상적으로 검색이 완료됐으면
-    if (status === kakao.maps.services.Status.OK) {
-      let distance = calculateDistance(
-        result[0].x,
-        result[0].y,
-        187803.21000005602,
-        451046.9699993003
-      );
-
-      content.innerHTML = `<div>${distance}</div>`;
-    }
-  }
 
   function calculateDistance(x1, y1, x2, y2) {
     const xDiff = x2 - x1;

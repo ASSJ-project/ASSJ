@@ -24,4 +24,6 @@ public class Company {
   private String jobsCd;
   private String x;
   private String y;
+  private String wtmX;
+  private String wtmY;
 }
