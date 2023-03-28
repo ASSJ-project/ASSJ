@@ -1,10 +1,9 @@
-import "../components/domain/Error/ErrorPage.css";
-import logo2 from "../assets/images/Error-logo.PNG";
-import logo from "../assets/images/logo_only_word.svg";
+import "@/components/domain/Error/ErrorPage.css";
+import logo2 from "assets/images/Error-logo.PNG";
+import logo from "assets/images/logo_only_word.svg";
 import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
 
 const ErrorPage = () => {
   return (
