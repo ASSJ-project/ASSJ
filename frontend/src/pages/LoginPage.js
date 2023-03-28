@@ -42,10 +42,10 @@ function LoginPage() {
       <div className="login-container">
         <img className="loginlogo" src={MainLogo} alt="메인로고" />
         <div className="id-container">
-          <p className="id-text">Email</p>
+          <p className="id-text">이메일</p>
           <input
             className="input"
-            placeholder="이메일"
+            placeholder="Email"
             type="email"
             value={email}
             onChange={emailChange}
@@ -56,10 +56,10 @@ function LoginPage() {
         </div>
 
         <div className="pw-container">
-          <p className="pw-text">Password</p>
+          <p className="pw-text">비밀번호</p>
           <input
             className="input"
-            placeholder="비밀번호"
+            placeholder="Password"
             type="password"
             value={password}
             onChange={passwordChange}
