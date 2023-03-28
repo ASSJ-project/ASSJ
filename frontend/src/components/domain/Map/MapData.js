@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import KakaoMap from './KakaoMap';
+import KakaoMap from './KakaoMap_good';
 
 export default function MapData({ data }) {
   const mapSize = [100, 60];

@@ -4,7 +4,7 @@ import { TailSpin } from 'react-loader-spinner';
 import styled from 'styled-components';
 import useFetchData from '@/hooks/useFetchData';
 // import KakaoMapTest from '@/components/domain/Map/KakaoMap_example';
-import KakaoMapTest from '@/components/domain/Map/KakaoMapTest';
+// import KakaoMapTest from '@/components/domain/Map/KakaoMapTest';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
 import Footer from '@/components/Structure/Footer/Footer';
 import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
@@ -92,8 +92,6 @@ const SearchButton = styled.button`
 function MapPage() {
   const { data, loading, error } = useFetchData();
   const [searchText, setSearchText] = useState('');
-  const [salary, setSalary] = useState('');
-  const [companySize, setCompanySize] = useState('');
   const [filteredData, setFilteredData] = useState(data);
 
   const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
@@ -130,11 +128,9 @@ function MapPage() {
     <>
       <Header>Header</Header>
       <Nav>Navigation</Nav>
+      <p>{selectedSubcategory}</p>
       <img src={backbtn} className="backbtn" />
       <MainContainer>main</MainContainer>
-      <Provider store={store}>
-        <p>{selectedSubcategory}</p>
-      </Provider>
       <Container>
         <SearchContainer>
           <SearchInput
@@ -149,9 +145,9 @@ function MapPage() {
         </SearchContainer>
 
         <MapBoundary>
-          <KakaoMapTest data={filteredData} />
+          <KakaoMap data={filteredData} />
         </MapBoundary>
-        <CompanyList data={data} />
+        {/* <CompanyList data={data} /> */}
       </Container>
       <Footer />
     </>
