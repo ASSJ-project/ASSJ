@@ -11,31 +11,16 @@ import Button from "@mui/material/Button";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailVisable, setEmailVisable] = useState(true);
-  const [passwordVisable, setPasswordVisable] = useState(true);
   const [loginError, setLoginError] = useState(false);
-
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   const emailChange = (e) => {
     setEmail(e.target.value);
-    if (emailRegex.test(email)) {
-      setEmailVisable(true);
-    } else {
-      setEmailVisable(false);
-    }
   };
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
-    if (passwordRegex.test(password)) {
-      setPasswordVisable(true);
-    } else {
-      setPasswordVisable(false);
-    }
   };
+
   return (
     <>
       <div className="login-container">
@@ -49,9 +34,6 @@ function LoginPage() {
             value={email}
             onChange={emailChange}
           />
-          {!emailVisable && email.length > 0 && (
-            <div className="errorMessage">이메일 형식을 확인해주세요</div>
-          )}
         </div>
 
         <div className="pw-container">
@@ -63,17 +45,17 @@ function LoginPage() {
             value={password}
             onChange={passwordChange}
           />
-          {!passwordVisable && password.length > 0 && (
-            <div className="errorMessage">
-              비밀번호는 영문자+숫자 8글자 이상이여야 합니다
-            </div>
-          )}
         </div>
-        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
+
         <div className="find-pw-container">
           <p className="find-pw">비밀번호 찾기</p>
         </div>
         <div className="login-btn-container">
+          <p className="errorMessage">
+            {loginError && sessionStorage.getItem("access_token")
+              ? "이메일과 비밀번호를 확인해주세요"
+              : ""}
+          </p>
           <Button
             className="login-btn"
             variant="contained"
