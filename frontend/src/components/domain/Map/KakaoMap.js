@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './map.css';
 import marker from 'assets/images/marker_img.png';
+import proj4 from 'proj4';
 
 const KakaoMapContainer = styled.div`
   width: 100%;
@@ -95,7 +96,7 @@ export default function KakaoMap(props) {
         marker: new kakao.maps.Marker({
           map: kakaoMap,
           position: new kakao.maps.LatLng(item.y, item.x),
-          image: markerImage,
+          // image: markerImage,
         }),
       };
     });
@@ -104,13 +105,23 @@ export default function KakaoMap(props) {
   }, [kakaoMap, data]);
 
   function transCoordCB(result, status, content) {
+    // WGS84 좌표를 UTM 좌표로 변환
+    proj4.defs('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs');
+    // EPSG:5179 좌표계 정의 추가
+    proj4.defs(
+      'EPSG:5181',
+      '+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=500000 +ellps=GRS80 +units=m +no_defs'
+    );
+
+    const wtmCoords = proj4('EPSG:4326', 'EPSG:5181', [userX, userY]);
+    console.log(wtmCoords);
     // 정상적으로 검색이 완료됐으면
     if (status === kakao.maps.services.Status.OK) {
       let distance = calculateDistance(
         result[0].x,
         result[0].y,
-        187803.21000005602,
-        451046.9699993003
+        wtmCoords[0],
+        wtmCoords[1]
       );
 
       content.innerHTML = `<div>${distance}</div>`;
