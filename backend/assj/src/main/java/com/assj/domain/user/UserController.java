@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping
+    @GetMapping("/all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
