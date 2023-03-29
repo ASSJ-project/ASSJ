@@ -53,7 +53,7 @@
   text-align: left;
   text-shadow: 0px 1px whitesmoke;
 }
-.errorMessage {
+/* .errorMessage {
   color: red;
   font-size: 0.7em;
   margin-top: 3px;
@@ -61,7 +61,7 @@
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-}
+} */
 .pw-text {
   width: 20%;
   font-size: 1.2em;

@@ -3,7 +3,7 @@ import { postalSeach } from "../components/domain/Register/RegisterApi";
 import React, { useEffect, useState } from "react";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { registerDo } from "@/apis/register/registerDo";
-import emailjs from "@emailjs/browser";
+import emailjs, { send } from "@emailjs/browser";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
@@ -18,11 +18,12 @@ function Register() {
   const [emailVisable, setEmailVisable] = useState("");
   const [passwordVisable, setPasswordVisable] = useState("");
   const [registerSuccess, setregisterSuccess] = useState();
-  const [emailInDB, setEmailInDB] = useState(false);
   const [emailSend, setEmailSend] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const [emailChecked, setEmailChecked] = useState(false);
+  const [emailIndDB, setEmailInDB] = useState(false);
   const [random, setRandom] = useState("000000");
+  const [checked, setChecked] = useState(false);
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/;
   const emailRegex =
@@ -58,6 +59,8 @@ function Register() {
     document.head.appendChild(script);
   }, []);
 
+  //useEffect(() => {}, [sessionStorage.removeItem("email_check")]);
+
   const checkSuccess = () => {
     registerDo(email, password, address, name);
   };
@@ -69,7 +72,7 @@ function Register() {
   };
 
   //사용자 이메일에 메일보내기
-  const sendEmail = (inDB) => {
+  const sendEmail = () => {
     emailjs.init("O8bUvMyNJhc1Z6tVI");
     const ranNum = generateRandom();
     setRandom(ranNum);
@@ -78,13 +81,8 @@ function Register() {
       sendemail: email,
       number: ranNum,
     };
-    console.log(inDB);
-    if (!inDB) {
-      emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
-      setEmailSend(true);
-    } else {
-      setEmailSend(false);
-    }
+    emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
+    setEmailSend(true);
   };
 
   const error = (message = <>&nbsp;</>) => {
@@ -101,6 +99,21 @@ function Register() {
       document.getElementById("email-check-number-input").innerText =
         "번호를 확인해주세요";
   };
+
+  const mailCheck = () => {
+    emailCheck(email).then((result) => {
+      console.log(result.data);
+      setEmailInDB(result.data);
+      setChecked(!result.data);
+    });
+  };
+
+  useEffect(() => {
+    if (email.length < 1) {
+      setChecked(false);
+      setEmailInDB(false);
+    }
+  }, [email.length]);
 
   return (
     <div className="signup-container">
@@ -125,19 +138,17 @@ function Register() {
             className="total_input"
             placeholder="Email Address"
             type="email"
-            onChange={(e) => {
-              // emailChange(e);
-              setEmailInDB(emailCheck(e.target.value));
-              console.log(emailInDB);
-            }}
+            onChange={emailChange}
             name="user_email"
             autoComplete="off"
           />
           <input value={random} name="random" type="hidden" />
         </div>
-        {email.length > 0 && emailInDB
-          ? error("이미 존재하는 이메일 입니다")
-          : error("")}
+        {email.length > 0
+          ? emailIndDB
+            ? error("이미 존재하는 이메일 입니다")
+            : error()
+          : error()}
         <div className="email-check-button">
           {!emailVisable && email.length > 0 ? (
             <Button
@@ -151,11 +162,15 @@ function Register() {
             <Button
               variant="contained"
               onClick={() => {
-                sendEmail(emailInDB);
+                checked ? sendEmail() : mailCheck();
               }}
               className="send-email"
             >
-              인증번호 전송
+              {email.length > 0
+                ? checked
+                  ? "인증번호 전송"
+                  : "이메일 중복확인"
+                : "이메일 중복확인"}
             </Button>
           )}
           {emailSend && (
