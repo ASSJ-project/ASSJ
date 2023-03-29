@@ -51,9 +51,7 @@ function LoginPage() {
         </div>
         <div className="login-btn-container">
           <p className="errorMessage">
-            {loginError && sessionStorage.getItem("access_token")
-              ? "이메일과 비밀번호를 확인해주세요"
-              : ""}
+            {loginError ? "이메일과 비밀번호를 확인해주세요" : ""}
           </p>
           <Button
             className="login-btn"
