@@ -7,17 +7,9 @@
   font-family: Georgia, '맑은 고딕', serif;
 }
 
-.mypage-head {
-  height: 5%;
-  width: 100%;
-  max-width: 1440px;
-  display: flex;
-  margin: 2px;
-  font-size: 16px;
-}
-
 .mypage-mypage {
-  max-width: 1440px;
+  margin-top: 10px;
+  max-width: 768px;
   width: 100%;
   font-size: 100vw;
   height: 5%;
@@ -27,21 +19,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  color: white;
 }
 
 .mypage-clickmenu {
   display: flex;
   flex: 0, 1, 0, 1;
   height: 5%;
-  max-width: 1440px;
+  max-width: 768px;
   width: 100%;
 }
 
 .mypage-searchmenu {
   display: flex;
   height: 5%;
-  max-width: 1440px;
+  max-width: 768px;
   width: 100%;
 }
 
@@ -65,7 +57,6 @@
   margin: auto;
 }
 
-.mypage-head-right-items,
 .mypage-checkeditems-alldeletebtn {
   margin-left: auto;
   width: 15%;
@@ -75,13 +66,14 @@
   align-items: center;
   font-size: 12px;
   margin-left: auto;
-  background: #ffffff;
-  border: 0.5px solid #4a72ff;
+  border: 1px solid white;
+  background-color: #4a72ff;
+  color: white;
   /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
 }
 
 .mypage-checkeditems {
-  max-width: 1440px;
+  max-width: 768px;
   background-color: rgba(226, 223, 248, 0.7);
   margin-top: 10px;
   width: 100%;
@@ -96,19 +88,14 @@
 .mypage-chekeditem-deletebtn {
   margin-left: auto;
   padding: 1%;
-  background-color: #ffffff;
-  border: 0.5px solid #4a72ff;
+  border: 1px solid white;
+  background-color: #4a72ff;
+  color: white;
 }
 
 .mypage-checked-text {
-  /* background-color: #E2DFF8; */
-  /* border: 1px solid; */
   width: 200px;
   color: #000000;
-}
-
-.mypage-chekeditem-deletebtn:hover {
-  background-color: #6f6897;
 }
 
 .mypage-recently {
@@ -123,7 +110,7 @@
 }
 
 .mypage-myinformations {
-  max-width: 1440px;
+  max-width: 768px;
   width: 100%;
   flex: 1, 0, 1, 0;
   height: 70%;
@@ -139,7 +126,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin-top: 2px;
+  color: white;
 }
 
 .mypage-myinfo2 {
@@ -150,7 +138,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin-top: 2px;
 }
 
 .mypage-myinformation {
@@ -171,20 +159,12 @@
   height: 100%;
 }
 
-.mypage-myinfo1:hover,
-.mypage-myinfo2:hover,
-.mypage-head-right-items:hover,
-.mypage-chekeditem-deletebtn:hover,
-.mypage-checkeditems-alldeletebtn:hover,
-.mypage-pwcheck:hover {
-  background-color: #9588e0;
-}
-
 .mypage-none {
   display: none;
 }
 
 .mypage-pwcheck {
-  border: 0.5px solid blue;
-  background-color: white;
+  border: 1px solid white;
+  background-color: #4a72ff;
+  color: white;
 }

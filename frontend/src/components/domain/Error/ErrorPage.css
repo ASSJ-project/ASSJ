@@ -1,63 +1,31 @@
 .Error {
+  width: 480px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  margin-top: 10vh;
+  justify-content: center;
+}
+.Error-logo1 {
+  width: 100%;
 }
 
-.Error-logo {
+.Error-logo2 {
+  width: 100%;
+  height: 90%;
+}
+
+.Error-text {
   width: 100%;
   height: 20%;
   text-align: center;
 }
 
-.Error-text {
-  width: 100%;
-  height: 30%;
-  text-align: center;
-}
-
 .Error-home {
-  max-width: 400px;
-  width: 60%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2rem;
-
-  background-color: #e2dff8;
-  color: #000000;
-}
-
-.Error-home:hover {
-  background-color: #9588e0;
-  transition: 0.7s;
-}
-
-.Error-logo1 {
-  width: 100%;
-  height: 50%;
-}
-
-.Error-logo2 {
-  max-width: 400px;
-  width: 50%;
-  height: 90%;
+  font-size: 1.5em !important;
+  padding: 1em 3.5em !important;
 }
 
 h3 {
-  margin-top: 5vh;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 0.7em;
-  margin-top: 3px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
+  margin: 3em 0;
 }

@@ -3,6 +3,8 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import GoogleImg from "../../../assets/images/googlebtn.png";
 
+import "@/components/domain/Login/LoginPage.css";
+
 export default function GoogleLoginBtn() {
   const clientId =
     "425382057029-f821f5ddsd40pnji9uvpj3u1ndipaoq1.apps.googleusercontent.com";
