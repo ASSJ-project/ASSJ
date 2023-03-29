@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,19 @@ public class CompanyService {
     public List<Company> getAllCompanies() {
         String sql = "SELECT * FROM company";
         List<Company> companies = jdbcTemplate.query(sql, new CompanyRowMapper());
+        return companies;
+    }
+
+    public List<Company> getCompaniesPage(int page, int size, String filteredData) {
+        int offset = (page - 1) * size;
+        String sql = "SELECT * FROM company WHERE basicAddr LIKE :searchString LIMIT :size OFFSET :offset";
+        String searchString = "%" + filteredData + "%";
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("searchString", searchString)
+                .addValue("size", size)
+                .addValue("offset", offset);
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
         return companies;
     }
 
