@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState(true);
 
   const emailChange = (e) => {
     setEmail(e.target.value);
@@ -19,6 +19,13 @@ function LoginPage() {
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const login = () => {
+    loginDo(email, password).then((result) => {
+      setLoginError(result);
+      console.log(loginError);
+    });
   };
   return (
     <>
@@ -51,15 +58,9 @@ function LoginPage() {
         </div>
         <div className="login-btn-container">
           <p className="errorMessage">
-            {loginError ? "이메일과 비밀번호를 확인해주세요" : ""}
+            {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
           </p>
-          <Button
-            className="login-btn"
-            variant="contained"
-            onClick={() => {
-              setLoginError(loginDo(email, password));
-            }}
-          >
+          <Button className="login-btn" variant="contained" onClick={login}>
             {" "}
             Login
           </Button>
