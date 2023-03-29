@@ -6,7 +6,12 @@ export default function KakaoLoginBtn() {
   const clientId = "5308bfd7191289f8e5ccd2c1224835eb";
 
   const responseKakao = (response) => {
-    console.log(response);
+    sessionStorage.removeItem("access_token");
+    if (response) {
+      sessionStorage.setItem("access_token", response.response.access_token);
+      window.location.href = "map";
+    }
+    //차후 refresh token 적용 필요
   };
 
   return (

@@ -2,8 +2,8 @@
 
 .user_info_container {
   background-color: var(--soft-color);
-  border-radius: 20px;
-  font-size: 1.8em;
+  border-radius: 10px;
+  font-size: 1em;
   display: grid;
   grid-template-columns: 2em 9fr;
   align-items: center;

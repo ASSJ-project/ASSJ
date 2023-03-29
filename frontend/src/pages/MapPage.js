@@ -1,64 +1,151 @@
-/* global kakao */
-
-import { callApi } from '../functions';
-import { useState, useEffect } from 'react';
-import MapData from '../components/Map/MapData';
-import React from 'react';
-import Button from '../apis/map/Button';
-import '../components/domain/Map/map.css';
 import styled from 'styled-components';
+import Header from './Header';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import { TailSpin } from 'react-loader-spinner';
+import useFetchData from '@/hooks/useFetchData';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
+import Footer from '@/components/Structure/Footer/Footer';
+import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
+import MapToggle from '@/components/domain/Map/ToggleButton';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-/* DB에 데이터 요청하는 함수 */
+const Main = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
 
-function MapPage() {
-  const url = '/api/getCorpData';
-  const [addrData, setAddrData] = useState();
-  const [isError, setError] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const dataList = await callApi(url);
-        const addr = await dataList
-          .filter((item) => item.region.includes('강남구'))
-          //.filter((item) => item.jobsCd.startsWith("01")) // 지역 필터
-          .map((item) => {
-            return {
-              company: item.company,
-              x: item.x,
-              y: item.y,
-              address: item.basicAddr,
-            };
-          });
-        setAddrData(addr);
-        setLoading(true);
-      } catch (error) {
-        setError(true);
+const SearchBox = styled.div`
+  top: 5%;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: absolute;
+
+  z-index: 2;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  height: 20px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+`;
+
+const SearchButton = styled.button`
+  width: 150px;
+  height: 50px;
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+
+  @media (max-width: 767px) {
+    margin-top: 10px;
+  }
+`;
+const LoadingContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const MapBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
+  border: 1px solid black;
+`;
+
+const ToggleBoundary = styled.div`
+  position: absolute;
+  bottom: 5%;
+  z-index: 2;
+`;
+
+function LayoutPage() {
+  const { data, loading, error } = useFetchData();
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState(data);
+  const [selected, setSelected] = useState('map');
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+
+  const handleSearch = () => {
+    let filtered = data.filter((item) => {
+      // if (salary && item.salary !== salary) {
+      //   return false;
+      // }
+      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
+        return false;
       }
-    }
-    fetchData();
-  }, []);
+      if (searchText && !item.basicAddr.includes(searchText)) {
+        return false;
+      }
+      return true;
+    });
+    setFilteredData(filtered);
+  };
 
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <TailSpin color="#9588e0" height={80} width={80} />
+      </LoadingContainer>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
   return (
     <>
-      <GpsContainer>
-        <div className="map">
-          {isLoading && <MapData addrdata={addrData} />}
-        </div>
-        <div className="button">
-          <Button />
-          <Button />
-          <Button />
-        </div>
-      </GpsContainer>
+      <Header />
+      <Main>
+        <SearchBox>
+          <SearchInput
+            type="text"
+            placeholder="검색"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <SearchButton onClick={handleSearch}>검색</SearchButton>
+        </SearchBox>
+
+        <ToggleBoundary className="App">
+          <MapToggle setSelected={setSelected} />
+        </ToggleBoundary>
+        {selected === 'map' ? (
+          <MapBoundary>
+            <KakaoMap data={filteredData} />
+          </MapBoundary>
+        ) : (
+          <CompanyList data={data} />
+        )}
+      </Main>
+      <Footer />
     </>
   );
 }
 
-export default MapPage;
-
-const GpsContainer = styled.div`
-  position: relative;
-  margin-top: 1rem;
-  gap: 1.2rem;
-`;
+export default LayoutPage;

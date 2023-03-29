@@ -47,22 +47,27 @@ public class UserController {
         } catch (Exception e) {
             log.info(e.toString());
         }
-            return "failed";
+            return null;
     } 
 
     @PostMapping("/register.do")
-    public void register(@RequestBody User user){
+    public Boolean register(@RequestBody User user){
         try {
             if(!userService.checkEmail(user.getUserEmail())){
                 String hashPassWord = passwordEncoder.encode(user.getUserPassword());
                 user.setUserPassword(hashPassWord);
                 userService.addUser(user);
                 log.info("회원가입 성공");
+                return true;
             }
-            else log.info("유저가 DB에 존재합니다");
+            else {
+                log.info("유저가 DB에 존재합니다");
+                return false;
+            }
         } catch (Exception e) {
             log.info(e.toString());
         }
+        return false;
     }
 
     @PostMapping("/emailCheck.do")

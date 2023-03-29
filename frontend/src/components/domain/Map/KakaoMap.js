@@ -1,104 +1,143 @@
 /* global kakao */
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import './map.css';
+import marker from 'assets/images/marker_img.png';
+import proj4 from 'proj4';
+
+const KakaoMapContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export default function KakaoMap(props) {
-  const { data, size } = props;
+  const { data } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
-
-  const container = useRef();
+  const [markers, setMarkers] = useState([]);
+  const userY = 37.4954330863648;
+  const userX = 126.88750531451;
 
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false&libraries=services,clusterer,drawing";
+      'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a8f261db701c3d43d7424b62afca4d55&autoload=false&libraries=services,clusterer,drawing';
     document.head.appendChild(script);
-
     script.onload = () => {
       kakao.maps.load(() => {
-        let markers_for_clusterer = [];
-        // 사용자 주소 좌표 넣기
-        const center = new kakao.maps.LatLng(37.50802, 127.062835);
-        const options = {
-          center,
-          level: 5,
+        const mapContainer = document.getElementById('map');
+        const mapOptions = {
+          center: new kakao.maps.LatLng(userY, userX),
+          level: 7,
         };
-        const map = new kakao.maps.Map(container.current, options);
-        // 주석 추가
-        const clusterer = new kakao.maps.MarkerClusterer({
-          map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-          averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-          minLevel: 4, // 클러스터 할 최소 지도 레벨
-          calculator: [10, 30, 50],
-          minClusterSize: 1,
-        });
+        const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-        for (let i = 0; i < data.length; i++) {
-          let coords = new kakao.maps.LatLng(data[i].y, data[i].x);
-          /* 맵 마커 등록 -좌표기반*/
-          let marker = new kakao.maps.Marker({
-            map: map,
-            position: coords,
-            clickable: true,
-          });
-          /* 맵 마커에 인포 윈도우 등록*/
-          let infowindow = new kakao.maps.InfoWindow({
-            position: coords,
-            content: `<div style="padding:5px;">${data[i].company}</div>`,
-          });
-          /* 맵 마커에 이벤트 리스너 등록 */
-          kakao.maps.event.addListener(
-            marker,
-            "mouseover",
-            makeOverListener(map, marker, infowindow)
-          );
-          kakao.maps.event.addListener(
-            marker,
-            "mouseout",
-            makeOutListener(infowindow)
-          );
-          markers_for_clusterer.push(marker);
-        }
-
-        clusterer.addMarkers(markers_for_clusterer);
         setKakaoMap(map);
-        // 마커에 클릭이벤트를 등록
       });
     };
-  }, [container, data]);
-
-  // 인포윈도우를 여는 함수
-  function makeOverListener(map, marker, infowindow) {
-    return function () {
-      infowindow.open(map, marker);
-    };
-  }
-
-  // 인포윈도우를 닫는 클로저를 만드는 함수
-  function makeOutListener(infowindow) {
-    return function () {
-      infowindow.close();
-    };
-  }
+  }, []);
 
   useEffect(() => {
-    if (kakaoMap === null) {
+    if (!kakaoMap || !data) {
       return;
     }
 
-    // save center position
-    const center = kakaoMap.getCenter();
+    const imageSrc = marker, // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(25, 40), // 마커이미지의 크기입니다
+      imageOption = { offset: new kakao.maps.Point(30, 40) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-    // change viewport size
-    const [width, height] = size;
-    container.current.style.width = `${width}%`;
-    container.current.style.height = `${height}vh`;
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    const markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption
+    );
 
-    // relayout and...
-    kakaoMap.relayout();
-    // restore
-    kakaoMap.setCenter(center);
-  }, [kakaoMap, size]);
+    const geocoder = new kakao.maps.services.Geocoder();
 
-  return <div id="container" ref={container} />;
+    // 기존에 생성된 마커 제거
+    // markers.forEach((marker) => marker.setMap(null));
+    markers.forEach((item) => {
+      item.overlay.setMap(null);
+      item.marker.setMap(null);
+    });
+    setMarkers([]);
+    const newMarkers = data.map((item, index) => {
+      const content = document.createElement('div');
+      content.className = 'label';
+      content.innerHTML = `<span class="center">"로딩 중"</span>`;
+      // const center = document.createElement('span');
+      // center.className = 'center';
+      // center.textContent = '로딩 중';
+      // content.appendChild(center);
+
+      // 거리 정보를 계산하여 content에 추가합니다.
+      setTimeout(() => {
+        geocoder.transCoord(
+          item.x,
+          item.y,
+          (result, status) => {
+            transCoordCB(result, status, content);
+          },
+          {
+            input_coord: kakao.maps.services.Coords.WGS84, // 변환을 위해 입력한 좌표계 입니다
+            output_coord: kakao.maps.services.Coords.WTM, // 변환 결과로 받을 좌표계 입니다
+          }
+        );
+      }, Math.floor(index / 20) * 200);
+
+      return {
+        overlay: new kakao.maps.CustomOverlay({
+          map: kakaoMap,
+          position: new kakao.maps.LatLng(item.y, item.x),
+          content: content,
+          yAnchor: 1,
+        }),
+        marker: new kakao.maps.Marker({
+          map: kakaoMap,
+          position: new kakao.maps.LatLng(item.y, item.x),
+          // image: markerImage,
+        }),
+      };
+    });
+
+    setMarkers(newMarkers);
+  }, [kakaoMap, data]);
+
+  function transCoordCB(result, status, content) {
+    // WGS84 좌표를 UTM 좌표로 변환
+    proj4.defs('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs');
+    // EPSG:5179 좌표계 정의 추가
+    proj4.defs(
+      'EPSG:5181',
+      '+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=500000 +ellps=GRS80 +units=m +no_defs'
+    );
+
+    const wtmCoords = proj4('EPSG:4326', 'EPSG:5181', [userX, userY]);
+    console.log(wtmCoords);
+    // 정상적으로 검색이 완료됐으면
+    if (status === kakao.maps.services.Status.OK) {
+      let distance = calculateDistance(
+        result[0].x,
+        result[0].y,
+        wtmCoords[0],
+        wtmCoords[1]
+      );
+
+      content.innerHTML = `<div>${distance}</div>`;
+    }
+  }
+
+  function calculateDistance(x1, y1, x2, y2) {
+    const xDiff = x2 - x1;
+    const yDiff = y2 - y1;
+    const distance = Math.sqrt(xDiff ** 2 + yDiff ** 2) / 1000;
+    return `${distance.toFixed(2)}km`;
+  }
+
+  return (
+    <KakaoMapContainer id="map">
+      {kakaoMap && <p>Kakao Map is loaded.</p>}
+    </KakaoMapContainer>
+  );
 }

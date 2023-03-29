@@ -12,4 +12,5 @@ public class User {
     private Date regDate;
     private String userAddress;
     private String userName;
+    private String refreshToken;
 }

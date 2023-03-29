@@ -17,35 +17,40 @@ export async function callApi(url) {
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
-  let token = null;
+  sessionStorage.removeItem("access_token");
   await axios
     .post(url, {
       userEmail: e,
       userPassword: p,
     })
     .then((response) => {
-      token = response.data;
+      if (response.data) {
+        sessionStorage.setItem("access_token", response.data);
+        window.location.href = "map";
+        return true;
+      } else {
+        return false;
+      }
     })
     .catch((error) => console.log(error));
-  //로그인 성공
-  if (token != null) {
-    sessionStorage.setItem("access_token", token);
-  }
 }
 
-export async function registerDo(e, p, a) {
+export async function registerDo(e, p, a, n) {
   const url = "api/users/register.do";
-  let result = false;
+
   await axios
     .post(url, {
       userEmail: e,
       userPassword: p,
       userAddress: a,
+      userName: n,
     })
     .then((response) => {
-      result = response.data;
+      if (response.data) window.location.href = "login";
+      return true;
     })
-    .catch((error) => console.log(error));
-
-  console.log(result);
+    .catch((error) => {
+      console.log(error);
+      return false;
+    });
 }

@@ -1,29 +1,20 @@
-import "../components/domain/Login/LoginPage.css";
-import GoogleLoginBtn from "../components/domain/Login/GoogleLoginBtn";
-import KakaoLoginBtn from "../components/domain/Login/KakaoLoginBtn";
-import NaverLoginBtn from "../components/domain/Login/NaverLoginBtn";
-import MainLogo from "../assets/images/logo.svg";
+import "@/components/domain/Login/LoginPage.css";
+import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
+import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
+import MainLogo from "assets/images/logo.svg";
 import React, { useState } from "react";
-import { loginDo } from "../functions";
+import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
-import Inputprops from "../components/domain/Login/Input";
 
-/* <InputProps
-  placeholder="Email"
-  type="email"
-  value={email} onChange={emailChange}
-/> */
-// <InputProps
-//   placeholder="Password"
-//   type="password"
-//   value={password} onChange={passwordChange}
-// />
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailVisable, setEmailVisable] = useState(true);
   const [passwordVisable, setPasswordVisable] = useState(true);
+  const [loginError, setLoginError] = useState(false);
 
   const emailRegex =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
@@ -46,62 +37,58 @@ function LoginPage() {
       setPasswordVisable(false);
     }
   };
-
-  //정규식 확인 후 true 그대로 진행, false일 경우 에러메세지 호출
-  const onClickSignUp = () => {};
-
   return (
     <>
       <div className="login-container">
         <img className="loginlogo" src={MainLogo} alt="메인로고" />
         <div className="id-container">
-          <p className="id-text">Email</p>
+          <p className="id-text">이메일</p>
           <input
             className="input"
-            placeholder="이메일"
+            placeholder="Email"
             type="email"
             value={email}
             onChange={emailChange}
           />
-          {!emailVisable && (
+          {!emailVisable && email.length > 0 && (
             <div className="errorMessage">이메일 형식을 확인해주세요</div>
           )}
         </div>
 
         <div className="pw-container">
-          <p className="pw-text">Password</p>
+          <p className="pw-text">비밀번호</p>
           <input
             className="input"
-            placeholder="비밀번호"
+            placeholder="Password"
             type="password"
             value={password}
             onChange={passwordChange}
           />
-          {!passwordVisable && (
+          {!passwordVisable && password.length > 0 && (
             <div className="errorMessage">
               비밀번호는 영문자+숫자 8글자 이상이여야 합니다
             </div>
           )}
         </div>
-
+        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
         <div className="find-pw-container">
-          <p className="find-pw">비밀번호를 잊으셨나요?</p>
+          <p className="find-pw">비밀번호 찾기</p>
         </div>
-        <div className="login-container">
-          <button
+        <div className="login-btn-container">
+          <Button
             className="login-btn"
+            variant="contained"
             onClick={() => {
-              onClickSignUp();
-              loginDo(email, password);
+              setLoginError(loginDo(email, password));
             }}
           >
+            {" "}
             Login
-          </button>
+          </Button>
         </div>
         <div className="api-btn">
-          {/* <GoogleLoginBtn />
+          <GoogleLoginBtn />
           <KakaoLoginBtn />
-          <NaverLoginBtn />
         </div>
 
         <div className="signup-div">

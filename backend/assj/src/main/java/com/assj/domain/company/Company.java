@@ -16,10 +16,6 @@ public class Company {
   private String career;
   private String regDt;
   private String closeDt;
-  private String infoSvc;
-  private String wantedInfoUrl;
-  private String wantedMobileInfoUrl;
-  private String smodifyDtm;
   private String zipCd;
   private String strtnmCd;
   private String basicAddr;
@@ -28,4 +24,6 @@ public class Company {
   private String jobsCd;
   private String x;
   private String y;
+  private String wtmX;
+  private String wtmY;
 }

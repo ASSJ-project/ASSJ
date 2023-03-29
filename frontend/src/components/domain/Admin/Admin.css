@@ -1,82 +1,37 @@
-:root {
-  --main-color: #9588e0;
-  --soft-color: #e2dff8;
+/* AdminPage Css */
+.admin_container {
+  padding: 2em 1em;
+  font-size: 1em;
+  width: 480px;
+  height: 80vh;
+  border: 1px solid purple;
+  margin: auto;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-/* Header Css */
-.header_container {
-  margin: 0 4em;
-  margin-top: 8em;
-}
-
-.header {
+.button_container {
   display: flex;
-  font-size: 4em;
-  justify-content: space-around;
-}
-
-.title_img {
-  vertical-align: top;
-}
-
-.title {
-  font-size: 3em;
-  font-weight: bold;
-  background: var(--soft-color);
-  border-radius: 20px;
-  padding: 0.4em 0.8em;
+  justify-content: space-between;
   margin-bottom: 0.6em;
 }
-
-.home_link {
-  font-size: 0.5em;
-  text-decoration: none;
-  color: black;
-}
-
-/* Admin Css */
-.menu_container {
-  margin: 2em 4em;
-}
-
 .admin_btn {
-  font-size: 2.8em;
-  width: 6em;
-  padding: 0.4em;
-  margin-right: 0.6em;
-  background: var(--soft-color);
-  border-radius: 20px;
+  width: 49%;
+  font-size: 1.5em;
+  align-items: center;
+  padding: 1%;
+  background: var(--);
+  border-radius: 10px;
   margin-bottom: 0.6em;
   border: none;
 }
 
-.stats_radio_box {
-  display: flex;
-  justify-content: flex-start;
+/* Graph Css */
+.graph_container {
+  border: 1px solid coral;
 }
 
-.stats_radio_box input[type="radio"] {
-  display: none;
-}
-
-.stats_radio_box input[type="radio"] + label {
-  display: inline-block;
-  width: 4.1em;
-  font-size: 2.8em;
-  padding: 0.4em;
-  background: var(--soft-color);
-  border-radius: 20px;
-  margin-bottom: 0.6em;
-  margin-right: 0.6em;
-  border: none;
+.stats_title {
   text-align: center;
-}
-
-.stats_radio_box input[type="radio"]:checked + label {
-  background-color: var(--main-color);
+  font-size: 1.2em;
+  margin-bottom: 0.6em;
+  font-weight: bold;
 }

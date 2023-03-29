@@ -1,59 +1,56 @@
-body {
-  margin: 0;
-}
-
-#root {
-  background-image: url(../../../assets/images/login-bg-img.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .login-container {
   width: 480px;
-  height: 80vh;
+  height: 100vh;
   display: flex;
+  flex: none;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding-top: 30px;
+  align-items: center;
+  margin: auto;
+}
+
+.loginlogo {
+  margin-bottom: 3em;
 }
 
 .id-container {
-  width: 75%;
-  height: 15%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 3em;
 }
 .pw-container {
-  width: 75%;
-  height: 15%;
-  text-align: center;
-  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 0em;
 }
 
 .input {
-  width: 100%;
-  height: 40%;
-  border: none;
-  background: #d8d8dd;
+  padding: 1em;
+  border: 1px white solid;
+  background: var(--input-color);
   border-radius: 10px;
   font-size: 1.1em;
   font-family: "Lato";
   font-style: normal;
-  font-weight: 700;
 }
 
-.input::placeholder {
-  padding-left: 10px;
+.input:focus {
+  border: 1px solid;
+  border-color: var(--button-color);
+  outline: none;
 }
 
 .id-text {
-  width: 20%;
-  position: relative;
+  width: 30%;
+
   font-size: 1.2em;
-  color: #2c2b2b;
+  color: var(--text-color);
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
@@ -65,24 +62,23 @@ body {
   color: red;
   font-size: 0.7em;
   margin-top: 3px;
-  position: relative;
+
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  text-align: left;
 }
 .pw-text {
+  height: auto;
   width: 20%;
-  position: relative;
-  /* width: 30px; */
   font-size: 1.2em;
-  color: #2c2b2b;
+  color: var(--text-color);
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   line-height: 21px;
-  text-align: left;
+
   text-shadow: 0px 1px whitesmoke;
+  margin-bottom: 1em;
 }
 .toggle-text {
   width: 3em;
@@ -92,39 +88,35 @@ body {
 }
 
 .find-pw-container {
-  width: 75%;
+  width: 100%;
   text-align: right;
+  margin-bottom: 2em;
 }
 
 .find-pw {
-  margin-top: 20px;
-  color: #181717;
+  color: var(--text-color);
   font-size: 1em;
   text-shadow: 0px 1px whitesmoke;
 }
 
-.login-container {
+.login-btn-container {
   width: 75%;
   text-align: center;
+  margin-bottom: 2em;
+}
+
+.Signup-btn {
+  text-align: center;
+  width: 80%;
+  background-color: var(--button-color);
+}
+.Signup-btn:hover {
+  background-color: var(--button-hover);
 }
 
 .login-btn {
   position: relative;
   width: 100%;
-  border: 0;
-  /* width: 78%; */
-  height: 30%;
-  background: #484848;
-  border-radius: 20px;
-  font-size: 1.3em;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  line-height: 27px;
-  color: #fff;
-  margin-top: 40px;
-  margin-bottom: 67px;
-  box-shadow: black 4px 4px 4px;
   transition: 0.2s;
 }
 .login-btn:active {
@@ -140,16 +132,19 @@ body {
 
 .api-btn button {
   margin-top: 40px;
-  background-color: rgb(0, 0, 0, 0);
   border: none;
 }
 
 .api-btn img {
   display: inline;
   width: 100px;
-  border-radius: 20px;
+  border-radius: 5px;
+  box-shadow: #838383 4px 4px 4px;
 }
 
+.api-btn :hover {
+  box-shadow: #838383 4px 4px 6px, #292929 3px 3px 3px;
+}
 .signup-div {
   font-family: "Roboto";
   font-style: normal;
@@ -158,9 +153,23 @@ body {
   line-height: 26px;
   text-align: center;
   letter-spacing: 0.02em;
-  color: #d8d8dd;
+  color: var(--button-color);
 }
 
 .signup-div span {
-  color: #484848;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+@media (max-width: 780px) {
+  .login-container {
+    padding: 20px;
+    width: 90%;
+    margin: 0em;
+  }
+  .find-pw-container {
+    margin-top: 2.7em;
+  }
+  .pw-text {
+    margin-top: 35px;
+  }
 }

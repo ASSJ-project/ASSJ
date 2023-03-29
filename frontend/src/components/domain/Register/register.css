@@ -1,86 +1,84 @@
-body {
-  background-image: url("../../../assets/images/login-bg-img.png");
-  background-size: cover;
+.signup-container {
+  width: 480px;
+  height: 100vh;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-items: center;
+  margin: auto;
+}
+.input-container {
+  display: flex;
+  margin-left: 5%;
+  max-width: 90%;
+  flex-direction: column;
+  justify-items: center;
+}
+.addressSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .signuptext {
-  font-size: 70px;
-  color: #9588e0;
+  font-size: 2em;
+  margin-top: 0.5em;
+  color: var(--text-color);
   text-align: center;
-  margin-top: 400px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .text_box {
-  margin-left: 100px;
-  left: 10%;
-  font-size: 30px;
-  color: #9588e0;
+  font-size: 1.2em;
+  color: var(--text-color);
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  line-height: 21px;
 }
 .total_input {
-  position: relative;
-  left: 10%;
-  border: 0;
-  left: 10%;
-  width: 80%;
-  height: 120px;
-  background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 26px;
+  border: 1px white solid;
+  background: var(--input-color);
+  border-radius: 10px;
+  width: 90%;
+  padding: 1.5em;
 }
-#address {
-  position: relative;
-  left: 10%;
-  border: 0;
-  left: 10%;
-  width: 80%;
-  height: 120px;
-  background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 26px;
+.total_input:focus {
+  border: 1px solid;
+  border-color: var(--button-color);
+  outline: none;
 }
-#address_detail {
-  position: relative;
-  left: 10%;
-  border: 0;
-  left: 10%;
-  width: 80%;
-  height: 120px;
-  background: #d8d8dd;
-  border-radius: 20px;
-  font-size: 26px;
+.signUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
 }
 .Signup-btn {
-  position: relative;
-  left: 10%;
-  top: 50px;
+  text-align: center;
   width: 80%;
-  height: 120px;
-  background: #9588e0;
-  border-radius: 20px;
-  font-size: 38px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  line-height: 27px;
-  color: #fff;
 }
-.Login {
-  margin-top: 100px;
-  margin-left: 200px;
-  left: 10%;
-  font-size: 30px;
-  color: White;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  line-height: 21px;
+.send-email {
+  height: 2em;
+  width: fit-content;
 }
-#login_purple {
-  color: #9588e0;
+.send-email-disabled {
+  height: 2em;
+  width: fit-content;
 }
-a {
-  text-decoration: none;
+
+.addressButton {
+  height: 2em;
+}
+#address {
+  background: #e0e0e0;
+}
+
+.email-check-button {
+  display: flex;
+  justify-content: space-between;
+}
+.email-check-number-input {
+  width: fit-content;
+}
+.email-number-button {
+  width: fit-content;
+  height: 2em;
 }
