@@ -82,3 +82,10 @@
   width: fit-content;
   height: 2em;
 }
+@media (max-width: 780px) {
+  .signup-container {
+    padding: 10px;
+    width: 90%;
+    margin: 0em;
+  }
+}
