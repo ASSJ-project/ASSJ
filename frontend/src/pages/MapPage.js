@@ -121,6 +121,7 @@ function LayoutPage() {
   return (
     <>
       <Header />
+      <CompanyList data={data} />
       <Main>
         <SearchBox>
           <SearchInput
