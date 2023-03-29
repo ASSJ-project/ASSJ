@@ -7,7 +7,6 @@ import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
