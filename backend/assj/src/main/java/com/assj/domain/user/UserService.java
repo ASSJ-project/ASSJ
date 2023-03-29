@@ -20,6 +20,7 @@ public class UserService {
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM user";
         List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
+				
         return users;
     }
 
