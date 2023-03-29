@@ -66,9 +66,10 @@ const SearchButton = styled.button`
 const LoadingContainer = styled.div`
   display: flex;
 
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: row-reverse;
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
 `;
 
 const MapBoundary = styled.div`
