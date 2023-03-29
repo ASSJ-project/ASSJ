@@ -2,7 +2,7 @@ import "@/components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
 import MainLogo from "assets/images/logo.svg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,6 @@ function LoginPage() {
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
-
   return (
     <>
       <div className="login-container">

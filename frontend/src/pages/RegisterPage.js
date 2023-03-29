@@ -95,9 +95,7 @@ function Register() {
 
   const emailSubmit = () => {
     if (emailInput.match(random)) setEmailChecked(true);
-    else
-      document.getElementById("email-check-number-input").innerText =
-        "번호를 확인해주세요";
+    else setEmailChecked(false);
   };
 
   const mailCheck = () => {
@@ -140,7 +138,7 @@ function Register() {
             type="email"
             onChange={emailChange}
             name="user_email"
-            autoComplete="off"
+            autoComplete="on"
           />
           <input value={random} name="random" type="hidden" />
         </div>
