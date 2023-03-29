@@ -42,6 +42,17 @@ export default function KakaoMap(props) {
       return;
     }
 
+    const imageSrc = marker, // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(25, 40), // 마커이미지의 크기입니다
+      imageOption = { offset: new kakao.maps.Point(30, 40) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    const markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption
+    );
+
     const geocoder = new kakao.maps.services.Geocoder();
 
     // 기존에 생성된 마커 제거
@@ -54,19 +65,11 @@ export default function KakaoMap(props) {
     const newMarkers = data.map((item, index) => {
       const content = document.createElement('div');
       content.className = 'label';
-      // content.innerHTML = `<span class="center">"로딩 중"</span>`;
-      const center = document.createElement('span');
-
-      center.style.backgroundColor = '#EBEBEB';
-      center.style.borderRadius = '28px';
-      center.style.border = '1px solid grey';
-      center.style.padding = '0 10px';
-      center.style.boxShadow = '2px 2px 2px #828896';
-      center.style.fontSize = '12px';
-
-      center.className = 'center';
-      center.textContent = '로딩 중';
-      content.appendChild(center);
+      content.innerHTML = `<span class="center">"로딩 중"</span>`;
+      // const center = document.createElement('span');
+      // center.className = 'center';
+      // center.textContent = '로딩 중';
+      // content.appendChild(center);
 
       // 거리 정보를 계산하여 content에 추가합니다.
       setTimeout(() => {
@@ -92,7 +95,7 @@ export default function KakaoMap(props) {
         }),
         marker: new kakao.maps.Marker({
           map: kakaoMap,
-          // position: new kakao.maps.LatLng(item.y, item.x),
+          position: new kakao.maps.LatLng(item.y, item.x),
           // image: markerImage,
         }),
       };
@@ -121,18 +124,7 @@ export default function KakaoMap(props) {
         wtmCoords[1]
       );
 
-      // 오버레이 기본 css
-      // content.innerHTML = `<div>${distance}</div>`;
-      const div = document.createElement('div');
-      div.style.backgroundColor = '#EBEBEB';
-      div.style.borderRadius = '28px';
-      div.style.border = '1px solid grey';
-      div.style.padding = '0 10px';
-      div.style.boxShadow = '2px 2px 2px #828896';
-      div.style.fontSize = '12px';
-      content.textContent = '';
-      div.textContent = distance;
-      content.appendChild(div);
+      content.innerHTML = `<div>${distance}</div>`;
     }
   }
 
