@@ -14,18 +14,23 @@ function Header() {
     alert('로그아웃되었습니다.');
   }
 
-  const Nav = styled.nav`
-    color: #878982;
-    width: 100vw;
+  const HeadContainer = styled.div`
+    margin: 0;
+    padding: 0;
+  `;
 
+  const Nav = styled.nav`
+    margin: 0 15px;
+    
     .header__menulist {
-    width: 100%;  
     margin: 0 auto;
     padding: 15px 0;
     display: flex;
     justify-content: space-around;
     list-style : none;
-    border: solid 1px #dfe2d5
+    border-bottom: solid 1px #dfe2d5;
+    color: #878982;
+    font-size : 25px;
     }
 
     @media screen and (max-width: 768px) {
@@ -34,62 +39,57 @@ function Header() {
       .header__menulist {
         display: ${(props) => (props.isToggled ? 'flex' : 'none')};
         flex-direction: row;
-        width: 100%;
-        height : 100%;
+        font-size : 15px;
       }
-    `;
+  `;
 
   const Head = styled.div`
-    width: 100vw;
-    height: 60px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: black;
     background-color: white;
-
-    .logo {
-      margin: 0 1rem;
-      font-size: 2rem;
-    }
+    border-bottom: solid 1px #dfe2d5;
+    margin: 0 10px;
 
     img {
-      width: 200px;
-      height: 60px;
+      width: 500px;
+      height: 70px;
     }
 
-    .header__right {
+    .header-right {
       list-style: none;
       display: flex;
+      width: 200px;
+      font-size: 30px;
     }
 
-    .header__right button {
+    .header-right button {
       border: 0;
       background-color: transparent;
     }
 
-    li {
-      padding: 0 1rem;
-    }
-
     .toggle {
       display: none;
-      font-size: 20px;
-      margin-left: 3px;
+      font-size: 30px;
+      width: 100px;
     }
 
     @media screen and (max-width: 768px) {
-      .header__right {
+      .header-right {
         flex-direction: row;
-        width: 100px;
-      }
-
-      .header__right li {
+        width: 60px;
         font-size: 20px;
       }
 
-      img,
+      .header-logo {
+        width: 200px;
+      }
+
+      img {
+        width: 150px;
+        height: 60px;
+      }
+
       .toggle,
       .user {
         display: block;
@@ -98,7 +98,7 @@ function Header() {
   `;
 
   return (
-    <>
+    <HeadContainer>
       <Head isToggled={isToggled}>
         {/* 햄버거 버튼(bar) */}
         <div
@@ -111,47 +111,61 @@ function Header() {
         </div>
 
         {/* 알쓸신잡 로고 */}
-        <div className="logo">
+        <div className="header-logo">
           <img src={logo} alt="logo" />
         </div>
 
         {/* User 메뉴 리스트 */}
-        <ul className="header__right">
+        <div className="header-right">
+          <Link to="/mypage" style={{ textDecoration: 'none' }}>
+            <FaUserCircle />{' '}
+          </Link>
+          <button onClick={logout}>
+            <AiOutlineLogout />
+          </button>
+        </div>
+      </Head>
+      <Nav isToggled={isToggled}>
+        <ul className="header__menulist">
           <li>
-            <Link to="/mypage">
-              <FaUserCircle />{' '}
+            <Link
+              to="/map"
+              style={{ textDecoration: 'none', color: '#878982' }}
+            >
+              회사정보
             </Link>
           </li>
           <li>
-            <button onClick={logout}>
-              <AiOutlineLogout />
-            </button>
-          </li>
-        </ul>
-      </Head>
-      <Nav isToggled={isToggled}>
-        {/* 메뉴 리스트 */}
-        <ul className="header__menulist">
-          <li>
-            <Link to="/map">회사정보</Link>
+            <Link
+              to="/mypage"
+              style={{ textDecoration: 'none', color: '#878982' }}
+            >
+              마이페이지
+            </Link>
           </li>
           <li>
-            <Link to="/mypage">마이페이지</Link>
-          </li>
-          <li>
-            <Link to="/mypage">Secciones</Link>
+            <Link
+              to="/mypage"
+              style={{ textDecoration: 'none', color: '#878982' }}
+            >
+              Secciones
+            </Link>
           </li>
           <li>
             <button
               onClick={logout}
-              style={{ border: '0', backgroundColor: 'transparent' }}
+              style={{
+                border: '0',
+                backgroundColor: 'transparent',
+                color: '#878982',
+              }}
             >
               logout
             </button>
           </li>
         </ul>
       </Nav>
-    </>
+    </HeadContainer>
   );
 }
 

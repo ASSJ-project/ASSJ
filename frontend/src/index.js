@@ -10,7 +10,6 @@ import Test from '@/test/Test';
 import MyPage from '@/pages/MyPage';
 import ErrorPage from '@/pages/ErrorPage';
 import AdminPage from '@/pages/AdminPage';
-import SideBar from '@/pages/SideBar';
 import { useSelector, Provider } from 'react-redux';
 import store from '@/store/store';
 
@@ -46,10 +45,6 @@ const router = createBrowserRouter([
   {
     path: '/*',
     element: <ErrorPage />,
-  },
-  {
-    path: '/sidebar',
-    element: <SideBar />,
   },
 ]);
 
