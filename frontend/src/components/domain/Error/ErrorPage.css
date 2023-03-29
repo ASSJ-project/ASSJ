@@ -30,3 +30,12 @@
 h3 {
   margin: 3em 0;
 }
+.errorMessage {
+  color: red;
+  font-size: 0.7em;
+  margin-top: 3px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+}
