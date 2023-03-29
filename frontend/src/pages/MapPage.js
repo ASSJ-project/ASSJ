@@ -65,11 +65,10 @@ const SearchButton = styled.button`
 `;
 const LoadingContainer = styled.div`
   display: flex;
-  
-  flex-direction: row-reverse;
-  @media (max-width: 780px) {
-    flex-direction: column;
-  }
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 const MapBoundary = styled.div`
