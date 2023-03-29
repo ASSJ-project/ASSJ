@@ -9,6 +9,7 @@ import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
 import MapToggle from '@/components/domain/Map/ToggleButton';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import InfiniteScroll from '@/components/domain/Map/InfiniteScroll';
 
 const Main = styled.div`
   flex: 1;
@@ -121,7 +122,7 @@ function LayoutPage() {
   return (
     <>
       <Header />
-      <CompanyList data={data} />
+      <InfiniteScroll />
       <Main>
         <SearchBox>
           <SearchInput
