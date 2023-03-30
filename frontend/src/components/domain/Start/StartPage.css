@@ -57,6 +57,7 @@
   margin-right: 20px;
   border-radius: 20px;
   border: 0;
+  box-shadow: #838383 4px 4px 6px, #292929 3px 3px 3px;
 }
 
 @media (min-width: 780px) {
