@@ -32,7 +32,9 @@ const MyPageCheck = () => {
     for (let i = 0; i < company.length; i++) {
       arr.unshift(
         <div key={i} className="mypage-checkeditems">
-          <div className="mypage-checked-text">{company[i]}</div>
+          <div className="mypage-checked-text">
+            No {company.length - [i]}. &nbsp; {company[i]}
+          </div>
           <button
             onClick={() => lol(i)}
             className="mypage-chekeditem-deletebtn"

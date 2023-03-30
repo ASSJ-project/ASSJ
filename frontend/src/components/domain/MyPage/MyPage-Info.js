@@ -22,6 +22,7 @@ const MyPageInfo = () => {
   const [pw, setPw] = useState(''); //  현재 비밀번호를 입력할떄 인풋값을 가져오기 위해 만들었습니다.
   const [stat, setStat] = useState(false); //  정보가 안보이게 해놨다가 비밀번호 맞으면 보이도록 하기위해 만들었습니다
   const [showPswd, setShowPswd] = useState(false); //  기본상태 ***** 로 보이게 누르면 보이고 또 누르면 ****로 보이게하기
+  const [changPswd, setChangePswd] = useState(false);
 
   useEffect(() => {
     // 마이페이지(내정보)상태로 들어오면 api를 요청하여 아이디정보를 가져온다
@@ -69,54 +70,74 @@ const MyPageInfo = () => {
   return (
     <div className="mypage-myinformations">
       <div className={!stat ? 'mypage-myinformation-pwcheck' : 'mypage-none'}>
-        현재비밀번호 확인:
-        <input
-          placeholder="비밀번호를 입력하세요"
-          type={showPswd ? 'text' : 'password'}
-          onChange={onChange}
-        ></input>
+        <div>※ 현재 비밀번호를 입력해주시길 바랍니다. ※</div>
         <div>
-          {showPswd ? (
-            <button
-              className="mypage-pwcheck"
-              onClick={() => setShowPswd(false)}
-            >
-              비밀번호숨김
-            </button>
-          ) : (
-            <button
-              className="mypage-pwcheck"
-              onClick={() => setShowPswd(true)}
-            >
-              비밀번호보기
-            </button>
-          )}
-          <button className="mypage-pwcheck" onClick={checkPw}>
-            확인
-          </button>
+          <input
+            placeholder="비밀번호를 입력해주세요"
+            type={showPswd ? 'text' : 'password'}
+            onChange={onChange}
+            className="mypage-input"
+          ></input>
+          <div className="mypage-pwcheckbox">
+            <div>
+              {showPswd ? (
+                <button
+                  className="mypage-pwcheck"
+                  onClick={() => setShowPswd(false)}
+                >
+                  숨김
+                </button>
+              ) : (
+                <button
+                  className="mypage-pwcheck"
+                  onClick={() => setShowPswd(true)}
+                >
+                  보임
+                </button>
+              )}
+            </div>
+            <div>
+              <button className="mypage-pwcheck" onClick={checkPw}>
+                확인
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        <span style={{ 'margin-left': '50px' }}>이름 : </span>
-        <span style={{ 'margin-right': '50px' }}>{users.name}</span>
+        <span style={{ 'margin-left': '20px' }}>이름 : </span>
+        <span style={{ 'margin-right': '20px' }}>{users.name}</span>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        메일 : {users.email}
+        <span style={{ 'margin-left': '20px' }}>메일 : </span>
+        <span style={{ 'margin-right': '20px' }}>{users.email}</span>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        주소 : {users.id}
+        <span style={{ 'margin-left': '20px' }}>주소 : </span>
+        {/* <span style={{ 'margin-right': '50px' }}>{users.id}</span> */}
+        <span style={{ 'margin-right': '20px' }}>
+          경기 성남시 분당구 성남분당우체국사서함 1 ~ 200
+        </span>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        현재비밀번호 : {users.phone}
+        <span style={{ 'margin-left': '20px' }}>현재비밀번호 :</span>
+        <span style={{ 'margin-right': '20px' }}>
+          {users.phone}
+          {changPswd ? <button>취소</button> : <button>변경</button>}
+        </span>
       </div>
-      {/* <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        비밀번호 확인: (예정 안할지도)
-      </div> */}
-      <button onClick={fix1} id="my_company1" value={company[number]}>
-        {' '}
-        날 클릭해봐(지도클릭이라고 가정이요^0^){' '}
+      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
+        <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
+        <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
+      </div>
+      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
+        <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
+        <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
+      </div>
+      {/* <button onClick={fix1} id="my_company1" value={company[number]}>
+        날 클릭해봐(지도클릭이라고 가정이요^0^)
       </button>
-      <div>비밀번호는 현재 024-648-3804입니다.</div>
+      <div>비밀번호는 현재 024-648-3804입니다.</div> */}
     </div>
   );
 };
