@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.assj.utils.Constants;
+import com.assj.utils.Wgs84ToWtmConverter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -144,7 +145,7 @@ public class CompanyService {
                         jsonObject.get("empTpCd").toString(),
                         jsonObject.get("jobsCd").toString(),
                         geo.get(0),
-                        geo.get(1)
+                        geo.get(1),
                 };
                 jdbcTemplate.update(Constants.INSERT_INTO_COMPANY_SQL, params);
                 log.info("pageNum: {}", pageNum);
