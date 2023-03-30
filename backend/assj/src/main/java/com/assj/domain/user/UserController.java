@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.assj.utils.JwtToken;
+import com.google.gson.JsonObject;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,13 +32,10 @@ public class UserController {
     
     @PostMapping("/login.do")
 	public String login(@RequestBody User user){
-		System.out.println(user);
-
         try {
             if(userService.checkEmail(user.getUserEmail())){
                 if(userService.checkPassword(user)){
                 JwtToken jt = new JwtToken();
-                System.out.println(user);
                 String token = jt.createJwtToken(user);
                 return token;
             }
@@ -79,5 +77,13 @@ public class UserController {
             log.info(e.toString());
             return false;
         }
+    }
+
+    @PostMapping("/getUser")
+    public JsonObject getUser(@RequestBody String token){
+        
+
+
+        return null;
     }
 }
