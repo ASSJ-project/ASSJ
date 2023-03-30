@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react';
 
-function useFetch(url, headers, queryParams) {
+function useFetch(url, queryParams = {}, headers = {}) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const urlWithQueryParams = new URLSearchParams(queryParams)
+      ? `${url}?${new URLSearchParams(queryParams)}`
+      : url;
+
+    console.log(urlWithQueryParams);
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        // URL, 헤더, 쿼리 파라미터 등을 동적으로 설정
-        const response = await fetch(url, { headers, queryParams });
+        const response = await fetch(urlWithQueryParams, {
+          method: 'GET',
+          headers,
+        });
         const json = await response.json();
         setData(json);
         setIsLoading(false);
@@ -21,7 +28,9 @@ function useFetch(url, headers, queryParams) {
     };
 
     fetchData();
-  }, [url, headers, queryParams]);
+  }, [url]);
 
   return { data, isLoading, error };
 }
+
+export default useFetch;
