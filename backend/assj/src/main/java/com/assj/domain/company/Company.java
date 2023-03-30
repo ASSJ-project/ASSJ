@@ -22,8 +22,8 @@ public class Company {
   private String detailAddr;
   private String empTpCd;
   private String jobsCd;
-  private String x;
-  private String y;
-  private String wtmX;
-  private String wtmY;
+  private String wgsX;
+  private String wgsY;
+  private double wtmX;
+  private double wtmY;
 }

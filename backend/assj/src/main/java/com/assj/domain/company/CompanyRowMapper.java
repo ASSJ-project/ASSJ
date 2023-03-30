@@ -26,8 +26,10 @@ public class CompanyRowMapper implements RowMapper<Company> {
         company.setDetailAddr(rs.getString("detailAddr"));
         company.setEmpTpCd(rs.getString("empTpCd"));
         company.setJobsCd(rs.getString("jobsCd"));
-        company.setX(rs.getString("x"));
-        company.setY(rs.getString("y"));
+        company.setWgsX(rs.getString("wgsX"));
+        company.setWgsY(rs.getString("wgsY"));
+        company.setWtmX(rs.getDouble("wtmX"));
+        company.setWtmY(rs.getDouble("wtmY"));
 
         return company;
     }
