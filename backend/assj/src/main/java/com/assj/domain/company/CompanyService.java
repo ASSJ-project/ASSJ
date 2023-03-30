@@ -124,7 +124,9 @@ public class CompanyService {
             }
             JSONObject jsonObject = XML.toJSONObject(xmlString).getJSONObject("wantedRoot").getJSONObject("wanted");
             List<Double> geo = callCoordinatesApi(jsonObject.get("basicAddr").toString());
+            
             if (!geo.isEmpty()) {
+                double[] coord = Wgs84ToWtmConverter.convertWgs84ToWtm(geo.get(1), geo.get(0));
                 Object[] params = new Object[] {
                         jsonObject.get("company").toString(),
                         jsonObject.get("title").toString(),
@@ -146,6 +148,8 @@ public class CompanyService {
                         jsonObject.get("jobsCd").toString(),
                         geo.get(0),
                         geo.get(1),
+                        coord[0],
+                        coord[1]
                 };
                 jdbcTemplate.update(Constants.INSERT_INTO_COMPANY_SQL, params);
                 log.info("pageNum: {}", pageNum);
