@@ -134,10 +134,10 @@ const MyPageInfo = () => {
         <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
         <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
       </div>
-      {/* <button onClick={fix1} id="my_company1" value={company[number]}>
+      <button onClick={fix1} id="my_company1" value={company[number]}>
         날 클릭해봐(지도클릭이라고 가정이요^0^)
       </button>
-      <div>비밀번호는 현재 024-648-3804입니다.</div> */}
+      <div>비밀번호는 현재 024-648-3804입니다.</div>
     </div>
   );
 };
