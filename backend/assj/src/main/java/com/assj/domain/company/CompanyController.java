@@ -28,6 +28,11 @@ public class CompanyController {
         return companyService.getCompaniesPage(page, size, filteredData);
     }
 
+    @GetMapping("/getItems")
+    public List<Company> getItems(@RequestParam String filteredData) {
+        return companyService.getItems(filteredData);
+    }
+
     @GetMapping("/set")
     public void setCompaniesData() {
         companyService.initializeCompanyData();

@@ -60,6 +60,16 @@ public class CompanyService {
         return companies;
     }
 
+    public List<Company> getItems(String filteredData) {
+        String sql = "SELECT * FROM company WHERE basicAddr LIKE :searchString";
+        String searchString = "%" + filteredData + "%";
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("searchString", searchString);
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
+        return companies;
+    }
+
     /**
      * 주소 좌표 호출
      */
@@ -124,7 +134,7 @@ public class CompanyService {
             }
             JSONObject jsonObject = XML.toJSONObject(xmlString).getJSONObject("wantedRoot").getJSONObject("wanted");
             List<Double> geo = callCoordinatesApi(jsonObject.get("basicAddr").toString());
-            
+
             if (!geo.isEmpty()) {
                 double[] coord = Wgs84ToWtmConverter.convertWgs84ToWtm(geo.get(1), geo.get(0));
                 Object[] params = new Object[] {
