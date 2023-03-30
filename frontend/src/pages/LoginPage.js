@@ -61,7 +61,6 @@ function LoginPage() {
             {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
           </p>
           <Button className="login-btn" variant="contained" onClick={login}>
-            {" "}
             Login
           </Button>
         </div>
