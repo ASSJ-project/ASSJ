@@ -10,7 +10,6 @@ function useFetch(url, queryParams = {}, headers = {}) {
       ? `${url}?${new URLSearchParams(queryParams)}`
       : url;
 
-    console.log(urlWithQueryParams);
     const fetchData = async () => {
       setIsLoading(true);
       try {
@@ -18,6 +17,7 @@ function useFetch(url, queryParams = {}, headers = {}) {
           method: 'GET',
           headers,
         });
+        console.log(response);
         const json = await response.json();
         setData(json);
         setIsLoading(false);

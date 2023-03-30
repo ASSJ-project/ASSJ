@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import Header from './Header';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import { TailSpin } from 'react-loader-spinner';
+import useFetchData from '@/hooks/useFetchData';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
 import Footer from '@/components/Structure/Footer/Footer';
+import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
+import MapToggle from '@/components/domain/Map/ToggleButton';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import InfiniteScroll from '@/components/domain/Map/InfiniteScroll';
@@ -59,11 +65,35 @@ const SearchButton = styled.button`
     margin-top: 10px;
   }
 `;
+const LoadingContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const MapBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
+  border: 1px solid black;
+`;
+
+const ToggleBoundary = styled.div`
+  position: absolute;
+  bottom: 5%;
+  z-index: 2;
+`;
 
 function LayoutPage() {
   const [searchText, setSearchText] = useState('');
   const [filteredData, setFilteredData] = useState('');
-
+  const { data, isLoading, error } = useFetch(
+    '/api/company/getItems',
+    { filteredData: '구로구' },
+    { 'Content-Type': 'application/json' }
+  );
   const [selected, setSelected] = useState('map');
   const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
 
@@ -80,9 +110,21 @@ function LayoutPage() {
     setFilteredData(filtered);
   };
 
+  // if (isLoading) {
+  //   return (
+  //     <LoadingContainer>
+  //       <TailSpin color="#9588e0" height={80} width={80} />
+  //     </LoadingContainer>
+  //   );
+  // }
+
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
   return (
     <>
       <Header />
+      <InfiniteScroll />
       <Main>
         <SearchBox>
           <SearchInput
