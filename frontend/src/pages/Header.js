@@ -157,24 +157,13 @@ function Header() {
           </li>
           <li>
             <Link
-              to="/mypage"
+              to="/admin"
               style={{ textDecoration: 'none', color: '#878982' }}
             >
-              Hold
+              Admin
             </Link>
           </li>
-          <li>
-            <button
-              onClick={logout}
-              style={{
-                border: '0',
-                backgroundColor: 'transparent',
-                color: '#878982',
-              }}
-            >
-              Hold
-            </button>
-          </li>
+          <li>뭐하지 애는</li>
         </ul>
       </Nav>
     </HeadContainer>
