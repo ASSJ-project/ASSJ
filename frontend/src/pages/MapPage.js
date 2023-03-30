@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from '@/components/Structure/Footer/Footer';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import InfiniteScroll from '@/components/domain/Map/InfiniteScroll';
+import MainContainer from '@/components/domain/Map/MainContainer';
 import useFetch from '@/hooks/useFetch';
 
 const Main = styled.div`
@@ -62,21 +62,10 @@ const SearchButton = styled.button`
 
 function LayoutPage() {
   const [searchText, setSearchText] = useState('');
-  const [filteredData, setFilteredData] = useState('');
-
-  const [selected, setSelected] = useState('map');
-  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
-
+  const [filteredData, setFilteredData] = useState();
+  // const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
   const handleSearch = () => {
-    let filtered = data.filter((item) => {
-      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
-        return false;
-      }
-      if (searchText && !item.basicAddr.includes(searchText)) {
-        return false;
-      }
-      return true;
-    });
+    let filtered = searchText;
     setFilteredData(filtered);
   };
 
@@ -93,6 +82,7 @@ function LayoutPage() {
           />
           <SearchButton onClick={handleSearch}>검색</SearchButton>
         </SearchBox>
+        {filteredData && <MainContainer filteredData={filteredData} />}
       </Main>
       <Footer />
     </>
