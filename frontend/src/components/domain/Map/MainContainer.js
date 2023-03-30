@@ -4,6 +4,7 @@ import CompanyList from '@/components/domain/Map/CompanyList';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
 import MapToggle from '@/components/domain/Map/ToggleButton';
+import { useState } from 'react';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -26,10 +27,12 @@ const ToggleBoundary = styled.div`
   z-index: 2;
 `;
 
-function MainContainer() {
+function MainContainer(props) {
+  const { filteredData } = props;
+  const [selected, setSelected] = useState('map');
   const { data, isLoading, error } = useFetch(
     '/api/company/getItems',
-    { filteredData: '구로구' },
+    { filteredData: filteredData },
     { 'Content-Type': 'application/json' }
   );
 
@@ -51,11 +54,9 @@ function MainContainer() {
         <MapToggle setSelected={setSelected} />
       </ToggleBoundary>
       {selected === 'map' ? (
-        <MapBoundary>
-          <KakaoMap data={filteredData} />
-        </MapBoundary>
+        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>
       ) : (
-        <CompanyList data={data} />
+        <>{data && <CompanyList data={data} />}</>
       )}
     </>
   );

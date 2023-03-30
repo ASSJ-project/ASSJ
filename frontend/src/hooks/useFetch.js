@@ -17,7 +17,6 @@ function useFetch(url, queryParams = {}, headers = {}) {
           method: 'GET',
           headers,
         });
-        console.log(response);
         const json = await response.json();
         setData(json);
         setIsLoading(false);
