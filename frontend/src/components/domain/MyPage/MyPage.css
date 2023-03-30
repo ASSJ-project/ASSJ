@@ -1,39 +1,36 @@
 .mypage-main {
   display: flex;
-  width: 100vw;
-  height: 80vh;
+  width: 100%;
+  height: 85vh;
+  margin: 0 10px;
   flex-direction: column;
   align-items: center;
   font-family: Georgia, '맑은 고딕', serif;
+  max-width: 1680px;
 }
 
 .mypage-mypage {
-  margin-top: 10px;
-  max-width: 768px;
   width: 100%;
-  font-size: 100vw;
+  font-size: 20px;
   height: 5%;
-  border-style: none;
-  font-size: 100%;
-  background-color: #9588e0;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
+  border: solid 1px #9588e0;
+  margin-top: 10px;
 }
 
 .mypage-clickmenu {
   display: flex;
-  flex: 0, 1, 0, 1;
   height: 5%;
-  max-width: 768px;
   width: 100%;
+  margin-top: 5px;
 }
 
 .mypage-searchmenu {
   display: flex;
   height: 5%;
-  max-width: 768px;
   width: 100%;
 }
 
@@ -73,7 +70,6 @@
 }
 
 .mypage-checkeditems {
-  max-width: 768px;
   background-color: rgba(226, 223, 248, 0.7);
   margin-top: 10px;
   width: 100%;
@@ -110,10 +106,8 @@
 }
 
 .mypage-myinformations {
-  max-width: 768px;
   width: 100%;
-  flex: 1, 0, 1, 0;
-  height: 70%;
+  height: 80%;
   align-items: center;
   flex-direction: column;
 }
@@ -126,8 +120,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2px;
   color: white;
+  margin: 2px;
 }
 
 .mypage-myinfo2 {
@@ -138,7 +132,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2px;
+  color: black;
+  margin: 2px;
 }
 
 .mypage-myinformation {
@@ -147,10 +142,11 @@
   border-style: none;
   background-color: #e2dff8;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 8px;
+  font-size: 20px;
+  color: black;
   /* visibility: hidden; */
 }
 
@@ -167,4 +163,17 @@
   border: 1px solid white;
   background-color: #4a72ff;
   color: white;
+}
+
+.mypage-myinformation-pwcheck {
+  width: 100%;
+  height: 100%;
+  border-style: none;
+  background-color: #e2dff8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 20px;
+  color: black;
 }

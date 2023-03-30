@@ -17,6 +17,7 @@ function Header() {
   const HeadContainer = styled.div`
     margin: 0;
     padding: 0;
+    font-family: Georgia, '맑은 고딕', serif;
   `;
 
   const Nav = styled.nav`
@@ -30,7 +31,7 @@ function Header() {
     list-style : none;
     border-bottom: solid 1px #dfe2d5;
     color: #878982;
-    font-size : 25px;
+    font-size : 20px;
     }
 
     @media screen and (max-width: 768px) {
@@ -39,7 +40,7 @@ function Header() {
       .header__menulist {
         display: ${(props) => (props.isToggled ? 'flex' : 'none')};
         flex-direction: row;
-        font-size : 15px;
+        font-size : 17px;
       }
   `;
 
@@ -52,14 +53,14 @@ function Header() {
     margin: 0 10px;
 
     img {
-      width: 500px;
+      width: 15vw;
       height: 70px;
     }
 
     .header-right {
       list-style: none;
       display: flex;
-      width: 200px;
+      width: 100px;
       font-size: 30px;
     }
 
@@ -77,7 +78,7 @@ function Header() {
     @media screen and (max-width: 768px) {
       .header-right {
         flex-direction: row;
-        width: 60px;
+        width: 70px;
         font-size: 20px;
       }
 
@@ -117,10 +118,13 @@ function Header() {
 
         {/* User 메뉴 리스트 */}
         <div className="header-right">
-          <Link to="/mypage" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/mypage"
+            style={{ textDecoration: 'none', color: '#9588E0' }}
+          >
             <FaUserCircle />{' '}
           </Link>
-          <button onClick={logout}>
+          <button onClick={logout} style={{ color: '#9588E0' }}>
             <AiOutlineLogout />
           </button>
         </div>
@@ -132,7 +136,7 @@ function Header() {
               to="/map"
               style={{ textDecoration: 'none', color: '#878982' }}
             >
-              회사정보
+              Main
             </Link>
           </li>
           <li>
@@ -140,7 +144,7 @@ function Header() {
               to="/mypage"
               style={{ textDecoration: 'none', color: '#878982' }}
             >
-              마이페이지
+              MyInfo
             </Link>
           </li>
           <li>
@@ -148,7 +152,7 @@ function Header() {
               to="/mypage"
               style={{ textDecoration: 'none', color: '#878982' }}
             >
-              Secciones
+              Hold
             </Link>
           </li>
           <li>
@@ -160,7 +164,7 @@ function Header() {
                 color: '#878982',
               }}
             >
-              logout
+              Hold
             </button>
           </li>
         </ul>

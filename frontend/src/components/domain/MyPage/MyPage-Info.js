@@ -68,7 +68,7 @@ const MyPageInfo = () => {
 
   return (
     <div className="mypage-myinformations">
-      <div className={!stat ? 'mypage-myinformation' : 'mypage-none'}>
+      <div className={!stat ? 'mypage-myinformation-pwcheck' : 'mypage-none'}>
         현재비밀번호 확인:
         <input
           placeholder="비밀번호를 입력하세요"
@@ -81,23 +81,24 @@ const MyPageInfo = () => {
               className="mypage-pwcheck"
               onClick={() => setShowPswd(false)}
             >
-              숨김
+              비밀번호숨김
             </button>
           ) : (
             <button
               className="mypage-pwcheck"
               onClick={() => setShowPswd(true)}
             >
-              보기
+              비밀번호보기
             </button>
           )}
+          <button className="mypage-pwcheck" onClick={checkPw}>
+            확인
+          </button>
         </div>
-        <button className="mypage-pwcheck" onClick={checkPw}>
-          확인
-        </button>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        이름 : {users.name}
+        <span style={{ 'margin-left': '50px' }}>이름 : </span>
+        <span style={{ 'margin-right': '50px' }}>{users.name}</span>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
         메일 : {users.email}
