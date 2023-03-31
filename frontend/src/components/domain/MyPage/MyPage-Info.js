@@ -77,20 +77,6 @@ const MyPageInfo = () => {
     return stringpwleft + '****' + stringpwright;
   };
 
-  function Woo() {
-    return (
-      <div
-        className={
-          !stat
-            ? 'mypage-none'
-            : changPswd
-            ? 'mypage-myinformation'
-            : 'mypage-none'
-        }
-      ></div>
-    );
-  }
-
   return (
     <div className="mypage-myinformations">
       <div className={!stat ? 'mypage-myinformation-pwcheck' : 'mypage-none'}>
@@ -151,9 +137,19 @@ const MyPageInfo = () => {
           </span>
           <span>
             {changPswd ? (
-              <button onClick={() => setChangePswd(false)}>취소</button>
+              <button
+                className="mypage-mypagecheckbutton"
+                onClick={() => setChangePswd(false)}
+              >
+                취소
+              </button>
             ) : (
-              <button onClick={() => setChangePswd(true)}>변경</button>
+              <button
+                className="mypage-mypagecheckbutton"
+                onClick={() => setChangePswd(true)}
+              >
+                변경
+              </button>
             )}
           </span>
         </div>
@@ -167,8 +163,8 @@ const MyPageInfo = () => {
             : 'mypage-none'
         }
       >
-        <span style={{ 'margin-left': '20px' }}>비밀번호 변경:</span>
-        <div style={{ 'margin-right': '100px' }}>
+        <span style={{ 'margin-left': '20px' }}>새 비밀번호 :</span>
+        <div style={{ 'margin-right': '20px' }}>
           <input
             placeholder="비밀번호를 입력해주세요"
             type="password"
@@ -177,11 +173,8 @@ const MyPageInfo = () => {
           ></input>
         </div>
       </div>
-      <Woo>
-        <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
-        <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
-      </Woo>
-      {/* <div
+
+      <div
         className={
           !stat
             ? 'mypage-none'
@@ -190,9 +183,17 @@ const MyPageInfo = () => {
             : 'mypage-none'
         }
       >
-        <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
-        <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
-      </div> */}
+        <span style={{ 'margin-left': '20px' }}>비밀번호 확인 :</span>
+        <div style={{ 'margin-right': '20px' }}>
+          <input
+            placeholder="비밀번호를 확인해주세요"
+            type="password"
+            onChange={onChange}
+            className="mypage-input2"
+          ></input>
+          <button className="mypage-mypagecheckbutton ">수정</button>
+        </div>
+      </div>
 
       <button onClick={fix1} id="my_company1" value={company[number]}>
         날 클릭해봐(지도클릭이라고 가정이요^0^)

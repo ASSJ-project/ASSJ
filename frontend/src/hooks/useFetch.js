@@ -1,35 +1,41 @@
+// useApiFetch.js
 import { useState, useEffect } from 'react';
+// import fetch from 'node-fetch';
 
-function useFetch(url, queryParams = {}, headers = {}) {
+const useFetch = (url, queryParam, header) => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const urlWithQueryParams = new URLSearchParams(queryParams)
-      ? `${url}?${new URLSearchParams(queryParams)}`
-      : url;
-
     const fetchData = async () => {
-      setIsLoading(true);
       try {
-        const response = await fetch(urlWithQueryParams, {
+        const queryParams = new URLSearchParams(queryParam).toString();
+        const response = await fetch(`${url}?${queryParams}`, {
           method: 'GET',
-          headers,
+          headers: {
+            'Content-Type': 'application/json',
+            ...header,
+          },
         });
-        const json = await response.json();
-        setData(json);
-        setIsLoading(false);
+
+        if (response.ok) {
+          const data = await response.json();
+          setData(data);
+        } else {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
       } catch (error) {
-        setError(error);
-        setIsLoading(false);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [url]);
+  }, [url, JSON.stringify(queryParam), JSON.stringify(header)]);
 
-  return { data, isLoading, error };
-}
+  return { data, loading, error };
+};
 
 export default useFetch;

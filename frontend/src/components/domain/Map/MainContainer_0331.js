@@ -1,9 +1,8 @@
 import useApiFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
-import CompanyList from '@/components/domain/Map/CompanyList';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_backup';
-import MapToggle from '@/components/domain/Map/ToggleButton';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0331';
+import CompanyList from '@/components/domain/Map/CompanyList';
 import { useState } from 'react';
 
 const LoadingContainer = styled.div`
@@ -34,10 +33,14 @@ function MainContainer(props) {
   const queryParam = {
     filteredData: filteredData,
   };
+  const header = {
+    'X-Custom-Header': 'YourCustomHeaderValue',
+  };
 
   const { data, loading, error } = useApiFetch(
     '/api/company/getItems',
-    queryParam
+    queryParam,
+    header
   );
 
   if (loading) {
@@ -54,14 +57,7 @@ function MainContainer(props) {
 
   return (
     <>
-      <ToggleBoundary className="App">
-        <MapToggle setSelected={setSelected} />
-      </ToggleBoundary>
-      {selected === 'map' ? (
-        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>
-      ) : (
-        <>{data && <CompanyList data={data} />}</>
-      )}
+      <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>
     </>
   );
 }

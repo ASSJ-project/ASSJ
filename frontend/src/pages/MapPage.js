@@ -3,7 +3,7 @@ import Header from './Header';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import { TailSpin } from 'react-loader-spinner';
 import useFetchData from '@/hooks/useFetchData';
-import KakaoMap from '@/components/domain/Map/KakaoMap';
+import KakaoMap from '@/components/domain/Map/KakaoMap_backup';
 import Footer from '@/components/Structure/Footer/Footer';
 import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
 import MapToggle from '@/components/domain/Map/ToggleButton';
