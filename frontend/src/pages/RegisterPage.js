@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
+import logo from "../assets/images/logo.svg";
 
 function Register() {
   const [name, setName] = useState(""); // 이름
@@ -108,6 +109,9 @@ function Register() {
 
   return (
     <div className="signup-container">
+      <div className="logo-rgs">
+        <img id="logo" src={logo} alt="logo-img" />
+      </div>
       <span className="signuptext">회원가입</span>
       <div className="input-container">
         <TextField
