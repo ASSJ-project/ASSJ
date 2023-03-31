@@ -61,10 +61,9 @@ public class CompanyService {
     }
 
     public List<Company> getItems(String filteredData, String jobs) {
-        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString AND :jobsCdString";
+        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString AND jobsCd = :jobsCdString";
         String addressString = "%" + filteredData + "%";
         String jobsCdString = jobs;
-        System.out.println(jobsCdString);
         MapSqlParameterSource params = new MapSqlParameterSource()
                 .addValue("addressString", addressString)
                 .addValue("jobsCdString", jobsCdString);

@@ -48,6 +48,8 @@ function MainContainer(props) {
     header
   );
 
+  console.log('data', data);
+
   if (loading) {
     return (
       <LoadingContainer>
