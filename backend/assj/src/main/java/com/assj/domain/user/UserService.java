@@ -79,7 +79,7 @@ public class UserService {
 	 */
 	public int passwordChange(String password, String userEmail) throws DataAccessException{
 		String hashPassWord = passwordEncoder.encode(password);
-		String sql = String.format("UPDATE user SET password = '%s' WHERE email = %s",hashPassWord, userEmail);
+		String sql = String.format("UPDATE user SET password = '%s' WHERE email = '%s'",hashPassWord, userEmail);
 		return jdbcTemplate.update(sql);
 	}
 }

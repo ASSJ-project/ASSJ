@@ -1,7 +1,5 @@
 package com.assj.domain.user;
-import java.net.http.HttpRequest;
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,26 +26,33 @@ public class UserController {
     private UserService userService;
 
     @Value("${jwt.secret-key}")
-    private String secretKey;
+    private String secretKey; // application.properties 에 있는 시크릿 키 
 
-    private final Long expiredMs = 1000 * 60 * 60 * 3l;
+    private final Long expiredMs = 1000 * 60 * 60 * 3l; // access_token 만료시간 (현재 3시간)
 
+    /*
+     * 모든 유저 얻는 메소드
+     */
     @GetMapping("/all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
     
+    /*
+     * 로그인 메소드
+     */
     @PostMapping("/login.do")
 	public ResponseEntity<String> login(@RequestBody User user){
         try {
             if(userService.checkEmail(user.getUserEmail())){
                 if(userService.checkPassword(user)){
+                // 유저의 이메일, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
                 String token = JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs);
 
                 HttpHeaders responseHeaders = new HttpHeaders();
                 responseHeaders.setLocation(null);
                 responseHeaders.set("login","ok");
-
+                // Response 모양 만들어서 리턴
                 return new ResponseEntity<>(token, responseHeaders, HttpStatus.OK);
             }
             else return null; // 적절한 리스폰스 조치 필요
@@ -95,8 +99,7 @@ public class UserController {
     }
     
     @PostMapping("/passwordChange.do")
-    public int changePassword(Authentication authentication, @RequestBody User password){
-        String userEmail = authentication.getName();
-        return userService.passwordChange(password.getUserPassword(), userEmail);
+    public int changePassword(@RequestBody User user){
+        return userService.passwordChange(user.getUserPassword(), user.getUserEmail());
     }
 }

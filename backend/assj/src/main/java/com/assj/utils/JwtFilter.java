@@ -17,8 +17,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.auth0.jwt.exceptions.TokenExpiredException;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,7 +32,6 @@ public class JwtFilter extends OncePerRequestFilter{
     final String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
 
     if(authorization == null|| !authorization.startsWith("Bearer ")){
-      log.error("토큰값이 없거나 잘못된 형식입니다");
       filterChain.doFilter(request, response);
       return;
     }
