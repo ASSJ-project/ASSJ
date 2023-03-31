@@ -11,6 +11,7 @@ const useFetch = (url, queryParam, header) => {
     const fetchData = async () => {
       try {
         const queryParams = new URLSearchParams(queryParam).toString();
+        console.log(`${url}?${queryParams}`);
         const response = await fetch(`${url}?${queryParams}`, {
           method: 'GET',
           headers: {

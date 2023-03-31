@@ -27,8 +27,8 @@ public class CompanyController {
     }
 
     @GetMapping("/getItems")
-    public List<Company> getItems(@RequestParam String filteredData) {
-        return companyService.getItems(filteredData);
+    public List<Company> getItems(@RequestParam String filteredData, @RequestParam String jobs) {
+        return companyService.getItems(filteredData, jobs);
     }
 
     @GetMapping("/set")
