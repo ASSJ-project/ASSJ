@@ -1,12 +1,12 @@
-import "@/components/domain/MyPage/MyPage.css";
-import MyPageInfo from "@/components/domain/MyPage/MyPage-Info";
-import MyPageCheck from "@/components/domain/MyPage/MyPage-Check";
-import MyPageHeader from "@/components/domain/MyPage/MyPage-Header";
-import { useState, useEffect } from "react";
-import Header from "./Header";
-import Footer from "@/components/Structure/Footer/Footer";
-import styled from "styled-components";
-import { getUser } from "@/apis/mypage/mypage";
+import '@/components/domain/MyPage/MyPage.css';
+import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
+import MyPageCheck from '@/components/domain/MyPage/MyPage-Check';
+import MyPageHeader from '@/components/domain/MyPage/MyPage-Header';
+import { useState, useEffect } from 'react';
+import Header from './Header';
+import Footer from '@/components/Structure/Footer/Footer';
+import styled from 'styled-components';
+import { getUser } from '@/apis/mypage/mypage';
 
 const Main = styled.div`
   flex: 1;
@@ -29,13 +29,9 @@ export default function () {
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const result = await getUser();
-      console.log(result);
+    getUser().then((result) => {
       setUserData(result);
-    };
-
-    getData();
+    });
   }, []);
 
   return (
@@ -44,7 +40,7 @@ export default function () {
       <Main>
         <div className="mypage-main">
           <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2} />
-          {value === true ? <MyPageCheck /> : <MyPageInfo />}
+          {value === true ? <MyPageCheck /> : <MyPageInfo data={userData} />}
         </div>
       </Main>
       <Footer />
