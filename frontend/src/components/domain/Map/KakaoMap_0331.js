@@ -13,6 +13,8 @@ export default function KakaoMap(props) {
   const userY = 37.4954330863648;
   const userX = 126.88750531451;
 
+  console.log('data', data);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
