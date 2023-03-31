@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { useNavigate } from "react-router-dom";
+import { passwordChange } from "@/apis/passwordchange/passwordChange";
 
 function FindPassword() {
     const [key, setKey] = useState(""); 
@@ -137,7 +138,7 @@ function FindPassword() {
                 </div>
     
                 <div className="fpwd-nextbtn"> {/*onClick={onClickbtn}*/}
-                    <button disabled={btnDisable} onClick={() => (window.location.href = "/login")}>비밀번호 재설정</button>
+                    <button disabled={btnDisable} onClick={() => passwordChange(email, pwd)}>비밀번호 재설정</button>
                 </div>
             </div>
         </>
