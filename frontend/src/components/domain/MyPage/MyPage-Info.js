@@ -67,6 +67,30 @@ const MyPageInfo = () => {
     }
   };
 
+  const maskingPw = (pw) => {
+    var stringpw = '' + pw;
+    var stringpwleft = stringpw.substring(0, 3);
+    var stringpwright = stringpw.substring(
+      stringpw.length - 4,
+      stringpw.length
+    );
+    return stringpwleft + '****' + stringpwright;
+  };
+
+  function Woo() {
+    return (
+      <div
+        className={
+          !stat
+            ? 'mypage-none'
+            : changPswd
+            ? 'mypage-myinformation'
+            : 'mypage-none'
+        }
+      ></div>
+    );
+  }
+
   return (
     <div className="mypage-myinformations">
       <div className={!stat ? 'mypage-myinformation-pwcheck' : 'mypage-none'}>
@@ -120,20 +144,56 @@ const MyPageInfo = () => {
         </span>
       </div>
       <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        <span style={{ 'margin-left': '20px' }}>현재비밀번호 :</span>
-        <span style={{ 'margin-right': '20px' }}>
-          {users.phone}
-          {changPswd ? <button>취소</button> : <button>변경</button>}
-        </span>
+        <div style={{ 'margin-left': '20px' }}>현재비밀번호 :</div>
+        <div style={{ 'margin-right': '20px' }}>
+          <span style={{ 'margin-right': '20px' }}>
+            {maskingPw(users.phone)}
+          </span>
+          <span>
+            {changPswd ? (
+              <button onClick={() => setChangePswd(false)}>취소</button>
+            ) : (
+              <button onClick={() => setChangePswd(true)}>변경</button>
+            )}
+          </span>
+        </div>
       </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
+      <div
+        className={
+          !stat
+            ? 'mypage-none'
+            : changPswd
+            ? 'mypage-myinformation'
+            : 'mypage-none'
+        }
+      >
+        <span style={{ 'margin-left': '20px' }}>비밀번호 변경:</span>
+        <div style={{ 'margin-right': '100px' }}>
+          <input
+            placeholder="비밀번호를 입력해주세요"
+            type="password"
+            onChange={onChange}
+            className="mypage-input2"
+          ></input>
+        </div>
+      </div>
+      <Woo>
         <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
         <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
-      </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
+      </Woo>
+      {/* <div
+        className={
+          !stat
+            ? 'mypage-none'
+            : changPswd
+            ? 'mypage-myinformation'
+            : 'mypage-none'
+        }
+      >
         <span style={{ 'margin-left': '20px' }}>비밀번호 확인:</span>
         <span style={{ 'margin-right': '20px' }}>(예정 안할지도)</span>
-      </div>
+      </div> */}
+
       <button onClick={fix1} id="my_company1" value={company[number]}>
         날 클릭해봐(지도클릭이라고 가정이요^0^)
       </button>
