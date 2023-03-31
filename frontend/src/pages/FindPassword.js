@@ -13,7 +13,7 @@ function EmailVerification() {
     const [emailErrorMessage, setEmailErrorMessage] = useState(false);
     const [keyErrorMessage, setKeyErrorMessage] = useState(false);
     const [disable, setDisable] = useState(true);
-
+    //뒤로가기 버튼을 위해 useNavigate 선언
     const navigate = useNavigate();
 
     const changeEmail = (e) => {
@@ -34,13 +34,16 @@ function EmailVerification() {
         const ranNum = generateRandom();
         setCheckKey(ranNum);
         console.log(ranNum);
+        //이메일 값과 인증번호 값 딕셔너리에 추가
         let templateParams = {
             sendemail: email,
             number: ranNum,
         }
+        
+        //이메일 검사를 통해 해당 이메일이 존재할 경우 이메일 전송, 존재하지 않을 경우 에러메세지 출력
         if(checkEmail == true) {
             console.log("이메일 전송 성공")
-            emailjs.send('service_vpprlhi', 'template_w9u1t6g', templateParams)
+            emailjs.send('service_vpprlhi', 'template_w9u1t6g', templateParams)    
             setKeyErrorMessage(false);
         } else {
             console.log("이메일 전송 실패");
@@ -48,7 +51,7 @@ function EmailVerification() {
         }   
     }
     
-    //인증코드 확인 후 버튼 활성화 여부
+    //인증코드 확인 후 일치할 시 버튼 활성화 일치하지 않을 경우 버튼 비활성화, 에러메시지 출력
     const checkKeyValue = () => {
         if(key != checkKey) {
             setDisable(true);
@@ -62,7 +65,7 @@ function EmailVerification() {
     return(
         <>    
             <div className="div1">
-                    <img src={backbtn} onClick={() => {navigate(-1);}} className="backbtn"/>
+                <img src={backbtn} onClick={() => {navigate(-1);}} className="backbtn"/>
             </div>
 
             <div className="find-container">        
@@ -74,9 +77,10 @@ function EmailVerification() {
                 <div className="div3">
                     <p>이메일</p>
                     <input type="email" placeholder="이메일" value={email} onChange={changeEmail} />
+                    {/* setCheckEmail(emailCheck(email)); */}
                     <button 
                         onClick={() => { 
-                            setCheckEmail(emailCheck(email)); 
+                             
                             sendEmail(email) }}>확인</button>
                     {emailErrorMessage && (
                         <div className="errorMessage">존재하지 않는 이메일입니다</div>
@@ -88,10 +92,15 @@ function EmailVerification() {
                     {keyErrorMessage && (
                         <div className="errorMessage">인증번호가 일치하지 않습니다</div>
                     )}
+                    <p>새로운 비밀번호</p>
+                    <input className="newpassword" type="password" placeholder="새로운 비밀번호" disabled={disable} />
+                    <p>비밀번호 재입력</p>
+                    <input className="newpassword" type="password" placeholder="비밀번호 재입력" disabled={disable} />
+                    
                 </div>
     
                 <div className="div5"> {/*onClick={onClickbtn}*/}
-                    <button id="nextbtn" disabled={disable} onClick={() => (window.location.href = "/ResetPassword")}>인증</button>
+                    <button id="nextbtn" disabled={disable} onClick={() => (window.location.href = "/ResetPassword")}>비밀번호 재설정</button>
                 </div>
             </div>
         </>

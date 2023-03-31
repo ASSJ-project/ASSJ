@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import Header from './Header';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import { TailSpin } from 'react-loader-spinner';
+import useFetchData from '@/hooks/useFetchData';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
 import Footer from '@/components/Structure/Footer/Footer';
+import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
+import MapToggle from '@/components/domain/Map/ToggleButton';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import MainContainer from '@/components/domain/Map/MainContainer';
-import useFetch from '@/hooks/useFetch';
+import InfiniteScroll from '@/components/domain/Map/InfiniteScroll';
 
 const Main = styled.div`
   flex: 1;
@@ -12,6 +17,7 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  
 `;
 
 const SearchBox = styled.div`
@@ -26,7 +32,7 @@ const SearchBox = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  position: absolute;
+  position: fixed;
 
   z-index: 2;
   @media (max-width: 767px) {
@@ -59,19 +65,73 @@ const SearchButton = styled.button`
     margin-top: 10px;
   }
 `;
+const LoadingContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const MapBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
+  border: 1px solid black;
+`;
+
+const CompanyBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
+  
+`;
+
+const ToggleBoundary = styled.div`
+  position: fixed;
+  bottom: 5%;
+  z-index: 2;
+`;
 
 function LayoutPage() {
+  const { data, loading, error } = useFetchData();
   const [searchText, setSearchText] = useState('');
-  const [filteredData, setFilteredData] = useState();
-  // const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+  const [filteredData, setFilteredData] = useState(data);
+  const [selected, setSelected] = useState('map');
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+
+
   const handleSearch = () => {
-    let filtered = searchText;
+    let filtered = data.filter((item) => {
+      // if (salary && item.salary !== salary) {
+      //   return false;
+      // }
+      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
+        return false;
+      }
+      if (searchText && !item.basicAddr.includes(searchText)) {
+        return false;
+      }
+      return true;
+    });
     setFilteredData(filtered);
   };
 
+  // if (loading) {
+  //   return (
+  //     <LoadingContainer>
+  //       <TailSpin color="#9588e0" height={80} width={80} />
+  //     </LoadingContainer>
+  //   );
+  // }
+
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
   return (
     <>
       <Header />
+      
       <Main>
         <SearchBox>
           <SearchInput
@@ -82,7 +142,17 @@ function LayoutPage() {
           />
           <SearchButton onClick={handleSearch}>검색</SearchButton>
         </SearchBox>
-        {filteredData && <MainContainer filteredData={filteredData} />}
+
+        <ToggleBoundary className="App">
+          <MapToggle setSelected={setSelected} />
+        </ToggleBoundary>
+        {selected === 'map' ? (
+          <MapBoundary>
+            <KakaoMap data={filteredData} />
+          </MapBoundary>
+        ) : (
+            <CompanyList />
+        )}
       </Main>
       <Footer />
     </>
