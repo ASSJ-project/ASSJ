@@ -66,7 +66,6 @@ function LayoutPage() {
   const handleSearch = (e) => {
     setFilteredData(searchText);
   };
-  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
 
   return (
     <>

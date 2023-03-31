@@ -60,11 +60,14 @@ public class CompanyService {
         return companies;
     }
 
-    public List<Company> getItems(String filteredData) {
-        String sql = "SELECT * FROM company WHERE basicAddr LIKE :searchString";
-        String searchString = "%" + filteredData + "%";
+    public List<Company> getItems(String filteredData, String jobs) {
+        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString AND :jobsCdString";
+        String addressString = "%" + filteredData + "%";
+        String jobsCdString = jobs;
+        System.out.println(jobsCdString);
         MapSqlParameterSource params = new MapSqlParameterSource()
-                .addValue("searchString", searchString);
+                .addValue("addressString", addressString)
+                .addValue("jobsCdString", jobsCdString);
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
         return companies;

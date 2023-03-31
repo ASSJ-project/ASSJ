@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './map.css';
-import marker from 'assets/images/marker_img.png';
 import proj4 from 'proj4';
 
 const KakaoMapContainer = styled.div`
