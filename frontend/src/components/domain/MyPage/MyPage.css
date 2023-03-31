@@ -117,7 +117,7 @@
 .mypage-myinfo1 {
   width: 50%;
   background-color: #9588e0;
-  border-style: none;
+  border: 1px solid grey;
   font-size: 25px;
   display: flex;
   justify-content: center;
@@ -129,7 +129,7 @@
 .mypage-myinfo2 {
   width: 50%;
   background-color: #e2dff8;
-  border-style: none;
+  border: 1px solid grey;
   font-size: 25px;
   display: flex;
   justify-content: center;
@@ -204,15 +204,21 @@
 }
 
 .mypage-input2 {
-  width: 100%;
-  margin-left: 10%;
+  width: 160px;
   padding: 1em;
   border: 1px white solid;
   background: var(--input-color);
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 13px;
   font-family: 'Lato';
   font-style: normal;
+}
+
+.mypage-mypagecheckbutton {
+  width: 40px;
+  font-size: 10px;
+  background-color: #9588e0;
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

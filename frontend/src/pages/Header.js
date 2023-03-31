@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaRegistered } from 'react-icons/fa';
 import logo from 'assets/images/logo_only_word.svg';
 import { Link } from 'react-router-dom';
-import { AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogout, AiOutlineLogin } from 'react-icons/ai';
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
+  const [isLogin, SetIsLogin] = useState('');
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('access_token');
+    if (token == null) {
+      SetIsLogin(false);
+    } else {
+      SetIsLogin(true);
+    }
+  }, []);
 
   function logout() {
     sessionStorage.clear();
@@ -126,15 +136,33 @@ function Header() {
 
         {/* User 메뉴 리스트 */}
         <div className="header-right">
-          <Link
-            to="/mypage"
-            style={{ textDecoration: 'none', color: '#9588E0' }}
-          >
-            <FaUserCircle />{' '}
-          </Link>
-          <button onClick={logout} style={{ color: '#9588E0' }}>
-            <AiOutlineLogout />
-          </button>
+          {isLogin ? (
+            <Link
+              to="/mypage"
+              style={{ textDecoration: 'none', color: '#9588E0' }}
+            >
+              <FaUserCircle />
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              style={{ textDecoration: 'none', color: '#9588E0' }}
+            >
+              <AiOutlineLogin />
+            </Link>
+          )}
+          {isLogin ? (
+            <button onClick={logout} style={{ color: '#9588E0' }}>
+              <AiOutlineLogout />
+            </button>
+          ) : (
+            <Link
+              to="/register"
+              style={{ textDecoration: 'none', color: '#9588E0' }}
+            >
+              <FaRegistered />
+            </Link>
+          )}
         </div>
       </Head>
       <Nav isToggled={isToggled}>
