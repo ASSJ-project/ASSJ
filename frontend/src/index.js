@@ -9,6 +9,7 @@ import RegisterPage from "@/pages/RegisterPage";
 import MyPage from "@/pages/MyPage";
 import ErrorPage from "@/pages/ErrorPage";
 import AdminPage from "@/pages/AdminPage";
+import FindPassword from "@/pages/FindPassword";
 import { useSelector, Provider } from "react-redux";
 import store from "@/store/store";
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/mypage",
     element: <MyPage />,
+  },
+  {
+    path: "/findpassword",
+    element: <FindPassword />,
   },
   {
     path: "/*",

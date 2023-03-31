@@ -1,6 +1,5 @@
 package com.assj.domain.user;
 
-import java.text.Format;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +55,12 @@ public class UserService {
 	/**
 	 * 회원가입 성공시 DB에 유저를 추가하는 메소드
 	 */
-	public void addUser(User user) throws DataAccessException{
+	public int addUser(User user) throws DataAccessException{
 		String sql = "Insert into user(email, password, address, name) values(?,?,?,?)";
-		jdbcTemplate.update(sql, user.getUserEmail(), user.getUserPassword(), 
+		String hashPassWord = passwordEncoder.encode(user.getUserPassword());
+		user.setUserPassword(hashPassWord);
+		
+		return jdbcTemplate.update(sql, user.getUserEmail(), user.getUserPassword(), 
 			user.getUserAddress(), user.getUserName());
 
 	}
@@ -70,6 +72,14 @@ public class UserService {
 		String sql = "select * from user where email = " + userEmail;
 		List<User> user = jdbcTemplate.query(sql, new UserRowMapper());
 		return user;
-}
+	}
 
+	/**
+	 * 회원 패스워드 교체하는 메소드
+	 */
+	public int passwordChange(String password, String userEmail) throws DataAccessException{
+		String hashPassWord = passwordEncoder.encode(password);
+		String sql = String.format("UPDATE user SET password = '%s' WHERE email = %s",hashPassWord, userEmail);
+		return jdbcTemplate.update(sql);
+	}
 }
