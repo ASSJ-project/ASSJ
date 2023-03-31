@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
 
+import com.assj.dto.User;
+
 public class UserRowMapper implements RowMapper<User> {
     @Override
     @Nullable

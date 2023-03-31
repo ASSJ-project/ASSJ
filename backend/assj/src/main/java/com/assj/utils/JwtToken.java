@@ -24,7 +24,6 @@ public class JwtToken {
   public static String getUserEmail(String token, String secretKey){
     return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("user").toString();
   }
-    
 }
 
 

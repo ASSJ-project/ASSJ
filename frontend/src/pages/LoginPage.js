@@ -13,7 +13,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(true);
 
-  useEffect(()=>{sessionStorage.clear()},[])
+  useEffect(()=>{sessionStorage.clear()},[email]);
 
   const emailChange = (e) => {
     setEmail(e.target.value);

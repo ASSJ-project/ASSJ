@@ -47,7 +47,7 @@ public class JwtFilter extends OncePerRequestFilter{
   
     // token 에서 꺼낸 user email
     String userEmail = JwtToken.getUserEmail(token, secretKey);
-    log.info("useEmail: {}", userEmail);
+    //log.info("useEmail: {}", userEmail);
 
     // 권한 부여 
     UsernamePasswordAuthenticationToken authenticationToken = 

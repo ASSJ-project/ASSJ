@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.assj.dto.User;
+
 @Service
 public class UserService {
 
@@ -19,9 +21,7 @@ public class UserService {
 
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM user";
-        List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
-				
-        return users;
+        return jdbcTemplate.query(sql, new UserRowMapper());
     }
 
 		/**
@@ -30,26 +30,23 @@ public class UserService {
     public boolean checkEmail(String email) throws Exception{
 			String sql = "select * from user where email = '"+ email + "'";
 			List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
-			
 			return (users.isEmpty()) ? false : true;
 		}
 
 	/**
 	 * 로그인 시도한 유저의 패스워드를 체크하는 메소드
 	 */
-	public boolean checkPassword(User user) throws Exception{
+	public boolean checkPassword(User user) throws DataAccessException{
 
 		String sql = "select * from user where email = '"+ user.getUserEmail() + "'";
 		List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
-		Boolean result = false;
-
-		if(!users.isEmpty()){
+		if(users.isEmpty()){
+			return false;
+		}else {
 			String inDbPassword = users.get(0).getUserPassword(); // db 에 저장된 패스워드
 			String inputPassword = user.getUserPassword();
-			result = passwordEncoder.matches(inputPassword, inDbPassword);
-			return result;
-		}else result = false;
-		return result;
+			return passwordEncoder.matches(inputPassword, inDbPassword);
+		}
 	}
 	
 	/**
@@ -68,10 +65,9 @@ public class UserService {
 	/**
 	 * 회원 1명만 가져오는 메소드 
 	 */
-	public List<User> getUser(String userEmail) {
+	public List<User> getUser(String userEmail) throws DataAccessException{
 		String sql = "select * from user where email = " + userEmail;
-		List<User> user = jdbcTemplate.query(sql, new UserRowMapper());
-		return user;
+		return jdbcTemplate.query(sql, new UserRowMapper());
 	}
 
 	/**

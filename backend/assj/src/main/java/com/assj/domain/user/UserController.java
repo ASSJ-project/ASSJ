@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.assj.dto.User;
 import com.assj.utils.JwtToken;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +36,8 @@ public class UserController {
      * 모든 유저 얻는 메소드
      */
     @GetMapping("/all")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
     }
     
     /*
@@ -46,22 +48,16 @@ public class UserController {
         try {
             if(userService.checkEmail(user.getUserEmail())){
                 if(userService.checkPassword(user)){
-                // 유저의 이메일, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
-                String token = JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs);
-
-                HttpHeaders responseHeaders = new HttpHeaders();
-                responseHeaders.setLocation(null);
-                responseHeaders.set("login","ok");
-                // Response 모양 만들어서 리턴
-                return new ResponseEntity<>(token, responseHeaders, HttpStatus.OK);
+                // 유저의 이메일, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌 
+                return new ResponseEntity<>(JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs), HttpStatus.OK);
             }
-            else return null; // 적절한 리스폰스 조치 필요
-        }else return null;
-                
+            else return new ResponseEntity<>("user is not exist", HttpStatus.NO_CONTENT); 
+        }
         } catch (Exception e) {
             log.info(e.toString());
+            return new ResponseEntity<>("database access is failed", HttpStatus.NO_CONTENT);
         }
-            return null;
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     } 
 
     @PostMapping("/register.do")
@@ -94,8 +90,8 @@ public class UserController {
     }
 
     @GetMapping("/getUser")
-    public User getUser(Authentication authentication){
-        return userService.getUser(authentication.getName()).get(0);
+    public ResponseEntity<User> getUser(Authentication authentication){
+        return new ResponseEntity<>(userService.getUser(authentication.getName()).get(0), HttpStatus.OK);
     }
     
     @PostMapping("/passwordChange.do")
