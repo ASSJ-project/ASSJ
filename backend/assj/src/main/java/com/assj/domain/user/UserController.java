@@ -93,4 +93,10 @@ public class UserController {
     public User getUser(Authentication authentication){
         return userService.getUser(authentication.getName()).get(0);
     }
+    
+    @PostMapping("/passwordChange.do")
+    public int changePassword(Authentication authentication, @RequestBody User password){
+        String userEmail = authentication.getName();
+        return userService.passwordChange(password.getUserPassword(), userEmail);
+    }
 }
