@@ -123,10 +123,10 @@
   margin-bottom: 10px;
 }
 
-/* .api-btn button {
+.api-btn button {
   margin-top: 40px;
   border: none;
-} */
+}
 
 .api-btn img {
   display: inline;
@@ -135,9 +135,9 @@
   box-shadow: #838383 4px 4px 4px;
 }
 
-/* .api-btn :hover {
+.api-btn :hover {
   box-shadow: #838383 4px 4px 6px, #292929 3px 3px 3px;
-} */
+}
 .signup-div {
   font-family: "Roboto";
   font-style: normal;

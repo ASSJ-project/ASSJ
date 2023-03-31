@@ -12,6 +12,7 @@ function Header() {
   function logout() {
     sessionStorage.clear();
     alert('로그아웃되었습니다.');
+    window.location.href = 'login';
   }
 
   const HeadContainer = styled.div`
@@ -54,14 +55,14 @@ function Header() {
 
     img {
       width: 15vw;
-      height: 70px;
+      height: 60px;
     }
 
     .header-right {
       list-style: none;
       display: flex;
       width: 100px;
-      font-size: 30px;
+      font-size: 40px;
     }
 
     .header-right button {
@@ -79,7 +80,7 @@ function Header() {
       .header-right {
         flex-direction: row;
         width: 70px;
-        font-size: 20px;
+        font-size: 30px;
       }
 
       .header-logo {
@@ -96,6 +97,13 @@ function Header() {
         display: block;
       }
     }
+
+    @media screen and (max-width: 480px) {
+      .header-right {
+        flex-direction: row;
+        width: 70px;
+        font-size: 20px;
+      }
   `;
 
   return (
@@ -149,24 +157,13 @@ function Header() {
           </li>
           <li>
             <Link
-              to="/mypage"
+              to="/admin"
               style={{ textDecoration: 'none', color: '#878982' }}
             >
-              Hold
+              Admin
             </Link>
           </li>
-          <li>
-            <button
-              onClick={logout}
-              style={{
-                border: '0',
-                backgroundColor: 'transparent',
-                color: '#878982',
-              }}
-            >
-              Hold
-            </button>
-          </li>
+          <li>뭐하지 애는</li>
         </ul>
       </Nav>
     </HeadContainer>

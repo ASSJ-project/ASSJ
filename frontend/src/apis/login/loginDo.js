@@ -10,6 +10,7 @@ export async function loginDo(e, p) {
       userPassword: p,
     });
     if (result.data) {
+      console.log(result.data);
       sessionStorage.setItem("access_token", result.data);
       window.location.href = "map";
       return true;

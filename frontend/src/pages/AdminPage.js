@@ -1,6 +1,6 @@
 import "../components/domain/Admin/Admin.css";
 import React from "react";
-import AdminUserInfo from "../components/domain/Admin/AdminUserInfo";
+import InfoTable from "../components/domain/Admin/InfoTable";
 import Graph from "../components/domain/Admin/Graph";
 import Header from "./Header";
 import { useState } from "react";
@@ -38,7 +38,7 @@ function Admin() {
             통계
           </button>
         </div>
-        <div>{adminUserPage == true ? <AdminUserInfo /> : <Graph />}</div>
+        <div>{adminUserPage === true ? <InfoTable /> : <Graph />}</div>
       </div>
     </>
   );

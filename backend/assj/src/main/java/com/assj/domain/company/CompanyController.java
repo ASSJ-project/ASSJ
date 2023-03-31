@@ -28,6 +28,11 @@ public class CompanyController {
         return companyService.getCompaniesPage(page, size, filteredData);
     }
 
+    @GetMapping("/getItems")
+    public List<Company> getItems(@RequestParam String filteredData) {
+        return companyService.getItems(filteredData);
+    }
+
     @GetMapping("/set")
     public void setCompaniesData() {
         companyService.initializeCompanyData();
@@ -37,5 +42,4 @@ public class CompanyController {
     public double[] map() {
         return Wgs84ToWtmConverter.convertWgs84ToWtm(126.5774068, 33.4533577);
     }
-    // @RequestHeader 애노테이션 사용하는 법 
 }
