@@ -43,7 +43,6 @@ public class UserController {
         try {
             if(userService.checkEmail(user.getUserEmail())){
                 if(userService.checkPassword(user)){
-                System.out.println(secretKey);
                 String token = JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs);
 
                 HttpHeaders responseHeaders = new HttpHeaders();

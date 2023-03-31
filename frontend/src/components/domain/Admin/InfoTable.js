@@ -53,17 +53,18 @@ function InfoTable() {
           </tr>
         </thead>
         <tbody>
-          {searchData.map(({ uuid, userName, userEmail, userAddress }) => (
-            <tr key={uuid}>
-              <td>{uuid}</td>
-              <td>{userName}</td>
-              <td>{userEmail}</td>
-              <td>{userAddress}</td>
-              <td>
-                <Checkbox />
-              </td>
-            </tr>
-          ))}
+          {searchData &&
+            searchData.map(({ uuid, userName, userEmail, userAddress }) => (
+              <tr key={uuid}>
+                <td>{uuid}</td>
+                <td>{userName}</td>
+                <td>{userEmail}</td>
+                <td>{userAddress}</td>
+                <td>
+                  <Checkbox />
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

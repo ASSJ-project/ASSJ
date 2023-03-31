@@ -33,9 +33,9 @@ public class SecurityConfig{
               .cors().and()
               .authorizeRequests()
               //end point 설정 
-              .antMatchers("/api/users/login.do", "/api/users/regsiter.do").permitAll()
-              .antMatchers("/api/users/all", "/api/users/getUser").authenticated()
-              .antMatchers("/api/company/map").authenticated()
+              .antMatchers("api/users/login.do", "api/users/register.do").permitAll()
+              .antMatchers("/api/company/items").authenticated()
+              .antMatchers("/api/users/all").authenticated()
               .and()
               .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
               .and()
