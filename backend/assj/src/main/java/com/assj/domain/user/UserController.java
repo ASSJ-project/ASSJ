@@ -1,4 +1,5 @@
 package com.assj.domain.user;
+import java.net.http.HttpRequest;
 import java.util.List;
 
 
@@ -26,9 +27,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Value("${jwt.secret-key}")
     private String secretKey;
@@ -66,8 +64,6 @@ public class UserController {
     public Boolean register(@RequestBody User user){
         try {
             if(!userService.checkEmail(user.getUserEmail())){
-                String hashPassWord = passwordEncoder.encode(user.getUserPassword());
-                user.setUserPassword(hashPassWord);
                 userService.addUser(user);
                 log.info("회원가입 성공");
                 return true;
