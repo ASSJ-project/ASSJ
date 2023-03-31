@@ -33,7 +33,7 @@ public class UserController {
     @Value("${jwt.secret-key}")
     private String secretKey;
 
-    private final Long expiredMs = 1000 * 60 * 30l;
+    private final Long expiredMs = 1000 * 60 * 60 * 3l;
 
     @GetMapping("/all")
     public List<User> getAllUsers() {
@@ -94,7 +94,7 @@ public class UserController {
     }
 
     @GetMapping("/getUser")
-    public List<User> getUser(Authentication authentication){
-        return userService.getUser(authentication.getName());
+    public User getUser(Authentication authentication){
+        return userService.getUser(authentication.getName()).get(0);
     }
 }
