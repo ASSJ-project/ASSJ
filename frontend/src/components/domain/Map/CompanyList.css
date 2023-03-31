@@ -5,37 +5,47 @@
     margin-top: 1em;
 }
 
-.div1 {    
-    display: flex;
-}
-
-.div2 {
+.clist-container {
     display: flex;
     margin: -1rem;
     flex-wrap: wrap;
 }
 
-.div3 {
+.clist-container :hover {
+    transform: translateY(-8px);
+    transition-duration: 0.5s;
+}
+
+.clist {
     width: 20rem;
-    background-color: #d8d8dd;
+    background-color: #E2DFF8;
     border-radius: 10px;
     margin: 1em;
-    overflow: hidden;
     border: solid 1px #eaedf4;
     display: flex;
     flex-direction: column;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
 }
 
-.div3 div {
+
+
+.clist div {
+    /* 호버 효과 제거 */
+    pointer-events: none;
     padding: 0.5em;
 }
 
-.title p {
+.clist-title span {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
     margin-top: 5px;
+}
+
+.clist-company strong {
+    font-size: 0.9em;
+    font-family: "Lato";
+    font-style: normal;
+    color: #7C7C7C;
 }
 
 @media (max-width: 1382px) {
@@ -51,11 +61,11 @@
 }
 
 @media (max-width: 780px) {
-    .div3 {
+    .clist {
     margin-left: 2em;
     margin-right: 2em;
-    width: calc(100% - 2rem);
-    height: 200px;
+    width: 100%;
+    height: auto;
 }
 }
 

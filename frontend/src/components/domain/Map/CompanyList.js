@@ -63,21 +63,19 @@ export default function CompanyList(size, filter) {
     //메인 컨테이너에 미디어쿼리 적용, div -> main -> div() -> div(회사내용) {item.company} {item.title} {item.jobsCd} {item.salTpNm} {item.sal} {item.closeDt} {item.}
     return (
       <div className='main-container'> 
-        <div className='div1'>
-              <div className='div2'>
+              <div className='clist-container'>
               {items.map((item, index) => {
               return( <>  
-                  <div className='div3' onClick={handleClick}>
-                      <div className='title'><p>{item.title}</p></div>
-                      <div className='company'>{item.company}</div>
-                      <div className='jobcode'>{item.career}, {item.minEdubg} {item.holidayTpNm} </div>
-                      <div className='sal'>{item.salTpNm} {item.sal} </div>
-                      <div className='closedt'>{item.closeDt}</div>
+                  <div className='clist' onClick={handleClick}>
+                      <div className='clist-title'><span>{item.title}</span></div>
+                      <div className='clist-company'><strong>{item.company}</strong></div>
+                      <div className='clist-jobcode'>{item.minEdubg}, {item.holidayTpNm} </div>
+                      <div className='clist-sal'>{item.salTpNm} {item.sal} </div>
+                      <div className='clist-closedt'>{item.closeDt}</div>
                   </div>
               </>)
               })}
             </div>
-        </div>
       </div>
     );
   }
