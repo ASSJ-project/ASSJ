@@ -35,10 +35,12 @@ public class JwtFilter extends OncePerRequestFilter{
       log.error("token authorization is failed");
       filterChain.doFilter(request, response);
       return;
+    }else{
+      log.info("token authorization is success");
     }
 
     String token = authorization.split(" ")[1];
-
+    
     // token expired 여부 확인 
     if(JwtToken.isExpired(token, secretKey)){
       log.error("token has expired");

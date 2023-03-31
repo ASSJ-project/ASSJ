@@ -37,9 +37,4 @@ public class CompanyController {
     public void setCompaniesData() {
         companyService.initializeCompanyData();
     }
-
-    @GetMapping("/map")
-    public double[] map() {
-        return Wgs84ToWtmConverter.convertWgs84ToWtm(126.5774068, 33.4533577);
-    }
 }
