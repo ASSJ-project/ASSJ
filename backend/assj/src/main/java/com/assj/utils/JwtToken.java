@@ -18,7 +18,6 @@ public class JwtToken {
   }
 
   public static boolean isExpired(String token, String secretKey){
-    System.out.println(JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date()));
     return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date());
   }
   
