@@ -64,7 +64,7 @@
   font-size: 12px;
   margin-left: auto;
   border: 1px solid white;
-  background-color: #4a72ff;
+  background-color: #9588e0;
   color: white;
   /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
 }
@@ -87,7 +87,7 @@
   height: 50%;
   width: 60px;
   border: 1px solid white;
-  background-color: #4a72ff;
+  background-color: #9588e0;
   color: white;
 }
 
@@ -204,7 +204,7 @@
 }
 
 .mypage-input2 {
-  width: 160px;
+  width: 150px;
   padding: 1em;
   border: 1px white solid;
   background: var(--input-color);
@@ -216,6 +216,7 @@
 
 .mypage-mypagecheckbutton {
   width: 40px;
+  height: 25px;
   font-size: 10px;
   background-color: #9588e0;
   color: white;
