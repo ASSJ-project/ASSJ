@@ -100,6 +100,7 @@ public class UserController {
     
     @PostMapping("/passwordChange.do")
     public int changePassword(@RequestBody User user){
-        return userService.passwordChange(user.getUserPassword(), user.getUserEmail());
+        return userService.passwordChange(user.getUserPassword(
+        ), user.getUserEmail());
     }
 }

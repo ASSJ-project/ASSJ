@@ -74,7 +74,7 @@ function Register() {
       sendemail: email,
       number: ranNum,
     };
-    emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
+    // emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
     setEmailSend(true);
     alert("입력하신 이메일로 인증번호가 전송되었습니다");
   };
@@ -106,6 +106,12 @@ function Register() {
       setChecked(!result.data);
     });
   };
+
+  // 메일 전송 버튼 색깔 토글 함수 
+  const sendBtn = (checked) => (
+    (checked) ? "red" : "blue"
+  )
+  
 
   return (
     <div className="signup-container">
@@ -141,6 +147,7 @@ function Register() {
             onClick={() => {
               checked ? sendEmail() : mailCheck();
             }}
+            style={{background : sendBtn(checked)}}
             className="btn-send-email"
           >
             {email.length > 0 ? (checked ? "전송" : "중복확인") : "중복확인"}
@@ -164,7 +171,7 @@ function Register() {
                 size="small"
                 variant="standard"
                 disabled={emailChecked}
-                onChange={(e) => setState(e, setEmailInput)}
+                onChange={(e) => setState(e, setEmailInput, /^$/, f=>f)}
               />
               <Button
                 variant="contained"
