@@ -19,7 +19,11 @@ public class JwtToken {
   }
 
   public static boolean isExpired(String token, String secretKey) throws TokenExpiredException{
-    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date());
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date(System.currentTimeMillis()));
+  }
+  
+  public static String getUserEmail(String token, String secretKey){
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("user").toString();
   }
     
 }

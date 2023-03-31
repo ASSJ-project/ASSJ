@@ -1,5 +1,6 @@
 package com.assj.domain.user;
 
+import java.text.Format;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +62,14 @@ public class UserService {
 			user.getUserAddress(), user.getUserName());
 
 	}
+
+	/**
+	 * 회원 1명만 가져오는 메소드 
+	 */
+	public List<User> getUser(String userEmail) {
+		String sql = "select * from user where email = " + userEmail;
+		List<User> user = jdbcTemplate.query(sql, new UserRowMapper());
+		return user;
+}
+
 }
