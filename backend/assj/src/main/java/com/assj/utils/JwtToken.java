@@ -1,48 +1,27 @@
 package com.assj.utils;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.SecureRandom;
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.assj.domain.user.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 
 public class JwtToken {
-  private static Logger log = LoggerFactory.getLogger(JwtToken.class);
-  public String createJwtToken(User user){
-    String token = null;
-    try {
-      KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-      SecureRandom sr = SecureRandom.getInstanceStrong();
-      kpg.initialize(1024, sr); 
 
-      KeyPair kp = kpg.generateKeyPair();
-      RSAPublicKey publicKey = (RSAPublicKey) kp.getPublic();
-      RSAPrivateKey privateKey = (RSAPrivateKey) kp.getPrivate();
-   
-      Algorithm algorithm = Algorithm.RSA256(publicKey,privateKey);
-      Map<String, String> privateClaim = new HashMap<>();
-      privateClaim.put("user", user.getUserEmail());
-
-      Date now = new Date(System.currentTimeMillis());
-      Date expiredDate = new Date(System.currentTimeMillis() + 600000);
-      
-
-      token = JWT.create().withIssuer("assj").withPayload(privateClaim)
-        .withIssuedAt(now).withExpiresAt(expiredDate).withNotBefore(now).sign(algorithm);
+  public static String createJwt(String userEmail, String secretKey, Long expiredMs) throws NoSuchAlgorithmException{
   
-    }catch(Exception e){
-      log.info(e.toString());
-    }
-    return token;
+    return JWT.create()
+      .withIssuer("assj")
+      .withIssuedAt(new Date(System.currentTimeMillis()))
+      .withExpiresAt(new Date(System.currentTimeMillis()+ expiredMs))
+      .withClaim("user", userEmail)
+      .sign(Algorithm.HMAC256(secretKey));
   }
+
+  public static boolean isExpired(String token, String secretKey) throws TokenExpiredException{
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date());
+  }
+    
 }
+
+

@@ -13,6 +13,8 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(true);
 
+  useEffect(()=>{sessionStorage.clear()},[])
+
   const emailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -24,7 +26,6 @@ function LoginPage() {
   const login = () => {
     loginDo(email, password).then((result) => {
       setLoginError(result);
-      console.log(loginError);
     });
   };
   return (

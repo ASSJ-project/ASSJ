@@ -42,5 +42,4 @@ public class CompanyController {
     public double[] map() {
         return Wgs84ToWtmConverter.convertWgs84ToWtm(126.5774068, 33.4533577);
     }
-    // @RequestHeader 애노테이션 사용하는 법 
 }

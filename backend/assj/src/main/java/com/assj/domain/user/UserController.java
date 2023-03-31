@@ -1,8 +1,11 @@
 package com.assj.domain.user;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,21 +28,31 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Value("${jwt.secret-key}")
+    private String secretKey;
+
+    private final Long expiredMs = 1000 * 60 * 30l;
+
     @GetMapping("/all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
     
     @PostMapping("/login.do")
-	public String login(@RequestBody User user){
+	public ResponseEntity<String> login(@RequestBody User user){
         try {
             if(userService.checkEmail(user.getUserEmail())){
                 if(userService.checkPassword(user)){
-                JwtToken jt = new JwtToken();
-                String token = jt.createJwtToken(user);
-                return token;
+                System.out.println(secretKey);
+                String token = JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs);
+
+                HttpHeaders responseHeaders = new HttpHeaders();
+                responseHeaders.setLocation(null);
+                responseHeaders.set("login","ok");
+
+                return new ResponseEntity<>(token, responseHeaders, HttpStatus.OK);
             }
-            else return null;
+            else return null; // 적절한 리스폰스 조치 필요
         }else return null;
                 
         } catch (Exception e) {
