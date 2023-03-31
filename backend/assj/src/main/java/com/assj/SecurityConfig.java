@@ -35,7 +35,7 @@ public class SecurityConfig{
               //end point 설정 
               .antMatchers("api/users/login.do", "api/users/register.do").permitAll()
               .antMatchers("/api/company/items").authenticated()
-              .antMatchers("/api/users/all").authenticated()
+              .antMatchers("/api/users/all", "api/users/getUser").authenticated()
               .and()
               .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
               .and()

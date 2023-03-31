@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -42,14 +44,19 @@ public class JwtFilter extends OncePerRequestFilter{
     String token = authorization.split(" ")[1];
     
     // token expired 여부 확인 
-    if(JwtToken.isExpired(token, secretKey)){
-      log.error("token has expired");
-      filterChain.doFilter(request, response);
-      return;
+    try{
+      if(JwtToken.isExpired(token, secretKey)){
+        log.error("token has expired");
+        filterChain.doFilter(request, response);
+        return;
+      }
+    }catch(TokenExpiredException e){
+      log.info(e.toString());
     }
 
     // token 에서 꺼낸 user email
-    String userEmail = "";
+    String userEmail = JwtToken.getUserEmail(token, secretKey);
+    log.info("useEmail: {}", userEmail);
 
     // 권한 부여 
     UsernamePasswordAuthenticationToken authenticationToken = 
@@ -59,5 +66,4 @@ public class JwtFilter extends OncePerRequestFilter{
       SecurityContextHolder.getContext().setAuthentication(authenticationToken);
       filterChain.doFilter(request, response);
   }
-  
 }

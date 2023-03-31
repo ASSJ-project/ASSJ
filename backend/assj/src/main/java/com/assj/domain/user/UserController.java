@@ -1,11 +1,14 @@
 package com.assj.domain.user;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.assj.utils.JwtToken;
-import com.google.gson.JsonObject;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -91,11 +93,8 @@ public class UserController {
         }
     }
 
-    @PostMapping("/getUser")
-    public JsonObject getUser(@RequestBody String token){
-        
-
-
-        return null;
+    @GetMapping("/getUser")
+    public List<User> getUser(Authentication authentication){
+        return userService.getUser(authentication.getName());
     }
 }

@@ -1,11 +1,12 @@
-import '@/components/domain/MyPage/MyPage.css';
-import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
-import MyPageCheck from '@/components/domain/MyPage/MyPage-Check';
-import MyPageHeader from '@/components/domain/MyPage/MyPage-Header';
-import { useState } from 'react';
-import Header from './Header';
-import Footer from '@/components/Structure/Footer/Footer';
-import styled from 'styled-components';
+import "@/components/domain/MyPage/MyPage.css";
+import MyPageInfo from "@/components/domain/MyPage/MyPage-Info";
+import MyPageCheck from "@/components/domain/MyPage/MyPage-Check";
+import MyPageHeader from "@/components/domain/MyPage/MyPage-Header";
+import { useState, useEffect } from "react";
+import Header from "./Header";
+import Footer from "@/components/Structure/Footer/Footer";
+import styled from "styled-components";
+import { getUser } from "@/apis/mypage/mypage";
 
 const Main = styled.div`
   flex: 1;
@@ -17,6 +18,7 @@ const Main = styled.div`
 
 export default function () {
   const [value, setValue] = useState(false);
+  const [userData, setUserData] = useState([]);
 
   const getMyPage1 = (text) => {
     setValue(text);
@@ -25,6 +27,16 @@ export default function () {
   const getMyPage2 = (text) => {
     setValue(text);
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const result = await getUser();
+      console.log(result);
+      setUserData(result);
+    };
+
+    getData();
+  }, []);
 
   return (
     <>
