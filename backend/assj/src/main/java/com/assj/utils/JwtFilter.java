@@ -19,8 +19,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
+// OncePerRequestFilter 는 어떤 서블릿 컨테이너에서나 요청 당 한번의 실행을 보장하는 필터
 @Slf4j
-@Component
+@Component 
 public class JwtFilter extends OncePerRequestFilter{
 
   @Value("${jwt.secret-key}")
@@ -29,13 +30,16 @@ public class JwtFilter extends OncePerRequestFilter{
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException{
     
+    // 리퀘스트 헤더에서 전달된 토큰을 가져옴
     final String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
 
+    // 해당 토큰이 비어있거나 Bearer로 시작되지 않으면 리턴
     if(authorization == null|| !authorization.startsWith("Bearer ")){
       filterChain.doFilter(request, response);
       return;
     }
 
+    // Bearer를 제외한 뒤쪽의 토큰 정보만을 잘라냄
     String token = authorization.split(" ")[1];
     
     // token expired 여부 확인 
@@ -47,7 +51,7 @@ public class JwtFilter extends OncePerRequestFilter{
   
     // token 에서 꺼낸 user email
     String userEmail = JwtToken.getUserEmail(token, secretKey);
-    log.info("useEmail: {}", userEmail);
+    //log.info("useEmail: {}", userEmail);
 
     // 권한 부여 
     UsernamePasswordAuthenticationToken authenticationToken = 

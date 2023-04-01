@@ -1,4 +1,4 @@
-package com.assj.domain.company;
+package com.assj.dto;
 
 import lombok.Data;
 

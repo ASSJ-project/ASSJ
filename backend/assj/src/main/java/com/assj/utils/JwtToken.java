@@ -7,7 +7,15 @@ import com.auth0.jwt.algorithms.Algorithm;
 
 public class JwtToken {
 
-  public static String createJwt(String userEmail, String secretKey, Long expiredMs) throws NoSuchAlgorithmException{
+  /**
+   * Json Web Token 발행 메소드
+   * @param userEmail // 유저 이메일 
+   * @param secretKey // 시크릿 키
+   * @param expiredMs // 만료일 
+   * @return JWT 토큰을 리턴 
+   * @throws NoSuchAlgorithmException
+   */
+  public static String createJwt(String userEmail, String secretKey, Long expiredMs){
   
     return JWT.create()
       .withIssuer("assj")
@@ -17,14 +25,25 @@ public class JwtToken {
       .sign(Algorithm.HMAC256(secretKey));
   }
 
+  /**
+   * 토큰 만료 여부 검사하는 메소드 
+   * @param token 헤더로 전달된 토큰 
+   * @param secretKey 시크릿 키 
+   * @return 유효시 false, 만료시 true
+   */
   public static boolean isExpired(String token, String secretKey){
     return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date());
   }
   
+  /**
+   * 토큰에서 유저의 Email을 추출하는 메소드
+   * @param token 헤더로 전달된 토큰 
+   * @param secretKey 시크릿 키 
+   * @return String userEmail
+   */
   public static String getUserEmail(String token, String secretKey){
     return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("user").toString();
   }
-    
 }
 
 

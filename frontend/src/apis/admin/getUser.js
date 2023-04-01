@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export async function getUser() {
-  const url = "api/users/all";
+export async function getUser(page, limit) {
+  const url = `api/users/all?page=${page}&limit=${limit}`;
   const token = sessionStorage.getItem("access_token");
   try {
     const result = await axios.get(url, {
