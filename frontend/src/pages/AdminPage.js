@@ -5,10 +5,11 @@ import Graph from "../components/domain/Admin/Graph";
 import Header from "./Header";
 import { useState } from "react";
 
+
 function Admin() {
   const [adminUserPage, SetAdminUserPage] = useState(true);
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
-
+ 
   return (
     <>
       <Header />

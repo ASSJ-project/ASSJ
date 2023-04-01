@@ -40,6 +40,7 @@
 /* 검색창, 버튼 (검색, 삭제) */
 .search_input_btn {
   display: flex;
+  justify-content: space-around;
   margin-bottom: 0.6em;
 }
 
@@ -49,11 +50,15 @@
 
 .search_btn {
   background-color: var(--input-color) !important;
-  margin-left: 0.5em !important;
+  /* margin-left: 0.5em !important; */
+}
+
+#page-num{
+  margin-top:0.5em;
 }
 
 .user_delete_btn {
-  margin-left: 11em !important;
+  /* margin-left: 11em !important; */
 }
 
 /* table전체 */
