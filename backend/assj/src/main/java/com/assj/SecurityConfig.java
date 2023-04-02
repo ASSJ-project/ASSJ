@@ -3,8 +3,10 @@ package com.assj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,8 +15,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.assj.utils.JwtFilter;
 
+
 @Configuration
-@EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig{
   
   @Autowired
@@ -24,22 +27,20 @@ public class SecurityConfig{
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
   @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      return http
-              .httpBasic().disable() // http 베이직 로그인 창을 이용. 사용하지 않을것이므로 disable.
-              //csrf, cors 설정 
-              .csrf().disable() 
-              .cors().and()
-              .authorizeRequests()
-              //end point 설정 
-              .antMatchers("/api/users/login.do", "/api/users/register.do", "/api/users/emailCheck.do", "/api/users/passwordChange.do").permitAll()
-              .antMatchers("/api/**").authenticated()
-              .and()
-              .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-              .and()
-              // filter 설정
-              .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-              .build();
-    }
+  public RoleHierarchy roleHierarchy() {
+    RoleHierarchyImpl r = new RoleHierarchyImpl();
+    r.setHierarchy("ROLE_ADMIN > ROLE_USER");
+    return r;
+  }
+
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+    http.httpBasic().disable().csrf().disable().cors();
+    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    http.addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    return http.build();  
+  }
 }

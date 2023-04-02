@@ -6,9 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,13 +33,9 @@ public class UserController {
     @Value("${jwt.secret-key}")
     private String secretKey; // application.properties 에 있는 시크릿 키
 
-    private final Long expiredMs = 1000 * 60 * 60 * 3l; // access_token 만료시간 (현재 3시간)
+    private final Long expiredMs = 1000 * 60 * 15l; // access_token 만료시간 (현재 15분)
 
-    /**
-     * 유저를 페이지당 가져오는 메소드 
-     * @param page 보여주고자 하는 페이지 
-     * @param limit 페이지당 보고싶은 숫자
-     */
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAllUsers(@RequestParam int page, @RequestParam int limit) {
         // 페이지당 리미트 개수 만큼만 가져온 유저 목록 
@@ -52,23 +48,16 @@ public class UserController {
         return ResponseEntity.ok().body(result);
     }
 
-    /**
-     * 로그인 시도 컨트롤러
-     * 
-     * @param user RequestBody로 전달된 유저 정보
-     * @return 로그인 성공시 : JWT, 로그인 실패 시 :
-     * @throws Exception
-     * @throws DataAccessException
-     */
     @PostMapping("/login.do")
     public ResponseEntity<String> login(@RequestBody User user) throws Exception {
 
         if (userService.checkEmail(user.getUserEmail())) {
             if (userService.checkPassword(user)) {
-                // 유저의 이메일, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
+                // 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
+                String role = userService.getRole(user.getUserEmail());// 유저 권한
                 return ResponseEntity.ok()
                         .header("login", "success")
-                        .body(JwtToken.createJwt(user.getUserEmail(), secretKey, expiredMs));
+                        .body(JwtToken.createJwt(user.getUserEmail(), role,secretKey, expiredMs));
             } else {
                 return ResponseEntity.ok()
                         .header("login", "fail : User not exist").build();
@@ -105,6 +94,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getUser")
     public ResponseEntity<User> getUser(Authentication authentication) {
         return new ResponseEntity<>(userService.getUser(authentication.getName()).get(0), HttpStatus.OK);

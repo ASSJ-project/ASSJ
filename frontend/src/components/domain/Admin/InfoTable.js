@@ -30,14 +30,14 @@ function InfoTable() {
       setpageSize(Math.floor(data.count/limit+1)); 
     };
     getUserData();
-  }, [page]); // page 를 바꿀때 마다 호출됨 
+  }, [page]); // page 를 바꿀때 마다 렌더링
 
   const filteredData = (data) => {
     return data.filter((i) => i.userName.includes(searchText));
   };
 
+  // 현재 페이지 수 변경 리듀서
   function pageReducer(state, action){
-    
     switch(action){
       case "Increment":
         return state + 1;
@@ -48,12 +48,13 @@ function InfoTable() {
     }
   }
 
+  // 페이지 action 
   const onIncrease = ()=> {
-    if(dataSize < limit) return;
+    if(dataSize < limit) return; // 마지막 페이지 이면 return
     setPage("Increment");
   }
   const onDecrease = ()=> {
-    if(page <= 1) return;
+    if(page <= 1) return; // 첫번째 페이지 이면 return
     setPage("Decrement");
   }
   

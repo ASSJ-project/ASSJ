@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
+
 import lombok.extern.slf4j.Slf4j;
 
 // OncePerRequestFilter 는 어떤 서블릿 컨테이너에서나 요청 당 한번의 실행을 보장하는 필터
@@ -43,22 +45,25 @@ public class JwtFilter extends OncePerRequestFilter{
     String token = authorization.split(" ")[1];
     
     // token expired 여부 확인 
-      if(JwtToken.isExpired(token, secretKey)){
+    try{
+      JwtToken.isExpired(token, secretKey);
+    }catch(TokenExpiredException e){
       log.error("토큰이 만료되었습니다");
       filterChain.doFilter(request, response);
       return;
     }
-  
+
     // token 에서 꺼낸 user email
     String userEmail = JwtToken.getUserEmail(token, secretKey);
-    //log.info("useEmail: {}", userEmail);
+    // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
+    String role = JwtToken.getUserRole(token, secretKey).replaceAll("\\\"","");
 
     // 권한 부여 
     UsernamePasswordAuthenticationToken authenticationToken = 
-      new UsernamePasswordAuthenticationToken(userEmail, null, List.of(new SimpleGrantedAuthority("USER")));
-    
+      new UsernamePasswordAuthenticationToken(userEmail, null, List.of(new SimpleGrantedAuthority(role)));
+
       authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
       SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+      System.out.println(authenticationToken.getAuthorities());
       filterChain.doFilter(request, response);
-  }
-}
+  }}
