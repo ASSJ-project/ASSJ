@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.assj.dto.User;
 
-
-
 @Service
 public class UserService {
 
@@ -26,6 +24,7 @@ public class UserService {
 		 * @param page 현재 페이지 수 
 		 * @return offset 부터 limit 만큼 유저 리스트 
 		 */
+	
     public List<User> getUsers(int limit, int page) {
 				int offset = ((page - 1) * limit); // 몇번째 row(0부터 시작) 부터 표시할 것인지
         String sql = String.format("SELECT * FROM user LIMIT %d OFFSET %d", limit, offset);
@@ -110,6 +109,17 @@ public class UserService {
 		String hashPassWord = passwordEncoder.encode(password);
 		String sql = String.format("UPDATE user SET password = '%s' WHERE email = '%s'",hashPassWord, userEmail);
 		return jdbcTemplate.update(sql);
+	}
+
+	/**
+	 * 회원의 역할을 가져오는 메소드
+	 * @param email 회원 이메일 
+	 * @return 회원 역할(ROLE)
+	 * @throws DataAccessException
+	 */
+	public String getRole(String email) throws DataAccessException{
+		String sql = String.format("SELECT user_role.role FROM user INNER JOIN user_role ON user.role = user_role.role_id WHERE email = '%s'", email);
+		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
 }

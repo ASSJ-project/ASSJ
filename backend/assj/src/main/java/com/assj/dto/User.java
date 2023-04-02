@@ -13,4 +13,5 @@ public class User {
     private String userAddress;
     private String userName;
     private String refreshToken;
+    private int role;
 }
