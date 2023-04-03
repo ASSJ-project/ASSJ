@@ -45,9 +45,8 @@ class AssjApplicationTests {
 		String refreshToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhc3NqIiwiZXhwIjoxNzEyMDI1NTg2LCJpYXQiOjE2ODA0ODk1ODZ9.ddrBxKVbiXWEqVPR-msKUw36z9VkogIUn9Yd7mSCP0A";
 		
 		//then
-	//	Assertions.assertThat(userService.setRefreshToken(email, refreshToken)).isEqualTo(1);
+		Assertions.assertThat(userService.setRefreshToken(email, refreshToken)).isEqualTo(1);
 
 		Assertions.assertThat(userService.getRefreshToken(email)).isEqualTo(refreshToken);
 	}
-
 }
