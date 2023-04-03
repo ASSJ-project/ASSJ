@@ -32,7 +32,6 @@ public class CompanyRowMapper implements RowMapper<Company> {
         company.setWgsY(rs.getString("wgsY"));
         company.setWtmX(rs.getDouble("wtmX"));
         company.setWtmY(rs.getDouble("wtmY"));
-
         return company;
     }
 }
