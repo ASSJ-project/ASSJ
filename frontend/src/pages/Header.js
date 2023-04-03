@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
-import { FaUserCircle, FaRegistered } from 'react-icons/fa';
 import logo from 'assets/images/logo_only_word.svg';
 import { Link } from 'react-router-dom';
-import { AiOutlineLogout, AiOutlineLogin } from 'react-icons/ai';
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
   const [isLogin, SetIsLogin] = useState('');
+  const [isAdmin, SetIsAdmin] = useState('');
 
   useEffect(() => {
     let token = sessionStorage.getItem('access_token');
+    let role = sessionStorage.getItem('role');
     if (token == null) {
       SetIsLogin(false);
     } else {
       SetIsLogin(true);
+      if (role == 'USER_ADMIN') {
+        SetIsAdmin(true);
+      } else {
+        SetIsAdmin(false);
+      }
     }
   }, []);
 
@@ -71,8 +76,8 @@ function Header() {
     .header-right {
       list-style: none;
       display: flex;
-      width: 100px;
-      font-size: 40px;
+      width: 200px;
+      font-size: 20px;
     }
 
     .header-right button {
@@ -89,12 +94,12 @@ function Header() {
     @media screen and (max-width: 768px) {
       .header-right {
         flex-direction: row;
-        width: 70px;
-        font-size: 30px;
+        width: 130px;
+        font-size: 14px;
       }
 
       .header-logo {
-        width: 200px;
+        width: 180px;
       }
 
       img {
@@ -111,8 +116,8 @@ function Header() {
     @media screen and (max-width: 480px) {
       .header-right {
         flex-direction: row;
-        width: 70px;
-        font-size: 20px;
+        width: 80px;
+        font-size: 8px;
       }
   `;
 
@@ -136,31 +141,70 @@ function Header() {
 
         {/* User 메뉴 리스트 */}
         <div className="header-right">
-          {isLogin ? (
+          {!isLogin ? (
             <Link
-              to="/mypage"
-              style={{ textDecoration: 'none', color: '#9588E0' }}
+              to="/login"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: 'pink',
+              }}
             >
-              <FaUserCircle />
+              로그인
+            </Link>
+          ) : isAdmin ? (
+            <Link
+              to="/admin"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: 'pink',
+              }}
+            >
+              관리자
             </Link>
           ) : (
             <Link
-              to="/login"
-              style={{ textDecoration: 'none', color: '#9588E0' }}
+              to="/mypage"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: 'pink',
+              }}
             >
-              <AiOutlineLogin />
+              내정보
             </Link>
           )}
           {isLogin ? (
-            <button onClick={logout} style={{ color: '#9588E0' }}>
-              <AiOutlineLogout />
+            <button
+              onClick={logout}
+              style={{
+                color: 'white',
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: 'pink',
+              }}
+            >
+              로그아웃
             </button>
           ) : (
             <Link
               to="/register"
-              style={{ textDecoration: 'none', color: '#9588E0' }}
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: 'pink',
+              }}
             >
-              <FaRegistered />
+              회원가입
             </Link>
           )}
         </div>
@@ -175,22 +219,35 @@ function Header() {
               Main
             </Link>
           </li>
-          <li>
-            <Link
-              to="/mypage"
-              style={{ textDecoration: 'none', color: '#878982' }}
-            >
-              MyInfo
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/admin"
-              style={{ textDecoration: 'none', color: '#878982' }}
-            >
-              Admin
-            </Link>
-          </li>
+
+          {!isLogin ? (
+            <li>
+              <Link
+                to="/login"
+                style={{ textDecoration: 'none', color: '#878982' }}
+              >
+                Login
+              </Link>
+            </li>
+          ) : !isAdmin ? (
+            <li>
+              <Link
+                to="/mypage"
+                style={{ textDecoration: 'none', color: '#878982' }}
+              >
+                MyInfo
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/admin"
+                style={{ textDecoration: 'none', color: '#878982' }}
+              >
+                Admin
+              </Link>
+            </li>
+          )}
           <li>뭐하지 애는</li>
         </ul>
       </Nav>
