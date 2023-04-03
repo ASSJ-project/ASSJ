@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assj.dto.User;
-import com.assj.utils.JwtToken;
-
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -29,12 +28,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Value("${jwt.secret-key}")
-    private String secretKey; // application.properties 에 있는 시크릿 키
-
-    private final Long expiredMs = 1000 * 60 * 60l; // access_token 만료시간 (현재 60분)
-    private final Long expiredRefMs = 1000 * 60 * 60 * 24 * 365l; // refresh_token 만료시간 (현재 1년)
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
@@ -54,22 +47,7 @@ public class UserController {
 
         if (userService.checkEmail(user.getUserEmail())) {
             if (userService.checkPassword(user)) {
-                // 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
-                String role = userService.getRole(user.getUserEmail());// 유저 권한
-
-                // response body 에 엑세스 토큰, 리프레시 토큰 추가 
-                Map<String, Object> result = new HashMap<>();
-                String accessToken = JwtToken.createAccess(user.getUserEmail(), role,secretKey, expiredMs);
-                String refreshToken = JwtToken.createReFresh(secretKey, expiredRefMs);
-                result.put("access_token", accessToken);
-                result.put("refresh_token", refreshToken);
-
-                // db 에 리프레시 토큰 추가 
-                userService.setRefreshToken(user.getUserEmail(), refreshToken);
-                
-                return ResponseEntity.ok()
-                        .header("login", "success")
-                        .body(result);
+                return ResponseEntity.ok().body(userService.generateTokens(user.getUserEmail()));
             } else {
                 return ResponseEntity.ok()
                         .header("login", "fail : User not exist").build();

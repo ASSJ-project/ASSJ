@@ -4,15 +4,20 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 
 import com.assj.domain.user.UserService;
+import com.assj.redis.RefreshTokenRedisRepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
+@Slf4j
 class AssjApplicationTests {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	private RefreshTokenRedisRepository refreshTokenRedisRepository;
 
 	@Test
 	public void 회원_페이지_가져오기() {
@@ -38,15 +43,8 @@ class AssjApplicationTests {
 
 	}
 
-	@Test
-	public void 회원_리프레시토큰_저장_가져오기(){
-		//when
-		String email = "tailleejb@gmail.com";
-		String refreshToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhc3NqIiwiZXhwIjoxNzEyMDI1NTg2LCJpYXQiOjE2ODA0ODk1ODZ9.ddrBxKVbiXWEqVPR-msKUw36z9VkogIUn9Yd7mSCP0A";
-		
-		//then
-		Assertions.assertThat(userService.setRefreshToken(email, refreshToken)).isEqualTo(1);
-
-		Assertions.assertThat(userService.getRefreshToken(email)).isEqualTo(refreshToken);
-	}
+	// @Test
+	// public void 회원_리프레시토큰_저장_가져오기(){
+	// 	Assertions.assertThat((refreshTokenRedisRepository.findById("tailleejb@gmail.com"))).isEqualTo(null);
+	// }
 }

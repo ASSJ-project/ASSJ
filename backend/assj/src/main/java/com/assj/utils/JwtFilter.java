@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.assj.domain.user.UserService;
+import com.assj.redis.RefreshTokenRedisRepository;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,9 @@ public class JwtFilter extends OncePerRequestFilter{
 
   @Value("${jwt.secret-key}")
   private String secretKey;
+
+  @Autowired
+	private RefreshTokenRedisRepository refreshTokenRedisRepository;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException{
@@ -45,9 +49,10 @@ public class JwtFilter extends OncePerRequestFilter{
 
     // Bearer를 제외한 뒤쪽의 토큰 정보만을 잘라냄
     String token = authorization.split(" ")[1];
-    String refresh = authorization.split(" ")[2];
- 
-    
+    String refresh = "";
+
+    // long redisId = (long)(token.hashCode());
+    // log.info(String.valueOf(redisId) );
 
     // token expired 여부 확인 
     try{
@@ -55,13 +60,10 @@ public class JwtFilter extends OncePerRequestFilter{
     }catch(TokenExpiredException e){
       log.error("토큰이 만료되었습니다");
 
-      // 리프레시 토큰을 이용해 엑세스 토큰 자동 발급 
-
-      //response.setHeader("access denied", "token is expired");
+      // 엑세스 토큰이 만료되었다면 리프레시 토큰을 꺼냄 
+      refresh = authorization.split(" ")[2];
       
-
       filterChain.doFilter(request, response);
-      return;
     }
 
     // token 에서 꺼낸 user email

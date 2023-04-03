@@ -1,0 +1,64 @@
+[12960] 04 Apr 00:36:23.083 * Redis 3.0.504 (00000000/0) 64 bit, standalone mode, port 6379, pid 12960 ready to start.
+[12960] 04 Apr 00:36:23.084 # Server started, Redis version 3.0.504
+[12960] 04 Apr 00:36:23.085 * The server is now ready to accept connections on port 6379
+[12960] 04 Apr 00:42:50.459 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 00:42:50.467 * Background saving started by pid 31080
+[12960] 04 Apr 00:42:50.579 # fork operation complete
+[12960] 04 Apr 00:42:50.583 * Background saving terminated with success
+[12960] 04 Apr 00:48:31.888 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 00:48:31.895 * Background saving started by pid 15448
+[12960] 04 Apr 00:48:32.007 # fork operation complete
+[12960] 04 Apr 00:48:32.008 * Background saving terminated with success
+[12960] 04 Apr 00:53:33.080 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 00:53:33.086 * Background saving started by pid 8908
+[12960] 04 Apr 00:53:33.199 # fork operation complete
+[12960] 04 Apr 00:53:33.200 * Background saving terminated with success
+[12960] 04 Apr 00:58:34.024 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 00:58:34.030 * Background saving started by pid 14172
+[12960] 04 Apr 00:58:34.143 # fork operation complete
+[12960] 04 Apr 00:58:34.144 * Background saving terminated with success
+[12960] 04 Apr 01:01:22.508 * DB saved on disk
+[12960] 04 Apr 01:08:47.123 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 01:08:47.131 * Background saving started by pid 9920
+[12960] 04 Apr 01:08:47.242 # fork operation complete
+[12960] 04 Apr 01:08:47.248 * Background saving terminated with success
+[12960] 04 Apr 01:23:48.095 * 1 changes in 900 seconds. Saving...
+[12960] 04 Apr 01:23:48.102 * Background saving started by pid 25284
+[12960] 04 Apr 01:23:48.214 # fork operation complete
+[12960] 04 Apr 01:23:48.215 * Background saving terminated with success
+[12960] 04 Apr 01:36:22.093 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 01:36:22.102 * Background saving started by pid 20884
+[12960] 04 Apr 01:36:22.320 # fork operation complete
+[12960] 04 Apr 01:36:22.320 * Background saving terminated with success
+[12960] 04 Apr 01:41:23.009 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 01:41:23.018 * Background saving started by pid 19400
+[12960] 04 Apr 01:41:23.130 # fork operation complete
+[12960] 04 Apr 01:41:23.131 * Background saving terminated with success
+[12960] 04 Apr 01:43:51.852 * DB saved on disk
+[12960] 04 Apr 01:45:41.475 * DB saved on disk
+[12960] 04 Apr 01:50:42.059 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 01:50:42.065 * Background saving started by pid 24212
+[12960] 04 Apr 01:50:42.179 # fork operation complete
+[12960] 04 Apr 01:50:42.180 * Background saving terminated with success
+[12960] 04 Apr 01:55:43.063 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 01:55:43.069 * Background saving started by pid 12148
+[12960] 04 Apr 01:55:43.182 # fork operation complete
+[12960] 04 Apr 01:55:43.183 * Background saving terminated with success
+[12960] 04 Apr 02:05:16.331 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 02:05:16.337 * Background saving started by pid 22400
+[12960] 04 Apr 02:05:16.450 # fork operation complete
+[12960] 04 Apr 02:05:16.450 * Background saving terminated with success
+[12960] 04 Apr 02:10:17.089 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 02:10:17.095 * Background saving started by pid 34660
+[12960] 04 Apr 02:10:17.209 # fork operation complete
+[12960] 04 Apr 02:10:17.209 * Background saving terminated with success
+[12960] 04 Apr 02:17:23.701 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 02:17:23.709 * Background saving started by pid 13864
+[12960] 04 Apr 02:17:23.820 # fork operation complete
+[12960] 04 Apr 02:17:23.820 * Background saving terminated with success
+[12960] 04 Apr 02:22:32.653 * 10 changes in 300 seconds. Saving...
+[12960] 04 Apr 02:22:32.659 * Background saving started by pid 19720
+[12960] 04 Apr 02:22:32.773 # fork operation complete
+[12960] 04 Apr 02:22:32.774 * Background saving terminated with success
+[12960] 04 Apr 02:46:38.880 * 1 changes in 900 seconds. Saving...
+[12960] 04 Apr 02:46:38.886 * Background saving started by pid 10104
