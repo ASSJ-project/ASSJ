@@ -3,6 +3,7 @@ package com.assj.domain.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -122,4 +123,14 @@ public class UserService {
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
+	public int setRefreshToken(String userEmail, String refreshToken) throws DataAccessException{
+		String sql = String.format("UPDATE user SET refreshToken = '%s' where email = '%s'", refreshToken, userEmail);
+		return jdbcTemplate.update(sql);
+	}
+
+	public String getRefreshToken(String userEmail) throws DataAccessException{
+
+		String sql = String.format("Select refreshToken from user where email = '%s'", userEmail);
+		return jdbcTemplate.queryForObject(sql, String.class);
+	}
 }

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +18,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.assj.domain.user.UserService;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,18 +45,28 @@ public class JwtFilter extends OncePerRequestFilter{
 
     // Bearer를 제외한 뒤쪽의 토큰 정보만을 잘라냄
     String token = authorization.split(" ")[1];
+    String refresh = authorization.split(" ")[2];
+ 
     
+
     // token expired 여부 확인 
     try{
       JwtToken.isExpired(token, secretKey);
     }catch(TokenExpiredException e){
       log.error("토큰이 만료되었습니다");
+
+      // 리프레시 토큰을 이용해 엑세스 토큰 자동 발급 
+
+      //response.setHeader("access denied", "token is expired");
+      
+
       filterChain.doFilter(request, response);
       return;
     }
 
     // token 에서 꺼낸 user email
     String userEmail = JwtToken.getUserEmail(token, secretKey);
+    
     // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
     String role = JwtToken.getUserRole(token, secretKey).replaceAll("\\\"","");
 
