@@ -17,14 +17,21 @@ public class JwtToken {
    * @return JWT 토큰을 리턴 
    * @throws NoSuchAlgorithmException
    */
-  public static String createJwt(String userEmail, String role, String secretKey, Long expiredMs){
-  
+  public static String createAccess(String userEmail, String role, String secretKey, Long expiredMs){
     return JWT.create()
       .withIssuer("assj")
       .withIssuedAt(new Date(System.currentTimeMillis()))
       .withExpiresAt(new Date(System.currentTimeMillis()+ expiredMs))
       .withClaim("user", userEmail)
       .withClaim("role", role)
+      .sign(Algorithm.HMAC256(secretKey));
+  }
+
+  public static String createReFresh(String secretKey, Long expiredMs){
+    return JWT.create()
+      .withIssuer("assj")
+      .withIssuedAt(new Date(System.currentTimeMillis()))
+      .withExpiresAt(new Date(System.currentTimeMillis() + expiredMs))
       .sign(Algorithm.HMAC256(secretKey));
   }
 

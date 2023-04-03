@@ -18,8 +18,9 @@ export default function GoogleLoginBtn() {
   const responseGoogle = (response) => {
     sessionStorage.removeItem("access_token");
     if (response) {
+      console.log(response);
       sessionStorage.setItem("access_token", response.accessToken);
-      window.location.href = "map";
+      // window.location.href = "map";
     }
     //차후 refresh token 적용 필요
   };
