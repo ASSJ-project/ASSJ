@@ -62,3 +62,9 @@
 [12960] 04 Apr 02:22:32.774 * Background saving terminated with success
 [12960] 04 Apr 02:46:38.880 * 1 changes in 900 seconds. Saving...
 [12960] 04 Apr 02:46:38.886 * Background saving started by pid 10104
+[12960] 04 Apr 02:46:38.999 # fork operation complete
+[12960] 04 Apr 02:46:39.000 * Background saving terminated with success
+[12960] 04 Apr 02:54:11.225 # User requested shutdown...
+[12960] 04 Apr 02:54:11.226 * Saving the final RDB snapshot before exiting.
+[12960] 04 Apr 02:54:11.229 * DB saved on disk
+[12960] 04 Apr 02:54:11.229 # Redis is now ready to exit, bye bye...
