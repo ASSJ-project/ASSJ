@@ -24,14 +24,14 @@ public class CompanyController {
     }
 
     @GetMapping("/items")
-    public List<Company> getCompaniesPage(@RequestParam int page, @RequestParam int size,
-            @RequestParam String filteredData) {
-        return companyService.getCompaniesPage(page, size, filteredData);
+    public List<Company> getCompaniesPage(@RequestParam String region, @RequestParam String jobsCd,
+            @RequestParam int page, @RequestParam int size) {
+        return companyService.getCompaniesPage(region, jobsCd, page, size);
     }
 
     @GetMapping("/getItems")
-    public List<Company> getItems(@RequestParam String filteredData, @RequestParam String jobs) {
-        return companyService.getItems(filteredData, jobs);
+    public List<Company> getItems(@RequestParam String region, @RequestParam String jobsCd) {
+        return companyService.getItems(region, jobsCd);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

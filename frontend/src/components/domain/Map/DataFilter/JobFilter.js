@@ -236,10 +236,10 @@ export default function ModalWithCategories() {
                         control={
                           <Checkbox
                             checked={selectedSubcategories.includes(
-                              subcategory.subcategories
+                              subcategory.id
                             )}
                             onChange={() =>
-                              handleSubcategoryClick(subcategory.subcategories)
+                              handleSubcategoryClick(subcategory.id)
                             }
                           />
                         }

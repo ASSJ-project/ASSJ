@@ -7,10 +7,6 @@ const SearchModal = () => {
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
-  useEffect(() => {
-    console.log('setFilterJob updated:', setFilterJob);
-  }, [setFilterJob]);
-
   return (
     <>
       <div>
