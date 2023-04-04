@@ -81,3 +81,4 @@ public class JwtFilter extends OncePerRequestFilter{
       System.out.println(authenticationToken.getAuthorities());
       filterChain.doFilter(request, response);
   }}
+  
