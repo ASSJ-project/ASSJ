@@ -1,7 +1,8 @@
-package com.assj.utils;
+package com.assj.jwt;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,11 +23,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.assj.redis.RefreshTokenRedisRepository;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
+import com.assj.redis.RefreshToken;
+
 import lombok.extern.slf4j.Slf4j;
 
 // OncePerRequestFilter 는 어떤 서블릿 컨테이너에서나 요청 당 한번의 실행을 보장하는 필터
 @Slf4j
 @Component 
+@Order(1)
 public class JwtFilter extends OncePerRequestFilter{
 
   @Value("${jwt.secret-key}")
@@ -48,10 +53,6 @@ public class JwtFilter extends OncePerRequestFilter{
 
     // Bearer를 제외한 뒤쪽의 토큰 정보만을 잘라냄
     String token = authorization.split(" ")[1];
-    String refresh = "";
-
-    // long redisId = (long)(token.hashCode());
-    // log.info(String.valueOf(redisId) );
 
     // token expired 여부 확인 
     try{
@@ -59,9 +60,7 @@ public class JwtFilter extends OncePerRequestFilter{
     }catch(TokenExpiredException e){
       log.error("토큰이 만료되었습니다");
 
-      // 엑세스 토큰이 만료되었다면 리프레시 토큰을 꺼냄 
-      refresh = authorization.split(" ")[2];
-      
+      // 만료되었다면 이 단계에서 Exception filter 로 토스됨 
       filterChain.doFilter(request, response);
     }
 

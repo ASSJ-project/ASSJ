@@ -47,7 +47,7 @@ public class UserController {
             if (userService.checkPassword(user)) {
                 return ResponseEntity.ok().body(userService.generateTokens(user.getUserEmail()));
             } else {
-                return ResponseEntity.ok()
+                return ResponseEntity.badRequest()
                         .header("login", "fail : User not exist").build();
             }
         }
