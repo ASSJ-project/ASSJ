@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
-  sessionStorage.removeItem("access_token");
+  sessionStorage.clear();
   try {
     const result = await axios.post(url, {
       userEmail: e,
@@ -13,6 +13,7 @@ export async function loginDo(e, p) {
       console.log(result.data);
       sessionStorage.setItem("access_token", result.data.access_token);
       sessionStorage.setItem("refresh_token", result.data.refresh_token);
+      sessionStorage.setItem("role", result.data.role);
       window.location.href = "map";
       return true;
     } else {

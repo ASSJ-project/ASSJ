@@ -64,6 +64,20 @@ public class JwtToken {
   public static String getUserRole(String token, String secretKey){
     return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("role").toString();
   }
+
+  /**
+   * 토큰을 redis 저장을 위해 고유 id로 만듬
+   * @param accessToken
+   * @return redis 용 id 
+   */
+  public static long accessTokenToId(String accessToken){
+    char arr[] = accessToken.toCharArray();
+		long result = 0l;
+		for(char i : arr){
+			result += (char)i;
+		}
+    return result;
+  }
 }
 
 

@@ -9,7 +9,7 @@ import { useState } from "react";
 function Admin() {
   const [adminUserPage, SetAdminUserPage] = useState(true);
   const [adminStatsPage, SetStatsAdminPage] = useState(false);
- 
+
   return (
     <>
       <Header />
