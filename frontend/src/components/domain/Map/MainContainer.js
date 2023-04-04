@@ -1,9 +1,7 @@
-import useApiFetch from '@/hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap_0331';
-import CompanyList from '@/components/domain/Map/CompanyList';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const LoadingContainer = styled.div`
@@ -27,28 +25,24 @@ const ToggleBoundary = styled.div`
   z-index: 2;
 `;
 
-function MainContainer(props) {
-  const { filteredData } = props;
-  const [selected, setSelected] = useState('map');
-
-  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
-  console.log('하위 컴포넌트', selectedSubcategory);
+function MainContainer() {
+  const setFilterRegion = useSelector((state) => state.setFilterRegion);
+  const setFilterJob = useSelector((state) => state.setFilterJob);
 
   const queryParam = {
-    filteredData: filteredData,
-    jobs: selectedSubcategory,
+    filteredData: setFilterRegion,
+    jobsCd: setFilterJob,
   };
+
   const header = {
     'X-Custom-Header': 'YourCustomHeaderValue',
   };
 
-  const { data, loading, error } = useApiFetch(
+  const { data, loading, error } = useFetch(
     '/api/company/getItems',
     queryParam,
     header
   );
-
-  console.log('data', data);
 
   if (loading) {
     return (

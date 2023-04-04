@@ -3,8 +3,8 @@ import { SET_FILTER_JOB, SET_FILTER_REGION } from '@/actions/actions';
 
 // 리듀서 초기화
 const initialState = {
-  setFilterJob: null,
-  setFilterRegion: null,
+  setFilterRegion: '',
+  setFilterJob: '',
 };
 
 const reducer = (state = initialState, action) => {

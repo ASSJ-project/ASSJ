@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.nio.charset.Charset;
 
@@ -48,12 +49,14 @@ public class CompanyService {
         return companies;
     }
 
-    public List<Company> getCompaniesPage(int page, int size, String filteredData) {
+    public List<Company> getCompaniesPage(String region, String jobsCd, int page, int size) {
         int offset = (page - 1) * size;
-        String sql = "SELECT * FROM company WHERE basicAddr LIKE :searchString LIMIT :size OFFSET :offset";
-        String searchString = "%" + filteredData + "%";
+        String sql = "SELECT * FROM company WHERE region IN (:regionList) AND jobsCd IN (:jobsCdList) LIMIT :size OFFSET :offset";
+        List<String> regionList = Arrays.asList(region.split(",\\s*"));
+        List<String> jobsCdList = Arrays.asList(jobsCd.split(",\\s*"));
         MapSqlParameterSource params = new MapSqlParameterSource()
-                .addValue("searchString", searchString)
+                .addValue("regionList", regionList)
+                .addValue("jobsCdList", jobsCdList)
                 .addValue("size", size)
                 .addValue("offset", offset);
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
@@ -61,13 +64,15 @@ public class CompanyService {
         return companies;
     }
 
-    public List<Company> getItems(String filteredData, String jobs) {
-        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString AND jobsCd = :jobsCdString";
-        String addressString = "%" + filteredData + "%";
-        String jobsCdString = jobs;
+    public List<Company> getItems(String region, String jobsCd) {
+        String sql = "SELECT * FROM company WHERE region IN (:regionList) AND jobsCd IN (:jobsCdList)";
+        List<String> regionList = Arrays.asList(region.split(",\\s*"));
+        List<String> jobsCdList = Arrays.asList(jobsCd.split(",\\s*"));
+
         MapSqlParameterSource params = new MapSqlParameterSource()
-                .addValue("addressString", addressString)
-                .addValue("jobsCdString", jobsCdString);
+                .addValue("regionList", regionList)
+                .addValue("jobsCdList", jobsCdList);
+
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
         return companies;
