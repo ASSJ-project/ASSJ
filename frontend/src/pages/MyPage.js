@@ -3,7 +3,7 @@ import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
 import MyPageCheck from '@/components/domain/MyPage/MyPage-Check';
 import MyPageHeader from '@/components/domain/MyPage/MyPage-Header';
 import { useState, useEffect } from 'react';
-import Header from './Header';
+import Header from '@/components/Structure/Header/Header';
 import Footer from '@/components/Structure/Footer/Footer';
 import styled from 'styled-components';
 import { getUser } from '@/apis/mypage/mypage';
