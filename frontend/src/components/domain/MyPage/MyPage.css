@@ -30,6 +30,7 @@
 
 .mypage-searchmenu {
   display: flex;
+  justify-content: space-between;
   height: 5%;
   width: 100%;
 }
@@ -77,7 +78,7 @@
   border-style: none;
   font-size: 20px;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -204,12 +205,12 @@
 }
 
 .mypage-input2 {
-  width: 150px;
+  width: 200px;
   padding: 1em;
   border: 1px white solid;
   background: var(--input-color);
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'Lato';
   font-style: normal;
 }
@@ -262,5 +263,9 @@
   .mypage-checkeditems-alldeletebtn,
   .mypage-recently {
     font-size: 8px;
+  }
+
+  .mypage-input2 {
+    width: 130px;
   }
 }

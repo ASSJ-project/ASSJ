@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '@/components/domain/MyPage/MyPage.css';
+import Button from '@mui/material/Button';
 
 const MyPageInfo = (data) => {
   const [company] = useState([
@@ -77,15 +78,15 @@ const MyPageInfo = (data) => {
     <div className="mypage-myinformations">
       <div className={'mypage-myinformation'}>
         <span style={{ marginLeft: '20px' }}>이름 : </span>
-        <span style={{ marginRight: '20px' }}>{data['data'].userName}</span>
+        {/* <span style={{ marginRight: '20px' }}>{data['data'].userName}</span> */}
       </div>
       <div className={'mypage-myinformation'}>
         <span style={{ marginLeft: '20px' }}>메일 : </span>
-        <span style={{ marginRight: '20px' }}>{data['data'].userEmail}</span>
+        {/* <span style={{ marginRight: '20px' }}>{data['data'].userEmail}</span> */}
       </div>
       <div className={'mypage-myinformation'}>
         <span style={{ marginLeft: '20px' }}>주소 : </span>
-        <span style={{ marginRight: '20px' }}>{data['data'].userAddress}</span>
+        {/* <span style={{ marginRight: '20px' }}>{data['data'].userAddress}</span> */}
       </div>
       <div className={'mypage-myinformation'}>
         <div style={{ marginLeft: '20px' }}>비밀번호변경 :</div>
@@ -98,23 +99,24 @@ const MyPageInfo = (data) => {
           ></input>
           <span>
             {changPswd ? (
-              <button
-                className="mypage-mypagecheckbutton"
+              <Button
+                variant="contained"
+                size="small"
                 onClick={() => setChangePswd(false)}
               >
                 취소
-              </button>
+              </Button>
             ) : (
-              <button className="mypage-mypagecheckbutton" onClick={checkPw}>
+              <Button variant="contained" size="small" onClick={checkPw}>
                 변경
-              </button>
+              </Button>
             )}
           </span>
         </div>
       </div>
       <div className={changPswd ? 'mypage-myinformation' : 'mypage-none'}>
         <span style={{ marginLeft: '20px' }}>새 비밀번호 :</span>
-        <div style={{ marginRight: '60px' }}>
+        <div style={{ marginRight: '85px' }}>
           <input
             placeholder="비밀번호를 입력해주세요"
             type="password"
@@ -133,9 +135,9 @@ const MyPageInfo = (data) => {
             onChange={onChange3}
             className="mypage-input2"
           ></input>
-          <button className="mypage-mypagecheckbutton " onClick={Pwchange}>
+          <Button variant="contained" size="small" onClick={Pwchange}>
             수정
-          </button>
+          </Button>
         </div>
       </div>
 
