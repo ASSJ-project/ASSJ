@@ -8,7 +8,6 @@ export async function getUser() {
     const result = await axios.get(url, {
       headers: {
         authorization: "Bearer " + token + " " + refresh,
-        main
       },
     });
     return result.data;
