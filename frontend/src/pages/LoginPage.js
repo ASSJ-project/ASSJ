@@ -13,7 +13,9 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(true);
 
-  useEffect(()=>{sessionStorage.clear()},[email]);
+  useEffect(() => {
+    sessionStorage.clear();
+  }, [email]);
 
   const emailChange = (e) => {
     setEmail(e.target.value);
@@ -51,6 +53,11 @@ function LoginPage() {
             type="password"
             value={password}
             onChange={passwordChange}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                login();
+              }
+            }}
           />
         </div>
 

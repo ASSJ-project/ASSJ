@@ -107,11 +107,26 @@ function Register() {
     });
   };
 
-  // 메일 전송 버튼 색깔 토글 함수 
-  const sendBtn = (checked) => (
-    (checked) ? "red" : "blue"
-  )
-  
+  // 메일 전송 버튼 색깔 토글 함수
+  const sendBtn = (checked) => (checked ? "red" : "blue");
+
+  // 회원가입 함수
+  const enterClick = () => {
+    if (
+      name.length > 0 &&
+      email.length > 0 &&
+      password.length > 0 &&
+      address.length > 0 &&
+      checkPassword.length > 0 &&
+      password === checkPassword
+    ) {
+      alert("회원가입에 성공했습니다 로그인 페이지로 돌아갑니다");
+      setregisterSuccess(checkSuccess);
+    } else {
+      alert("입력칸을 확인해주세요");
+      setregisterSuccess(false);
+    }
+  };
 
   return (
     <div className="signup-container">
@@ -147,7 +162,7 @@ function Register() {
             onClick={() => {
               checked ? sendEmail() : mailCheck();
             }}
-            style={{background : sendBtn(checked)}}
+            style={{ background: sendBtn(checked) }}
             className="btn-send-email"
           >
             {email.length > 0 ? (checked ? "전송" : "중복확인") : "중복확인"}
@@ -171,7 +186,7 @@ function Register() {
                 size="small"
                 variant="standard"
                 disabled={emailChecked}
-                onChange={(e) => setState(e, setEmailInput, /^$/, f=>f)}
+                onChange={(e) => setState(e, setEmailInput, /^$/, (f) => f)}
               />
               <Button
                 variant="contained"
@@ -222,6 +237,11 @@ function Register() {
           label="비밀번호 확인"
           type="password"
           onChange={(e) => setState(e, setcheckPassword)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              enterClick();
+            }
+          }}
         />
         {password !== checkPassword && checkPassword.length > 0
           ? error("비밀번호가 일치하지 않습니다")
@@ -237,20 +257,7 @@ function Register() {
           endIcon={<SendIcon />}
           disabled={!emailChecked}
           onClick={() => {
-            if (
-              name.length > 0 &&
-              email.length > 0 &&
-              password.length > 0 &&
-              address.length > 0 &&
-              checkPassword.length > 0 &&
-              password === checkPassword
-            ) {
-              alert("회원가입에 성공했습니다 로그인 페이지로 돌아갑니다");
-              setregisterSuccess(checkSuccess);
-            } else {
-              alert("입력칸을 확인해주세요");
-              setregisterSuccess(false);
-            }
+            enterClick();
           }}
         >
           회원가입
