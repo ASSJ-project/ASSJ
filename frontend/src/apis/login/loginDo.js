@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
-  sessionStorage.clear();
+  //sessionStorage.clear();
   try {
     const result = await axios.post(url, {
       userEmail: e,

@@ -13,7 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.assj.utils.JwtFilter;
+// import com.assj.exception.ExceptionFilter;
+import com.assj.jwt.JwtFilter;
 
 
 @Configuration
@@ -22,6 +23,9 @@ public class SecurityConfig{
   
   @Autowired
   JwtFilter jwtFilter;
+
+  // @Autowired
+  // ExceptionFilter exceptionFilter;
 
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
@@ -41,8 +45,8 @@ public class SecurityConfig{
     http.httpBasic().disable().csrf().disable().cors();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-    http.authorizeRequests().antMatchers("/api/users/**").permitAll()
-      .anyRequest().authenticated();
+    //http.addFilterBefore(exceptionFilter, JwtFilter.class);
+    http.authorizeRequests().antMatchers("/api/users/**").permitAll();
     return http.build();  
   }
 }

@@ -10,17 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.assj.dto.User;
+import com.assj.jwt.JwtToken;
 import com.assj.redis.RefreshToken;
 import com.assj.redis.RefreshTokenRedisRepository;
-import com.assj.utils.JwtToken;
 
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -178,10 +177,16 @@ public class UserService {
 		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌 
 		long redisId = JwtToken.accessTokenToId(accessToken);
 
-		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, request.getHeader("Origin").toString(), refreshToken));
-	
-		Optional<RefreshToken> rf = refreshTokenRedisRepository.findById(redisId); // 기본 인터페이스에서 지원. long 값만 찾을 수 있음.
-		System.out.println(rf.get().getEmail());
+		// 유저 접속 ip를 알아낸다 
+		String userIp = request.getHeader("X-FORWARDED-FOR");
+		if(userIp == null){
+			userIp = request.getRemoteAddr();
+		}
+		// 두 조건 다 아닐 경우의 exception 처리도 필요해질것 같다
+
+		// 리프레시 토큰을 redis에 저장 
+		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken));
+		
 		return result;
 	}
 }
