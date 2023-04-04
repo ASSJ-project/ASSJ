@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0331';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0403_addMouseOver';
 import { useSelector } from 'react-redux';
 import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
 import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
@@ -10,8 +10,6 @@ import MapToggle from '@/components/domain/Map/ToggleButton';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
-import Chip from '@mui/material/Chip';
-import DoneIcon from '@mui/icons-material/Done';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -34,17 +32,6 @@ const ToggleBoundary = styled.div`
   z-index: 2;
 `;
 
-const Filter = styled.div`
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  border: 1px solid #b4c0d3;
-  @media (max-width: 1110px) {
-    width: 90%;
-  }
-`;
-
 function MainContainer() {
   const [selected, setSelected] = useState('map');
 
@@ -53,12 +40,6 @@ function MainContainer() {
 
   const [region, setRegion] = useState('서울 강남구');
   const [jobsCd, setJobsCd] = useState(550104);
-
-  const filterRegionlist = setFilterRegion.split(",");
-  const filterJoblist = setFilterJob.split(",");
-
-  const handleClick = () => {};
-  const handleDelete = () => {};
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -95,39 +76,12 @@ function MainContainer() {
   return (
     <>
       <Header />
-      <Filter>
-        <RegionFilter />
-        <JobFilter />
-        {filterRegionlist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })} 
-
-        {filterJoblist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })}
-      </Filter>
+      {/* <div>
+        <h2>Selected Subcategory: {setFilterRegion}</h2>
+        <h2>Selected Job: {setFilterJob}</h2>
+      </div> */}
+      <JobFilter />
+      <RegionFilter />
       <ToggleBoundary className="App">
         <MapToggle setSelected={setSelected} />
       </ToggleBoundary>
@@ -136,7 +90,7 @@ function MainContainer() {
       ) : (
         <CompanyList region={region} jobsCd={jobsCd} />
       )}
-      <Footer />
+      <Footer />  
     </>
   );
 }

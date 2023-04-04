@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0331';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0403';
 import { useSelector } from 'react-redux';
 
 const LoadingContainer = styled.div`

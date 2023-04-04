@@ -1,7 +1,27 @@
 /* 기본 제공 오버레이 */
-.label {
+/* .label {
   margin-bottom: 96px;
+} */
+.label:hover {
+  transform: scale(1.2); /* 마우스 오버 시 크기를 20% 증가 */
+  z-index: 2; /* 마우스 오버 시 라벨이 다른 요소 위로 올라오도록 z-index 조절 */
 }
+
+.label {
+  cursor: pointer; /* 마우스 포인터가 라벨 위에 있을 때 포인터 모양으로 변경 */
+  transition: transform 0.3s ease; /* 크기 변화에 대한 부드러운 애니메이션 효과 적용 */
+  background-color: rgba(230, 230, 240, 0.952);
+  border-radius: 24px;
+  border: 1px solid black;
+  color: black;
+  font-size: 0.8em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  padding: 2px 5px;
+  position: relative;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+}
+
 .label * {
   display: inline-block;
   vertical-align: top;
@@ -32,8 +52,7 @@
   width: 6px;
 }
 
-/* 클릭 후 오버레이 */
-.overlay_info {
+클릭 후 오버레이 .overlay_info {
   border-radius: 6px;
   margin-bottom: 12px;
   float: left;
@@ -98,4 +117,11 @@
 .overlay_content {
   z-index: 0;
   position: relative;
+  cursor: pointer; /* 마우스 오버 시 포인터 모양이 변경되도록 설정합니다. */
+}
+
+.overlay_content:hover {
+  /* 마우스 오버 시 border 및 shadow 효과를 적용합니다. */
+  /* border: 0.3px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5); */
 }
