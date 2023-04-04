@@ -1,11 +1,14 @@
 package com.assj.domain.user;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,12 +16,14 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
 
 import com.assj.dto.User;
 import com.assj.jwt.JwtToken;
 import com.assj.redis.RefreshToken;
 import com.assj.redis.RefreshTokenRedisRepository;
 
+import io.netty.handler.codec.base64.Base64Encoder;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,7 +46,6 @@ public class UserService {
 	private String accessExpiredAt; // 엑세스 토큰 만료기한 1분
 	@Value("${jwt.refresh-token.expiredAt}")
 	private String refreshExpiredAt; // 리프레시 토큰 만료기한 1주일
-
 
 	/**
 	 * 유저 리스트를 가져오는 메소드
@@ -158,35 +162,46 @@ public class UserService {
 	}
 
 	/**
-	 * 토큰 쌍을 생성하는 메소드 
+	 * 토큰 쌍을 생성하는 메소드
+	 * 
 	 * @param userEmail
-	 * @return 엑세스 토큰, 리프레시 토큰 
+	 * @return 엑세스 토큰, 리프레시 토큰
 	 */
-	public Map<String, Object> generateTokens(String userEmail) {
+	public HttpStatus generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
+		log.info("서비스진입");
 		String role = getRole(userEmail);// 유저 권한
 
 		// response body 에 엑세스 토큰, 리프레시 토큰 추가
-		Map<String, Object> result = new HashMap<>();
 		String accessToken = JwtToken.createAccess(userEmail, role, secretKey, Long.parseLong(accessExpiredAt));
 		String refreshToken = JwtToken.createReFresh(secretKey, Long.parseLong(refreshExpiredAt));
-		result.put("access_token", accessToken);
-		result.put("refresh_token", refreshToken);
-		result.put("role", role);
 
-		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌 
+		Cookie accessCookie = new Cookie("access_token", accessToken); // 엑세스 토큰을 재발급
+		Cookie refreshCookie = new Cookie("refresh_token", refreshToken); // 엑세스 토큰을 재발급
+		Cookie roleCookie = new Cookie("role", role);
+		accessCookie.setHttpOnly(true);
+		refreshCookie.setHttpOnly(true);
+		roleCookie.setHttpOnly(true);
+		accessCookie.setPath("/");
+		refreshCookie.setPath("/");
+		roleCookie.setPath("/");
+		response.addCookie(accessCookie);
+		response.addCookie(refreshCookie);
+		response.addCookie(roleCookie);
+
+		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌
 		long redisId = JwtToken.accessTokenToId(accessToken);
 
-		// 유저 접속 ip를 알아낸다 
+		// 유저 접속 ip를 알아낸다
 		String userIp = request.getHeader("X-FORWARDED-FOR");
-		if(userIp == null){
+		if (userIp == null) {
 			userIp = request.getRemoteAddr();
 		}
 		// 두 조건 다 아닐 경우의 exception 처리도 필요해질것 같다
 
-		// 리프레시 토큰을 redis에 저장 
-		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken));
-		
-		return result;
+		// 리프레시 토큰을 redis에 저장
+		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken, role));
+
+		return HttpStatus.OK;
 	}
 }

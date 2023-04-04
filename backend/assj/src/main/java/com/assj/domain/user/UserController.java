@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +34,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAllUsers(@RequestParam int page, @RequestParam int limit) {
-        // 페이지당 리미트 개수 만큼만 가져온 유저 목록 
+        // 페이지당 리미트 개수 만큼만 가져온 유저 목록
         List<User> users = userService.getUsers(limit, page);
         // 유저 테이블 전체 유저 숫자
         int count = userService.getUserCount();
@@ -41,18 +45,16 @@ public class UserController {
     }
 
     @PostMapping("/login.do")
-    public ResponseEntity<Map<String, Object>> login(@RequestBody User user) throws Exception {
+    public HttpStatus login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request)
+            throws Exception {
 
         if (userService.checkEmail(user.getUserEmail())) {
             if (userService.checkPassword(user)) {
-                return ResponseEntity.ok().body(userService.generateTokens(user.getUserEmail()));
-            } else {
-                return ResponseEntity.badRequest()
-                        .header("login", "fail : User not exist").build();
+                log.info("컨트롤러 진입");
+                return userService.generateTokens(user.getUserEmail(), response, request);
             }
         }
-        return ResponseEntity.noContent()
-                .header("login", "fail : DB access failed").build();
+        return HttpStatus.BAD_REQUEST;
     }
 
     @PostMapping("/register.do")
