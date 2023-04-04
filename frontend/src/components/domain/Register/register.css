@@ -13,18 +13,26 @@
   max-width: 90%;
   flex-direction: column;
   justify-items: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 .addressSearch {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.logo-rgs {
+  margin-bottom: -4em;
+  width: 100%;
+  height: 20%;
+}
 .signuptext {
-  font-size: 2em;
+  font-size: 1.7em;
   margin-top: 0.5em;
   color: var(--text-color);
   text-align: center;
   font-weight: 700;
+  margin-bottom: 1em;
 }
 .text_box {
   font-size: 1.2em;
@@ -37,7 +45,7 @@
   border: 1px white solid;
   background: var(--input-color);
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   padding: 1.5em;
 }
 .total_input:focus {
@@ -55,30 +63,49 @@
   text-align: center;
   width: 80%;
 }
-.send-email {
-  height: 2em;
-  width: fit-content;
-}
 .send-email-disabled {
   height: 2em;
   width: fit-content;
 }
-
 .addressButton {
-  height: 2em;
+  width: 4em;
+  height: 4em;
 }
 #address {
   background: #e0e0e0;
 }
-
 .email-check-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-bottom: 1em;
 }
-.email-check-number-input {
-  width: fit-content;
+
+.email-input {
+  display: flex;
 }
-.email-number-button {
-  width: fit-content;
-  height: 2em;
+
+.btn-send-email {
+  width: 4em;
+  height: 4em;
+}
+#btn-set {
+  margin-left: 1em;
+}
+#password {
+  margin-top: 2em;
+}
+
+@media (max-width: 780px) {
+  .signup-container {
+    padding: 10px;
+    width: 90%;
+    margin: 0em;
+  }
+}
+@media (max-width: 780px) {
+  .signup-container {
+    padding: 10px;
+    width: 90%;
+    margin: 0em;
+  }
 }

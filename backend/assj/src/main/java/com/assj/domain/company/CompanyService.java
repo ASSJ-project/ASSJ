@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.assj.dto.Company;
 import com.assj.utils.Constants;
+import com.assj.utils.Wgs84ToWtmConverter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.nio.charset.Charset;
 
@@ -41,6 +46,35 @@ public class CompanyService {
     public List<Company> getAllCompanies() {
         String sql = "SELECT * FROM company";
         List<Company> companies = jdbcTemplate.query(sql, new CompanyRowMapper());
+        return companies;
+    }
+
+    public List<Company> getCompaniesPage(String region, String jobsCd, int page, int size) {
+        int offset = (page - 1) * size;
+        String sql = "SELECT * FROM company WHERE region IN (:regionList) AND jobsCd IN (:jobsCdList) LIMIT :size OFFSET :offset";
+        List<String> regionList = Arrays.asList(region.split(",\\s*"));
+        List<String> jobsCdList = Arrays.asList(jobsCd.split(",\\s*"));
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("regionList", regionList)
+                .addValue("jobsCdList", jobsCdList)
+                .addValue("size", size)
+                .addValue("offset", offset);
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
+        return companies;
+    }
+
+    public List<Company> getItems(String region, String jobsCd) {
+        String sql = "SELECT * FROM company WHERE region IN (:regionList) AND jobsCd IN (:jobsCdList)";
+        List<String> regionList = Arrays.asList(region.split(",\\s*"));
+        List<String> jobsCdList = Arrays.asList(jobsCd.split(",\\s*"));
+
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("regionList", regionList)
+                .addValue("jobsCdList", jobsCdList);
+
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
         return companies;
     }
 
@@ -108,7 +142,9 @@ public class CompanyService {
             }
             JSONObject jsonObject = XML.toJSONObject(xmlString).getJSONObject("wantedRoot").getJSONObject("wanted");
             List<Double> geo = callCoordinatesApi(jsonObject.get("basicAddr").toString());
+
             if (!geo.isEmpty()) {
+                double[] coord = Wgs84ToWtmConverter.convertWgs84ToWtm(geo.get(1), geo.get(0));
                 Object[] params = new Object[] {
                         jsonObject.get("company").toString(),
                         jsonObject.get("title").toString(),
@@ -129,7 +165,9 @@ public class CompanyService {
                         jsonObject.get("empTpCd").toString(),
                         jsonObject.get("jobsCd").toString(),
                         geo.get(0),
-                        geo.get(1)
+                        geo.get(1),
+                        coord[0],
+                        coord[1]
                 };
                 jdbcTemplate.update(Constants.INSERT_INTO_COMPANY_SQL, params);
                 log.info("pageNum: {}", pageNum);
@@ -158,6 +196,7 @@ public class CompanyService {
             JSONObject jsonObject = XML.toJSONObject(xmlString).getJSONObject("wantedRoot").getJSONObject("wanted");
             List<Double> geo = callCoordinatesApi(jsonObject.get("basicAddr").toString());
             if (!geo.isEmpty()) {
+                double[] coord = Wgs84ToWtmConverter.convertWgs84ToWtm(geo.get(1), geo.get(0));
                 Object[] params = new Object[] {
                         jsonObject.get("company").toString(),
                         jsonObject.get("title").toString(),
@@ -178,7 +217,9 @@ public class CompanyService {
                         jsonObject.get("empTpCd").toString(),
                         jsonObject.get("jobsCd").toString(),
                         geo.get(0),
-                        geo.get(1)
+                        geo.get(1),
+                        coord[0],
+                        coord[1]
                 };
                 jdbcTemplate.update(Constants.INSERT_INTO_COMPANY_SQL, params);
                 log.info("pageNum: {}", pageNum);

@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import Header from './Header';
 import CompanyList from '@/components/domain/Map/CompanyList';
-import { TailSpin } from 'react-loader-spinner';
 import useFetchData from '@/hooks/useFetchData';
-import KakaoMap from '@/components/domain/Map/KakaoMap';
+import KakaoMap from '@/components/domain/Map/KakaoMap_backup';
 import Footer from '@/components/Structure/Footer/Footer';
-import CategoryDropdown from '@/components/domain/Map/CategoryDropdown';
 import MapToggle from '@/components/domain/Map/ToggleButton';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
+import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
+import MainContainer from './MainPage';
 
 const Main = styled.div`
   flex: 1;
@@ -30,7 +31,7 @@ const SearchBox = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  position: absolute;
+  position: fixed;
 
   z-index: 2;
   @media (max-width: 767px) {
@@ -78,8 +79,14 @@ const MapBoundary = styled.div`
   border: 1px solid black;
 `;
 
+const CompanyBoundary = styled.div`
+  margin: 20px;
+  height: 80vh;
+  width: 100vw;
+`;
+
 const ToggleBoundary = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   z-index: 2;
 `;
@@ -90,6 +97,9 @@ function LayoutPage() {
   const [filteredData, setFilteredData] = useState(data);
   const [selected, setSelected] = useState('map');
   const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
+
+  const setFilterRegion = useSelector((state) => state.setFilterRegion);
+  const setFilterJob = useSelector((state) => state.setFilterJob);
 
   const handleSearch = () => {
     let filtered = data.filter((item) => {
@@ -107,20 +117,10 @@ function LayoutPage() {
     setFilteredData(filtered);
   };
 
-  if (loading) {
-    return (
-      <LoadingContainer>
-        <TailSpin color="#9588e0" height={80} width={80} />
-      </LoadingContainer>
-    );
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
   return (
     <>
       <Header />
+
       <Main>
         <SearchBox>
           <SearchInput
@@ -132,15 +132,22 @@ function LayoutPage() {
           <SearchButton onClick={handleSearch}>검색</SearchButton>
         </SearchBox>
 
+        <div>
+          <h2>Selected Subcategory: {setFilterRegion}</h2>
+          <h2>Selected Job: {setFilterJob}</h2>
+        </div>
+        <JobFilter />
+        <RegionFilter />
+
         <ToggleBoundary className="App">
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
         {selected === 'map' ? (
           <MapBoundary>
-            <KakaoMap data={filteredData} />
+            {data && <MainContainer data={(setFilterRegion, setFilterJob)} />}
           </MapBoundary>
         ) : (
-          <CompanyList data={data} />
+          <CompanyList />
         )}
       </Main>
       <Footer />

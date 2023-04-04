@@ -8,6 +8,7 @@ const useFetchData = () => {
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch('/api/company/get');
+
       const result = await response.json();
       const filteredData = result
         // .filter((item) => item.region === '서울')

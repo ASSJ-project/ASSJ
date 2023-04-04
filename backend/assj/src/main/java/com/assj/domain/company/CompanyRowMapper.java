@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.assj.dto.Company;
+
 public class CompanyRowMapper implements RowMapper<Company> {
     @Override
     public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -26,11 +28,10 @@ public class CompanyRowMapper implements RowMapper<Company> {
         company.setDetailAddr(rs.getString("detailAddr"));
         company.setEmpTpCd(rs.getString("empTpCd"));
         company.setJobsCd(rs.getString("jobsCd"));
-        company.setX(rs.getString("x"));
-        company.setY(rs.getString("y"));
-        // company.setWtmX(rs.getString("wtmX"));
-        // company.setWtmY(rs.getString("wtmY"));
-
+        company.setWgsX(rs.getString("wgsX"));
+        company.setWgsY(rs.getString("wgsY"));
+        company.setWtmX(rs.getDouble("wtmX"));
+        company.setWtmY(rs.getDouble("wtmY"));
         return company;
     }
 }

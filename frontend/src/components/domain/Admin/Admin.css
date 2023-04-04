@@ -35,3 +35,89 @@
   margin-bottom: 0.6em;
   font-weight: bold;
 }
+
+/* userInfo_InfoTable Css */
+/* 검색창, 버튼 (검색, 삭제) */
+.search_input_btn {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.6em;
+}
+
+.search_input:focus {
+  outline: 2px solid var(--button-color) !important;
+}
+
+.search_btn {
+  background-color: var(--input-color) !important;
+  /* margin-left: 0.5em !important; */
+}
+
+#page-num{
+  margin-top:0.5em;
+}
+
+.user_delete_btn {
+  /* margin-left: 11em !important; */
+}
+
+/* table전체 */
+.user_table {
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+}
+
+/* border */
+.user_table th,
+td {
+  border-top: 1px solid black;
+}
+
+.user_table tr:last-child td {
+  border-bottom: 1px solid black;
+}
+
+/* head */
+.head_title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.head_title th {
+  padding: 0.3em 0;
+}
+
+/* columns 너비 지정 */
+.head_title th:first-child {
+  width: 4%;
+}
+
+.head_title th:nth-child(2) {
+  width: 10%;
+}
+
+.head_title th:nth-child(3) {
+  width: 10%;
+}
+
+.head_title th:nth-child(4) {
+  width: 30%;
+}
+
+.head_title th:nth-child(5) {
+  width: 7%;
+}
+
+/* tbody 배경색 지정 */
+thead {
+  background-color: var(--button-color);
+}
+
+tr:nth-child(2n) {
+  background-color: var(--input-color);
+}
+
+.box_select {
+  width: 15px;
+}

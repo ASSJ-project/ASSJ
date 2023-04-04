@@ -1,39 +1,36 @@
 .mypage-main {
   display: flex;
-  width: 100vw;
-  height: 80vh;
+  width: 100%;
+  height: 85vh;
+  margin: 0 10px;
   flex-direction: column;
   align-items: center;
   font-family: Georgia, '맑은 고딕', serif;
+  max-width: 1000px;
 }
 
 .mypage-mypage {
-  margin-top: 10px;
-  max-width: 768px;
   width: 100%;
-  font-size: 100vw;
+  font-size: 20px;
   height: 5%;
-  border-style: none;
-  font-size: 100%;
-  background-color: #9588e0;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
+  border: solid 1px #9588e0;
+  margin-top: 10px;
 }
 
 .mypage-clickmenu {
   display: flex;
-  flex: 0, 1, 0, 1;
   height: 5%;
-  max-width: 768px;
   width: 100%;
+  margin-top: 5px;
 }
 
 .mypage-searchmenu {
   display: flex;
   height: 5%;
-  max-width: 768px;
   width: 100%;
 }
 
@@ -59,7 +56,7 @@
 
 .mypage-checkeditems-alldeletebtn {
   margin-left: auto;
-  width: 15%;
+  width: 70px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -67,13 +64,12 @@
   font-size: 12px;
   margin-left: auto;
   border: 1px solid white;
-  background-color: #4a72ff;
+  background-color: #9588e0;
   color: white;
   /* box-shadow: 0px 1px 2px #E8EDFF, 0px 0px 0px 3px #E8EDFF; */
 }
 
 .mypage-checkeditems {
-  max-width: 768px;
   background-color: rgba(226, 223, 248, 0.7);
   margin-top: 10px;
   width: 100%;
@@ -86,10 +82,12 @@
 }
 
 .mypage-chekeditem-deletebtn {
+  margin-right: 10px;
   margin-left: auto;
-  padding: 1%;
+  height: 50%;
+  width: 60px;
   border: 1px solid white;
-  background-color: #4a72ff;
+  background-color: #9588e0;
   color: white;
 }
 
@@ -100,7 +98,7 @@
 
 .mypage-recently {
   background: #ffffff;
-  width: 18%;
+  width: 100px;
   height: 90%;
   display: flex;
   justify-content: left;
@@ -110,10 +108,8 @@
 }
 
 .mypage-myinformations {
-  max-width: 768px;
   width: 100%;
-  flex: 1, 0, 1, 0;
-  height: 70%;
+  height: 80%;
   align-items: center;
   flex-direction: column;
 }
@@ -121,36 +117,38 @@
 .mypage-myinfo1 {
   width: 50%;
   background-color: #9588e0;
-  border-style: none;
-  font-size: 1rem;
+  border: 1px solid grey;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2px;
   color: white;
+  margin: 2px;
 }
 
 .mypage-myinfo2 {
   width: 50%;
   background-color: #e2dff8;
-  border-style: none;
-  font-size: 1rem;
+  border: 1px solid grey;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2px;
+  color: black;
+  margin: 2px;
 }
 
 .mypage-myinformation {
   width: 100%;
-  height: 20%;
+  height: 15%;
   border-style: none;
   background-color: #e2dff8;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 8px;
+  font-size: 23px;
+  color: #575353;
   /* visibility: hidden; */
 }
 
@@ -163,8 +161,106 @@
   display: none;
 }
 
+.mypage-pwcheckbox {
+  display: flex;
+  justify-content: space-between;
+}
+
 .mypage-pwcheck {
+  width: 100%;
   border: 1px solid white;
   background-color: #4a72ff;
   color: white;
+}
+
+.mypage-myinformation-pwcheck {
+  width: 100%;
+  height: 50%;
+  border: solid 1px #9588e0;
+  display: row;
+  margin-top: 8px;
+  font-size: 40px;
+  color: black;
+}
+
+.mypage-myinformation-pwcheck div {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mypage-input {
+  width: 100%;
+  margin-left: 10%;
+  padding: 1em;
+  border: 1px white solid;
+  background: var(--input-color);
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: 'Lato';
+  font-style: normal;
+}
+
+.mypage-input2 {
+  width: 150px;
+  padding: 1em;
+  border: 1px white solid;
+  background: var(--input-color);
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: 'Lato';
+  font-style: normal;
+}
+
+.mypage-mypagecheckbutton {
+  width: 40px;
+  height: 25px;
+  font-size: 10px;
+  background-color: #9588e0;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .mypage-checkeditems,
+  .mypage-myinformation {
+    font-size: 15px;
+  }
+
+  .mypage-myinformation-pwcheck {
+    width: 100%;
+    height: 50%;
+    border: solid 1px #9588e0;
+    display: row;
+    margin-top: 8px;
+    font-size: 20px;
+    color: black;
+  }
+
+  .mypage-myinfo1,
+  .mypage-myinfo2 {
+    font-size: 20px;
+  }
+
+  .mypage-checkeditems-alldeletebtn,
+  .mypage-recently {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mypage-myinformation {
+    font-size: 11px;
+  }
+
+  .mypage-myinfo1,
+  .mypage-myinfo2 {
+    font-size: 15px;
+  }
+
+  .mypage-checkeditems-alldeletebtn,
+  .mypage-recently {
+    font-size: 8px;
+  }
 }

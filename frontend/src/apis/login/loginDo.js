@@ -3,20 +3,23 @@ import axios from "axios";
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
-  sessionStorage.removeItem("access_token");
-  await axios
-    .post(url, {
+  sessionStorage.clear();
+  try {
+    const result = await axios.post(url, {
       userEmail: e,
       userPassword: p,
-    })
-    .then((response) => {
-      if (response.data) {
-        sessionStorage.setItem("access_token", response.data);
-        window.location.href = "map";
-        return true;
-      } else {
-        return false;
-      }
-    })
-    .catch((error) => console.log(error));
+    });
+    if (result.data) {
+      console.log(result.data);
+      sessionStorage.setItem("access_token", result.data.access_token);
+      sessionStorage.setItem("refresh_token", result.data.refresh_token);
+      sessionStorage.setItem("role", result.data.role);
+      window.location.href = "map";
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }

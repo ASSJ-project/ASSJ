@@ -1,21 +1,27 @@
-  // reducer.js
+// 리듀서 작성
+import { SET_FILTER_JOB, SET_FILTER_REGION } from '@/actions/actions';
 
-  import { SET_SUBCATEGORY } from '@/actions/actions';
+// 리듀서 초기화
+const initialState = {
+  setFilterRegion: '',
+  setFilterJob: '',
+};
 
-  const initialState = {
-    selectedSubcategory: '',
-  };
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_FILTER_JOB:
+      return {
+        ...state,
+        setFilterJob: action.payload,
+      };
+    case SET_FILTER_REGION:
+      return {
+        ...state,
+        setFilterRegion: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-  const reducer = (state = initialState, action) => {
-    switch (action.type) {
-      case SET_SUBCATEGORY:
-        return {
-          ...state,
-          selectedSubcategory: action.payload.subcategory,
-        };
-      default:
-        return state;
-    }
-  };
-
-  export default reducer;
+export default reducer;

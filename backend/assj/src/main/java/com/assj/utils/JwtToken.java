@@ -1,35 +1,83 @@
 package com.assj.utils;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
-import com.assj.domain.user.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 
 public class JwtToken {
-  private static Logger log = LoggerFactory.getLogger(JwtToken.class);
-  public String createJwtToken(User user){
-    String token = null;
-    try {
-      KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-      kpg.initialize(1024);
-      KeyPair kp = kpg.generateKeyPair();
 
-      RSAPublicKey publicKey = (RSAPublicKey) kp.getPublic();
-      RSAPrivateKey privateKey = (RSAPrivateKey) kp.getPrivate();
-   
-      Algorithm algorithm = Algorithm.RSA256(publicKey,privateKey);
-      token = JWT.create().withIssuer("assj").withPayload(null).sign(algorithm);
+  /**
+   * Json Web Token 발행 메소드
+   * @param userEmail // 유저 이메일 
+   * @param secretKey // 시크릿 키
+   * @param expiredMs // 만료일 
+   * @return JWT 토큰을 리턴 
+   * @throws NoSuchAlgorithmException
+   */
+  public static String createAccess(String userEmail, String role, String secretKey, Long expiredMs){
+    return JWT.create()
+      .withIssuer("assj")
+      .withIssuedAt(new Date(System.currentTimeMillis()))
+      .withExpiresAt(new Date(System.currentTimeMillis()+ expiredMs))
+      .withClaim("user", userEmail)
+      .withClaim("role", role)
+      .sign(Algorithm.HMAC256(secretKey));
+  }
+
+  public static String createReFresh(String secretKey, Long expiredMs){
+    return JWT.create()
+      .withIssuer("assj")
+      .withIssuedAt(new Date(System.currentTimeMillis()))
+      .withExpiresAt(new Date(System.currentTimeMillis() + expiredMs))
+      .sign(Algorithm.HMAC256(secretKey));
+  }
+
+  /**
+   * 토큰 만료 여부 검사하는 메소드 
+   * @param token 헤더로 전달된 토큰 
+   * @param secretKey 시크릿 키 
+   * @return 유효시 false, 만료시 true
+   */
+  public static boolean isExpired(String token, String secretKey)throws TokenExpiredException{
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getExpiresAt().before(new Date());
+  }
   
-    }catch(Exception e){
-      log.info(e.toString());
-    }
-    return token;
+  /**
+   * 토큰에서 유저의 Email을 추출하는 메소드
+   * @param token 헤더로 전달된 토큰 
+   * @param secretKey 시크릿 키 
+   * @return String userEmail
+   */
+  public static String getUserEmail(String token, String secretKey){
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("user").toString();
+  }
+
+  /**
+   * 토큰에서 유저의 role를 추출하는 메소드
+   * @param token 헤더로 전달된 토큰 
+   * @param secretKey 시크릿 키 
+   * @return String role
+   */
+  public static String getUserRole(String token, String secretKey){
+    return JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token).getClaim("role").toString();
+  }
+
+  /**
+   * 토큰을 redis 저장을 위해 고유 id로 만듬
+   * @param accessToken
+   * @return redis 용 id 
+   */
+  public static long accessTokenToId(String accessToken){
+    char arr[] = accessToken.toCharArray();
+		long result = 0l;
+		for(char i : arr){
+			result += (char)i;
+		}
+    return result;
   }
 }
+
+

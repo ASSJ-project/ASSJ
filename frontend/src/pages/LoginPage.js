@@ -2,40 +2,33 @@ import "@/components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
 import MainLogo from "assets/images/logo.svg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailVisable, setEmailVisable] = useState(true);
-  const [passwordVisable, setPasswordVisable] = useState(true);
-  const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState(true);
 
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  useEffect(() => {
+    sessionStorage.clear();
+  }, [email]);
 
   const emailChange = (e) => {
     setEmail(e.target.value);
-    if (emailRegex.test(email)) {
-      setEmailVisable(true);
-    } else {
-      setEmailVisable(false);
-    }
   };
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
-    if (passwordRegex.test(password)) {
-      setPasswordVisable(true);
-    } else {
-      setPasswordVisable(false);
-    }
+  };
+
+  const login = () => {
+    loginDo(email, password).then((result) => {
+      setLoginError(result);
+    });
   };
   return (
     <>
@@ -50,9 +43,6 @@ function LoginPage() {
             value={email}
             onChange={emailChange}
           />
-          {!emailVisable && email.length > 0 && (
-            <div className="errorMessage">이메일 형식을 확인해주세요</div>
-          )}
         </div>
 
         <div className="pw-container">
@@ -63,26 +53,22 @@ function LoginPage() {
             type="password"
             value={password}
             onChange={passwordChange}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                login();
+              }
+            }}
           />
-          {!passwordVisable && password.length > 0 && (
-            <div className="errorMessage">
-              비밀번호는 영문자+숫자 8글자 이상이여야 합니다
-            </div>
-          )}
         </div>
-        <p>{loginError && "이메일과 비밀번호를 확인해주세요"}</p>
+
         <div className="find-pw-container">
           <p className="find-pw">비밀번호 찾기</p>
         </div>
         <div className="login-btn-container">
-          <Button
-            className="login-btn"
-            variant="contained"
-            onClick={() => {
-              setLoginError(loginDo(email, password));
-            }}
-          >
-            {" "}
+          <p className="errorMessage">
+            {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
+          </p>
+          <Button className="login-btn" variant="contained" onClick={login}>
             Login
           </Button>
         </div>

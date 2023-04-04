@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '@/components/domain/MyPage/MyPage.css';
-import axios from 'axios';
 
-sessionStorage.setItem('key1', 10); //로그인이 성공했다 가정하고 세션스토리지에 저장되있는 값을 불러옵니다.
-const ok = sessionStorage.getItem('key1'); //로그인 성공했을 떄 유저DB에 있는 기본키값이나 아이디값을 가져와서 세션이나 로컬에 저장해야할거같습니다. 현재는 ok가 10이라고 가정
-
-const MyPageInfo = () => {
-  const [users, setUsers] = useState([]); // 유저정보를 담기위한 useState훅을 사용했습니다.
+const MyPageInfo = (data) => {
   const [company] = useState([
     '구글',
     '네이버',
@@ -14,23 +9,15 @@ const MyPageInfo = () => {
     '요기요',
     '사람인',
     '잡코리아',
-    '카리나',
-    '윈터',
-    '송하영',
+    '사람인',
+    '알바몬',
+    '알바천국',
   ]); // 지도클릭가정하기 위해 만들었습니다 추후 지울예정인 코드 조회기록 테스트용코드입니다.
   const [number, setNumber] = useState(0); //  위와 동일합니다.
   const [pw, setPw] = useState(''); //  현재 비밀번호를 입력할떄 인풋값을 가져오기 위해 만들었습니다.
-  const [stat, setStat] = useState(false); //  정보가 안보이게 해놨다가 비밀번호 맞으면 보이도록 하기위해 만들었습니다
-  const [showPswd, setShowPswd] = useState(false); //  기본상태 ***** 로 보이게 누르면 보이고 또 누르면 ****로 보이게하기
-
-  useEffect(() => {
-    // 마이페이지(내정보)상태로 들어오면 api를 요청하여 아이디정보를 가져온다
-    axios
-      .get('https://jsonplaceholder.typicode.com/users/' + ok) //여기에 api요청하면 될거같습니다.
-      .then((response) => {
-        setUsers(response.data); //
-      });
-  }, []);
+  const [changPswd, setChangePswd] = useState(false);
+  const [newPw, setNewPw] = useState('');
+  const [newPwCheck, setNewPwCheck] = useState('');
 
   const fix1 = () => {
     // 메인페이지에서 마커 클릭했을 때 로컬스토리지에 저장한다는 가정 마이페이지 테스트용
@@ -47,8 +34,7 @@ const MyPageInfo = () => {
     get_local = [...get_local];
     if (get_local.length > 8) {
       for (let i = 0; i < get_local.length - 8; i++) {
-        // 최대 8개까지만
-        get_local.shift();
+        get_local.shift(); //최대 8개의 회사 이름이 나오게 이거 쓰시면 될거같습니다
       }
     }
     localStorage.setItem('data', JSON.stringify(get_local));
@@ -58,64 +44,105 @@ const MyPageInfo = () => {
     setPw(e.target.value);
   };
 
+  const onChange2 = (e) => {
+    setNewPw(e.target.value);
+  };
+
+  const onChange3 = (e) => {
+    setNewPwCheck(e.target.value);
+  };
+
   const checkPw = () => {
-    if (pw === users.phone) {
-      return setStat(true);
+    if (pw === '1234') {
+      return setChangePswd(true);
     } else {
       alert('비밀번호를 확인해주세요');
     }
   };
 
+  const Pwchange = () => {
+    const regExpPw =
+      /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/; //정규식
+    if (!regExpPw.test(newPw)) {
+      alert('숫자,영문,특수문자를 포함하여 8글자 이상이여야 합니다.');
+    } else if (newPw != newPwCheck) {
+      alert('새비밀번호와 새비밀번호가 동일하지가 않습니다.');
+    } else {
+      alert('비밀번호가 수정되었습니다.');
+      window.location.reload(true);
+    }
+  };
+
   return (
     <div className="mypage-myinformations">
-      <div className={!stat ? 'mypage-myinformation' : 'mypage-none'}>
-        현재비밀번호 확인:
-        <input
-          placeholder="비밀번호를 입력하세요"
-          type={showPswd ? 'text' : 'password'}
-          onChange={onChange}
-        ></input>
-        <div>
-          {showPswd ? (
-            <button
-              className="mypage-pwcheck"
-              onClick={() => setShowPswd(false)}
-            >
-              숨김
-            </button>
-          ) : (
-            <button
-              className="mypage-pwcheck"
-              onClick={() => setShowPswd(true)}
-            >
-              보기
-            </button>
-          )}
+      <div className={'mypage-myinformation'}>
+        <span style={{ marginLeft: '20px' }}>이름 : </span>
+        <span style={{ marginRight: '20px' }}>{data['data'].userName}</span>
+      </div>
+      <div className={'mypage-myinformation'}>
+        <span style={{ marginLeft: '20px' }}>메일 : </span>
+        <span style={{ marginRight: '20px' }}>{data['data'].userEmail}</span>
+      </div>
+      <div className={'mypage-myinformation'}>
+        <span style={{ marginLeft: '20px' }}>주소 : </span>
+        <span style={{ marginRight: '20px' }}>{data['data'].userAddress}</span>
+      </div>
+      <div className={'mypage-myinformation'}>
+        <div style={{ marginLeft: '20px' }}>비밀번호변경 :</div>
+        <div style={{ marginRight: '20px' }}>
+          <input
+            placeholder="현재 비밀번호"
+            type="password"
+            onChange={onChange}
+            className="mypage-input2"
+          ></input>
+          <span>
+            {changPswd ? (
+              <button
+                className="mypage-mypagecheckbutton"
+                onClick={() => setChangePswd(false)}
+              >
+                취소
+              </button>
+            ) : (
+              <button className="mypage-mypagecheckbutton" onClick={checkPw}>
+                변경
+              </button>
+            )}
+          </span>
         </div>
-        <button className="mypage-pwcheck" onClick={checkPw}>
-          확인
-        </button>
       </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        이름 : {users.name}
+      <div className={changPswd ? 'mypage-myinformation' : 'mypage-none'}>
+        <span style={{ marginLeft: '20px' }}>새 비밀번호 :</span>
+        <div style={{ marginRight: '60px' }}>
+          <input
+            placeholder="비밀번호를 입력해주세요"
+            type="password"
+            onChange={onChange2}
+            className="mypage-input2"
+          ></input>
+        </div>
       </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        메일 : {users.email}
+
+      <div className={changPswd ? 'mypage-myinformation' : 'mypage-none'}>
+        <span style={{ marginLeft: '20px' }}>비밀번호 확인 :</span>
+        <div style={{ marginRight: '20px' }}>
+          <input
+            placeholder="비밀번호를 확인해주세요"
+            type="password"
+            onChange={onChange3}
+            className="mypage-input2"
+          ></input>
+          <button className="mypage-mypagecheckbutton " onClick={Pwchange}>
+            수정
+          </button>
+        </div>
       </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        주소 : {users.id}
-      </div>
-      <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        현재비밀번호 : {users.phone}
-      </div>
-      {/* <div className={!stat ? 'mypage-none' : 'mypage-myinformation'}>
-        비밀번호 확인: (예정 안할지도)
-      </div> */}
+
       <button onClick={fix1} id="my_company1" value={company[number]}>
-        {' '}
-        날 클릭해봐(지도클릭이라고 가정이요^0^){' '}
+        날 클릭해봐(지도회사클릭이라고 가정이요^0^)
       </button>
-      <div>비밀번호는 현재 024-648-3804입니다.</div>
+      <div>비밀번호는 현재 1234입니다.</div>
     </div>
   );
 };
