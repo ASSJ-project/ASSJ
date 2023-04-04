@@ -40,15 +40,22 @@ const SubcategoryList = styled.div`
 `;
 
 const FilterButton = styled.button`
+  width: 48%;
+  height: 50px;
   background-color: white;
   border: 1px solid #b4c0d3;
-  border-radius: 20px;
-  font-size: 12px;
+  border-radius: 10px;
+  font-size: 17px;
   font-weight: 400;
   padding: 8px 16px;
   cursor: pointer;
+  margin: 10px;
+  text-align: left;
   transition: background-color 0.3s;
 
+  @media (max-width: 1110px) {
+    width: 100%;
+  }
   &:hover {
     background-color: #bbbbbb;
   }
@@ -169,7 +176,7 @@ export default function ModalWithCategories() {
   };
 
   return (
-    <div>
+    <div style={{display: 'inline'}}>
       <FilterButton
         onClick={handleClickOpen}
         selected={selectedSubcategories.length > 0}
