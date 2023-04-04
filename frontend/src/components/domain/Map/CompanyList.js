@@ -8,6 +8,8 @@ import './css/CompanyList.css';
 export default function CompanyList(props) {
   const { region, jobsCd } = props;
   const [page, setPage] = useState(1);
+  
+  
 
   const navigate = useNavigate();
 
@@ -39,21 +41,23 @@ export default function CompanyList(props) {
     <div className="main-container">
       <div className="clist-container">
         {items.map((item, index) => {
+          console.log(item.closeDt)
           return (
             <>
               <div className="clist" onClick={handleClick}>
-                <div className="clist-title">
-                  <span>{item.title}</span>
-                </div>
                 <div className="clist-company">
                   <strong>{item.company}</strong>
                 </div>
-                <div className="clist-jobcode">
+                <div className="clist-title">
+                  <span>{item.title}</span>
+                </div>
+                {/* <div className="clist-jobcode">
                   {item.minEdubg}, {item.holidayTpNm}{' '}
                 </div>
                 <div className="clist-sal">
                   {item.salTpNm} {item.sal}{' '}
-                </div>
+                </div> */}
+                
                 <div className="clist-closedt">{item.closeDt}</div>
               </div>
             </>

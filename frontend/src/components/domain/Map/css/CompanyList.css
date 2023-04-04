@@ -1,5 +1,5 @@
 .main-container {
-    width: 1384px;
+    width: 1150px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
@@ -9,6 +9,7 @@
     display: flex;
     margin: -1rem;
     flex-wrap: wrap;
+    
 }
 
 .clist-container :hover {
@@ -24,6 +25,7 @@
     border: solid 1px #eaedf4;
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 
@@ -32,6 +34,14 @@
     /* 호버 효과 제거 */
     pointer-events: none;
     padding: 0.5em;
+}
+
+.clist-title {
+    margin-bottom: auto;
+}
+
+.clist-closedt {
+    margin-top: 50px;
 }
 
 .clist-title span {
@@ -50,13 +60,7 @@
 
 @media (max-width: 1382px) {
     .main-container {
-        width: 1030px;
-    }
-}
-
-@media (max-width: 1040px) {
-        .main-container {
-        width: 680px;
+        width: 757px;
     }
 }
 

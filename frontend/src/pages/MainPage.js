@@ -38,8 +38,8 @@ function MainContainer() {
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
-  const [region, setRegion] = useState(setFilterRegion);
-  const [jobsCd, setJobsCd] = useState(setFilterJob);
+  const [region, setRegion] = useState('서울 강남구');
+  const [jobsCd, setJobsCd] = useState(550104);
 
   useEffect(() => {
     setRegion(setFilterRegion);

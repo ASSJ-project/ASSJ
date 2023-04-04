@@ -5,6 +5,10 @@ import emailjs from "@emailjs/browser";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { useNavigate } from "react-router-dom";
 import { passwordChange } from "@/apis/passwordchange/passwordChange";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import SendIcon from "@mui/icons-material/Send";
+import logo from "../assets/images/logo.svg";
 
 function FindPassword() {
     const [key, setKey] = useState(""); 
@@ -22,6 +26,8 @@ function FindPassword() {
 
     const passwordRegex =
     /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+
+    
 
     //뒤로가기 버튼을 위해 useNavigate 선언
     const navigate = useNavigate();
@@ -92,6 +98,7 @@ function FindPassword() {
         } else {
             setPasswordDisable(false);
             setKeyErrorMessage(true);
+            
         }
     }
 
@@ -103,34 +110,34 @@ function FindPassword() {
 
             <div className="fpwd-container">        
                 <div className="fpwd-title">
-                    <span>비밀번호 찾기</span> <br></br>
-                    <strong>비밀번호를 찾고자 하는 이메일을 입력한 뒤 이메일 인증 하십시오</strong>
+                    <img id="logo" src={logo} alt="logo-img" /> <br />
+                    <span className="signuptext">비밀번호 찾기</span>
                 </div>
 
                 <div className="fpwd-body">
-                    <p>이메일</p>
-                    <input type="email" placeholder="이메일" value={email} onChange={changeEmail} id="email-input" disabled={emailDisable}/>
+                    <p></p><br/>
+                    <TextField type="email" label="이메일" value={email} onChange={changeEmail} id="email-input" disabled={emailDisable} autoFocus />
                     {/* setCheckEmail(emailCheck(email)); */}
-                    <button 
+                    <Button 
                         onClick={() => {
-                            sendEmail(email); }}>확인</button>
+                            sendEmail(email); }}>확인</Button>
                     {!emailErrorMessage && (
                         <div className="errorMessage">존재하지 않는 이메일입니다</div>
                     )}
-                    <p>인증번호</p>
-                    <input type="text" placeholder="인증번호" value={key} onChange={changeKey} /> 
-                    <button
-                        onClick={() => {checkKeyValue()}}>확인</button>
+                    <p></p><br/>
+                    <TextField type="text" label="인증번호" value={key} onChange={changeKey} /> 
+                    <Button
+                        onClick={() => {checkKeyValue()}}>확인</Button>
                     {!keyErrorMessage && (
                         <div className="errorMessage">인증번호가 일치하지 않습니다</div>
                     )}
-                    <p>새로운 비밀번호</p>
-                    <input className="newpassword" type="password" placeholder="새로운 비밀번호" onChange={changePwd} disabled={passwordDisable} />
+                    <p></p><br/>
+                    <TextField className="newpassword" type="password" label="새로운 비밀번호" onChange={changePwd} disabled={passwordDisable} />
                     {!PwdErrorMessage && pwd.length > 0 && (
                         <div className="errorMessage">비밀번호 형식은 8자 이상 영문 숫자 특수문자 조합입니다</div>
                     )}
-                    <p>비밀번호 재입력</p>
-                    <input className="newpassword" type="password" placeholder="비밀번호 재입력" onChange={changeconfirmPwd} disabled={passwordDisable} />
+                    <p></p><br/>
+                    <TextField className="newpassword" type="password" label="비밀번호 재입력" onChange={changeconfirmPwd} disabled={passwordDisable} />
                     {!confirmPwdErrorMessage && confirmPwd.length > 0 && (
                         <div className="errorMessage">비밀번호가 일치하지 않습니다</div>
                     )}
@@ -138,7 +145,7 @@ function FindPassword() {
                 </div>
     
                 <div className="fpwd-nextbtn"> {/*onClick={onClickbtn}*/}
-                    <button disabled={btnDisable} onClick={() => passwordChange(email, pwd)}>비밀번호 재설정</button>
+                    <Button disabled={btnDisable} onClick={() => passwordChange(email, pwd)}>비밀번호 재설정</Button>
                 </div>
             </div>
         </>
