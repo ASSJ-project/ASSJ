@@ -1,6 +1,7 @@
 //여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
 import { useEffect, useState } from 'react';
 import '@/components/domain/MyPage/MyPage.css';
+import Button from '@mui/material/Button';
 
 const MyPageCheck = () => {
   let [company, setcompany] = useState([]);
@@ -35,12 +36,9 @@ const MyPageCheck = () => {
           <div className="mypage-checked-text">
             No {company.length - [i]}. &nbsp; {company[i]}
           </div>
-          <button
-            onClick={() => lol(i)}
-            className="mypage-chekeditem-deletebtn"
-          >
+          <Button onClick={() => lol(i)} variant="contained" size="small">
             삭제
-          </button>
+          </Button>
         </div>
       );
     }
@@ -62,12 +60,9 @@ const MyPageCheck = () => {
     <>
       <div className="mypage-searchmenu">
         <div className="mypage-recently">최근조회내역</div>
-        <button
-          className="mypage-checkeditems-alldeletebtn"
-          onClick={handleClearKeywords}
-        >
+        <Button variant="contained" size="small" onClick={handleClearKeywords}>
           전체삭제
-        </button>
+        </Button>
       </div>
       {repaetTitle(company)}
     </>
