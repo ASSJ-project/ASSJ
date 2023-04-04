@@ -1,5 +1,7 @@
 // api로 호출 할 데이터
+import { TroubleshootTwoTone } from "@mui/icons-material";
 import axios from "axios";
+
 
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
@@ -9,7 +11,8 @@ export async function loginDo(e, p) {
       userPassword: p,
     });
     if (result.status === 200) {
-      sessionStorage.setItem("login", "true");
+      console.log(result.data)
+      sessionStorage.setItem("login", true);
       window.location.href = "map";
       return true;
     } else {

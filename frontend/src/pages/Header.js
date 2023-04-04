@@ -11,10 +11,10 @@ function Header() {
   const [isAdmin, SetIsAdmin] = useState('');
 
   useEffect(() => {
-    let token = sessionStorage.getItem('access_token');
+    let login = sessionStorage.getItem('login');
     let role = sessionStorage.getItem('role');
-    if (token == null) {
-      SetIsLogin(false);
+    if (login == true) {
+      SetIsLogin(true);
     } else {
       SetIsLogin(true);
       if (role == 'ROLE_ADMIN') {

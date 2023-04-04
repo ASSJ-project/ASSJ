@@ -23,7 +23,6 @@ import com.assj.redis.RefreshTokenRedisRepository;
 import com.assj.utils.Constants;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
-import com.assj.redis.RefreshToken;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +34,7 @@ public class JwtFilter extends OncePerRequestFilter {
   private String secretKey = Constants.SECRET_KEY;
 
   @Value("${jwt.access-token.expiredAt}")
-  private String accessExpiredAt; // 엑세스 토큰 만료기한 1분
+  private String accessExpiredAt; // 엑세스 토큰 만료기한 10분
 
   @Autowired
   private RefreshTokenRedisRepository refreshTokenRedisRepository;
@@ -45,61 +44,56 @@ public class JwtFilter extends OncePerRequestFilter {
       HttpServletResponse response, FilterChain filterChain)
       throws IOException, ServletException {
 
-    // 리퀘스트 헤더에서 전달된 토큰을 가져옴
-    // final String authorization = request.getHeader(HttpHeaders.COOKIE);
     String token = "";
     String refresh = "";
+    // 쿠키 비어있음
+    if (request.getCookies() == null) {
+      log.info("쿠키없음");
+      filterChain.doFilter(request, response);
+      return;
+    }
+    // 쿠키가 있지만 토큰이 없음
     for (Cookie cookie : request.getCookies()) {
       String cookieName = cookie.getName();
-      if (cookieName.equals("access_token"))
+      if (cookieName.equals("access_token")) {
         token = cookie.getValue();
-      if (cookieName.equals("refresh_token"))
+        if (cookie.getValue().length() <= 0) {
+          filterChain.doFilter(request, response);
+          return;
+        } else
+          continue;
+      }
+
+      if (cookieName.equals("refresh_token")) {
         refresh = cookie.getValue();
+        if (cookie.getValue().length() <= 0) {
+          filterChain.doFilter(request, response);
+          return;
+        } else
+          continue;
+      }
     }
-    // log.info(token);
-    // log.info(refresh);
-    if (token.length() <= 0 | refresh.length() <= 0) {
-      log.info("진입");
+
+    // 위에서 토큰을 넣었는데 비어있다면
+    if (token.length() <= 0) {
       filterChain.doFilter(request, response);
       return;
     }
 
-    // // token 에서 꺼낸 user email
-    // token expired 여부 확인
+    // 토큰 만료 임박 여부 확인
+
     try {
       JwtToken.isExpired(token, secretKey);
     } catch (TokenExpiredException e) {
       log.error("토큰이 만료되었습니다");
+      JwtToken.tokenRefresh(token, refresh, secretKey, accessExpiredAt, request, response,
+          refreshTokenRedisRepository);
 
-      // 유저 접속 ip를 알아낸다
-      String userIp = request.getHeader("X-FORWARDED-FOR");
-      if (userIp == null) {
-        userIp = request.getRemoteAddr();
-      }
-      long redisId = JwtToken.accessTokenToId(token); // 엑세스 토큰에서 redis id 추출
-      Optional<RefreshToken> rf = refreshTokenRedisRepository.findById(redisId); // redis주소
+      filterChain.doFilter(request, response);
+      return;
 
-      String inRedisRefreshToken = rf.get().getRefreshToken(); // redis 안에 저장된 토큰
-      String inRedisIp = rf.get().getIp(); // redis 안에 저장된 토큰 유저의 ip
-      String inRedisUserEmail = rf.get().getEmail();
-      String inRedisUserRole = rf.get().getRole();
-
-      // 만약 가져온 엑세스 토큰으로 꺼낸 redis의 리프레시 토큰이 리퀘스트로 온 리프레시 토큰과 같고
-      // 접속한 유저의 ip와 레디스 안에 저장된 ip가 같다면
-      // 토큰을 재발급한다
-      if (inRedisRefreshToken.equals(refresh) && inRedisIp.equals(userIp)) {
-        log.info("토큰재발급 시작");
-        String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
-            Long.parseLong(accessExpiredAt));
-        Cookie myCookie = new Cookie("access_token", newAccessToken); // 엑세스 토큰을 재발급
-        myCookie.setPath("/");
-        myCookie.setHttpOnly(true);
-        response.addCookie(myCookie);
-        log.info("토큰재발급 완료");
-        filterChain.doFilter(request, response);
-        return;
-      }
     }
+
     String userEmail = JwtToken.getUserEmail(token, secretKey);
 
     // // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거

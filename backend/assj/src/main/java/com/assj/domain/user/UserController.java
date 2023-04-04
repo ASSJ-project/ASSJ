@@ -87,6 +87,7 @@ public class UserController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getUser")
     public ResponseEntity<User> getUser(Authentication authentication) {
+        System.out.println("인증이름 : " + authentication.getName());
         return new ResponseEntity<>(userService.getUser(authentication.getName()).get(0), HttpStatus.OK);
     }
 

@@ -22,7 +22,7 @@ function Header() {
         SetIsAdmin(false);
       }
     }
-  }, []);
+  }, [isLogin]);
 
   function logout() {
     sessionStorage.clear();
