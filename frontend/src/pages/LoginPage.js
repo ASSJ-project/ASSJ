@@ -34,6 +34,7 @@ function LoginPage() {
     <>
       <div className="login-container">
         <img className="loginlogo" src={MainLogo} alt="메인로고" />
+        <span className="logintext">로그인</span>
         <div className="id-container">
           <p className="id-text">이메일</p>
           <input

@@ -13,6 +13,15 @@
   margin-bottom: 3em;
 }
 
+.logintext {
+  font-size: 2em;
+  margin-top: 0.3em;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+
 .id-container {
   display: flex;
   flex-direction: column;
