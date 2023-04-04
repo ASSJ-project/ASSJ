@@ -1,5 +1,4 @@
-// store.js
-
+// 스토어에 리듀서 추가
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from '@/reducers/reducer';
 
