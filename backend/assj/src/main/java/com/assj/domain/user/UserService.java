@@ -158,6 +158,11 @@ public class UserService {
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
+	/**
+	 * 토큰 쌍을 생성하는 메소드 
+	 * @param userEmail
+	 * @return 엑세스 토큰, 리프레시 토큰 
+	 */
 	public Map<String, Object> generateTokens(String userEmail) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
 		String role = getRole(userEmail);// 유저 권한
@@ -168,6 +173,7 @@ public class UserService {
 		String refreshToken = JwtToken.createReFresh(secretKey, Long.parseLong(refreshExpiredAt));
 		result.put("access_token", accessToken);
 		result.put("refresh_token", refreshToken);
+		result.put("role", role);
 
 		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌 
 		long redisId = JwtToken.accessTokenToId(accessToken);

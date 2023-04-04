@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.assj.domain.user.UserService;
 import com.assj.redis.RefreshTokenRedisRepository;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 
