@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0331';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0403_addMouseOver';
 import { useSelector } from 'react-redux';
 import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
 import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
@@ -38,8 +38,8 @@ function MainContainer() {
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
-  const [region, setRegion] = useState(setFilterRegion);
-  const [jobsCd, setJobsCd] = useState(setFilterJob);
+  const [region, setRegion] = useState('서울 강남구');
+  const [jobsCd, setJobsCd] = useState(550104);
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -76,10 +76,10 @@ function MainContainer() {
   return (
     <>
       <Header />
-      <div>
+      {/* <div>
         <h2>Selected Subcategory: {setFilterRegion}</h2>
         <h2>Selected Job: {setFilterJob}</h2>
-      </div>
+      </div> */}
       <JobFilter />
       <RegionFilter />
       <ToggleBoundary className="App">
@@ -90,7 +90,7 @@ function MainContainer() {
       ) : (
         <CompanyList region={region} jobsCd={jobsCd} />
       )}
-      <Footer />
+      <Footer />  
     </>
   );
 }

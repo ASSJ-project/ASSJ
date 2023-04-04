@@ -1,7 +1,6 @@
 /* global kakao */
 
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import proj4 from 'proj4';
 import './style.css';
 
@@ -12,8 +11,6 @@ export default function KakaoMap(props) {
 
   const userY = 37.4954330863648;
   const userX = 126.88750531451;
-
-  console.log('data', data);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -50,7 +47,6 @@ export default function KakaoMap(props) {
     // 기존에 생성된 마커 제거
     markers.forEach((item) => {
       item.overlay.setMap(null);
-      // item.marker.setMap(null);
     });
     setMarkers([]);
     const newMarkers = data.map((item) => {
@@ -58,28 +54,59 @@ export default function KakaoMap(props) {
         distance = userBasedtransCoordCB(item.wtmY, item.wtmX);
       if (distance === null) {
         content =
-          '<div class ="label"><span class="left"></span><span class="center">로딩중!</span><span class="right"></span></div>';
+          '<div class="label"><span class="left"></span><span class="center">로딩중!</span><span class="right"></span></div>';
       } else {
-        content = `<div class ="label"><span class="left"></span><span class="center">${distance}</span><span class="right"></span></div>`;
+        content = `<div class="label"><span class="left"></span><span class="center">${distance}</span><span class="right"></span></div>`;
       }
+      const overlayContent = document.createElement('div');
+      overlayContent.innerHTML = content;
+      overlayContent.onmouseover = () => showMoreInfo(overlayContent, item);
+      overlayContent.onmouseout = () => hideMoreInfo(overlayContent);
+
+      const overlay = new kakao.maps.CustomOverlay({
+        position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
+        content: overlayContent,
+        yAnchor: 1,
+      });
+
+      // 커스텀 오버레이를 클릭했을 때 원하는 내용을 표시하는 함수입니다
+      function showMoreInfo(overlayContent, item) {
+        // 원하는 내용을 표시하는 코드를 작성하세요
+        const moreInfoContent = `
+        <div class="overlay_info" style="position: absolute; bottom: 100%;">
+          <a href="https://place.map.kakao.com/17600274" target="_blank"><strong>${item.company}</strong></a>
+          <div class="desc">${distance}<span class="address">${item.basicAddr}</span></div>
+        </div>`;
+        overlayContent.insertAdjacentHTML('beforeend', moreInfoContent);
+      }
+
+      // 마우스가 오버레이에서 벗어났을 때 원래의 내용으로 돌아가도록 하는 함수입니다.
+      function hideMoreInfo(overlayContent) {
+        const moreInfo = overlayContent.querySelector('.overlay_info');
+        if (moreInfo) {
+          overlayContent.removeChild(moreInfo);
+        }
+      }
+
+      // 마커와 오버레이를 지도에 표시합니다
+      // marker.setMap(kakaoMap);
+      overlay.setMap(kakaoMap);
+
       return {
-        overlay: new kakao.maps.CustomOverlay({
-          map: kakaoMap,
-          position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
-          content: content,
-          yAnchor: 1,
-        }),
-        // marker: new kakao.maps.Marker({
-        // map: kakaoMap,
-        // position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
-        // }),
+        overlay,
       };
     });
 
     setMarkers(newMarkers);
   }, [kakaoMap, data]);
 
-  // let distance;
+  /**
+   * GSR80 좌표를 WTM으로 변경
+   * 거리 계산하는데 필요한 함수
+   * @param y GSR80 좌표의 위도값
+   * @param x GSR80 좌표의 경도값
+   * @return 측정된 거리
+   */
   function userBasedtransCoordCB(y, x) {
     proj4.defs('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs');
     // EPSG:5179 좌표계 정의 추가
@@ -93,6 +120,14 @@ export default function KakaoMap(props) {
     return distance;
   }
 
+  /**
+   * 기준 위치와 비교할 위치의 거리 계산
+   * @param x1 기준 위치의 WTM 좌표 경도값
+   * @param y1 기준 위치의 WTM 좌표 위도값
+   * @param x2 비교할 위치의 WTM 좌표 경도값
+   * @param y2 비교할 위치의 WTM 좌표 위도값
+   * @return "측정된 거리km"
+   */
   function calculateDistance(x1, y1, x2, y2) {
     const xDiff = x2 - x1;
     const yDiff = y2 - y1;
