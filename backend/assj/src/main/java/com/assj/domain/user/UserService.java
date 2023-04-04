@@ -23,8 +23,6 @@ import com.assj.jwt.JwtToken;
 import com.assj.redis.RefreshToken;
 import com.assj.redis.RefreshTokenRedisRepository;
 
-import io.netty.handler.codec.base64.Base64Encoder;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -36,14 +34,12 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	@Autowired
-	private HttpServletRequest request;
-	@Autowired
 	private RefreshTokenRedisRepository refreshTokenRedisRepository;
 
 	@Value("${jwt.secret-key}")
 	private String secretKey; // application.properties 에 있는 시크릿 키
 	@Value("${jwt.access-token.expiredAt}")
-	private String accessExpiredAt; // 엑세스 토큰 만료기한 1분
+	private String accessExpiredAt; // 엑세스 토큰 만료기한 10분
 	@Value("${jwt.refresh-token.expiredAt}")
 	private String refreshExpiredAt; // 리프레시 토큰 만료기한 1주일
 
@@ -163,13 +159,12 @@ public class UserService {
 
 	/**
 	 * 토큰 쌍을 생성하는 메소드
-	 * 
 	 * @param userEmail
 	 * @return 엑세스 토큰, 리프레시 토큰
 	 */
 	public HttpStatus generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
-		log.info("서비스진입");
+		log.info("토큰 발행 시작");
 		String role = getRole(userEmail);// 유저 권한
 
 		// response body 에 엑세스 토큰, 리프레시 토큰 추가
@@ -190,7 +185,8 @@ public class UserService {
 		response.addCookie(roleCookie);
 
 		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌
-		long redisId = JwtToken.accessTokenToId(accessToken);
+		long redisId = JwtToken.parseTokenToId(accessToken);
+		System.out.println("발행한 id : " + redisId);
 
 		// 유저 접속 ip를 알아낸다
 		String userIp = request.getHeader("X-FORWARDED-FOR");
@@ -198,7 +194,6 @@ public class UserService {
 			userIp = request.getRemoteAddr();
 		}
 		// 두 조건 다 아닐 경우의 exception 처리도 필요해질것 같다
-
 		// 리프레시 토큰을 redis에 저장
 		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken, role));
 
