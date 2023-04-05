@@ -1,20 +1,16 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import useGetCompany from '@/hooks/useGetCompany';
-import './css/CompanyList.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useGetCompany from "@/hooks/useGetCompany";
+import "./css/CompanyList.css";
 
 export default function CompanyList(props) {
   const { region, jobsCd } = props;
   const [page, setPage] = useState(1);
-  
-  
 
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate('/test');
+    navigate("/test");
   }
 
   const handleScroll = () => {
@@ -30,9 +26,9 @@ export default function CompanyList(props) {
   const { items, loading, error } = useGetCompany(region, jobsCd, page);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -41,7 +37,7 @@ export default function CompanyList(props) {
     <div className="main-container">
       <div className="clist-container">
         {items.map((item, index) => {
-          console.log(item.closeDt)
+          console.log(item.closeDt);
           return (
             <>
               <div className="clist" onClick={handleClick}>
@@ -51,13 +47,6 @@ export default function CompanyList(props) {
                 <div className="clist-title">
                   <span>{item.title}</span>
                 </div>
-                {/* <div className="clist-jobcode">
-                  {item.minEdubg}, {item.holidayTpNm}{' '}
-                </div>
-                <div className="clist-sal">
-                  {item.salTpNm} {item.sal}{' '}
-                </div> */}
-                
                 <div className="clist-closedt">{item.closeDt}</div>
               </div>
             </>

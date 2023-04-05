@@ -1,5 +1,4 @@
 // api로 호출 할 데이터
-import { Cookie, TroubleshootTwoTone } from "@mui/icons-material";
 import axios from "axios";
 
 export async function loginDo(e, p) {

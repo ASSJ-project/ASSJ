@@ -133,7 +133,6 @@ public class JwtToken {
     String inRedisIp = rf.get().getIp(); // redis 안에 저장된 토큰 유저의 ip
     String inRedisUserEmail = rf.get().getEmail();
     String inRedisUserRole = rf.get().getRole();
-    // refreshTokenRedisRepository.deleteById(redisId);
 
     // 만약 가져온 엑세스 토큰으로 꺼낸 redis의 리프레시 토큰이 리퀘스트로 온 리프레시 토큰과 같고
     // 접속한 유저의 ip와 레디스 안에 저장된 ip가 같다면
@@ -151,7 +150,7 @@ public class JwtToken {
       System.out.println("추가된 id : " + newRedisId);
       refreshTokenRedisRepository
           .save(new RefreshToken(newRedisId, inRedisUserEmail, userIp, refresh, inRedisUserRole));
-      refreshTokenRedisRepository.deleteById(redisId); // 검증 필요
+      // refreshTokenRedisRepository.deleteById(redisId); // 검증 필요
       System.out.println("삭제된 id : " + redisId);
       log.info("토큰재발급 완료");
     } else

@@ -18,6 +18,7 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+    // 삭제 예정
     @GetMapping("/get")
     public List<Company> getAllCompanies() {
         return companyService.getAllCompanies();
