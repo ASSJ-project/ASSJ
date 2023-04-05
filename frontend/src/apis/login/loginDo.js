@@ -10,7 +10,7 @@ export async function loginDo(e, p) {
       userPassword: p,
     });
     if (result.status === 200) {
-      console.log(result.status);
+      localStorage.setItem("role", result.data);
       localStorage.setItem("login", true);
       window.location.href = "map";
       return true;

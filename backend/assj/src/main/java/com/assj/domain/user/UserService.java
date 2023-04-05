@@ -172,7 +172,7 @@ public class UserService {
 	 * @param userEmail
 	 * @return 엑세스 토큰, 리프레시 토큰
 	 */
-	public HttpStatus generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request) {
+	public String generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
 		log.info("토큰 발행 시작");
 		String role = getRole(userEmail);// 유저 권한
@@ -207,6 +207,6 @@ public class UserService {
 		// 리프레시 토큰을 redis에 저장
 		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken, role));
 
-		return HttpStatus.OK;
+		return role;
 	}
 }
