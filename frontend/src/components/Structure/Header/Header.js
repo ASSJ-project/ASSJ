@@ -1,53 +1,29 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { FiAlignJustify, FiX } from "react-icons/fi";
-import logo from "assets/images/logo_only_word.svg";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import logo from 'assets/images/logo_only_word.svg';
+import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 function Header() {
-  const [isToggled, setIsToggled] = useState(false);
-  const [isLogin, SetIsLogin] = useState("");
-  const [isAdmin, SetIsAdmin] = useState("");
+  const [isLogin, SetIsLogin] = useState('');
+  const [isAdmin, SetIsAdmin] = useState('');
 
   useEffect(() => {
-    SetIsLogin(localStorage.getItem("login"));
+    SetIsLogin(localStorage.getItem('login'));
+    SetIsAdmin(localStorage.getItem('role'));
+    console.log(isLogin);
   }, []);
 
   function logout() {
     localStorage.clear();
-    alert("로그아웃되었습니다.");
-    window.location.href = "login";
+    alert('로그아웃되었습니다.');
+    window.location.href = 'login';
   }
 
   const HeadContainer = styled.div`
     margin: 0;
     padding: 0;
-    font-family: Georgia, "맑은 고딕", serif;
-  `;
-
-  const Nav = styled.nav`
-    margin: 0 15px;
-    
-    .header__menulist {
-    margin: 0 auto;
-    padding: 15px 0;
-    display: flex;
-    justify-content: space-around;
-    list-style : none;
-    border-bottom: solid 1px #dfe2d5;
-    color: #878982;
-    font-size : 20px;
-    }
-
-    @media screen and (max-width: 768px) {
-      flex-wrap: wrap;
-  
-      .header__menulist {
-        display: ${(props) => (props.isToggled ? "flex" : "none")};
-        flex-direction: row;
-        font-size : 17px;
-      }
+    font-family: Georgia, '맑은 고딕', serif;
   `;
 
   const Head = styled.div`
@@ -124,99 +100,54 @@ function Header() {
 
   return (
     <HeadContainer>
-      <Head isToggled={isToggled}>
-        {/* 햄버거 버튼(bar) */}
-        <div
-          className="toggle"
-          onClick={() => {
-            setIsToggled(!isToggled);
-          }}
-        >
-          {!isToggled ? <FiAlignJustify /> : <FiX />}
-        </div>
-
+      <Head>
         {/* 알쓸신잡 로고 */}
         <div className="header-logo">
-          <img src={logo} alt="logo" />
+          <Link to="/map" style={{ textDecoration: 'none' }}>
+            <img src={logo} alt="logo" />
+          </Link>
         </div>
 
         {/* User 메뉴 리스트 */}
         <div className="header-right">
           {!isLogin ? (
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              <Button variant="contained" size="small">
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" size="small" disableElevation>
                 로그인
               </Button>
             </Link>
-          ) : isAdmin ? (
-            <Link to="/admin" style={{ textDecoration: "none" }}>
-              {" "}
-              <Button variant="contained" size="small">
-                관리자
+          ) : isAdmin == 'ROLE_USER' ? (
+            <Link to="/mypage" style={{ textDecoration: 'none' }}>
+              {' '}
+              <Button variant="contained" size="small" disableElevation>
+                내정보
               </Button>
             </Link>
           ) : (
-            <Link to="/mypage" style={{ textDecoration: "none" }}>
-              <Button variant="contained" size="small">
-                내정보
+            <Link to="/admin" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" size="small" disableElevation>
+                관리자
               </Button>
             </Link>
           )}
           {isLogin ? (
-            <Button variant="contained" size="small" onClick={logout}>
+            <Button
+              variant="contained"
+              size="small"
+              disableElevation
+              onClick={logout}
+            >
               나가기
             </Button>
           ) : (
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              <Button variant="contained" size="small">
+            <Link to="/register" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" size="small" disableElevation>
                 가입
               </Button>
             </Link>
           )}
         </div>
       </Head>
-      <Nav isToggled={isToggled}>
-        <ul className="header__menulist">
-          <li>
-            <Link
-              to="/map"
-              style={{ textDecoration: "none", color: "#878982" }}
-            >
-              Main
-            </Link>
-          </li>
-
-          {!isLogin ? (
-            <li>
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: "#878982" }}
-              >
-                Login
-              </Link>
-            </li>
-          ) : !isAdmin ? (
-            <li>
-              <Link
-                to="/mypage"
-                style={{ textDecoration: "none", color: "#878982" }}
-              >
-                MyInfo
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link
-                to="/admin"
-                style={{ textDecoration: "none", color: "#878982" }}
-              >
-                Admin
-              </Link>
-            </li>
-          )}
-          <li>Stat(통계넣을까요)</li>
-        </ul>
-      </Nav>
     </HeadContainer>
   );
 }
