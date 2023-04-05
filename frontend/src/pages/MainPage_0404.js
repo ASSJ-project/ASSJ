@@ -10,7 +10,7 @@ import MapToggle from '@/components/domain/Map/ToggleButton';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
-//
+////
 const LoadingContainer = styled.div`
   display: flex;
 
