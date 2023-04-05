@@ -1,39 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { FiAlignJustify, FiX } from 'react-icons/fi';
-import logo from 'assets/images/logo_only_word.svg';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { FiAlignJustify, FiX } from "react-icons/fi";
+import logo from "assets/images/logo_only_word.svg";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 function Header() {
   const [isToggled, setIsToggled] = useState(false);
-  const [isLogin, SetIsLogin] = useState('');
-  const [isAdmin, SetIsAdmin] = useState('');
+  const [isLogin, SetIsLogin] = useState("");
+  const [isAdmin, SetIsAdmin] = useState("");
 
   useEffect(() => {
-    let token = sessionStorage.getItem('access_token');
-    let role = sessionStorage.getItem('role');
-    if (token == null) {
-      SetIsLogin(false);
-    } else {
-      SetIsLogin(true);
-      if (role == 'USER_ADMIN') {
-        SetIsAdmin(true);
-      } else {
-        SetIsAdmin(false);
-      }
-    }
-  }, [isLogin]);
+    SetIsLogin(sessionStorage.getItem("login"));
+  }, []);
 
   function logout() {
     sessionStorage.clear();
-    alert('로그아웃되었습니다.');
-    window.location.href = 'login';
+    alert("로그아웃되었습니다.");
+    window.location.href = "login";
   }
 
   const HeadContainer = styled.div`
     margin: 0;
     padding: 0;
-    font-family: Georgia, '맑은 고딕', serif;
+    font-family: Georgia, "맑은 고딕", serif;
   `;
 
   const Nav = styled.nav`
@@ -54,7 +44,7 @@ function Header() {
       flex-wrap: wrap;
   
       .header__menulist {
-        display: ${(props) => (props.isToggled ? 'flex' : 'none')};
+        display: ${(props) => (props.isToggled ? "flex" : "none")};
         flex-direction: row;
         font-size : 17px;
       }
@@ -69,20 +59,19 @@ function Header() {
     margin: 0 10px;
 
     img {
-      width: 15vw;
+      width: 200px;
       height: 60px;
     }
 
     .header-right {
       list-style: none;
       display: flex;
-      width: 200px;
-      font-size: 20px;
+      width: 180px;
+      font-size: 10px;
     }
 
-    .header-right button {
-      border: 0;
-      background-color: transparent;
+    .header-right Button{
+      margin:0 4px;
     }
 
     .toggle {
@@ -94,8 +83,12 @@ function Header() {
     @media screen and (max-width: 768px) {
       .header-right {
         flex-direction: row;
-        width: 130px;
+        width: 150px;
         font-size: 14px;
+      }
+
+      .header-right Button{
+        margin:0 3px;
       }
 
       .header-logo {
@@ -103,7 +96,7 @@ function Header() {
       }
 
       img {
-        width: 150px;
+        width: 160px;
         height: 60px;
       }
 
@@ -116,8 +109,16 @@ function Header() {
     @media screen and (max-width: 480px) {
       .header-right {
         flex-direction: row;
-        width: 80px;
+        width: 130px;
         font-size: 8px;
+      }
+
+      img{
+        width: 120px;
+      }
+
+      .header-right Button{
+        margin:0 1px;
       }
   `;
 
@@ -142,69 +143,34 @@ function Header() {
         {/* User 메뉴 리스트 */}
         <div className="header-right">
           {!isLogin ? (
-            <Link
-              to="/login"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '5px',
-                backgroundColor: 'pink',
-              }}
-            >
-              로그인
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <Button variant="contained" size="small">
+                로그인
+              </Button>
             </Link>
           ) : isAdmin ? (
-            <Link
-              to="/admin"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '5px',
-                backgroundColor: 'pink',
-              }}
-            >
-              관리자
+            <Link to="/admin" style={{ textDecoration: "none" }}>
+              {" "}
+              <Button variant="contained" size="small">
+                관리자
+              </Button>
             </Link>
           ) : (
-            <Link
-              to="/mypage"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '5px',
-                backgroundColor: 'pink',
-              }}
-            >
-              내정보
+            <Link to="/mypage" style={{ textDecoration: "none" }}>
+              <Button variant="contained" size="small">
+                내정보
+              </Button>
             </Link>
           )}
           {isLogin ? (
-            <button
-              onClick={logout}
-              style={{
-                color: 'white',
-                borderRadius: '10px',
-                padding: '5px',
-                backgroundColor: 'pink',
-              }}
-            >
-              로그아웃
-            </button>
+            <Button variant="contained" size="small" onClick={logout}>
+              나가기
+            </Button>
           ) : (
-            <Link
-              to="/register"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '5px',
-                backgroundColor: 'pink',
-              }}
-            >
-              회원가입
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <Button variant="contained" size="small">
+                가입
+              </Button>
             </Link>
           )}
         </div>
@@ -214,7 +180,7 @@ function Header() {
           <li>
             <Link
               to="/map"
-              style={{ textDecoration: 'none', color: '#878982' }}
+              style={{ textDecoration: "none", color: "#878982" }}
             >
               Main
             </Link>
@@ -224,7 +190,7 @@ function Header() {
             <li>
               <Link
                 to="/login"
-                style={{ textDecoration: 'none', color: '#878982' }}
+                style={{ textDecoration: "none", color: "#878982" }}
               >
                 Login
               </Link>
@@ -233,7 +199,7 @@ function Header() {
             <li>
               <Link
                 to="/mypage"
-                style={{ textDecoration: 'none', color: '#878982' }}
+                style={{ textDecoration: "none", color: "#878982" }}
               >
                 MyInfo
               </Link>
@@ -242,13 +208,13 @@ function Header() {
             <li>
               <Link
                 to="/admin"
-                style={{ textDecoration: 'none', color: '#878982' }}
+                style={{ textDecoration: "none", color: "#878982" }}
               >
                 Admin
               </Link>
             </li>
           )}
-          <li>뭐하지 애는</li>
+          <li>Stat(통계넣을까요)</li>
         </ul>
       </Nav>
     </HeadContainer>

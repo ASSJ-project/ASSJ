@@ -2,7 +2,6 @@
 import { TroubleshootTwoTone } from "@mui/icons-material";
 import axios from "axios";
 
-
 export async function loginDo(e, p) {
   const url = "api/users/login.do";
   try {
@@ -11,7 +10,7 @@ export async function loginDo(e, p) {
       userPassword: p,
     });
     if (result.status === 200) {
-      console.log(result.data)
+      console.log(result.status);
       sessionStorage.setItem("login", true);
       window.location.href = "map";
       return true;
