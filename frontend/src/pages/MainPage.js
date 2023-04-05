@@ -24,15 +24,16 @@ const LoadingContainer = styled.div`
 const MapBoundary = styled.div`
   margin: 20px;
   height: 80vh;
-  width: 100vw;
+  width: 75%;
   border: 1px solid black;
+  
 `;
 
-const ToggleBoundary = styled.div`
-  position: absolute;
-  bottom: 5%;
-  z-index: 2;
-`;
+// const ToggleBoundary = styled.div`
+//   position: absolute;
+//   bottom: 5%;
+//   z-index: 2;
+// `;
 
 const Filter = styled.div`
   width: 90%;
@@ -45,14 +46,24 @@ const Filter = styled.div`
   }
 `;
 
+const Content = styled.div`
+  display: flex;
+  width: 90%;
+  height 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  
+`
+
 function MainContainer() {
   const [selected, setSelected] = useState('map');
 
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
-  const [region, setRegion] = useState('서울 강남구');
-  const [jobsCd, setJobsCd] = useState(550104);
+  const [region, setRegion] = useState('서울 금천구');
+  const [jobsCd, setJobsCd] = useState(133300);
 
   const filterRegionlist = setFilterRegion.split(",");
   const filterJoblist = setFilterJob.split(",");
@@ -128,14 +139,16 @@ function MainContainer() {
           )
         })}
       </Filter>
-      <ToggleBoundary className="App">
+      {/* <ToggleBoundary className="App">
         <MapToggle setSelected={setSelected} />
-      </ToggleBoundary>
-      {selected === 'map' ? (
-        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>
-      ) : (
+      </ToggleBoundary> */}
+      <Content>
+        
+        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>     
         <CompanyList region={region} jobsCd={jobsCd} />
-      )}
+      </Content>
+      
+      
       <Footer />
     </>
   );

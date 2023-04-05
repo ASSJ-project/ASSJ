@@ -78,7 +78,7 @@ function LoginPage() {
             </div>
 
             <div className="find-pw-container">
-              <p className="find-pw">비밀번호 찾기</p>
+              <p className="find-pw"><Link to="/findpassword">비밀번호 찾기</Link></p>
             </div>
             <div className="login-btn-container">
               <p className="errorMessage">
