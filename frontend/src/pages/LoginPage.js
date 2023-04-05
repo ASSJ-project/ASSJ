@@ -16,7 +16,7 @@ function LoginPage() {
 
   useEffect(() => {
     //sessionStorage.clear();
-    setIsLogin(sessionStorage.getItem("login"));
+    setIsLogin(localStorage.getItem("login"));
   }, []);
 
   const emailChange = (e) => {
@@ -33,12 +33,20 @@ function LoginPage() {
       //
     });
   };
+
+  const logout = () => {
+    localStorage.clear();
+    alert("로그아웃되었습니다.");
+    window.location.href = "login";
+  };
   return (
     <>
       <div className="login-container">
         <img className="loginlogo" src={MainLogo} alt="메인로고" />
         {isLogin ? (
-          <Button variant="contained">로그아웃</Button>
+          <Button variant="contained" onClick={logout}>
+            로그아웃
+          </Button>
         ) : (
           <>
             <span className="logintext">로그인</span>

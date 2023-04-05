@@ -1,8 +1,12 @@
 // coding by 'ikki'
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
+import { useEffect } from "react";
 
 function StartPage() {
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
   return (
     <>
       <div className="start-container">
