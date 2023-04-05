@@ -4,7 +4,6 @@
   font-size: 1em;
   width: 480px;
   height: 80vh;
-  border: 1px solid purple;
   margin: auto;
 }
 
@@ -13,27 +12,14 @@
   justify-content: space-between;
   margin-bottom: 0.6em;
 }
-.admin_btn {
-  width: 49%;
+.user_info_btn {
+  width: 100%;
   font-size: 1.5em;
-  align-items: center;
-  padding: 1%;
-  background: var(--);
+  padding: 0.4em;
+  background: var(--button-color);
   border-radius: 10px;
   margin-bottom: 0.6em;
   border: none;
-}
-
-/* Graph Css */
-.graph_container {
-  border: 1px solid coral;
-}
-
-.stats_title {
-  text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 0.6em;
-  font-weight: bold;
 }
 
 /* userInfo_InfoTable Css */
@@ -53,8 +39,8 @@
   /* margin-left: 0.5em !important; */
 }
 
-#page-num{
-  margin-top:0.5em;
+#page-num {
+  margin-top: 0.5em;
 }
 
 .user_delete_btn {

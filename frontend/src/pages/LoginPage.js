@@ -1,7 +1,7 @@
 import "@/components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
-import MainLogo from "assets/images/logo.svg";
+import ImgHeader from "../components/Structure/Header/ImgHeader";
 import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
@@ -42,7 +42,7 @@ function LoginPage() {
   return (
     <>
       <div className="login-container">
-        <img className="loginlogo" src={MainLogo} alt="메인로고" />
+        <ImgHeader />
         {isLogin ? (
           <Button variant="contained" onClick={logout}>
             로그아웃
