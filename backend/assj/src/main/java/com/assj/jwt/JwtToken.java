@@ -102,46 +102,60 @@ public class JwtToken {
     return result;
   }
 
+  /**
+   * 토큰 재발급 메소드
+   * 
+   * @param token                       엑세스 토큰
+   * @param refresh                     리프레시 토큰
+   * @param secretKey                   시크릿 키
+   * @param accessExpiredAt             엑세스 토큰의 만료기일
+   * @param request                     HttpServletRequest
+   * @param response                    HttpServletResponse
+   * @param refreshTokenRedisRepository 레디스 레파지토리 인스턴스
+   * @return 발급 유무 true or false
+   */
   public static Boolean tokenRefresh(String token, String refresh, String secretKey, String accessExpiredAt,
       HttpServletRequest request, HttpServletResponse response,
       RefreshTokenRedisRepository refreshTokenRedisRepository) {
-  
-      // 유저 접속 ip를 알아낸다
-      String userIp = request.getHeader("X-FORWARDED-FOR");
-      if (userIp == null) {
-        userIp = request.getRemoteAddr();
-      }
 
-      long redisId = JwtToken.parseTokenToId(token); // 엑세스 토큰에서 redis id 추출
-      System.out.println("필터 안의 레디스 아이디 : " + redisId);
-      System.out.println("리포지토리주소 : " + refreshTokenRedisRepository);
-      Optional<RefreshToken> rf = refreshTokenRedisRepository.findById(redisId); // redis주소
+    // 유저 접속 ip를 알아낸다
+    String userIp = request.getHeader("X-FORWARDED-FOR");
+    if (userIp == null) {
+      userIp = request.getRemoteAddr();
+    }
 
-      String inRedisRefreshToken = rf.get().getRefreshToken(); // redis 안에 저장된 토큰
-      String inRedisIp = rf.get().getIp(); // redis 안에 저장된 토큰 유저의 ip
-      String inRedisUserEmail = rf.get().getEmail();
-      String inRedisUserRole = rf.get().getRole();
-      //refreshTokenRedisRepository.deleteById(redisId);
+    long redisId = JwtToken.parseTokenToId(token); // 엑세스 토큰에서 redis id 추출
+    System.out.println("필터 안의 레디스 아이디 : " + redisId);
+    System.out.println("리포지토리주소 : " + refreshTokenRedisRepository);
+    Optional<RefreshToken> rf = refreshTokenRedisRepository.findById(redisId); // redis주소
+
+    String inRedisRefreshToken = rf.get().getRefreshToken(); // redis 안에 저장된 토큰
+    String inRedisIp = rf.get().getIp(); // redis 안에 저장된 토큰 유저의 ip
+    String inRedisUserEmail = rf.get().getEmail();
+    String inRedisUserRole = rf.get().getRole();
+    // refreshTokenRedisRepository.deleteById(redisId);
+
+    // 만약 가져온 엑세스 토큰으로 꺼낸 redis의 리프레시 토큰이 리퀘스트로 온 리프레시 토큰과 같고
+    // 접속한 유저의 ip와 레디스 안에 저장된 ip가 같다면
+    // 토큰을 재발급한다
+    if (inRedisRefreshToken.equals(refresh) && inRedisIp.equals(userIp)) {
+
+      log.info("토큰재발급 시작");
+      String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
+          Long.parseLong(accessExpiredAt));// 엑세스 토큰을 재발급
+      Cookie myCookie = new Cookie("access_token", newAccessToken);
+      myCookie.setPath("/");
+      myCookie.setHttpOnly(true);
+      response.addCookie(myCookie);
+      long newRedisId = parseTokenToId(newAccessToken);
+      System.out.println("추가된 id : " + newRedisId);
+      refreshTokenRedisRepository
+          .save(new RefreshToken(newRedisId, inRedisUserEmail, userIp, refresh, inRedisUserRole));
+      refreshTokenRedisRepository.deleteById(redisId); // 검증 필요
       System.out.println("삭제된 id : " + redisId);
-      // 만약 가져온 엑세스 토큰으로 꺼낸 redis의 리프레시 토큰이 리퀘스트로 온 리프레시 토큰과 같고
-      // 접속한 유저의 ip와 레디스 안에 저장된 ip가 같다면
-      // 토큰을 재발급한다
-      if (inRedisRefreshToken.equals(refresh) && inRedisIp.equals(userIp)) {
-        
-        log.info("토큰재발급 시작");
-        String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
-            Long.parseLong(accessExpiredAt));// 엑세스 토큰을 재발급
-        Cookie myCookie = new Cookie("access_token", newAccessToken); 
-        myCookie.setPath("/");
-        myCookie.setHttpOnly(true);
-        response.addCookie(myCookie);
-        redisId = parseTokenToId(newAccessToken);
-        System.out.println("추가된 id : " + redisId);
-        refreshTokenRedisRepository.save(new RefreshToken(redisId, inRedisUserEmail, userIp, refresh, inRedisUserRole));
-        log.info("토큰재발급 완료");
-      } else return false;
-      return true;
-    
-
+      log.info("토큰재발급 완료");
+    } else
+      return false;
+    return true;
   }
 }

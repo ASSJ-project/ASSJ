@@ -1,11 +1,7 @@
 package com.assj.domain.user;
 
-import java.util.Base64;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -124,7 +120,20 @@ public class UserService {
 	 * @return 이메일과 일치하는 유저
 	 * @throws DataAccessException
 	 */
-	public List<User> getUser(String userEmail) throws DataAccessException {
+	public List<User> getUser(HttpServletRequest request) throws DataAccessException {
+		String userEmail = null;
+		for (Cookie cookie : request.getCookies()) {
+			if (cookie.getName().equals("access_token")) {
+				userEmail = JwtToken.getUserEmail(cookie.getValue(), secretKey);
+			}
+		}
+		if (userEmail == null) {
+			User emptyUser = new User();
+			emptyUser.setUserName("유저가 존재하지 않습니다");
+			List<User> result = new ArrayList<User>();
+			result.add(emptyUser);
+			return result;
+		}
 		return jdbcTemplate
 				.query(String.format("select * from user where email = %s", userEmail), new UserRowMapper());
 	}
@@ -159,6 +168,7 @@ public class UserService {
 
 	/**
 	 * 토큰 쌍을 생성하는 메소드
+	 * 
 	 * @param userEmail
 	 * @return 엑세스 토큰, 리프레시 토큰
 	 */
