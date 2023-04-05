@@ -2,7 +2,6 @@ package com.assj.jwt;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -22,7 +21,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.assj.redis.RefreshTokenRedisRepository;
 import com.assj.utils.Constants;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,8 +78,7 @@ public class JwtFilter extends OncePerRequestFilter {
       return;
     }
 
-    // 토큰 만료 임박 여부 확인
-
+    // 토큰 만료 여부 확인
     try {
       JwtToken.isExpired(token, secretKey);
     } catch (TokenExpiredException e) {

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -86,9 +85,9 @@ public class UserController {
 
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getUser")
-    public ResponseEntity<User> getUser(Authentication authentication) {
+    public ResponseEntity<User> getUser(Authentication authentication, HttpServletRequest request) {
         System.out.println("인증이름 : " + authentication.getName());
-        return new ResponseEntity<>(userService.getUser(authentication.getName()).get(0), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUser(request).get(0), HttpStatus.OK);
     }
 
     @PostMapping("/passwordChange.do")
