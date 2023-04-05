@@ -11,11 +11,11 @@ function Header() {
   const [isAdmin, SetIsAdmin] = useState("");
 
   useEffect(() => {
-    SetIsLogin(sessionStorage.getItem("login"));
+    SetIsLogin(localStorage.getItem("login"));
   }, []);
 
   function logout() {
-    sessionStorage.clear();
+    localStorage.clear();
     alert("로그아웃되었습니다.");
     window.location.href = "login";
   }
