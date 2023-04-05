@@ -5,20 +5,20 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
-  }
+}
   
-  .clist-container {
+.clist-container {
     display: flex;
     margin: -1rem;
     flex-wrap: wrap;
-  }
-  
-  .clist-container :hover {
+}
+
+.clist-container :hover {
     transform: translateY(-8px);
     transition-duration: 0.5s;
-  }
-  
-  .clist {
+}
+
+.clist {
     width: 20rem;
     background-color: #e2dff8;
     border-radius: 10px;
@@ -27,47 +27,47 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-  }
-  
-  .clist div {
+}
+
+.clist div {
     /* 호버 효과 제거 */
     pointer-events: none;
     padding: 0.5em;
-  }
-  
-  .clist-title {
+}
+
+.clist-title {
     margin-bottom: auto;
-  }
-  
-  .clist-closedt {
+}
+
+.clist-closedt {
     margin-top: 50px;
-  }
-  
-  .clist-title span {
+}
+
+.clist-title span {
     font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     margin-top: 5px;
-  }
-  
-  .clist-company strong {
+}
+
+.clist-company strong {
     font-size: 0.9em;
     font-family: "Lato";
     font-style: normal;
     color: #7c7c7c;
-  }
-  
-  @media (max-width: 1382px) {
-    .main-container {
-      width: 757px;
-    }
-  }
-  
-  @media (max-width: 780px) {
-    .clist {
-      margin-left: 2em;
-      margin-right: 2em;
-      width: 100%;
-      height: auto;
-    }
-  }
+}
+
+@media (max-width: 1382px) {
+.main-container {
+    width: 757px;
+}
+}
+
+@media (max-width: 780px) {
+.clist {
+    margin-left: 2em;
+    margin-right: 2em;
+    width: 100%;
+    height: auto;
+}
+}
