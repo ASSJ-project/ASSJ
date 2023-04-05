@@ -28,7 +28,12 @@ public class SecurityConfig {
 
     http.httpBasic().disable().csrf().disable().cors();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    http.authorizeRequests().antMatchers("/apis/users/**").permitAll();
+    http.authorizeRequests()
+        .antMatchers("/apis/user/getUser", "/apis/user/all").authenticated()
+        .antMatchers("/apis/compamy/**").permitAll()
+        .antMatchers("/apis/user/login.do", "/apis/user/register.do", "/apis/user/emailCheck.do",
+            "apis/user/passwordChange.do")
+        .permitAll();
     http.addFilterBefore(jwtFilter,
         UsernamePasswordAuthenticationFilter.class);
 

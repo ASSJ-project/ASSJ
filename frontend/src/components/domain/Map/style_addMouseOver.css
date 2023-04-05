@@ -7,6 +7,10 @@
   z-index: 2; /* 마우스 오버 시 라벨이 다른 요소 위로 올라오도록 z-index 조절 */
 }
 
+.label:active {
+  background-color: rgba(115, 115, 221, 0.952);
+  box-shadow: 0 0 15px rgba(115, 115, 221, 0.5); /* 퍼지는 효과를 위한 설정 */
+}
 .label {
   cursor: pointer; /* 마우스 포인터가 라벨 위에 있을 때 포인터 모양으로 변경 */
   transition: transform 0.3s ease; /* 크기 변화에 대한 부드러운 애니메이션 효과 적용 */
@@ -22,37 +26,24 @@
   transform-origin: 50% 50%;
 }
 
-.label * {
-  display: inline-block;
-  vertical-align: top;
-}
-.label .left {
-  background: url('https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png')
-    no-repeat;
-  display: inline-block;
-  height: 24px;
-  overflow: hidden;
-  vertical-align: top;
-  width: 7px;
-}
-.label .center {
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png)
-    repeat-x;
-  display: inline-block;
-  height: 24px;
-  font-size: 12px;
-  line-height: 24px;
-}
-.label .right {
-  background: url('https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png') -1px
-    0 no-repeat;
-  display: inline-block;
-  height: 24px;
-  overflow: hidden;
-  width: 6px;
+/* 클릭 후 오버레이  */
+.overlay_info {
+  /* 기존 코드 유지 */
+  border-radius: 6px;
+  /* margin-bottom: 12px; */
+  float: left;
+  position: absolute; /* 'relative'를 'absolute'로 변경 */
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  background-color: #fff;
+
+  /* 새로 추가 */
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -20%);
 }
 
-클릭 후 오버레이 .overlay_info {
+/* .overlay_info {
   border-radius: 6px;
   margin-bottom: 12px;
   float: left;
@@ -60,15 +51,16 @@
   border: 1px solid #ccc;
   border-bottom: 2px solid #ddd;
   background-color: #fff;
-}
+} */
+
 .overlay_info:nth-of-type(n) {
   border: 0;
   box-shadow: 0px 1px 2px #888;
 }
 .overlay_info a {
   display: block;
-  background: #d95050;
-  background: #d95050
+  background: rgba(115, 115, 221, 0.952);
+  background: rgba(115, 115, 221, 0.952)
     url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
     no-repeat right 14px center;
   text-decoration: none;
@@ -101,7 +93,7 @@
   white-space: normal;
 }
 .overlay_info:after {
-  content: '';
+  content: "";
   position: absolute;
   margin-left: -11px;
   left: 50%;
@@ -114,10 +106,26 @@
 
 /* // CSS를 추가하여 z-index를 기본적으로 0으로 설정합니다. */
 /* // style.css 또는 head 태그 내의 style 태그에 이 내용을 추가하세요. */
-.overlay_content {
-  z-index: 0;
-  position: relative;
-  cursor: pointer; /* 마우스 오버 시 포인터 모양이 변경되도록 설정합니다. */
+/* 클릭 후 오버레이  */
+.overlay_info {
+  /* 기존 코드 유지 */
+  border-radius: 6px;
+  /* margin-bottom: 12px; */
+  float: left;
+  position: absolute; /* 'relative'를 'absolute'로 변경 */
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  background-color: #fff;
+
+  /* 새로 추가 */
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  z-index: 2000; /* z-index를 높게 설정 */
+}
+
+.overlay_info.clicked {
+  z-index: 2000; /* 클릭한 moreInfoContent의 z-index를 더 높게 설정 */
 }
 
 .overlay_content:hover {

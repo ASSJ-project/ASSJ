@@ -49,6 +49,15 @@ public class CompanyService {
         return companies;
     }
 
+    /**
+     * 무한 스크롤용 데이터 얻기
+     * 
+     * @param region 지역코드
+     * @param jobsCd 업종코드
+     * @param page   페이지 수
+     * @param size   받아올 크기
+     * @return 회사 리스트
+     */
     public List<Company> getCompaniesPage(String region, String jobsCd, int page, int size) {
         int offset = (page - 1) * size;
         String sql = "SELECT * FROM company WHERE region IN (:regionList) AND jobsCd IN (:jobsCdList) LIMIT :size OFFSET :offset";

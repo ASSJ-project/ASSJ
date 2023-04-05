@@ -85,10 +85,7 @@ public class JwtFilter extends OncePerRequestFilter {
       log.error("토큰이 만료되었습니다");
       JwtToken.tokenRefresh(token, refresh, secretKey, accessExpiredAt, request, response,
           refreshTokenRedisRepository);
-
-      filterChain.doFilter(request, response);
       return;
-
     }
 
     String userEmail = JwtToken.getUserEmail(token, secretKey);
