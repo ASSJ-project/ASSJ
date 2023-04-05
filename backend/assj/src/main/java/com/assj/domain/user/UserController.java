@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/login.do")
-    public HttpStatus login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request)
+    public String login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request)
             throws Exception {
 
         if (userService.checkEmail(user.getUserEmail())) {
@@ -53,7 +53,7 @@ public class UserController {
                 return userService.generateTokens(user.getUserEmail(), response, request);
             }
         }
-        return HttpStatus.BAD_REQUEST;
+        return null;
     }
 
     @PostMapping("/register.do")

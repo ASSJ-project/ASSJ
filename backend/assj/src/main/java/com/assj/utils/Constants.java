@@ -8,4 +8,5 @@ public final class Constants {
   public static final String WORKNET_API_KEY = "WNLEZKDC8ZBGBIZXCMBHQ2VR1HJ";
   public static final String INSERT_INTO_COMPANY_SQL = "INSERT INTO company (company_id, company, title, salTpNm, sal, minSal, maxSal, region, holidayTpNm, minEdubg, career, regDt, closeDt, zipCd, strtnmCd, basicAddr, detailAddr, empTpCd, jobsCd, wgsX, wgsY, wtmX, wtmY) VALUE (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
   public static final String SECRET_KEY = "2whghkdlxlddkanrjskTjqhkfkdlrjtdlakwlakrvmfhwprxmdlek";
+  public static final String REDIS_KEY = "fpeltmzldlqslek";
 }
