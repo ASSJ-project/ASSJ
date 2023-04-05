@@ -1,16 +1,15 @@
-/* 회사 목록 CSS */
-
 .main-container {
     width: 1150px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
 }
-  
+
 .clist-container {
     display: flex;
     margin: -1rem;
     flex-wrap: wrap;
+    
 }
 
 .clist-container :hover {
@@ -20,7 +19,7 @@
 
 .clist {
     width: 20rem;
-    background-color: #e2dff8;
+    background-color: #E2DFF8;
     border-radius: 10px;
     margin: 1em;
     border: solid 1px #eaedf4;
@@ -28,6 +27,8 @@
     flex-direction: column;
     padding: 20px;
 }
+
+
 
 .clist div {
     /* 호버 효과 제거 */
@@ -54,20 +55,21 @@
     font-size: 0.9em;
     font-family: "Lato";
     font-style: normal;
-    color: #7c7c7c;
+    color: #7C7C7C;
 }
 
 @media (max-width: 1382px) {
-.main-container {
-    width: 757px;
-}
+    .main-container {
+        width: 757px;
+    }
 }
 
 @media (max-width: 780px) {
-.clist {
+    .clist {
     margin-left: 2em;
     margin-right: 2em;
     width: 100%;
     height: auto;
 }
 }
+
