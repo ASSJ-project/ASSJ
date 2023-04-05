@@ -2,6 +2,7 @@
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
 import { useEffect } from "react";
+import Button from "@mui/material/Button";
 
 function StartPage() {
   useEffect(() => {
@@ -15,18 +16,20 @@ function StartPage() {
         </div>
 
         <div className="btn-item">
-          <button
-            className="btn"
+          <Button
+            variant="contained"
+            className="btn-lo"
             onClick={() => (window.location.href = "/login")}
           >
             <p>로그인</p>
-          </button>
-          <button
-            className="btn"
+          </Button>
+          <Button
+            variant="contained"
+            className="btn-re"
             onClick={() => (window.location.href = "/register")}
           >
             <p>회원가입</p>
-          </button>
+          </Button>
         </div>
       </div>
     </>

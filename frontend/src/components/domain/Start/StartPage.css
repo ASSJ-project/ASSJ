@@ -42,29 +42,15 @@
 .logo-item img {
   max-width: 100%;
 }
-.btn-item {
-  width: 100%;
-}
 
-.btn {
-  background-color: #9588e0;
-  color: white;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
+.btn-item Button {
   width: 7em;
-  height: 5em;
-  margin-right: 20px;
-  border-radius: 20px;
-  border: 0;
-  box-shadow: #838383 4px 4px 6px, #706f6f 3px 3px 3px;
-}
-.btn:hover {
-  box-shadow: #838383 4px 4px 6px, #0c0c0c 4px 4px 4px;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
 }
 
 @media (min-width: 780px) {
-  .btn-item button {
-    width: 10em;
+  .btn-item Button {
+    width: 7em;
   }
 }
