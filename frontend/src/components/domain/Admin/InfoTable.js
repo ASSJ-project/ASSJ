@@ -2,7 +2,6 @@
 import { getUser } from "@/apis/admin/getUser";
 import { useEffect, useState, useReducer } from "react";
 import "./Admin.css";
-import "./InfoTable.css";
 
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
