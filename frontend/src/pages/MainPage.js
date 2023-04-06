@@ -26,7 +26,6 @@ const MapBoundary = styled.div`
   height: 80vh;
   width: 75%;
   border: 1px solid black;
-  
 `;
 
 // const ToggleBoundary = styled.div`
@@ -54,7 +53,7 @@ const Content = styled.div`
   margin-right: auto;
   margin-top: 1em;
   
-`
+`;
 
 function MainContainer() {
   const [selected, setSelected] = useState('map');
@@ -65,8 +64,8 @@ function MainContainer() {
   const [region, setRegion] = useState('서울 금천구');
   const [jobsCd, setJobsCd] = useState(133300);
 
-  const filterRegionlist = setFilterRegion.split(",");
-  const filterJoblist = setFilterJob.split(",");
+  const filterRegionlist = setFilterRegion.split(',');
+  const filterJoblist = setFilterJob.split(',');
 
   const handleClick = () => {};
   const handleDelete = () => {};
@@ -105,24 +104,34 @@ function MainContainer() {
 
   return (
     <>
-    <Header />
-    <Content className="Content">
+      <Header />
+      <Content className="Content">
         <ToggleBoundary className="App">
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
         {selected === 'map' ? (
-          <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
+          <MapBoundary className="MapBoundary">
+            {data && <KakaoMap data={data} />}
+          </MapBoundary>
         ) : (
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         )}
 
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         </List>
-    </Content>
-    <Footer />
+      </Content>
+      <Footer />
   </>
   );
 }
