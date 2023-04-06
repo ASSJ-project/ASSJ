@@ -45,7 +45,6 @@ const FilterButton = styled.button`
   height: 50px;
   background-color: white;
   border: 1px solid #b4c0d3;
-  
   font-size: 17px;
   font-weight: 400;
   padding: 8px 16px;
@@ -53,9 +52,6 @@ const FilterButton = styled.button`
   text-align: left;
   transition: background-color 0.3s;
 
-  @media (max-width: 1110px) {
-    width: 50%;
-  }
   &:hover {
     background-color: #bbbbbb;
   }
