@@ -1,4 +1,5 @@
 .signup-container {
+  text-align: center;
   width: 480px;
   height: 100vh;
   display: flex;
@@ -97,13 +98,7 @@
 
 @media (max-width: 780px) {
   .signup-container {
-    padding: 10px;
-    width: 90%;
-    margin: 0em;
-  }
-}
-@media (max-width: 780px) {
-  .signup-container {
+    text-align: center;
     padding: 10px;
     width: 90%;
     margin: 0em;
