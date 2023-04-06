@@ -10,15 +10,16 @@
 
 .Error-logo {
   display: flex;
-  width: 75%;
-  height: 40%;
+  width: 100%;
+  height: 50%;
   align-items: center;
   justify-content: center;
   max-width: 480px;
+  max-height: 480px;
 }
 
 .Error-logo2 {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   width: 100%;
   height: 100%;
@@ -29,8 +30,18 @@
 .Error-text {
   margin-top: 10px;
   width: 100%;
-  height: 30%;
+  height: 40%;
   text-align: center;
+}
+
+.Error-text h2 {
+  font-size: 30px;
+  color: #303f9f;
+}
+
+.Error-text h3 {
+  font-size: 20px;
+  line-height: 1.5em;
 }
 
 .Error-home {

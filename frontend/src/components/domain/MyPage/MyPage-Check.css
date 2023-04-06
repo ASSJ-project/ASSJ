@@ -1,0 +1,53 @@
+/*MyPage-Checked-Text와 삭제버튼 들어있는 div입니다.*/
+.MyPage-CheckedItems {
+  background-color: rgba(226, 223, 248, 0.7);
+  margin-top: 10px;
+  width: 100%;
+  height: 10%;
+  border-style: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*no1. 기업이름 나오는 div입니다. */
+.MyPage-Checked-Text {
+  width: 200px;
+  color: #000000;
+}
+
+/*최근조회 내역과 전체삭제 버튼이 들어있는 div입니다.*/
+.MyPage-SearchMenu {
+  display: flex;
+  justify-content: space-between;
+  height: 5%;
+  width: 100%;
+}
+
+/*최근 조회내역*/
+.MyPage-Recently {
+  background: #ffffff;
+  width: 100px;
+  height: 90%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .MyPage-CheckedItems {
+    font-size: 15px;
+  }
+
+  .MyPage-Recently {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .MyPage-Recently {
+    font-size: 8px;
+  }
+}
