@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "normalize.css"; // import normalize.css
-import MapPage from "@/pages/MainPage_0404";
+import MapPage from "@/pages/MainPage";
 import LoginPage from "@/pages/LoginPage";
 import StartPage from "@/pages/StartPage";
 import RegisterPage from "@/pages/RegisterPage";
