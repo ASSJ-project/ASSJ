@@ -32,6 +32,8 @@
 
 .label:hover {
   transform: scale(1.2); /* 마우스 오버 시 크기를 20% 증가 */
+  background-color: rgba(161, 161, 226, 0.952);
+  box-shadow: 0 0 15px rgba(115, 115, 221, 0.5);
 }
 
 /* 퍼지는 효과를 위한 설정 */
@@ -39,6 +41,7 @@
   transform: scale(1.2); /* 마우스 오버 시 크기를 20% 증가 */
   background-color: rgba(161, 161, 226, 0.952);
   box-shadow: 0 0 15px rgba(115, 115, 221, 0.5);
+  /* z-index: 1000; */
 }
 
 /* 클릭 후 오버레이  */

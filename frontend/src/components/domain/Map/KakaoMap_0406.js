@@ -75,10 +75,17 @@ export default function KakaoMap(props) {
           showMoreInfo(overlayContent, item);
           setCoverdOverlayZIndex(overlay);
         };
-        overlayContent.onmouseout = () => setHideOverlayZIndex(overlay);
+        overlayContent.onmouseout = () => {
+          hideMoreInfo(overlayContent);
+          setHideOverlayZIndex(overlay);
+        };
       } else {
-        overlayContent.ontouchstart = () => setHideOverlayZIndex(overlay);
-        overlayContent.ontouchend = () => showMoreInfo(overlayContent, item);
+        overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
+        overlayContent.ontouchend = () => {
+          showMoreInfo(overlayContent, item);
+          setHideOverlayZIndex(overlay);
+        };
+        // overlayContent
       }
 
       const overlay = new kakao.maps.CustomOverlay({
