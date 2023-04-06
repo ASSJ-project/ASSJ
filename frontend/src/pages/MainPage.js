@@ -105,53 +105,25 @@ function MainContainer() {
 
   return (
     <>
-      <Header />
-      
-      <Filter>
-        <RegionFilter />
-        <JobFilter />
-        {filterRegionlist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })} 
+    <Header />
+    <Content className="Content">
+        <ToggleBoundary className="App">
+          <MapToggle setSelected={setSelected} />
+        </ToggleBoundary>
+        {selected === 'map' ? (
+          <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
+        ) : (
+          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+        )}
 
-        {filterJoblist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })}
-      </Filter>
-      {/* <ToggleBoundary className="App">
-        <MapToggle setSelected={setSelected} />
-      </ToggleBoundary> */}
-      <Content>
-        
-        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>     
-        <CompanyList region={region} jobsCd={jobsCd} />
-      </Content>
-      
-      
-      <Footer />
-    </>
+        <List className="List">
+          <RegionFilter />
+          <JobFilter />
+          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+        </List>
+    </Content>
+    <Footer />
+  </>
   );
 }
 
