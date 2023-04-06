@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.assj.cookie.Cookies;
 import com.assj.dto.User;
 import com.assj.jwt.JwtToken;
 import com.assj.redis.RefreshToken;
@@ -180,22 +181,12 @@ public class UserService {
 		String accessToken = JwtToken.createAccess(userEmail, role, secretKey, Long.parseLong(accessExpiredAt));
 		String refreshToken = JwtToken.createReFresh(secretKey, Long.parseLong(refreshExpiredAt));
 
-		Cookie accessCookie = new Cookie("access_token", accessToken); // 엑세스 토큰을 재발급
-		Cookie refreshCookie = new Cookie("refresh_token", refreshToken); // 엑세스 토큰을 재발급
-		Cookie roleCookie = new Cookie("role", role);
-		accessCookie.setHttpOnly(true);
-		refreshCookie.setHttpOnly(true);
-		roleCookie.setHttpOnly(true);
-		accessCookie.setPath("/");
-		refreshCookie.setPath("/");
-		roleCookie.setPath("/");
-		response.addCookie(accessCookie);
-		response.addCookie(refreshCookie);
-		response.addCookie(roleCookie);
+		Cookies.sendCookie(response, true, "access_token", accessToken);
+		Cookies.sendCookie(response, true, "refresh_token", refreshToken);
 
 		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌
 		long redisId = JwtToken.parseTokenToId(accessToken);
-		System.out.println("발행한 id : " + redisId);
+	
 
 		// 유저 접속 ip를 알아낸다
 		String userIp = request.getHeader("X-FORWARDED-FOR");
