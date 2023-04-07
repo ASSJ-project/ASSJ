@@ -44,13 +44,19 @@ const FilterButton = styled.button`
   height: 50px;
   background-color: white;
   border: 1px solid #b4c0d3;
-  
   font-size: 17px;
   font-weight: 400;
   padding: 8px 16px;
   cursor: pointer;
   text-align: left;
   transition: background-color 0.3s;
+
+  @media (max-width: 768px) {
+    width: 70px;   
+    border-radius: 20px;
+    margin: 0.3em
+    
+  }
 
   &:hover {
     background-color: #bbbbbb;

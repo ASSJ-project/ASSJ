@@ -10,19 +10,6 @@ import MapToggle from '@/components/domain/Map/ToggleButton';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
-import Chip from '@mui/material/Chip';
-import DoneIcon from '@mui/icons-material/Done';
-
-const ToggleBoundary = styled.div`
-  display: none;
-  position: fixed;
-  bottom: 15%;
-  left: 45%;
-  z-index: 2;    
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -38,6 +25,7 @@ const MapBoundary = styled.div`
   
   @media (max-width: 768px) {
     width: 100%;
+    height: 70vh;
    }
 
 `;
@@ -50,7 +38,7 @@ const List = styled.div`
   border: 1px solid #b4c0d3;
 
   @media (max-width: 768px) {
-    display: none;    
+    display: none;
   }
 
 `;
@@ -64,12 +52,72 @@ const Content = styled.div`
   margin-top: 1em;
   border: 1px solid #b4c0d3;
 
-  
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
+`;
+const ToolBar = styled.div`
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 `
 
+const ToolBox = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: inline;
+    width: auto;
+  }
+`;
+
+const ToggleBoundary = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    width: 60px;
+    display: inline;
+    position: fixed;
+  }
+`;
+
+const SearchContainer = styled.div`
+  width: 100%;
+  text-align: right;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 768px) {
+    display: inline;
+    width: auto;
+   
+  }
+`;  
+
+const SearchInput = styled.input`
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 5px;
+`;
+
+const SearchButton = styled.button`
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #b4c0d3;
+  color: white;
+  cursor: pointer;
+`;
+
+
 function MainContainer() {
+  const [filteredData, setFilteredData] = useState('');
   const [selected, setSelected] = useState('map');
-  
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);  
+  const [searchText, setSearchText] = useState('');
+
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
@@ -80,6 +128,22 @@ function MainContainer() {
     setRegion(setFilterRegion);
     setJobsCd(setFilterJob);
   }, [setFilterRegion, setFilterJob]);
+
+  const handleSearch = () => {
+    let filtered = data.filter((item) => {
+      // if (salary && item.salary !== salary) {
+      //   return false;
+      // }
+      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
+        return false;
+      }
+      if (searchText && !item.basicAddr.includes(searchText)) {
+        return false;
+      }
+      return true;
+    });
+    setFilteredData(filtered);
+  };
 
   const queryParam = {
     region,
@@ -111,10 +175,27 @@ function MainContainer() {
   return (
   <>
     <Header />
+    <ToolBar>
+    <ToolBox>
+      <RegionFilter />
+      <JobFilter />
+    </ToolBox>
+    <SearchContainer>
+      <SearchInput
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+      />
+      <SearchButton onClick={handleSearch}>검색</SearchButton>
+    </SearchContainer>
+    </ToolBar>
     <Content className="Content">
-        <ToggleBoundary className="App">
-          <MapToggle setSelected={setSelected} />
-        </ToggleBoundary>
+
+    <ToggleBoundary className="App">
+      <MapToggle setSelected={setSelected} />
+    </ToggleBoundary>
+        
         {selected === 'map' ? (
           <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
         ) : (

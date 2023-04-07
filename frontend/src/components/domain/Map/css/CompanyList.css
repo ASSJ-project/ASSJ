@@ -8,9 +8,11 @@
 .clist-container {
   height: 73vh;
   margin: 0.5rem;
+  
+  
 }
 
-.clist-container :hover {
+/* .clist-container :hover {
   transform: translateY(-8px);
   transition-duration: 0.5s;
 }
@@ -26,12 +28,12 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-}
+} */
 
 
 
-.clist div {
-  /* 호버 효과 제거 */
+/* .clist div {
+  
   pointer-events: none;
   padding: 0.5em;
 }
@@ -56,7 +58,7 @@
   font-family: "Lato";
   font-style: normal;
   color: #7C7C7C;
-}
+} */
 
 /* @media (max-width: 1382px) {
   .main-container {
@@ -73,3 +75,7 @@
 }
 } */
 
+.card {
+  margin: 1.5em;
+  background-color: bisque;
+}
