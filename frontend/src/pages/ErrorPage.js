@@ -1,9 +1,9 @@
-import '@/components/domain/Error/ErrorPage.css';
-import logo2 from '../assets/images/Error-logo.png';
-import { Link } from 'react-router-dom';
-import Header from '@/components/Structure/Header/Header';
-import Button from '@mui/material/Button';
-import Footer from '@/components/Structure/Footer/Footer';
+import "@/components/domain/Error/ErrorPage.css";
+import logo2 from "../assets/images/Error-logo.png";
+import { Link } from "react-router-dom";
+import Header from "@/components/Structure/Header/Header";
+import Button from "@mui/material/Button";
+import Footer from "@/components/Structure/Footer/Footer";
 
 const ErrorPage = () => {
   return (
@@ -24,7 +24,7 @@ const ErrorPage = () => {
           </h3>
         </div>
 
-        <Link to="/" style={{ textDecoration: 'None' }}>
+        <Link to="/" style={{ textDecoration: "None" }}>
           <Button className="Error-home" variant="contained">
             Start Over
           </Button>
