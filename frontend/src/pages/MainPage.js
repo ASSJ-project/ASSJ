@@ -210,7 +210,7 @@ function MainContainer() {
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
 
-        {selected === 'map' ? (
+        {selected === "map" ? (
           <MapBoundary className="MapBoundary">
             {data && <KakaoMap data={data} />}
           </MapBoundary>
