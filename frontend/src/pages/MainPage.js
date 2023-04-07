@@ -114,8 +114,10 @@ function MainContainer() {
   const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
   const [searchText, setSearchText] = useState('');
 
-  const setFilterRegion = useSelector((state) => state.setFilterRegion);
-  const setFilterJob = useSelector((state) => state.setFilterJob);
+  const setFilterRegion = useSelector(
+    (state) => state.dataFilter.setFilterRegion
+  );
+  const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
 
   const [region, setRegion] = useState('서울 금천구');
   const [jobsCd, setJobsCd] = useState(133300);
