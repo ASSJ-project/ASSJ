@@ -11,6 +11,7 @@ import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
 
+
 const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -72,21 +73,27 @@ const ToolBox = styled.div`
 const ToggleBoundary = styled.div`
   display: none;
   @media (max-width: 768px) {
-    width: 60px;
     display: inline;
+    width: 10%;
     position: fixed;
+    bottom: 20%;
+    left 38%;
+    text-align: center;
+    z-index 2;
   }
 `;
 
 const SearchContainer = styled.div`
   width: 100%;
   text-align: right;
-  margin-top: 1em;
+  margin-top: 0.3em;
   margin-left: auto;
   margin-right: auto;
   @media (max-width: 768px) {
+    width: 60%;
     display: inline;
-    width: auto;
+    float: right;
+    margin-right: 0;
   }
 `;
 
@@ -96,6 +103,11 @@ const SearchInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-right: 5px;
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 18px; 
+    font-size: 13px;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -106,7 +118,12 @@ const SearchButton = styled.button`
   background-color: #b4c0d3;
   color: white;
   cursor: pointer;
+  @media (max-width: 768px) {
+    height: 40px; 
+    font-size: 13px;
+  }
 `;
+
 
 function MainContainer() {
   const [filteredData, setFilteredData] = useState('');
@@ -219,5 +236,6 @@ function MainContainer() {
     </>
   );
 }
+
 
 export default MainContainer;
