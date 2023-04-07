@@ -6,7 +6,7 @@
   /* padding: 10px; */
   flex-direction: column;
   align-items: center;
-  font-family: Georgia, '맑은 고딕', serif;
+  font-family: var(--font-NotoSansKorean);
   max-width: 480px;
   /* border: 1px solid black; */
 }

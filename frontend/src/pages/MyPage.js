@@ -1,5 +1,5 @@
 import '@/components/domain/MyPage/MyPage.css';
-import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
+// import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
 import MyPageCheck from '@/components/domain/MyPage/MyPage-Check';
 import MyPageHeader from '@/components/domain/MyPage/MyPage-Header';
 import { useState, useEffect } from 'react';
@@ -17,7 +17,7 @@ const Main = styled.div`
   position: relative;
 `;
 
-export default function () {
+export default function MyPage() {
   const [value, setValue] = useState(false);
   const [userData, setUserData] = useState([]);
 
