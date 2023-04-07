@@ -7,6 +7,8 @@ const MyPageTest = (data) => {
   const [isSocial, setIsSocial] = useState(''); // 소셜인지 확인하기 위함
   const [isLogin, setIsLogin] = useState(''); //로그인 상태인지 확인하기 위함
   const [isDelete, setIsDelete] = useState(false);
+  const [yesDelete, setYesDelete] = useState(true);
+  const [pw, setPw] = useState('');
 
   useEffect(() => {
     setIsSocial(localStorage.getItem('role')); // 로컬에 있는 role 값 가져옴
@@ -18,8 +20,8 @@ const MyPageTest = (data) => {
       <div className="MyPagebox-Info">
         <p style={{ marginLeft: '15px' }}>{name}</p>
         {isLogin ? (
-          isSocial == 'ROLE_SOCIAL' ? (
-            <p style={{ marginRight: '15px' }}>조회할 수 없습니다. </p>
+          isSocial === 'ROLE_SOCIAL' ? (
+            <p style={{ marginRight: '15px' }}>소셜은 이용 불가합니다.</p>
           ) : (
             <p style={{ marginRight: '15px' }}>{data}</p>
           )
@@ -31,11 +33,28 @@ const MyPageTest = (data) => {
   };
 
   const mypagedelete = () => {
-    setIsDelete(true);
+    isLogin
+      ? isSocial === 'ROLE_SOCIAL'
+        ? alert('소셜은 이용 불가능합니다.')
+        : setIsDelete(true)
+      : alert('로그인 후 이용 가능합니다');
   };
 
   const mypagenodelete = () => {
     setIsDelete(false);
+    setYesDelete(true);
+  };
+
+  const onChange = (e) => {
+    setPw(e.target.value);
+  };
+
+  const Woo = () => {
+    if (pw !== 1234) {
+      alert('비밀번호를 확인해주세요');
+    } else {
+      alert('탈퇴완료되었습니다.');
+    }
   };
 
   return (
@@ -47,10 +66,12 @@ const MyPageTest = (data) => {
         variant="contained"
         style={{ marginTop: '10px', fontSize: '20px' }}
         onClick={() => {
-          window.location.href = 'findpassword';
+          isSocial === 'ROLE_SOCIAL'
+            ? alert('이용 불가능 합니다')
+            : (window.location.href = 'findpassword');
         }}
       >
-        비밀번호 변경
+        {isLogin ? '비밀번호 수정' : '비밀번호 찾기'}
       </Button>
       {!isDelete ? (
         <Button
@@ -69,19 +90,40 @@ const MyPageTest = (data) => {
           취소
         </Button>
       )}
-      <div className={isDelete ? 'MyPagebox-delete' : 'MyPagebox-none'}>
-        <p>
-          회원탈퇴시 복구 불가능합니다.
-          <br />
-          정말 탈퇴하시겠습니까?
-        </p>
-        <Button
-          variant="contained"
-          style={{ marginTop: '10px', fontSize: '20px' }}
-        >
-          네, 탈퇴하겠습니다.
-        </Button>
-      </div>
+      {yesDelete ? (
+        <div className={isDelete ? 'MyPagebox-delete' : 'MyPagebox-none'}>
+          <p>
+            회원탈퇴시 복구 불가능합니다.
+            <br />
+            정말 탈퇴하시겠습니까?
+          </p>
+          <Button
+            variant="contained"
+            style={{ fontSize: '20px' }}
+            onClick={() => {
+              setYesDelete(false);
+            }}
+          >
+            네, 탈퇴하겠습니다.
+          </Button>
+        </div>
+      ) : (
+        <div className="MyPagebox-delete">
+          <input
+            placeholder="비밀번호를 입력해주세요"
+            type="password"
+            onChange={onChange}
+            className="MyPage-Input"
+          ></input>
+          <Button
+            variant="contained"
+            style={{ marginTop: '10px', fontSize: '20px' }}
+            onClick={Woo}
+          >
+            탈퇴
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
