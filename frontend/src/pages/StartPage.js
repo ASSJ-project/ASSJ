@@ -7,18 +7,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 function StartPage() {
   useEffect(() => {
     localStorage.clear();
   }, []);
   const settings = {
+    //슬라이드
     dots: true, // 점 보이기
     infinite: true, // 무한루트
     speed: 500,
@@ -36,12 +35,12 @@ function StartPage() {
     .slick-prev {
       // 양염 버튼 위치
       z-index: 1;
-      left: 30px;
+      left: 30%;
     }
 
     .slick-next {
       // 양옆 버튼 위치
-      right: 40px;
+      right: 30%;
     }
     .slick-prev:before,
     .slick-next:before {
@@ -55,73 +54,89 @@ function StartPage() {
     }
   `;
   return (
-    <StartSlider>
+    <StartSlider className="startslider">
       {/* 슬라이더 안먹음 */}
-      <div>hi</div>
-      <Slider {...settings}>
-        <div><Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card></div>
-        <div><Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card></div>
-        <>
-          <div className="start-container">
-            <div className="logo-item">
-              <img id="logo" src={logo} alt="logo-img" />
-            </div>
+      <div className="logo-item">
+        <img id="logo" src={logo} alt="logo-img" />
+      </div>
+      {/* 슬라이더 안먹음 */}
+      <Slider {...settings} className="slider">
+        <div>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
 
-            <div className="btn-item">
-              <Button
-                variant="contained"
-                className="btn-lo"
-                onClick={() => (window.location.href = "/login")}
-              >
-                <p>로그인</p>
-              </Button>
-              <Button
-                variant="contained"
-                className="btn-re"
-                onClick={() => (window.location.href = "/register")}
-              >
-                <p>회원가입</p>
-              </Button>
-            </div>
-          </div>
-        </>
+        <div>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
       </Slider>
+      <div className="btn-container">
+        <Button
+          variant="contained"
+          className="btn-lo"
+          onClick={() => (window.location.href = "/login")}
+        >
+          <p>로그인</p>
+        </Button>
+        <Button
+          variant="contained"
+          className="btn-re"
+          onClick={() => (window.location.href = "/register")}
+        >
+          <p>회원가입</p>
+        </Button>
+      </div>
     </StartSlider>
   );
 }
