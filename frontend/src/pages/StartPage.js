@@ -13,6 +13,7 @@ function StartPage() {
     localStorage.clear();
   }, []);
   const settings = {
+    //슬라이드
     dots: true, // 점 보이기
     infinite: true, // 무한루트
     speed: 500,
@@ -53,8 +54,15 @@ function StartPage() {
       {/* 슬라이더 안먹음 */}
       <div>hi</div>
       <Slider {...settings}>
-        <div>111111111111111111111111</div>
-        <div>2</div>
+        <div>
+          <p>시작화면 잡 어쩌구 (마우스 오른쪽으로 드래그시 화면 넘어감)</p>
+        </div>
+        <div>
+          <p>프로젝트 설명</p>
+        </div>
+        <div>
+          <p>우리 프로젝트 사용화면 </p>
+        </div>
         <>
           <div className="start-container">
             <div className="logo-item">

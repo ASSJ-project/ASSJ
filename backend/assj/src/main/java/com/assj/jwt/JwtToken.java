@@ -4,7 +4,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Optional;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -113,7 +112,7 @@ public class JwtToken {
    * @param request                     HttpServletRequest
    * @param response                    HttpServletResponse
    * @param refreshTokenRedisRepository 레디스 레파지토리 인스턴스
-   * @return 새 엑세스 토큰  
+   * @return 새 엑세스 토큰
    */
   public static String tokenRefresh(String token, String refresh, String secretKey, String accessExpiredAt,
       HttpServletRequest request, HttpServletResponse response,
@@ -126,8 +125,6 @@ public class JwtToken {
     }
 
     long redisId = JwtToken.parseTokenToId(token); // 엑세스 토큰에서 redis id 추출
-    System.out.println("필터 안의 레디스 아이디 : " + redisId);
-    System.out.println("리포지토리주소 : " + refreshTokenRedisRepository);
     Optional<RefreshToken> rf = refreshTokenRedisRepository.findById(redisId); // redis주소
 
     String inRedisRefreshToken = rf.get().getRefreshToken(); // redis 안에 저장된 토큰
@@ -143,17 +140,16 @@ public class JwtToken {
       log.info("토큰재발급 시작");
       String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
           Long.parseLong(accessExpiredAt));// 엑세스 토큰을 재발급
-      // 재발급한 토큰을 쿠키에 실어서 보낸다 
+      // 재발급한 토큰을 쿠키에 실어서 보낸다
       Cookies.sendCookie(response, true, secretKey, newAccessToken);
       // 새로운 redis id
-      long newRedisId = parseTokenToId(newAccessToken); 
-      System.out.println("추가된 id : " + newRedisId);
+      long newRedisId = parseTokenToId(newAccessToken);
       refreshTokenRedisRepository
           .save(new RefreshToken(newRedisId, inRedisUserEmail, userIp, refresh, inRedisUserRole));
-      System.out.println("삭제된 id : " + redisId);
       log.info("토큰재발급 완료");
 
       return newAccessToken;
-    }else return "토큰 재발급 실패";
+    } else
+      return "토큰 재발급 실패";
   }
 }

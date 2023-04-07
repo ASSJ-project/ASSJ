@@ -8,7 +8,7 @@ export default function KakaoLoginBtn() {
   const responseKakao = (response) => {
     sessionStorage.removeItem("access_token");
     if (response) {
-      console.log(response);
+      console.log(response.id);
       //sessionStorage.setItem("access_token", response.response.access_token);
       //window.location.href = "map";
     }

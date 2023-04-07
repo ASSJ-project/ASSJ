@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -42,31 +41,31 @@ public class JwtFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request,
       HttpServletResponse response, FilterChain filterChain)
       throws IOException, ServletException {
-      String[] tokens = null;
-      
-      try{
-        // 쿠키에서 토큰을 가져옴 
-        tokens = Cookies.fromToken(request);
-      }catch(NullPointerException e){
-        // 토큰이 없는 상태에서 로그인 시도 안하고 다른 페이지로 갔을때의 처리 
-        return;
-      }
-      
-      if(Cookies.tokenIsEmpty(tokens)){
-        // 다시 doFilter 를 해줘야 컨트롤러로 넘어감 
-        filterChain.doFilter(request, response);
-        return;
-      } 
+    String[] tokens = null;
 
-      try {
-        JwtToken.isExpired(tokens[0], secretKey);
-      } catch (TokenExpiredException e) {
-        log.error("토큰이 만료되었습니다");
-        JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey, accessExpiredAt, request, response,
-            refreshTokenRedisRepository);
-        filterChain.doFilter(request, response);
-        return;
-      }
+    try {
+      // 쿠키에서 토큰을 가져옴
+      tokens = Cookies.fromToken(request);
+    } catch (NullPointerException e) {
+      // 토큰이 없는 상태에서 로그인 시도 안하고 다른 페이지로 갔을때의 처리
+      return;
+    }
+
+    if (Cookies.tokenIsEmpty(tokens)) {
+      // 다시 doFilter 를 해줘야 컨트롤러로 넘어감
+      filterChain.doFilter(request, response);
+      return;
+    }
+
+    try {
+      JwtToken.isExpired(tokens[0], secretKey);
+    } catch (TokenExpiredException e) {
+      log.error("토큰이 만료되었습니다");
+      JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey, accessExpiredAt, request, response,
+          refreshTokenRedisRepository);
+      filterChain.doFilter(request, response);
+      return;
+    }
 
     String userEmail = JwtToken.getUserEmail(tokens[0], secretKey);
 

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.assj.dto.Company;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/api/company")
 public class CompanyController {
@@ -28,11 +31,13 @@ public class CompanyController {
     @GetMapping("/items")
     public List<Company> getCompaniesPage(@RequestParam String region, @RequestParam String jobsCd,
             @RequestParam int page, @RequestParam int size) {
+
         return companyService.getCompaniesPage(region, jobsCd, page, size);
     }
 
     @GetMapping("/getItems")
     public List<Company> getItems(@RequestParam String region, @RequestParam String jobsCd) {
+        log.info("region : ", region);
         return companyService.getItems(region, jobsCd);
     }
 

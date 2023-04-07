@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import GoogleImg from "../../../assets/images/googlebtn.png";
+import { snsLoginDo } from "@/apis/login/sns_login";
 
 import "@/components/domain/Login/LoginPage.css";
 
@@ -16,13 +17,13 @@ export default function GoogleLoginBtn() {
   }, []);
 
   const responseGoogle = (response) => {
-    sessionStorage.removeItem("access_token");
     if (response) {
-      console.log(response);
-      sessionStorage.setItem("access_token", response.accessToken);
-      // window.location.href = "map";
+      console.log(response.googleId);
+
+      snsLoginDo(response.googleId).then((result) =>
+        console.log("결과 :", result)
+      );
     }
-    //차후 refresh token 적용 필요
   };
 
   return (
