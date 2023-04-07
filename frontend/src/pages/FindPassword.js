@@ -1,5 +1,5 @@
 import "../components/domain/FindPassword/FindPassword.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { emailCheck } from "../apis/emailCheck/emailCheck";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
-import Footer from "../components/Structure/Footer/Footer";
 
 function FindPassword() {
   const [key, setKey] = useState('');

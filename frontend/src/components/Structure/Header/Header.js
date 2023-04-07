@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 const HeadContainer = styled.div`
   margin: 0;
   padding: 0;
-  font-family: Georgia, "맑은 고딕", serif;
+  font-family: var(--font-NotoSansKorean);
 `;
 
 const Head = styled.div`
