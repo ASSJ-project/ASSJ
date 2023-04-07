@@ -12,7 +12,7 @@ export async function loginDo(e, p) {
       if (result.data === "") return false;
       localStorage.setItem("role", result.data);
       localStorage.setItem("login", true);
-      //window.location.href = "map";
+      window.location.href = "map";
       return true;
     } else {
       return false;

@@ -133,9 +133,9 @@ public class UserService {
 	 * @return 변경된 행의 개수 (실패0)
 	 * @throws DataAccessException
 	 */
-	public int addSnsUser(SnsUser user) throws DataAccessException {
+	public int addSnsUser(String id) throws DataAccessException {
 		String sql = "Insert into user_sns(userid) values(?)";
-		return jdbcTemplate.update(sql, user.getUserId());
+		return jdbcTemplate.update(sql, id);
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class UserService {
 
 	public String getSnsRole(String id) throws DataAccessException {
 		String sql = String.format(
-				"SELECT user_role.role FROM user_sns INNER JOIN user_role ON user_sns.role = user_role.role_id WHERE userid = %s",
+				"SELECT user_role.role FROM user_sns INNER JOIN user_role ON user_sns.role = user_role.role_id WHERE userid = '%s'",
 				id);
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
@@ -208,12 +208,15 @@ public class UserService {
 			String userType) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
 		log.info("토큰 발행 시작");
+
 		String role = "";
 		switch (userType) {
 			case "user":
 				role = getRole(userEmail);// 유저 권한
+				break;
 			case "sns_user":
 				role = getSnsRole(userEmail);
+				break;
 		}
 
 		// response body 에 엑세스 토큰, 리프레시 토큰 추가

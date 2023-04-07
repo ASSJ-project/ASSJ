@@ -8,7 +8,7 @@ export async function snsLoginDo(id) {
       userId: id,
     });
     if (result.status === 200) {
-      if (result.data === "") return;
+      if (result.data === "") return false;
       localStorage.setItem("role", result.data);
       localStorage.setItem("login", true);
       window.location.href = "map";

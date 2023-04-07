@@ -18,8 +18,6 @@ export default function GoogleLoginBtn() {
 
   const responseGoogle = (response) => {
     if (response) {
-      console.log(response.googleId);
-
       snsLoginDo(response.googleId).then((result) =>
         console.log("결과 :", result)
       );
