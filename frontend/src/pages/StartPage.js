@@ -1,6 +1,7 @@
 // coding by 'ikki'
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
+import card1 from "../assets/images/Start-Card1.png";
 import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
@@ -17,11 +18,8 @@ const StartPage = () => {
     localStorage.clear();
   }, []);
 
-  
-  
   const customeSlider = useRef();
 
-  
   const settings = {
     //슬라이드
     dots: false, // 점 보이기
@@ -30,16 +28,15 @@ const StartPage = () => {
     slidesToShow: 1, //1장씩 보이게 해주세요
     slidesToScroll: 1, //1장씩 넘어가세요
     arrows: false, // 화살표버튼
-  }
-  
+  };
 
   const gotoNext = () => {
-    customeSlider.current.slickNext()
-  }
+    customeSlider.current.slickNext();
+  };
 
   const gotoPrev = () => {
-    customeSlider.current.slickPrev()
-  }
+    customeSlider.current.slickPrev();
+  };
 
   const StartSlider = styled.div`
     .slick-list {
@@ -76,24 +73,15 @@ const StartPage = () => {
         <img id="logo" src={logo} alt="logo-img" />
       </div>
       {/* 슬라이더 안먹음 */}
-      <Slider  {...settings} ref={customeSlider} className="slider" >
+      <Slider {...settings} ref={customeSlider} className="slider">
         <div>
           <Card className="start_card">
             <CardMedia
               component="img"
               alt="green iguana"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
+              height="400"
+              image={card1}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
           </Card>
         </div>
 
@@ -139,12 +127,14 @@ const StartPage = () => {
       </Slider>
 
       <div className="pvne_btn">
-        <button className="previous" onClick={gotoPrev}>이전</button>
-        <button className="next-btn" onClick={gotoNext}>다음</button>
+        <button className="previous" onClick={gotoPrev}>
+          이전
+        </button>
+        <button className="next-btn" onClick={gotoNext}>
+          다음
+        </button>
       </div>
-      
 
-        
       <div className="btn-container">
         <Button
           variant="contained"
@@ -163,6 +153,6 @@ const StartPage = () => {
       </div>
     </StartSlider>
   );
-}
+};
 
 export default StartPage;
