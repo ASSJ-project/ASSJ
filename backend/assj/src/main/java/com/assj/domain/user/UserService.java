@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.assj.cookie.Cookies;
 import com.assj.dto.User;
+import com.assj.dto.SnsUser;
 import com.assj.jwt.JwtToken;
 import com.assj.redis.RefreshToken;
 import com.assj.redis.RefreshTokenRedisRepository;
@@ -77,6 +78,19 @@ public class UserService {
 	}
 
 	/**
+	 * SNS 유저가 DB에 존재하는지 조회하는 메소드
+	 * 
+	 * @param userId SNS 로그인시 받은 id
+	 * @return false : 존재, true : 부존재
+	 */
+	public boolean checkEmailSns(String userId) throws DataAccessException {
+		List<SnsUser> users = jdbcTemplate.query(String.format("select * from user_sns where userid = '%s'", userId),
+				new SnsUserRowMapper());
+
+		return (users.isEmpty()) ? false : true;
+	}
+
+	/**
 	 * 로그인 시도 유저의 패스워드가 DB 상에 저장된 패스워드와 같은지 조회하는 메소드
 	 * 
 	 * @param user 로그인 시도 유저
@@ -110,7 +124,18 @@ public class UserService {
 
 		return jdbcTemplate.update(sql, user.getUserEmail(), user.getUserPassword(),
 				user.getUserAddress(), user.getUserName());
+	}
 
+	/**
+	 * sns 회원가입 성공시 유저 id를 db에 추가
+	 * 
+	 * @param user sns 회원가입 시도유저
+	 * @return 변경된 행의 개수 (실패0)
+	 * @throws DataAccessException
+	 */
+	public int addSnsUser(SnsUser user) throws DataAccessException {
+		String sql = "Insert into user_sns(userid) values(?)";
+		return jdbcTemplate.update(sql, user.getUserId());
 	}
 
 	/**
@@ -166,16 +191,30 @@ public class UserService {
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
+	public String getSnsRole(String id) throws DataAccessException {
+		String sql = String.format(
+				"SELECT user_role.role FROM user_sns INNER JOIN user_role ON user_sns.role = user_role.role_id WHERE userid = %s",
+				id);
+		return jdbcTemplate.queryForObject(sql, String.class);
+	}
+
 	/**
 	 * 토큰 쌍을 생성하는 메소드
 	 * 
 	 * @param userEmail
 	 * @return 엑세스 토큰, 리프레시 토큰
 	 */
-	public String generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request) {
+	public String generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request,
+			String userType) {
 		// 유저의 이메일, 권한, 시크릿 키, 만료시간을 토큰 생성 메소드로 넘겨줌
 		log.info("토큰 발행 시작");
-		String role = getRole(userEmail);// 유저 권한
+		String role = "";
+		switch (userType) {
+			case "user":
+				role = getRole(userEmail);// 유저 권한
+			case "sns_user":
+				role = getSnsRole(userEmail);
+		}
 
 		// response body 에 엑세스 토큰, 리프레시 토큰 추가
 		String accessToken = JwtToken.createAccess(userEmail, role, secretKey, Long.parseLong(accessExpiredAt));
@@ -186,7 +225,6 @@ public class UserService {
 
 		// 엑세스 토큰을 id를 위해 고유한 정수로 만들어줌
 		long redisId = JwtToken.parseTokenToId(accessToken);
-	
 
 		// 유저 접속 ip를 알아낸다
 		String userIp = request.getHeader("X-FORWARDED-FOR");

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.assj.dto.SnsUser;
 import com.assj.dto.User;
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,11 +47,14 @@ public class UserController {
     @PostMapping("/login.do")
     public String login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request)
             throws Exception {
+        if (user.getUserEmail().isEmpty()) {
+            return null;
+        }
 
         if (userService.checkEmail(user.getUserEmail())) {
             if (userService.checkPassword(user)) {
                 log.info("컨트롤러 진입");
-                return userService.generateTokens(user.getUserEmail(), response, request);
+                return userService.generateTokens(user.getUserEmail(), response, request, "user");
             }
         }
         return null;
@@ -72,7 +76,7 @@ public class UserController {
         }
         return false;
     }
-    
+
     @PostMapping("/emailCheck.do")
     public Boolean emailCheck(@RequestBody User user) {
         try {
@@ -83,7 +87,7 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER', 'SNS')")
     @GetMapping("/getUser")
     public ResponseEntity<User> getUser(Authentication authentication, HttpServletRequest request) {
         return new ResponseEntity<>(userService.getUser(request).get(0), HttpStatus.OK);
@@ -92,5 +96,15 @@ public class UserController {
     @PostMapping("/passwordChange.do")
     public int changePassword(@RequestBody User user) {
         return userService.passwordChange(user.getUserPassword(), user.getUserEmail());
+    }
+
+    @PostMapping("/snslogin.do")
+    public String snsLogin(@RequestBody SnsUser user, HttpServletResponse response, HttpServletRequest request) {
+        System.out.println("로그인 시도한 SNS 유저 : " + user.getUserId());
+        if (userService.checkEmailSns(user.getUserId())) {
+            return userService.generateTokens(user.getUserId(), response, request,
+                    "sns_user");
+        } else
+            return null;
     }
 }
