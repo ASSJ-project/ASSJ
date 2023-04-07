@@ -1,31 +1,45 @@
 .MyPagebox {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 10px;
   padding: 0;
   font-family: Georgia, '맑은 고딕', serif;
   width: 100%;
   height: 70vh;
 }
 
+.MyPagebox-Info {
+  display: flex;
+  margin-top: 5px;
+  width: 100%;
+  height: 15%;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  text-align: center;
+  align-items: center;
+}
+
 .MyPagebox-Header {
   margin-top: 10px;
   display: row;
   flex-direction: row;
-  background-color: #cac5c5;
+  background-color: #ffffff;
   width: 100%;
   height: 25%;
-  color: rgb(44, 43, 43);
-  border-radius: 10px;
+  color: black;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .MyPagebox-event {
   margin-top: 10px;
-  background-color: black;
+  background-color: #ffffff;
   width: 100%;
   height: 30%;
-  color: white;
-  border-radius: 10px;
+  color: black;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .MyPagebox-event div {
@@ -35,7 +49,13 @@
   justify-content: space-between;
 }
 
+.MyPageSpan-right,
 .MyPagebox-event-right {
-  margin-right: 10px;
-  margin-top: 25px;
+  margin-right: 8px;
+}
+
+.yam {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  text-align: center;
+  align-items: center;
 }

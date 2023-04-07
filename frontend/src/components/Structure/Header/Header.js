@@ -27,8 +27,7 @@ const Head = styled.div`
     .header-right {
       list-style: none;
       display: flex;
-      width: 180px;
-      font-size: 10px;
+      width: 220px;
     }
 
     .header-right Button{
@@ -44,8 +43,7 @@ const Head = styled.div`
     @media screen and (max-width: 768px) {
       .header-right {
         flex-direction: row;
-        width: 150px;
-        font-size: 14px;
+        width: 220px;
       }
 
       .header-right Button{
@@ -70,12 +68,12 @@ const Head = styled.div`
     @media screen and (max-width: 480px) {
       .header-right {
         flex-direction: row;
-        width: 130px;
+        width: 200px;
         font-size: 8px;
       }
 
       img{
-        width: 120px;
+        width: 130px;
       }
 
       .header-right Button{
@@ -91,12 +89,12 @@ function Header() {
     let login = localStorage.getItem('login');
     let role = localStorage.getItem('role');
     if (login == 'true') {
-      SetIsLogin(true);
-      if (role == 'ADMIN') {
+      if (role == 'ROLE_ADMIN') {
         SetIsAdmin(true);
       } else {
         SetIsAdmin(false);
       }
+      SetIsLogin(true);
     } else {
       SetIsLogin(false);
     }
@@ -120,39 +118,85 @@ function Header() {
 
         {/* User 메뉴 리스트 */}
         <div className="header-right">
+          <Link
+            to="/admin"
+            style={
+              isAdmin ? { textDecoration: 'none' } : { visibility: 'hidden' }
+            }
+          >
+            <Button
+              variant="contained"
+              disableElevation
+              style={{
+                width: '45px',
+                height: '35px',
+                fontSize: '11px',
+                padding: '0',
+              }}
+            >
+              ADMIN
+            </Button>
+          </Link>
+
           {!isLogin ? (
             <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" size="small" disableElevation>
+              <Button
+                variant="contained"
+                disableElevation
+                style={{
+                  width: '45px',
+                  height: '35px',
+                  fontSize: '11px',
+                  padding: '0',
+                }}
+              >
                 로그인
-              </Button>
-            </Link>
-          ) : isAdmin ? (
-            <Link to="/admin" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" size="small" disableElevation>
-                관리자
               </Button>
             </Link>
           ) : (
             <Link to="/mypage" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" size="small" disableElevation>
+              <Button
+                variant="contained"
+                disableElevation
+                style={{
+                  width: '45px',
+                  height: '35px',
+                  fontSize: '11px',
+                  padding: '0',
+                }}
+              >
                 내정보
               </Button>
             </Link>
           )}
           {!isLogin ? (
             <Link to="/register" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" size="small" disableElevation>
-                가입
+              <Button
+                variant="contained"
+                disableElevation
+                style={{
+                  width: '45px',
+                  height: '35px',
+                  fontSize: '11px',
+                  padding: '0',
+                }}
+              >
+                회원가입
               </Button>
             </Link>
           ) : (
             <Button
               variant="contained"
-              size="small"
               disableElevation
               onClick={logout}
+              style={{
+                width: '45px',
+                height: '35px',
+                fontSize: '11px',
+                padding: '0',
+              }}
             >
-              나가기
+              로그아웃
             </Button>
           )}
         </div>
