@@ -1,18 +1,17 @@
 // api로 호출 할 데이터
 import axios from "axios";
 
-export async function loginDo(e, p) {
-  const url = "api/users/login.do";
+export async function snsLoginDo(id) {
+  const url = "api/users/snslogin.do";
   try {
     const result = await axios.post(url, {
-      userEmail: e,
-      userPassword: p,
+      userId: id,
     });
     if (result.status === 200) {
-      if (result.data === "") return false;
+      if (result.data === "") return;
       localStorage.setItem("role", result.data);
       localStorage.setItem("login", true);
-      //window.location.href = "map";
+      window.location.href = "map";
       return true;
     } else {
       return false;
