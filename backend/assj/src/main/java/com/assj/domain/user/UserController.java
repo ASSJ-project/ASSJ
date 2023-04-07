@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -107,4 +108,17 @@ public class UserController {
         } else
             return null;
     }
+
+    @PostMapping("/snsregister.do")
+    public Boolean snsRegister(@RequestBody SnsUser user) {
+        try {
+            userService.addSnsUser(user.getUserId());
+            return true;
+        } catch (DataAccessException e) {
+            log.warn(e.toString());
+            return false;
+        }
+
+    }
+
 }
