@@ -7,75 +7,21 @@
 
 .clist-container {
   height: 73vh;
-  margin: 0.5rem;
-  
-  
+  margin: 0.5rem; 
 }
 
-/* .clist-container :hover {
-  transform: translateY(-8px);
-  transition-duration: 0.5s;
-}
-
-.clist {
-  width: 70%;
-  background-color: #eff5ff;
-  border-radius: 10px;
-  margin: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  border: solid 1px #b4c0d3;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-} */
-
-
-
-/* .clist div {
-  
-  pointer-events: none;
-  padding: 0.5em;
-}
-
-.clist-title {
-  margin-bottom: auto;
-}
-
-.clist-closedt {
-  margin-top: 50px;
-}
-
-.clist-title span {
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  margin-top: 5px;
-}
-
-.clist-company strong {
-  font-size: 0.9em;
-  font-family: "Lato";
-  font-style: normal;
-  color: #7C7C7C;
-} */
-
-/* @media (max-width: 1382px) {
-  .main-container {
-      width: 757px;
-  }
-}
-
-@media (max-width: 780px) {
-  .clist {
-  margin-left: 2em;
-  margin-right: 2em;
-  width: 100%;
-  height: auto;
-}
-} */
-
-.card {
+.company-card {
   margin: 1.5em;
-  background-color: bisque;
+}
+
+ .clist-container :hover {
+  transform: scale(1.02);
+  transition: transform 0.1s ease;
+  transition-duration: 0.5s;
+  border: solid 1px #2D4990;
+  cursor: pointer;
+}
+
+.company-card > * {
+  pointer-events: none;
 }
