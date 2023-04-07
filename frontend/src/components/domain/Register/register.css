@@ -1,18 +1,16 @@
-.signup-container {
+.signup-all-container {
   width: 480px;
   min-width: 520px;
   height: 100vh;
   display: flex;
-  flex: none;
   flex-direction: column;
-  justify-items: center;
   margin: auto;
-  text-align: center;
 }
 
-#img_header {
-  margin-top: 1em;
-  margin-bottom: 2em;
+.signup-container {
+  margin-top: 1.8em;
+  margin-bottom: 3em;
+  text-align: center;
 }
 
 .input-container {
@@ -91,7 +89,8 @@
 }
 
 @media (max-width: 780px) {
-  .signup-container {
+  .signup-all-container {
     width: 90%;
+    text-align: center;
   }
 }

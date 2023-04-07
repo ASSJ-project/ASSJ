@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "../components/Structure/Footer/Footer";
 
 function FindPassword() {
   const [key, setKey] = useState("");
@@ -112,7 +113,7 @@ function FindPassword() {
         >
           이전
         </Button>
-        <ImgHeader className="fpwd-title" />
+        <ImgHeader />
       </div>
 
       <div>
@@ -196,7 +197,7 @@ function FindPassword() {
               )}
             </div>
 
-            <div className="fp-inner-container">
+            <div className="fp_btn_margin">
               <Button
                 className="fpwd-nextbtn"
                 variant="contained"
@@ -208,6 +209,7 @@ function FindPassword() {
             </div>
           </div>
         </Paper>
+        <Footer />
       </div>
     </div>
   );

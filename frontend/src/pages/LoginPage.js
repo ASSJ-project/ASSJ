@@ -90,7 +90,7 @@ function LoginPage() {
                 </p>
               </div>
               <div className="login-btn-container">
-                <p className="errorMessage">
+                <p className="errorMessage errorMessage_mg">
                   {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
                 </p>
                 <Button
