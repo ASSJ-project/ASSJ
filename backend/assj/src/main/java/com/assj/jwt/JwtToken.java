@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.assj.redis.RefreshTokenRedisRepository;
+import com.assj.cookie.Cookies;
 import com.assj.redis.RefreshToken;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -112,9 +113,9 @@ public class JwtToken {
    * @param request                     HttpServletRequest
    * @param response                    HttpServletResponse
    * @param refreshTokenRedisRepository 레디스 레파지토리 인스턴스
-   * @return 발급 유무 true or false
+   * @return 새 엑세스 토큰  
    */
-  public static Boolean tokenRefresh(String token, String refresh, String secretKey, String accessExpiredAt,
+  public static String tokenRefresh(String token, String refresh, String secretKey, String accessExpiredAt,
       HttpServletRequest request, HttpServletResponse response,
       RefreshTokenRedisRepository refreshTokenRedisRepository) {
 
@@ -142,19 +143,17 @@ public class JwtToken {
       log.info("토큰재발급 시작");
       String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
           Long.parseLong(accessExpiredAt));// 엑세스 토큰을 재발급
-      Cookie myCookie = new Cookie("access_token", newAccessToken);
-      myCookie.setPath("/");
-      myCookie.setHttpOnly(true);
-      response.addCookie(myCookie);
-      long newRedisId = parseTokenToId(newAccessToken);
+      // 재발급한 토큰을 쿠키에 실어서 보낸다 
+      Cookies.sendCookie(response, true, secretKey, newAccessToken);
+      // 새로운 redis id
+      long newRedisId = parseTokenToId(newAccessToken); 
       System.out.println("추가된 id : " + newRedisId);
       refreshTokenRedisRepository
           .save(new RefreshToken(newRedisId, inRedisUserEmail, userIp, refresh, inRedisUserRole));
-      // refreshTokenRedisRepository.deleteById(redisId); // 검증 필요
       System.out.println("삭제된 id : " + redisId);
       log.info("토큰재발급 완료");
-    } else
-      return false;
-    return true;
+
+      return newAccessToken;
+    }else return "토큰 재발급 실패";
   }
 }

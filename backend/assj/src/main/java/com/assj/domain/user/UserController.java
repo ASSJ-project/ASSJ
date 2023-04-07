@@ -72,7 +72,7 @@ public class UserController {
         }
         return false;
     }
-
+    
     @PostMapping("/emailCheck.do")
     public Boolean emailCheck(@RequestBody User user) {
         try {
@@ -86,7 +86,6 @@ public class UserController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getUser")
     public ResponseEntity<User> getUser(Authentication authentication, HttpServletRequest request) {
-        System.out.println("인증이름 : " + authentication.getName());
         return new ResponseEntity<>(userService.getUser(request).get(0), HttpStatus.OK);
     }
 

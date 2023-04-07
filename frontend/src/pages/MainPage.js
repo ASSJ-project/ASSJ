@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import useFetch from '@/hooks/useFetch';
 // import styled from 'styled-components';
 // import { TailSpin } from 'react-loader-spinner';
@@ -35,6 +36,45 @@
 //   height: 80vh;
 //   width: 90%;
 //   border: 1px solid #b4c0d3;
+=======
+import useFetch from '@/hooks/useFetch';
+import styled from 'styled-components';
+import { TailSpin } from 'react-loader-spinner';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0406';
+import { useSelector } from 'react-redux';
+import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
+import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
+import { useState, useEffect } from 'react';
+import MapToggle from '@/components/domain/Map/ToggleButton';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import Footer from '@/components/Structure/Footer/Footer';
+import Header from '@/components/Structure/Header/Header';
+import Chip from '@mui/material/Chip';
+import DoneIcon from '@mui/icons-material/Done';
+
+const ToggleBoundary = styled.div`
+  display: none;
+  position: fixed;
+  bottom: 15%;
+  left: 45%;
+  z-index: 2;    
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const MapBoundary = styled.div`
+  height: 80vh;
+  width: 90%;
+  border: 1px solid #b4c0d3;
+>>>>>>> upstream/main
   
 //   @media (max-width: 768px) {
 //     width: 100%;

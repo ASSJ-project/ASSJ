@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 // import '@/components/domain/Error/ErrorPage.css';
 // import logo2 from 'assets/images/Error-logo.png';
 // import { Link } from 'react-router-dom';
 // import Header from '@/components/Structure/Header/Header';
 // import Button from '@mui/material/Button';
 // import Footer from '@/components/Structure/Footer/Footer';
+=======
+import '@/components/domain/Error/ErrorPage.css';
+import logo2 from '../assets/images/Error-logo.png';
+import { Link } from 'react-router-dom';
+import Header from '@/components/Structure/Header/Header';
+import Button from '@mui/material/Button';
+import Footer from '@/components/Structure/Footer/Footer';
+>>>>>>> upstream/main
 
 // const ErrorPage = () => {
 //   return (

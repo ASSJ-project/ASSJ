@@ -3,6 +3,7 @@ package com.assj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.assj.jwt.JwtFilter;
 
 @Configuration
+@EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
   @Autowired
@@ -26,17 +28,15 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-    http.httpBasic().disable().csrf().disable().cors();
-    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    http.authorizeRequests()
-        .antMatchers("/apis/user/getUser", "/apis/user/all").authenticated()
-        .antMatchers("/apis/compamy/**").permitAll()
-        .antMatchers("/apis/user/login.do", "/apis/user/register.do", "/apis/user/emailCheck.do",
-            "apis/user/passwordChange.do")
-        .permitAll();
-    http.addFilterBefore(jwtFilter,
-        UsernamePasswordAuthenticationFilter.class);
-
-    return http.build();
+    return http.httpBasic().disable()
+        .csrf().disable()
+        .cors()
+        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and().authorizeRequests()
+        .antMatchers("/apis/**").permitAll()
+        .and()
+        .addFilterBefore(jwtFilter,
+            UsernamePasswordAuthenticationFilter.class)
+        .build();
   }
 }

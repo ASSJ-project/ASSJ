@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.assj.cookie.Cookies;
 import com.assj.redis.RefreshTokenRedisRepository;
 import com.assj.utils.Constants;
 import com.auth0.jwt.exceptions.TokenExpiredException;
@@ -41,65 +42,44 @@ public class JwtFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request,
       HttpServletResponse response, FilterChain filterChain)
       throws IOException, ServletException {
+      String[] tokens = null;
+      
+      try{
+        // 쿠키에서 토큰을 가져옴 
+        tokens = Cookies.fromToken(request);
+      }catch(NullPointerException e){
+        // 토큰이 없는 상태에서 로그인 시도 안하고 다른 페이지로 갔을때의 처리 
+        return;
+      }
+      
+      if(Cookies.tokenIsEmpty(tokens)){
+        // 다시 doFilter 를 해줘야 컨트롤러로 넘어감 
+        filterChain.doFilter(request, response);
+        return;
+      } 
 
-    String token = "";
-    String refresh = "";
-    // 쿠키 비어있음
-    if (request.getCookies() == null) {
-      log.info("쿠키없음");
-      filterChain.doFilter(request, response);
-      return;
-    }
-    // 쿠키가 있지만 토큰이 없음
-    for (Cookie cookie : request.getCookies()) {
-      String cookieName = cookie.getName();
-      if (cookieName.equals("access_token")) {
-        token = cookie.getValue();
-        if (cookie.getValue().length() <= 0) {
-          filterChain.doFilter(request, response);
-          return;
-        } else
-          continue;
+      try {
+        JwtToken.isExpired(tokens[0], secretKey);
+      } catch (TokenExpiredException e) {
+        log.error("토큰이 만료되었습니다");
+        JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey, accessExpiredAt, request, response,
+            refreshTokenRedisRepository);
+        filterChain.doFilter(request, response);
+        return;
       }
 
-      if (cookieName.equals("refresh_token")) {
-        refresh = cookie.getValue();
-        if (cookie.getValue().length() <= 0) {
-          filterChain.doFilter(request, response);
-          return;
-        } else
-          continue;
-      }
-    }
-
-    // 위에서 토큰을 넣었는데 비어있다면
-    if (token.length() <= 0) {
-      filterChain.doFilter(request, response);
-      return;
-    }
-
-    // 토큰 만료 여부 확인
-    try {
-      JwtToken.isExpired(token, secretKey);
-    } catch (TokenExpiredException e) {
-      log.error("토큰이 만료되었습니다");
-      JwtToken.tokenRefresh(token, refresh, secretKey, accessExpiredAt, request, response,
-          refreshTokenRedisRepository);
-      return;
-    }
-
-    String userEmail = JwtToken.getUserEmail(token, secretKey);
+    String userEmail = JwtToken.getUserEmail(tokens[0], secretKey);
 
     // // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
-    String role = JwtToken.getUserRole(token, secretKey).replaceAll("\\\"", "");
+    String role = JwtToken.getUserRole(tokens[0], secretKey).replaceAll("\\\"", "");
 
     // 권한 부여
-    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userEmail, null,
+    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(null, null,
         List.of(new SimpleGrantedAuthority(role)));
 
     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-    System.out.println(authenticationToken.getAuthorities());
+    log.info(authenticationToken.getAuthorities().toString());
     filterChain.doFilter(request, response);
   }
 }

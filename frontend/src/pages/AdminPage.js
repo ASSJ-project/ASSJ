@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 // import "../components/domain/Admin/Admin.css";
 // import React from "react";
 // import InfoTable from "../components/domain/Admin/InfoTable";
 // import Header from "./Header";
+=======
+import "../components/domain/Admin/Admin.css";
+import React from "react";
+import InfoTable from "../components/domain/Admin/InfoTable";
+import Header from "../components/Structure/Header/Header";
+>>>>>>> upstream/main
 
 // function Admin() {
 //   return (
