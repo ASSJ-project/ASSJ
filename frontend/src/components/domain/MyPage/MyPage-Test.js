@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import '../MyPage/MyPage-Test.css';
-
+//
 //나의 정보를 눌렀을 때 나오는 페이지입니다.
 const MyPageTest = (data) => {
   const [isSocial, setIsSocial] = useState(''); // 소셜인지 확인하기 위함
