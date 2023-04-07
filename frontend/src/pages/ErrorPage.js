@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Structure/Header/Header";
 import Button from "@mui/material/Button";
 import Footer from "@/components/Structure/Footer/Footer";
+import { useState, useEffect } from "react";
 
 const ErrorPage = () => {
+  const [error, setError] = useState("");
+  useEffect(() => {
+    setError(sessionStorage.getItem("error_message"));
+  }, [error]);
   return (
     <>
       <Header />
@@ -14,14 +19,7 @@ const ErrorPage = () => {
           <img src={logo2} alt="Error-logo2" className="Error-logo2" />
         </div>
         <div className="Error-text">
-          <h2>PAGE NOT FOUND</h2>
-          <h3>
-            We looked everywhere for this page.
-            <br />
-            Are you sure the website URL is correct?
-            <br />
-            Get in touch with the site owner.
-          </h3>
+          <h3>{error}</h3>
         </div>
 
         <Link to="/" style={{ textDecoration: "None" }}>
