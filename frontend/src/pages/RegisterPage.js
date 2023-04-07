@@ -9,6 +9,7 @@ import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "../components/Structure/Footer/Footer";
 
 function Register() {
   const [name, setName] = useState(""); // 이름
@@ -130,143 +131,153 @@ function Register() {
   };
 
   return (
-    <div className="signup-container">
-      <ImgHeader className="logo-img" />
-      <Paper className="fpwd-container container_border" elevation={8}>
-        <div className="signuptext">회원가입</div>
-        <div className="input-container">
-          <TextField
-            className="total_input"
-            type="text"
-            label="이름"
-            onChange={(e) => setState(e, setName, nameRegex, setNameVisable)}
-            autoComplete="off"
-            autoFocus
-          />
-          {!nameVisable && name.length > 0
-            ? error("이름 형식을 확인해주세요")
-            : error()}
-        </div>
-
-        <div className="input-container">
-          <div className="email-input">
+    <div className="signup-all-container">
+      <div className="signup-container">
+        <ImgHeader />
+      </div>
+      <div className="signup-paper-container">
+        <Paper className="fpwd-container container_border" elevation={8}>
+          <div className="signuptext">회원가입</div>
+          <div className="input-container">
             <TextField
               className="total_input"
-              label="이메일"
-              type="email"
-              size="large"
+              type="text"
+              label="이름"
+              onChange={(e) => setState(e, setName, nameRegex, setNameVisable)}
+              autoComplete="off"
+              autoFocus
+            />
+            {!nameVisable && name.length > 0
+              ? error("이름 형식을 확인해주세요")
+              : error()}
+          </div>
+
+          <div className="input-container">
+            <div className="email-input">
+              <TextField
+                className="total_input"
+                label="이메일"
+                type="email"
+                size="large"
+                onChange={(e) =>
+                  setState(e, setEmail, emailRegex, setEmailVisable)
+                }
+              />
+              <Button
+                id="btn-set"
+                variant="contained"
+                onClick={() => {
+                  checked ? sendEmail() : mailCheck();
+                }}
+                style={{ background: sendBtn(checked) }}
+                className="btn-send-email"
+              >
+                {email.length > 0
+                  ? checked
+                    ? "전송"
+                    : "중복확인"
+                  : "중복확인"}
+              </Button>
+            </div>
+            {email.length > 0 && !emailVisable
+              ? error("이메일 형식을 확인해주세요")
+              : error("")}
+            {email.length > 0
+              ? emailIndDB
+                ? error("이미 존재하는 이메일 입니다")
+                : error("")
+              : error("")}
+            <div className="email-check-button">
+              {emailSend && (
+                <>
+                  <TextField
+                    id="email-check-number-input"
+                    type="numric"
+                    placeholder="인증 번호 입력"
+                    size="small"
+                    variant="standard"
+                    disabled={emailChecked}
+                    onChange={(e) => setState(e, setEmailInput, /^$/, (f) => f)}
+                  />
+                  <Button
+                    variant="contained"
+                    className="email-number-button"
+                    onClick={emailSubmit}
+                  >
+                    확인
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+          <div className="input-container">
+            <div className="addressSearch">
+              <TextField
+                className="total_input"
+                id="address"
+                placeholder="주소검색 버튼을 눌러주세요"
+                disabled
+              />
+              <Button
+                id="btn-set"
+                className="addressButton"
+                variant="contained"
+                onClick={() => postalSeach(setAddress)}
+              >
+                주소검색
+              </Button>
+            </div>
+          </div>
+          <div className="input-container" id="password">
+            <TextField
+              className="total_input"
+              label="비밀번호"
+              type="password"
               onChange={(e) =>
-                setState(e, setEmail, emailRegex, setEmailVisable)
+                setState(e, setPassword, passwordRegex, setPasswordVisable)
               }
             />
-            <Button
-              id="btn-set"
-              variant="contained"
-              onClick={() => {
-                checked ? sendEmail() : mailCheck();
-              }}
-              style={{ background: sendBtn(checked) }}
-              className="btn-send-email"
-            >
-              {email.length > 0 ? (checked ? "전송" : "중복확인") : "중복확인"}
-            </Button>
+            {!passwordVisable && password.length > 0
+              ? error("비밀번호 형식은 8자 이상 영문 숫자 특수문자 조합입니다")
+              : error()}
           </div>
-          {email.length > 0 && !emailVisable
-            ? error("이메일 형식을 확인해주세요")
-            : error("")}
-          {email.length > 0
-            ? emailIndDB
-              ? error("이미 존재하는 이메일 입니다")
-              : error("")
-            : error("")}
-          <div className="email-check-button">
-            {emailSend && (
-              <>
-                <TextField
-                  id="email-check-number-input"
-                  type="numric"
-                  placeholder="인증 번호 입력"
-                  size="small"
-                  variant="standard"
-                  disabled={emailChecked}
-                  onChange={(e) => setState(e, setEmailInput, /^$/, (f) => f)}
-                />
-                <Button
-                  variant="contained"
-                  className="email-number-button"
-                  onClick={emailSubmit}
-                >
-                  확인
-                </Button>
-              </>
-            )}
-          </div>
-        </div>
-        <div className="input-container">
-          <div className="addressSearch">
+
+          <div className="input-container">
             <TextField
               className="total_input"
-              id="address"
-              placeholder="주소검색 버튼을 눌러주세요"
-              disabled
+              label="비밀번호 확인"
+              type="password"
+              onChange={(e) => setState(e, setcheckPassword)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  enterClick();
+                }
+              }}
             />
+            {password !== checkPassword && checkPassword.length > 0
+              ? error("비밀번호가 일치하지 않습니다")
+              : error()}
+          </div>
+          <div className="signUp">
+            {registerSuccess === false
+              ? error("입력 항목의 빈칸을 확인해주세요")
+              : error()}
             <Button
-              id="btn-set"
-              className="addressButton"
+              className="Signup-btn"
               variant="contained"
-              onClick={() => postalSeach(setAddress)}
+              endIcon={<SendIcon />}
+              disabled={!emailChecked}
+              onClick={() => {
+                enterClick();
+              }}
             >
-              주소검색
+              회원가입
             </Button>
           </div>
-        </div>
-        <div className="input-container" id="password">
-          <TextField
-            className="total_input"
-            label="비밀번호"
-            type="password"
-            onChange={(e) =>
-              setState(e, setPassword, passwordRegex, setPasswordVisable)
-            }
-          />
-          {!passwordVisable && password.length > 0
-            ? error("비밀번호 형식은 8자 이상 영문 숫자 특수문자 조합입니다")
-            : error()}
-        </div>
+        </Paper>
 
-        <div className="input-container">
-          <TextField
-            className="total_input"
-            label="비밀번호 확인"
-            type="password"
-            onChange={(e) => setState(e, setcheckPassword)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                enterClick();
-              }
-            }}
-          />
-          {password !== checkPassword && checkPassword.length > 0
-            ? error("비밀번호가 일치하지 않습니다")
-            : error()}
-        </div>
-        <div className="signUp">
-          {registerSuccess === false
-            ? error("입력 항목의 빈칸을 확인해주세요")
-            : error()}
-          <Button
-            className="Signup-btn"
-            variant="contained"
-            endIcon={<SendIcon />}
-            disabled={!emailChecked}
-            onClick={() => {
-              enterClick();
-            }}
-          >
-            회원가입
-          </Button>
-        </div>
-      </Paper>
+        <Footer />
+      </div>
     </div>
   );
 }

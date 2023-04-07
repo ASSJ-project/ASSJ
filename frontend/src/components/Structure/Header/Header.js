@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import logo from 'assets/images/logo_only_word.svg';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import logo from "assets/images/logo_only_word.svg";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const HeadContainer = styled.div`
   margin: 0;
   padding: 0;
-  font-family: Georgia, '맑은 고딕', serif;
+  font-family: Georgia, "맑은 고딕", serif;
 `;
 
 const Head = styled.div`
@@ -82,14 +82,14 @@ const Head = styled.div`
   `;
 
 function Header() {
-  const [isLogin, SetIsLogin] = useState('');
-  const [isAdmin, SetIsAdmin] = useState('');
+  const [isLogin, SetIsLogin] = useState("");
+  const [isAdmin, SetIsAdmin] = useState("");
 
   useEffect(() => {
-    let login = localStorage.getItem('login');
-    let role = localStorage.getItem('role');
-    if (login == 'true') {
-      if (role == 'ROLE_ADMIN') {
+    let login = localStorage.getItem("login");
+    let role = localStorage.getItem("role");
+    if (login == "true") {
+      if (role == "ROLE_ADMIN") {
         SetIsAdmin(true);
       } else {
         SetIsAdmin(false);
@@ -102,8 +102,8 @@ function Header() {
 
   function logout() {
     localStorage.clear();
-    alert('로그아웃되었습니다.');
-    window.location.href = 'login';
+    alert("로그아웃되었습니다.");
+    window.location.href = "login";
   }
 
   return (
@@ -111,7 +111,7 @@ function Header() {
       <Head>
         {/* 알쓸신잡 로고 */}
         <div className="header-logo">
-          <Link to="/map" style={{ textDecoration: 'none' }}>
+          <Link to="/map" style={{ textDecoration: "none" }}>
             <img src={logo} alt="logo" />
           </Link>
         </div>
@@ -121,17 +121,17 @@ function Header() {
           <Link
             to="/admin"
             style={
-              isAdmin ? { textDecoration: 'none' } : { visibility: 'hidden' }
+              isAdmin ? { textDecoration: "none" } : { visibility: "hidden" }
             }
           >
             <Button
               variant="contained"
               disableElevation
               style={{
-                width: '45px',
-                height: '35px',
-                fontSize: '11px',
-                padding: '0',
+                width: "45px",
+                height: "35px",
+                fontSize: "11px",
+                padding: "0",
               }}
             >
               ADMIN
@@ -139,30 +139,30 @@ function Header() {
           </Link>
 
           {!isLogin ? (
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 disableElevation
                 style={{
-                  width: '45px',
-                  height: '35px',
-                  fontSize: '11px',
-                  padding: '0',
+                  width: "45px",
+                  height: "35px",
+                  fontSize: "11px",
+                  padding: "0",
                 }}
               >
                 로그인
               </Button>
             </Link>
           ) : (
-            <Link to="/mypage" style={{ textDecoration: 'none' }}>
+            <Link to="/mypage" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 disableElevation
                 style={{
-                  width: '45px',
-                  height: '35px',
-                  fontSize: '11px',
-                  padding: '0',
+                  width: "45px",
+                  height: "35px",
+                  fontSize: "11px",
+                  padding: "0",
                 }}
               >
                 내정보
@@ -170,15 +170,15 @@ function Header() {
             </Link>
           )}
           {!isLogin ? (
-            <Link to="/register" style={{ textDecoration: 'none' }}>
+            <Link to="/register" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 disableElevation
                 style={{
-                  width: '45px',
-                  height: '35px',
-                  fontSize: '11px',
-                  padding: '0',
+                  width: "45px",
+                  height: "35px",
+                  fontSize: "11px",
+                  padding: "0",
                 }}
               >
                 회원가입
@@ -190,10 +190,10 @@ function Header() {
               disableElevation
               onClick={logout}
               style={{
-                width: '45px',
-                height: '35px',
-                fontSize: '11px',
-                padding: '0',
+                width: "45px",
+                height: "35px",
+                fontSize: "11px",
+                padding: "0",
               }}
             >
               로그아웃
