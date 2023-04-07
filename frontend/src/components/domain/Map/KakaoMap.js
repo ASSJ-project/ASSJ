@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { userBasedtransCoordCB } from '@/libs/utils/mapUtils';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './style_addMouseOver.css';
+import '@/components/domain/Map/css/style_addMouseOver.css';
 
 export default function KakaoMap(props) {
   const { data, location } = props;
@@ -71,24 +71,41 @@ export default function KakaoMap(props) {
       overlayContent.innerHTML = content;
       overlayContent.classList.add('overlay_content'); // 클래스 추가
 
-      // overlayContent에 이벤트 추가
-      if (!isMobileResolution()) {
-        overlayContent.onmouseover = () => {
-          showMoreInfo(overlayContent, item);
-          setCoverdOverlayZIndex(overlay);
-        };
-        overlayContent.onmouseout = () => {
-          hideMoreInfo(overlayContent);
-          setHideOverlayZIndex(overlay);
-        };
-      } else {
-        overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
-        overlayContent.ontouchend = () => {
-          showMoreInfo(overlayContent, item);
-          setHideOverlayZIndex(overlay);
-        };
-        // overlayContent
-      }
+      // // overlayContent에 이벤트 추가
+      // if (!isMobileResolution()) {
+      //   overlayContent.onmouseover = () => {
+      //     showMoreInfo(overlayContent, item);
+      //     setCoverdOverlayZIndex(overlay);
+      //   };
+      //   overlayContent.onmouseout = () => {
+      //     hideMoreInfo(overlayContent);
+      //     setHideOverlayZIndex(overlay);
+      //   };
+      // } else {
+      //   overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
+      //   overlayContent.ontouchend = () => {
+      //     showMoreInfo(overlayContent, item);
+      //     setHideOverlayZIndex(overlay);
+      //   };
+      //   overlayContent.onmouseover = () => {
+      //     showMoreInfo(overlayContent, item);
+      //     setCoverdOverlayZIndex(overlay);
+      //   };
+      //   overlayContent.onmouseout = () => {
+      //     hideMoreInfo(overlayContent);
+      //     setHideOverlayZIndex(overlay);
+      //   };
+      //   // overlayContent
+      // }
+
+      overlayContent.onmouseover = () => {
+        showMoreInfo(overlayContent, item);
+        setCoverdOverlayZIndex(overlay);
+      };
+      overlayContent.onmouseout = () => {
+        hideMoreInfo(overlayContent);
+        setHideOverlayZIndex(overlay);
+      };
 
       const overlay = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
