@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "normalize.css"; // import normalize.css
-import MapPage from "@/pages/MainPage_0404";
+import MapPage from "@/pages/MainPage";
 import LoginPage from "@/pages/LoginPage";
 import StartPage from "@/pages/StartPage";
 import RegisterPage from "@/pages/RegisterPage";
@@ -15,40 +15,40 @@ import store from "@/store/store";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <StartPage />,
   },
   {
-    path: "/admin",
+    path: '/admin',
     element: <AdminPage />,
   },
   {
-    path: "/map",
+    path: '/map',
     element: <MapPage />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <LoginPage />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <RegisterPage />,
   },
   {
-    path: "/mypage",
+    path: '/mypage',
     element: <MyPage />,
   },
   {
-    path: "/findpassword",
+    path: '/findpassword',
     element: <FindPassword />,
   },
   {
-    path: "/*",
+    path: '/*',
     element: <ErrorPage />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />

@@ -121,6 +121,7 @@ function LayoutPage() {
     <>
       <Header />
 
+      <div style={{fontFamily: "Lato"}}>안녕하세요</div>
       <Main>
         <SearchBox>
           <SearchInput

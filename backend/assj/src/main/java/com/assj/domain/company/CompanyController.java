@@ -19,6 +19,7 @@ public class CompanyController {
     private CompanyService companyService;
 
     // 삭제 예정
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/get")
     public List<Company> getAllCompanies() {
         return companyService.getAllCompanies();

@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0403';
+import KakaoMap from '@/components/domain/Map/KakaoMap_0406';
 import { useSelector } from 'react-redux';
 import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
 import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
@@ -13,63 +13,68 @@ import Header from '@/components/Structure/Header/Header';
 import Chip from '@mui/material/Chip';
 import DoneIcon from '@mui/icons-material/Done';
 
+const ToggleBoundary = styled.div`
+  display: none;
+  position: fixed;
+  bottom: 15%;
+  left: 45%;
+  z-index: 2;    
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
 const LoadingContainer = styled.div`
   display: flex;
-
   justify-content: center;
   align-items: center;
   height: 100vh;
 `;
 
 const MapBoundary = styled.div`
-  margin: 20px;
   height: 80vh;
-  width: 75%;
-  border: 1px solid black;
+  width: 90%;
+  border: 1px solid #b4c0d3;
   
+  @media (max-width: 768px) {
+    width: 100%;
+   }
+
 `;
 
-// const ToggleBoundary = styled.div`
-//   position: absolute;
-//   bottom: 5%;
-//   z-index: 2;
-// `;
-
-const Filter = styled.div`
-  width: 90%;
+const List = styled.div`
+  width: 40%;
+  height: 80vh;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
   border: 1px solid #b4c0d3;
-  @media (max-width: 1110px) {
-    width: 90%;
+
+  @media (max-width: 768px) {
+    display: none;    
   }
+
 `;
 
 const Content = styled.div`
   display: flex;
   width: 90%;
-  height 100vh;
+  height auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
+  border: 1px solid #b4c0d3;
+
   
 `
 
 function MainContainer() {
   const [selected, setSelected] = useState('map');
-
+  
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
   const [region, setRegion] = useState('서울 금천구');
   const [jobsCd, setJobsCd] = useState(133300);
-
-  const filterRegionlist = setFilterRegion.split(",");
-  const filterJoblist = setFilterJob.split(",");
-
-  const handleClick = () => {};
-  const handleDelete = () => {};
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -104,53 +109,26 @@ function MainContainer() {
   }
 
   return (
-    <>
-      <Header />
-      <Filter>
-        <RegionFilter />
-        <JobFilter />
-        {filterRegionlist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })} 
+  <>
+    <Header />
+    <Content className="Content">
+        <ToggleBoundary className="App">
+          <MapToggle setSelected={setSelected} />
+        </ToggleBoundary>
+        {selected === 'map' ? (
+          <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
+        ) : (
+          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+        )}
 
-        {filterJoblist.map((item) => {
-          return (
-            <>
-            {item.length > 0 && 
-              <Chip
-              label={item}
-              onClick={handleClick}
-              onDelete={handleDelete}
-              deleteIcon={<DoneIcon />}
-              style={{margin: '5px'}}
-            />}
-            </>
-          )
-        })}
-      </Filter>
-      {/* <ToggleBoundary className="App">
-        <MapToggle setSelected={setSelected} />
-      </ToggleBoundary> */}
-      <Content>
-        
-        <MapBoundary>{data && <KakaoMap data={data} />}</MapBoundary>     
-        <CompanyList region={region} jobsCd={jobsCd} />
-      </Content>
-      
-      
-      <Footer />
-    </>
+        <List className="List">
+          <RegionFilter />
+          <JobFilter />
+          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+        </List>
+    </Content>
+    <Footer />
+  </>
   );
 }
 

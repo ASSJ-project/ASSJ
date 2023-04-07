@@ -1,6 +1,6 @@
 //여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
 import { useEffect, useState } from 'react';
-import '@/components/domain/MyPage/MyPage.css';
+import '@/components/domain/MyPage/MyPage-Check.css';
 import Button from '@mui/material/Button';
 
 const MyPageCheck = () => {
@@ -32,8 +32,8 @@ const MyPageCheck = () => {
     let arr = [];
     for (let i = 0; i < company.length; i++) {
       arr.unshift(
-        <div key={i} className="mypage-checkeditems">
-          <div className="mypage-checked-text">
+        <div key={i} className="MyPage-CheckedItems">
+          <div className="MyPage-Checked-Text">
             No {company.length - [i]}. &nbsp; {company[i]}
           </div>
           <Button onClick={() => lol(i)} variant="contained" size="small">
@@ -44,7 +44,7 @@ const MyPageCheck = () => {
     }
     //만약 arr이 삭제하거나 전체삭제하거나 원래 빈배열이라면 최근조회한 기록이 없는걸 나오게하고 내역이있다면 내용이나오게
     if (arr.length < 1) {
-      return <div className="Nothing">최근 조회한 기록이 없어요</div>;
+      return <div>최근 조회한 기록이 없어요</div>;
     } else {
       return arr;
     }
@@ -58,8 +58,8 @@ const MyPageCheck = () => {
 
   return (
     <>
-      <div className="mypage-searchmenu">
-        <div className="mypage-recently">최근조회내역</div>
+      <div className="MyPage-SearchMenu">
+        <div className="MyPage-Recently">최근조회내역</div>
         <Button variant="contained" size="small" onClick={handleClearKeywords}>
           전체삭제
         </Button>
