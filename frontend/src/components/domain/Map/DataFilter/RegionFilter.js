@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
-import { setFilterRegion } from '@/actions/actions';
+import { setFilterRegion } from '@/actions/dataFilterActions';
 import data from '@/libs/json/region_code.json';
 import styled from 'styled-components';
 
@@ -178,7 +178,7 @@ export default function ModalWithCategories() {
   };
 
   return (
-    <div style={{display: 'inline'}}>
+    <div style={{ display: 'inline' }}>
       <FilterButton
         onClick={handleClickOpen}
         selected={selectedSubcategories.length > 0}

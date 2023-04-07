@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "normalize.css"; // import normalize.css
-import MapPage from "@/pages/MainPage";
-import LoginPage from "@/pages/LoginPage";
-import StartPage from "@/pages/StartPage";
-import RegisterPage from "@/pages/RegisterPage";
-import MyPage from "@/pages/MyPage";
-import ErrorPage from "@/pages/ErrorPage";
-import AdminPage from "@/pages/AdminPage";
-import FindPassword from "@/pages/FindPassword";
-import { useSelector, Provider } from "react-redux";
-import store from "@/store/store";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import 'normalize.css'; // import normalize.css
+import MainPage from '@/pages/MainPage';
+import LoginPage from '@/pages/LoginPage';
+import StartPage from '@/pages/StartPage';
+import RegisterPage from '@/pages/RegisterPage';
+import MyPage from '@/pages/MyPage';
+import ErrorPage from '@/pages/ErrorPage';
+import AdminPage from '@/pages/AdminPage';
+import FindPassword from '@/pages/FindPassword';
+import { useSelector, Provider } from 'react-redux';
+import store from '@/store/store';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/map',
-    element: <MapPage />,
+    element: <MainPage />,
   },
   {
     path: '/login',
@@ -49,11 +49,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
 );
 
 export default router;

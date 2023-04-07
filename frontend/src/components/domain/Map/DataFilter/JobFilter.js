@@ -15,7 +15,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setFilterJob } from '@/actions/actions';
+import { setFilterJob } from '@/actions/dataFilterActions';
 import data from '@/libs/json/job_code.json';
 import styled from 'styled-components';
 

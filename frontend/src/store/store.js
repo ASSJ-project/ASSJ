@@ -1,10 +1,14 @@
-// 스토어에 리듀서 추가
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from '@/reducers/reducer';
+import dataFilterReducer from '@/reducers/dataFilterReducer';
+import dataInfoReducer from '@/reducers/dataInfoReducer';
+import mapReducer from '@/reducers/mapReducer';
 
 const store = configureStore({
-  reducer: reducer,
-  devTools: true,
+  reducer: {
+    dataFilter: dataFilterReducer,
+    dataInfo: dataInfoReducer,
+    map: mapReducer,
+  },
 });
 
 export default store;
