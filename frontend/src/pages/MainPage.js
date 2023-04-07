@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0406';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
 import { useSelector } from 'react-redux';
 import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
 import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
@@ -22,12 +22,11 @@ const MapBoundary = styled.div`
   height: 80vh;
   width: 90%;
   border: 1px solid #b4c0d3;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: 70vh;
-   }
-
+  }
 `;
 
 const List = styled.div`
@@ -40,7 +39,6 @@ const List = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-
 `;
 
 const Content = styled.div`
@@ -61,7 +59,7 @@ const ToolBar = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const ToolBox = styled.div`
   display: none;
@@ -89,9 +87,8 @@ const SearchContainer = styled.div`
   @media (max-width: 768px) {
     display: inline;
     width: auto;
-   
   }
-`;  
+`;
 
 const SearchInput = styled.input`
   font-size: 16px;
@@ -111,11 +108,10 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-
 function MainContainer() {
   const [filteredData, setFilteredData] = useState('');
   const [selected, setSelected] = useState('map');
-  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);  
+  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
   const [searchText, setSearchText] = useState('');
 
   const setFilterRegion = useSelector((state) => state.setFilterRegion);
@@ -173,43 +169,52 @@ function MainContainer() {
   }
 
   return (
-  <>
-    <Header />
-    <ToolBar>
-    <ToolBox>
-      <RegionFilter />
-      <JobFilter />
-    </ToolBox>
-    <SearchContainer>
-      <SearchInput
+    <>
+      <Header />
+      <ToolBar>
+        <ToolBox>
+          <RegionFilter />
+          <JobFilter />
+        </ToolBox>
+        <SearchContainer>
+          <SearchInput
             type="text"
             placeholder="검색어를 입력하세요"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-      />
-      <SearchButton onClick={handleSearch}>검색</SearchButton>
-    </SearchContainer>
-    </ToolBar>
-    <Content className="Content">
+          />
+          <SearchButton onClick={handleSearch}>검색</SearchButton>
+        </SearchContainer>
+      </ToolBar>
+      <Content className="Content">
+        <ToggleBoundary className="App">
+          <MapToggle setSelected={setSelected} />
+        </ToggleBoundary>
 
-    <ToggleBoundary className="App">
-      <MapToggle setSelected={setSelected} />
-    </ToggleBoundary>
-        
         {selected === 'map' ? (
-          <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
+          <MapBoundary className="MapBoundary">
+            {data && <KakaoMap data={data} />}
+          </MapBoundary>
         ) : (
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         )}
 
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         </List>
-    </Content>
-    <Footer />
-  </>
+      </Content>
+      <Footer />
+    </>
   );
 }
 
