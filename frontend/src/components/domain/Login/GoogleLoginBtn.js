@@ -18,8 +18,9 @@ export default function GoogleLoginBtn() {
 
   const responseGoogle = (response) => {
     if (response) {
+      console.log(response);
       snsLoginDo(response.googleId).then((result) => {
-        if (!result) sessionStorage.setItem("sns_inDB", result);
+        if (result) window.location.href = "map";
       });
     }
   };

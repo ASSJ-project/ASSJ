@@ -5,7 +5,6 @@ import ImgHeader from "../components/Structure/Header/ImgHeader";
 import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
-
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
@@ -17,7 +16,6 @@ function LoginPage() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    //sessionStorage.clear();
     setIsLogin(localStorage.getItem("login"));
   }, []);
 
@@ -32,7 +30,6 @@ function LoginPage() {
   const login = () => {
     loginDo(email, password).then((result) => {
       setLoginError(result);
-      //
     });
   };
 
@@ -98,7 +95,7 @@ function LoginPage() {
                   variant="contained"
                   onClick={login}
                 >
-                  Login
+                  로그인
                 </Button>
               </div>
               <div className="api-btn">
