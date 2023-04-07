@@ -60,7 +60,12 @@ const MyPageCheck = () => {
     <>
       <div className="MyPage-SearchMenu">
         <div className="MyPage-Recently">최근조회내역</div>
-        <Button variant="contained" size="small" onClick={handleClearKeywords}>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={handleClearKeywords}
+          style={{ marginTop: '5px' }}
+        >
           전체삭제
         </Button>
       </div>
