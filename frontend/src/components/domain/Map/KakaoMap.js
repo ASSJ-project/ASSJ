@@ -71,32 +71,23 @@ export default function KakaoMap(props) {
       overlayContent.innerHTML = content;
       overlayContent.classList.add('overlay_content'); // 클래스 추가
 
-      // // overlayContent에 이벤트 추가
-      // if (!isMobileResolution()) {
-      //   overlayContent.onmouseover = () => {
-      //     showMoreInfo(overlayContent, item);
-      //     setCoverdOverlayZIndex(overlay);
-      //   };
-      //   overlayContent.onmouseout = () => {
-      //     hideMoreInfo(overlayContent);
-      //     setHideOverlayZIndex(overlay);
-      //   };
-      // } else {
-      //   overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
-      //   overlayContent.ontouchend = () => {
-      //     showMoreInfo(overlayContent, item);
-      //     setHideOverlayZIndex(overlay);
-      //   };
-      //   overlayContent.onmouseover = () => {
-      //     showMoreInfo(overlayContent, item);
-      //     setCoverdOverlayZIndex(overlay);
-      //   };
-      //   overlayContent.onmouseout = () => {
-      //     hideMoreInfo(overlayContent);
-      //     setHideOverlayZIndex(overlay);
-      //   };
-      //   // overlayContent
-      // }
+      // overlayContent에 이벤트 추가
+      if (!isMobileResolution()) {
+        overlayContent.onmouseover = () => {
+          showMoreInfo(overlayContent, item);
+          setCoverdOverlayZIndex(overlay);
+        };
+        overlayContent.onmouseout = () => {
+          hideMoreInfo(overlayContent);
+          setHideOverlayZIndex(overlay);
+        };
+      } else {
+        overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
+        overlayContent.ontouchend = () => {
+          showMoreInfo(overlayContent, item);
+          setHideOverlayZIndex(overlay);
+        };
+      }
 
       overlayContent.onmouseover = () => {
         showMoreInfo(overlayContent, item);
