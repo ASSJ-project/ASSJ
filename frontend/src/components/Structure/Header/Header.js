@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import logo from 'assets/images/logo_only_word.svg';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import logo from "assets/images/logo_only_word.svg";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const HeadContainer = styled.div`
   margin: 0;
   padding: 0;
-  font-family: Georgia, '맑은 고딕', serif;
+  font-family: Georgia, "맑은 고딕", serif;
 `;
 
 const Head = styled.div`
@@ -84,15 +84,15 @@ const Head = styled.div`
   `;
 
 function Header() {
-  const [isLogin, SetIsLogin] = useState('');
-  const [isAdmin, SetIsAdmin] = useState('');
+  const [isLogin, SetIsLogin] = useState("");
+  const [isAdmin, SetIsAdmin] = useState("");
 
   useEffect(() => {
-    let login = localStorage.getItem('login');
-    let role = localStorage.getItem('role');
-    if (login == 'true') {
+    let login = localStorage.getItem("login");
+    let role = localStorage.getItem("role");
+    if (login == "true") {
       SetIsLogin(true);
-      if (role == 'ADMIN') {
+      if (role == "ADMIN") {
         SetIsAdmin(true);
       } else {
         SetIsAdmin(false);
@@ -104,8 +104,8 @@ function Header() {
 
   function logout() {
     localStorage.clear();
-    alert('로그아웃되었습니다.');
-    window.location.href = 'login';
+    alert("로그아웃되었습니다.");
+    window.location.href = "login";
   }
 
   return (
@@ -113,7 +113,7 @@ function Header() {
       <Head>
         {/* 알쓸신잡 로고 */}
         <div className="header-logo">
-          <Link to="/map" style={{ textDecoration: 'none' }}>
+          <Link to="/map" style={{ textDecoration: "none" }}>
             <img src={logo} alt="logo" />
           </Link>
         </div>
@@ -121,26 +121,26 @@ function Header() {
         {/* User 메뉴 리스트 */}
         <div className="header-right">
           {!isLogin ? (
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <Button variant="contained" size="small" disableElevation>
                 로그인
               </Button>
             </Link>
           ) : isAdmin ? (
-            <Link to="/admin" style={{ textDecoration: 'none' }}>
+            <Link to="/admin" style={{ textDecoration: "none" }}>
               <Button variant="contained" size="small" disableElevation>
                 관리자
               </Button>
             </Link>
           ) : (
-            <Link to="/mypage" style={{ textDecoration: 'none' }}>
+            <Link to="/mypage" style={{ textDecoration: "none" }}>
               <Button variant="contained" size="small" disableElevation>
                 내정보
               </Button>
             </Link>
           )}
           {!isLogin ? (
-            <Link to="/register" style={{ textDecoration: 'none' }}>
+            <Link to="/register" style={{ textDecoration: "none" }}>
               <Button variant="contained" size="small" disableElevation>
                 가입
               </Button>
