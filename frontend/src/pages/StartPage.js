@@ -7,6 +7,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 function StartPage() {
   useEffect(() => {
@@ -31,12 +35,12 @@ function StartPage() {
     .slick-prev {
       // 양염 버튼 위치
       z-index: 1;
-      left: 30px;
+      left: 30%;
     }
 
     .slick-next {
       // 양옆 버튼 위치
-      right: 40px;
+      right: 30%;
     }
     .slick-prev:before,
     .slick-next:before {
@@ -44,50 +48,95 @@ function StartPage() {
       font-family: "slick";
       font-size: 30px;
       line-height: 0;
-      opacity: 0; //버튼 숨기기
+      opacity: 1; //버튼 숨기기
       color: #000000;
       -webkit-font-smoothing: antialiased;
     }
   `;
   return (
-    <StartSlider>
+    <StartSlider className="startslider">
       {/* 슬라이더 안먹음 */}
-      <div>hi</div>
-      <Slider {...settings}>
+      <div className="logo-item">
+        <img id="logo" src={logo} alt="logo-img" />
+      </div>
+      {/* 슬라이더 안먹음 */}
+      <Slider {...settings} className="slider">
         <div>
-          <p>시작화면 잡 어쩌구 (마우스 오른쪽으로 드래그시 화면 넘어감)</p>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
         </div>
-        <div>
-          <p>프로젝트 설명</p>
-        </div>
-        <div>
-          <p>우리 프로젝트 사용화면 </p>
-        </div>
-        <>
-          <div className="start-container">
-            <div className="logo-item">
-              <img id="logo" src={logo} alt="logo-img" />
-            </div>
 
-            <div className="btn-item">
-              <Button
-                variant="contained"
-                className="btn-lo"
-                onClick={() => (window.location.href = "/login")}
-              >
-                <p>로그인</p>
-              </Button>
-              <Button
-                variant="contained"
-                className="btn-re"
-                onClick={() => (window.location.href = "/register")}
-              >
-                <p>회원가입</p>
-              </Button>
-            </div>
-          </div>
-        </>
+        <div>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div>
+          <Card className="start_card">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
       </Slider>
+      <div className="btn-container">
+        <Button
+          variant="contained"
+          className="btn-lo"
+          onClick={() => (window.location.href = "/login")}
+        >
+          <p>로그인</p>
+        </Button>
+        <Button
+          variant="contained"
+          className="btn-re"
+          onClick={() => (window.location.href = "/register")}
+        >
+          <p>회원가입</p>
+        </Button>
+      </div>
     </StartSlider>
   );
 }
