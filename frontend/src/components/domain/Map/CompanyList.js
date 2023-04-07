@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import useGetCompany from "@/hooks/useGetCompany";
-import "./css/CompanyList.css";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useGetCompany from '@/hooks/useGetCompany';
+import { useDispatch } from 'react-redux';
+import './css/CompanyList.css';
+import { setClickData } from '@/actions/dataInfoAction';
+import { setCenter } from '@/actions/mapActions';
 
 export default function CompanyList(props) {
   const { region, jobsCd } = props;
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  function handleClick() {
-    navigate("/test");
+  function handleMarkerClick(item) {
+    dispatch(setCenter(item.wgsY, item.wgsX));
   }
 
   function handleScroll(event) {
     const { scrollTop, clientHeight, scrollHeight } = event.target;
 
-    if (scrollTop + clientHeight >= scrollHeight ) {
+    if (scrollTop + clientHeight >= scrollHeight) {
       setPage((prev) => prev + 1);
     }
   }
@@ -30,7 +34,11 @@ export default function CompanyList(props) {
         {items.map((item, index) => {
           return (
             <>
-              <div className="clist" onClick={handleClick}>
+              <div
+                className="clist"
+                key={item.id}
+                onClick={() => handleMarkerClick(item)}
+              >
                 <div className="clist-company">
                   <strong>{item.company}</strong>
                 </div>

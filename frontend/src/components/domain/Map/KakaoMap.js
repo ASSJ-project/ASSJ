@@ -3,19 +3,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { userBasedtransCoordCB } from '@/libs/utils/mapUtils';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './style_addMouseOver.css';
 
 export default function KakaoMap(props) {
-  const { data } = props;
+  const { data, location } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const activeOverlayContent = useRef(null);
   const apiKey = process.env.REACT_APP_KAKAO_API_KEY;
   const navigate = useNavigate();
 
-  // 유저의 현재 GSR80 좌표 위치
-  const userY = 37.4954330863648;
-  const userX = 126.88750531451;
+  const center = useSelector((state) => state.map.center);
+
+  const [userY, setUserY] = useState(37.495423523338);
+  const [userX, setUserX] = useState(126.823532587);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -26,14 +28,14 @@ export default function KakaoMap(props) {
       kakao.maps.load(() => {
         const mapContainer = document.getElementById('map');
         const mapOptions = {
-          center: new kakao.maps.LatLng(37.4954330863648, 126.88750531451),
+          center: new kakao.maps.LatLng(userY, userX),
           level: 9,
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
 
         // 마커를 생성합니다.
         var marker = new kakao.maps.Marker({
-          position: new kakao.maps.LatLng(37.4954330863648, 126.88750531451),
+          position: new kakao.maps.LatLng(userY, userX),
         });
 
         // 마커가 지도 위에 표시되도록 설정합니다.
@@ -42,7 +44,7 @@ export default function KakaoMap(props) {
         setKakaoMap(map);
       });
     };
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     if (!kakaoMap || !data) {
@@ -70,11 +72,23 @@ export default function KakaoMap(props) {
       overlayContent.classList.add('overlay_content'); // 클래스 추가
 
       // overlayContent에 이벤트 추가
-      overlayContent.onmouseover = () => setCoverdOverlayZIndex(overlay);
-      overlayContent.onmouseleave = () => setHideOverlayZIndex(overlay);
-      overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
-      overlayContent.ontouchend = () => setCoverdOverlayZIndex(overlay);
-      overlayContent.onclick = () => showMoreInfo(overlayContent, item);
+      if (!isMobileResolution()) {
+        overlayContent.onmouseover = () => {
+          showMoreInfo(overlayContent, item);
+          setCoverdOverlayZIndex(overlay);
+        };
+        overlayContent.onmouseout = () => {
+          hideMoreInfo(overlayContent);
+          setHideOverlayZIndex(overlay);
+        };
+      } else {
+        overlayContent.ontouchstart = () => setCoverdOverlayZIndex(overlay);
+        overlayContent.ontouchend = () => {
+          showMoreInfo(overlayContent, item);
+          setHideOverlayZIndex(overlay);
+        };
+        // overlayContent
+      }
 
       const overlay = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
@@ -90,24 +104,54 @@ export default function KakaoMap(props) {
         // 새로운 moreInfoContent를 활성화합니다
         activeOverlayContent.current = overlayContent;
 
-        // 원하는 새로운 내용을 추가하십시오.
-        const newContent = '채용확인';
-        const labelElement = overlayContent.querySelector('.label');
-        labelElement.innerHTML = newContent;
+        const isMobile = window.matchMedia('(max-width: 779px)').matches;
+        let moreInfoContent;
 
-        const moreInfoContent = `
-                  <div class="overlay_info clicked" style="position: absolute; bottom: 100%;">
-                    <a href="https://place.map.kakao.com/17600274" target="_blank"><strong>${item.company}</strong></a>
-                    <div class="desc">${distance}<span class="address">${item.basicAddr}</span></div>
-                  </div>`;
-        overlayContent.insertAdjacentHTML('beforeend', moreInfoContent);
+        moreInfoContent = document.createElement('div');
+        moreInfoContent.classList.add('overlay_info');
+        moreInfoContent.classList.add('clicked');
+
+        if (isMobile) {
+          // 모바일 화면 (해상도 780px 미만)에 표시할 내용을 정의합니다
+          moreInfoContent.style.position = 'fixed';
+          moreInfoContent.style.bottom = '0';
+          moreInfoContent.style.width = '100%';
+          moreInfoContent.style.zIndex = '1000'; // z-index 값을 1000으로 설정
+        } else {
+          // 데스크톱 화면에 표시할 내용을 정의합니다
+          moreInfoContent.style.position = 'absolute';
+          moreInfoContent.style.bottom = '100%';
+        }
+
+        const companyLink = document.createElement('a');
+        companyLink.href = 'https://place.map.kakao.com/17600274';
+        companyLink.target = '_blank';
+        companyLink.innerHTML = `<strong>${item.company}</strong>`;
+        moreInfoContent.appendChild(companyLink);
+
+        const descDiv = document.createElement('div');
+        descDiv.classList.add('desc');
+        descDiv.innerHTML = `${distance}<span class="address">${item.basicAddr}</span>`;
+        moreInfoContent.appendChild(descDiv);
+
+        if (isMobile) {
+          document.body.appendChild(moreInfoContent);
+          overlayContent.moreInfoContent = moreInfoContent; // 참조를 저장합니다
+        } else {
+          overlayContent.appendChild(moreInfoContent);
+        }
       }
 
       function hideMoreInfo(overlayContent) {
-        const moreInfo = overlayContent.querySelector('.overlay_info.clicked');
+        const moreInfo =
+          overlayContent.moreInfoContent ||
+          overlayContent.querySelector('.overlay_info.clicked');
         if (moreInfo) {
-          moreInfo.classList.remove('clicked'); // 클릭한 moreInfoContent에서 clicked 클래스를 제거합니다
-          overlayContent.removeChild(moreInfo);
+          if (moreInfo.parentElement === document.body) {
+            document.body.removeChild(moreInfo); // body에서 moreInfoContent를 제거합니다
+          } else {
+            overlayContent.removeChild(moreInfo);
+          }
         }
       }
 
@@ -122,6 +166,10 @@ export default function KakaoMap(props) {
       }
       overlay.setMap(kakaoMap);
 
+      function isMobileResolution() {
+        return window.matchMedia('(max-width: 780px)').matches;
+      }
+
       return {
         overlay,
       };
@@ -129,6 +177,18 @@ export default function KakaoMap(props) {
 
     setMarkers(newMarkers);
   }, [kakaoMap, data]);
+
+  useEffect(() => {
+    if (!kakaoMap || !data) {
+      return;
+    }
+
+    const newPosition = new kakao.maps.LatLng(
+      center.latitude,
+      center.longitude
+    );
+    kakaoMap.panTo(newPosition);
+  }, [kakaoMap, center]);
 
   return (
     <div style={{ width: '100%', height: '100%' }} id="map">

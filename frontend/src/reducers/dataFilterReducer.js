@@ -1,5 +1,5 @@
 // 리듀서 작성
-import { SET_FILTER_JOB, SET_FILTER_REGION } from '@/actions/actions';
+import { SET_FILTER_JOB, SET_FILTER_REGION } from '@/actions/dataFilterActions';
 
 // 리듀서 초기화
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   setFilterJob: '',
 };
 
-const reducer = (state = initialState, action) => {
+const dataFilterReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_FILTER_JOB:
       return {
@@ -24,4 +24,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default dataFilterReducer;

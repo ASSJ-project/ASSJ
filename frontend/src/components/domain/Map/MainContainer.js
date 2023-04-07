@@ -26,11 +26,12 @@ const ToggleBoundary = styled.div`
 `;
 
 function MainContainer() {
-  const setFilterRegion = useSelector((state) => state.setFilterRegion);
+  const setClickData = useSelector((state) => state.setClickData);
   const setFilterJob = useSelector((state) => state.setFilterJob);
 
+  c;
   const queryParam = {
-    filteredData: setFilterRegion,
+    region: setClickData,
     jobsCd: setFilterJob,
   };
 

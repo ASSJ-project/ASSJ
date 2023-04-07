@@ -1,7 +1,7 @@
 import useFetch from '@/hooks/useFetch';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
-import KakaoMap from '@/components/domain/Map/KakaoMap_0406';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
 import { useSelector } from 'react-redux';
 import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
 import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
@@ -18,7 +18,7 @@ const ToggleBoundary = styled.div`
   position: fixed;
   bottom: 15%;
   left: 45%;
-  z-index: 2;    
+  z-index: 2;
   @media (max-width: 768px) {
     display: block;
   }
@@ -35,11 +35,10 @@ const MapBoundary = styled.div`
   height: 80vh;
   width: 90%;
   border: 1px solid #b4c0d3;
-  
+
   @media (max-width: 768px) {
     width: 100%;
-   }
-
+  }
 `;
 
 const List = styled.div`
@@ -50,9 +49,8 @@ const List = styled.div`
   border: 1px solid #b4c0d3;
 
   @media (max-width: 768px) {
-    display: none;    
+    display: none;
   }
-
 `;
 
 const Content = styled.div`
@@ -65,16 +63,20 @@ const Content = styled.div`
   border: 1px solid #b4c0d3;
 
   
-`
+`;
 
 function MainContainer() {
   const [selected, setSelected] = useState('map');
-  
-  const setFilterRegion = useSelector((state) => state.setFilterRegion);
-  const setFilterJob = useSelector((state) => state.setFilterJob);
 
-  const [region, setRegion] = useState('서울 금천구');
-  const [jobsCd, setJobsCd] = useState(133300);
+  const setFilterRegion = useSelector(
+    (state) => state.dataFilter.setFilterRegion
+  );
+  const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
+
+  const setClickData = useSelector((state) => state.dataInfo.setClickData);
+
+  const [region, setRegion] = useState('');
+  const [jobsCd, setJobsCd] = useState('');
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -86,6 +88,7 @@ function MainContainer() {
     jobsCd,
   };
 
+  console.log(setFilterRegion);
   const header = {
     'X-Custom-Header': 'YourCustomHeaderValue',
   };
@@ -109,26 +112,36 @@ function MainContainer() {
   }
 
   return (
-  <>
-    <Header />
-    <Content className="Content">
+    <>
+      <Header />
+      <Content className="Content">
         <ToggleBoundary className="App">
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
         {selected === 'map' ? (
-          <MapBoundary className="MapBoundary">{data && <KakaoMap data={data} />}</MapBoundary>
+          <MapBoundary className="MapBoundary">
+            {data && <KakaoMap data={data} location={setClickData} />}
+          </MapBoundary>
         ) : (
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         )}
 
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          <CompanyList className="companyList" region={region} jobsCd={jobsCd} />
+          <CompanyList
+            className="companyList"
+            region={region}
+            jobsCd={jobsCd}
+          />
         </List>
-    </Content>
-    <Footer />
-  </>
+      </Content>
+      <Footer />
+    </>
   );
 }
 

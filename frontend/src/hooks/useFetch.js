@@ -19,7 +19,7 @@ const useFetch = (url, queryParam, header) => {
             ...header,
           },
         });
-
+        
         if (response.ok) {
           const data = await response.json();
           setData(data);
