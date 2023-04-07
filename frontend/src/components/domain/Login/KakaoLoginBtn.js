@@ -9,7 +9,9 @@ export default function KakaoLoginBtn() {
   const responseKakao = (response) => {
     sessionStorage.removeItem("access_token");
     if (response) {
-      snsLoginDo(response.id).then((result) => console.log("결과 :", result));
+      snsLoginDo(response.id).then((result) => {
+        if (!result) sessionStorage.setItem("sns_inDB", result);
+      });
     }
   };
 

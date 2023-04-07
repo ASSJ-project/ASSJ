@@ -18,9 +18,9 @@ export default function GoogleLoginBtn() {
 
   const responseGoogle = (response) => {
     if (response) {
-      snsLoginDo(response.googleId).then((result) =>
-        console.log("결과 :", result)
-      );
+      snsLoginDo(response.googleId).then((result) => {
+        if (!result) sessionStorage.setItem("sns_inDB", result);
+      });
     }
   };
 

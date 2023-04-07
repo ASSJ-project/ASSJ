@@ -1,7 +1,7 @@
 // coding by 'ikki'
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,19 +12,35 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-function StartPage() {
+const StartPage = () => {
   useEffect(() => {
     localStorage.clear();
   }, []);
+
+  
+  
+  const customeSlider = useRef();
+
+  
   const settings = {
     //슬라이드
-    dots: true, // 점 보이기
-    infinite: true, // 무한루트
+    dots: false, // 점 보이기
+    infinite: false, // 무한루트
     speed: 500,
     slidesToShow: 1, //1장씩 보이게 해주세요
     slidesToScroll: 1, //1장씩 넘어가세요
-    arrows: true, // 화살표버튼
-  };
+    arrows: false, // 화살표버튼
+  }
+  
+
+  const gotoNext = () => {
+    customeSlider.current.slickNext()
+  }
+
+  const gotoPrev = () => {
+    customeSlider.current.slickPrev()
+  }
+
   const StartSlider = styled.div`
     .slick-list {
       //크기조정
@@ -60,7 +76,7 @@ function StartPage() {
         <img id="logo" src={logo} alt="logo-img" />
       </div>
       {/* 슬라이더 안먹음 */}
-      <Slider {...settings} className="slider">
+      <Slider  {...settings} ref={customeSlider} className="slider" >
         <div>
           <Card className="start_card">
             <CardMedia
@@ -121,6 +137,14 @@ function StartPage() {
           </Card>
         </div>
       </Slider>
+
+      <div className="pvne_btn">
+        <button className="previous" onClick={gotoPrev}>이전</button>
+        <button className="next-btn" onClick={gotoNext}>다음</button>
+      </div>
+      
+
+        
       <div className="btn-container">
         <Button
           variant="contained"
