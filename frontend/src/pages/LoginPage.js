@@ -5,6 +5,7 @@ import ImgHeader from "../components/Structure/Header/ImgHeader";
 import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
+import SnsConfirm from "@/components/domain/Login/sns_confirm";
 
 import Button from "@mui/material/Button";
 
@@ -78,7 +79,9 @@ function LoginPage() {
             </div>
 
             <div className="find-pw-container">
-              <p className="find-pw"><Link to="/findpassword">비밀번호 찾기</Link></p>
+              <p className="find-pw">
+                <Link to="/findpassword">비밀번호 찾기</Link>
+              </p>
             </div>
             <div className="login-btn-container">
               <p className="errorMessage">
