@@ -8,21 +8,22 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "@/components/Structure/Footer/Footer";
 
 function FindPassword() {
-  const [key, setKey] = useState('');
+  const [key, setKey] = useState("");
   const [checkKey, setCheckKey] = useState();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState(true);
   const [keyErrorMessage, setKeyErrorMessage] = useState(true);
-  const [pwd, setPwd] = useState('');
+  const [pwd, setPwd] = useState("");
   const [PwdErrorMessage, setPwdErrorMessage] = useState(false);
   const [confirmPwd, setConfirmPwd] = useState(false);
   const [confirmPwdErrorMessage, setConfirmPwdErrorMessage] = useState(false);
   const [emailDisable, setEmailDisable] = useState(false); //이메일 인증 완료 시 비활성화: 인증 후 수정 방지
   const [passwordDisable, setPasswordDisable] = useState(true); //비밀번호 입력창 비활성화
   const [btnDisable, setBtnDisable] = useState(true); //비밀번호 재설정 버튼 비활성화
-  const [isLogin, setIsLogin] = useState(''); // 로그인 상태인지 로그인 상태아닌지 체크입니다.
+  const [isLogin, setIsLogin] = useState(""); // 로그인 상태인지 로그인 상태아닌지 체크입니다.
 
   const passwordRegex =
     /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
@@ -65,7 +66,7 @@ function FindPassword() {
 
   //사용자 이메일에 메일보내기
   const sendEmail = () => {
-    emailjs.init('O8bUvMyNJhc1Z6tVI');
+    emailjs.init("O8bUvMyNJhc1Z6tVI");
     const ranNum = generateRandom();
     setCheckKey(ranNum);
     console.log(ranNum);
@@ -78,12 +79,12 @@ function FindPassword() {
     emailCheck(email).then((result) => {
       console.log(result.data);
       if (result.data == true) {
-        console.log('이메일 전송 성공');
+        console.log("이메일 전송 성공");
         setEmailDisable(true);
         // emailjs.send('service_vpprlhi', 'template_w9u1t6g', templateParams)
         setEmailErrorMessage(true);
       } else {
-        console.log('이메일 전송 실패');
+        console.log("이메일 전송 실패");
         setEmailErrorMessage(false);
       }
     });
@@ -102,7 +103,7 @@ function FindPassword() {
   };
 
   useEffect(() => {
-    setIsLogin(localStorage.getItem('login'));
+    setIsLogin(sessionStorage.getItem("login"));
   }, []);
 
   return (
@@ -124,7 +125,7 @@ function FindPassword() {
         <Paper className="container_border" elevation={8}>
           <div>
             <span className="signuptext">
-              비밀번호 {isLogin ? '수정' : '찾기'}
+              비밀번호 {isLogin ? "수정" : "찾기"}
             </span>
           </div>
 
