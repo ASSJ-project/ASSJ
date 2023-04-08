@@ -141,7 +141,7 @@ public class JwtToken {
       String newAccessToken = JwtToken.createAccess(inRedisUserEmail, inRedisUserRole, secretKey,
           Long.parseLong(accessExpiredAt));// 엑세스 토큰을 재발급
       // 재발급한 토큰을 쿠키에 실어서 보낸다
-      Cookies.sendCookie(response, true, secretKey, newAccessToken);
+      Cookies.sendCookie(response, true, "access_token", newAccessToken);
       // 새로운 redis id
       long newRedisId = parseTokenToId(newAccessToken);
       refreshTokenRedisRepository

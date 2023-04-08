@@ -42,12 +42,15 @@ public class JwtFilter extends OncePerRequestFilter {
       HttpServletResponse response, FilterChain filterChain)
       throws IOException, ServletException {
     String[] tokens = null;
+    String newToken = "";
 
     try {
       // 쿠키에서 토큰을 가져옴
       tokens = Cookies.fromToken(request);
+      newToken = tokens[0]; // accessToken
     } catch (NullPointerException e) {
       // 토큰이 없는 상태에서 로그인 시도 안하고 다른 페이지로 갔을때의 처리
+      filterChain.doFilter(request, response);
       return;
     }
 
@@ -57,21 +60,46 @@ public class JwtFilter extends OncePerRequestFilter {
       return;
     }
 
+    // try {
+    // JwtToken.isExpired(tokens[0], secretKey);
+
+    // } catch (TokenExpiredException e) {
+    // log.error("토큰이 만료되었습니다");
+    // newToken = JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey,
+    // accessExpiredAt, request, response,
+    // refreshTokenRedisRepository);
+    // filterChain.doFilter(request, response);
+    // return;
+
+    // }
+
+    //
+    String role = "";
+    String userEmail = "";
     try {
-      JwtToken.isExpired(tokens[0], secretKey);
+      // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
+      role = JwtToken.getUserRole(newToken, secretKey).replaceAll("\\\"", "");
+      userEmail = JwtToken.getUserEmail(newToken, secretKey);
     } catch (TokenExpiredException e) {
       log.error("토큰이 만료되었습니다");
-      JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey, accessExpiredAt, request, response,
+      newToken = JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey,
+          accessExpiredAt, request, response,
           refreshTokenRedisRepository);
+      role = JwtToken.getUserRole(newToken, secretKey).replaceAll("\\\"", "");
+      userEmail = JwtToken.getUserEmail(newToken, secretKey);
+
+      UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userEmail, null,
+          List.of(new SimpleGrantedAuthority(role)));
+
+      authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+      SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+      log.info(authenticationToken.getAuthorities().toString());
       filterChain.doFilter(request, response);
       return;
     }
 
-    // // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
-    String role = JwtToken.getUserRole(tokens[0], secretKey).replaceAll("\\\"", "");
-
     // 권한 부여
-    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(null, null,
+    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userEmail, null,
         List.of(new SimpleGrantedAuthority(role)));
 
     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -79,4 +107,5 @@ public class JwtFilter extends OncePerRequestFilter {
     log.info(authenticationToken.getAuthorities().toString());
     filterChain.doFilter(request, response);
   }
+
 }
