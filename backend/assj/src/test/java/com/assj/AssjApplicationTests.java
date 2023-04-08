@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.assj.domain.user.UserService;
+import com.assj.dto.User;
 
 @SpringBootTest
 class AssjApplicationTests {
@@ -35,5 +36,14 @@ class AssjApplicationTests {
 		Assertions.assertThat(userService.getRole(emailA)).isEqualTo("ROLE_ADMIN");
 		Assertions.assertThat(userService.getRole(emailB)).isEqualTo("ROLE_USER");
 
+	}
+
+	@Test
+	public void 회원_삭제하기() {
+		String email = "tailleejb@gmail.com";
+		User user = new User();
+		user.setUserEmail(email);
+
+		Assertions.assertThat(userService.deleteUser(user)).isEqualTo(1);
 	}
 }

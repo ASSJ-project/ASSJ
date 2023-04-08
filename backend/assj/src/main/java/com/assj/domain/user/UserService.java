@@ -198,6 +198,11 @@ public class UserService {
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
+	public int deleteUser(User user) throws DataAccessException {
+		String sql = String.format("DELETE FROM user WHERE email = '%s'", user.getUserEmail());
+		return jdbcTemplate.update(sql);
+	}
+
 	/**
 	 * 토큰 쌍을 생성하는 메소드
 	 * 
@@ -240,4 +245,5 @@ public class UserService {
 
 		return role;
 	}
+
 }

@@ -13,7 +13,6 @@ import com.assj.dto.Company;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/company")
 public class CompanyController {
@@ -37,7 +36,6 @@ public class CompanyController {
 
     @GetMapping("/getItems")
     public List<Company> getItems(@RequestParam String region, @RequestParam String jobsCd) {
-        log.info("region : ", region);
         return companyService.getItems(region, jobsCd);
     }
 
