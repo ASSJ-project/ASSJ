@@ -2,6 +2,7 @@ package com.assj.domain.user;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -146,12 +149,13 @@ public class UserService {
 	 * @throws DataAccessException
 	 */
 	public List<User> getUser(HttpServletRequest request) throws DataAccessException {
-		String userEmail = null;
-		for (Cookie cookie : request.getCookies()) {
-			if (cookie.getName().equals("access_token")) {
-				userEmail = JwtToken.getUserEmail(cookie.getValue(), secretKey);
-			}
-		}
+		String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+		// String userEmail = "";
+		// for (Cookie cookie : request.getCookies()) {
+		// if (cookie.getName().equals("access_token")) {
+		// userEmail = JwtToken.getUserEmail(cookie.getValue(), secretKey);
+		// }
+		// }
 		if (userEmail == null) {
 			User emptyUser = new User();
 			emptyUser.setUserName("유저가 존재하지 않습니다");
