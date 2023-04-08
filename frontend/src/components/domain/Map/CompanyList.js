@@ -11,12 +11,13 @@ import { yellow } from '@material-ui/core/colors';
 import { setCenter } from '@/actions/mapActions';
 import { useDispatch } from 'react-redux';
 export default function CompanyList(props) {
-  const { region, jobsCd } = props;
+  const { region, jobsCd, data } = props;
   const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log(`데앝: ${data}`)
   function handleClick() {
     navigate('/test');
   }

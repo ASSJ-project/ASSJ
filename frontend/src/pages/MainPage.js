@@ -136,8 +136,8 @@ function MainContainer() {
   );
   const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
 
-  const [region, setRegion] = useState('');
-  const [jobsCd, setJobsCd] = useState('');
+  const [region, setRegion] = useState('서울');
+  const [jobsCd, setJobsCd] = useState('550104');
 
   const [cookie, setCookie, removeCookie] = useCookie('data', [], 1);
 
@@ -225,21 +225,29 @@ function MainContainer() {
             {data && <KakaoMap data={data} />}
           </MapBoundary>
         ) : (
-          <CompanyList
-            className="companyList"
-            region={region}
-            jobsCd={jobsCd}
-          />
+          <>
+            {data && (
+              <CompanyList
+                data={data}
+                className="companyList"
+                region={region}
+                jobsCd={jobsCd}
+              />
+            )}
+          </>
         )}
 
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          <CompanyList
-            className="companyList"
-            region={region}
-            jobsCd={jobsCd}
-          />
+          {data && (
+            <CompanyList
+              data={data}
+              className="companyList"
+              region={region}
+              jobsCd={jobsCd}
+            />
+          )}
         </List>
       </Content>
       <Footer />
