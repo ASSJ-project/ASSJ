@@ -99,20 +99,14 @@ function Footer() {
   };
 
 
-  const Privacy = () => {
-    Swal.fire({
-      title: "개인정보 처리방침",
-      text:"알쓸신잡 코스모는 개인정보보호법을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다."
-    })
-  }
-
+  
   return (
     <FooterContainer>
       <FooterLinks>
         <ButtonLists>
           <ButtonDiv>
             <ButtonList>
-              <StyledButton onClick={Privacy}>개인정보 처리방침</StyledButton>
+              <StyledButton>개인정보 처리방침</StyledButton>
             </ButtonList>
             <ButtonList>
               <StyledButton onClick={Terms}>이용약관</StyledButton>
