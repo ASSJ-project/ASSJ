@@ -7,8 +7,21 @@ const FooterContainer = styled.div`
 `;
 
 const FooterLinks = styled.div`
-  margin: 0 10px;
+  width: 480px;
+  margin: 0 auto;
   border-top: solid 1px #dfe2d5;
+
+  @media screen and (max-width: 768px) {
+    width: 420px;
+    margin: 0 auto;
+    border-top: solid 1px #dfe2d5;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 350px;
+    margin: 0 auto;
+    border-top: solid 1px #dfe2d5;
+  }
 `;
 
 const ButtonLists = styled.ol`
@@ -21,68 +34,75 @@ const ButtonList = styled.li`
   text-align: center;
   margin: 5px auto;
   color: #878982;
-  font-size: 0.8em;
+  font-size: 0.7em;
 `;
 
 const StyledButton = styled.button`
   text-decoration: none;
   color: inherit;
-  border : none;
+  border: none;
   background-color: white;
 `;
 
 const ButtonDiv = styled.div`
-  display: flex; 
-  justifyContent: space-around;
-  font-size:20px;
+  display: flex;
+  justifycontent: space-around;
+  font-size: 20px;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     font-size: 16px;
   }
 
-  @media screen and (max-width: 480px){
+  @media screen and (max-width: 480px) {
     font-size: 12px;
   }
-`
+`;
 
 function Footer() {
-
-  const Customer = () =>{
+  const Customer = () => {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: '고객센터는 현재 준비중입니다.',
-    })
-  }
+      icon: "error",
+      title: "Oops...",
+      text: "고객센터는 현재 준비중입니다.",
+    });
+  };
 
-  const Company = () =>{
+  const Company = () => {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: '회사세부정보는 현재 준비중입니다.',
-    })
-  }
+      icon: "error",
+      title: "Oops...",
+      text: "회사세부정보는 현재 준비중입니다.",
+    });
+  };
 
-  const SiteMap = () =>{
+  const SiteMap = () => {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: '사이트맵은 현재 준비중입니다.',
-    })
-  }
+      icon: "error",
+      title: "Oops...",
+      text: "사이트맵은 현재 준비중입니다.",
+    });
+  };
 
-  const Kosmo = () =>{
+  const Kosmo = () => {
     Swal.fire({
-      icon: 'info',
-      title: '알쓸신잡',
-      text: '© 2023 KOSMO. All rights reserved.'
-    })
-  }
+      icon: "info",
+      title: "알쓸신잡",
+      text: "© 2023 KOSMO. All rights reserved.",
+    });
+  };
 
   const Terms = () => {
     Swal.fire({
       title: "이용약관",
-      text : "본 약관은 알쓸신잡이 운영하는 국가통계포털(KOSIS), 마 이크로데이터서비스(MDIS), 지표누리(구 e-나라지표, 구 국가주요지표), 통계지리정보서비스(SGIS+plus),<br/>통계데이터센터의 통계정보 사이트에서 제공하는 모든 서비스(이하 “서비스”)의 이용조건 및 절차, 이용자와 각 사이트의 권리, 의무, 책임사항과 기타 필요한"
+      text: "본 약관은 알쓸신잡이 운영하는 국가통계포털(KOSIS), 마 이크로데이터서비스(MDIS), 지표누리(구 e-나라지표, 구 국가주요지표), 통계지리정보서비스(SGIS+plus),<br/>통계데이터센터의 통계정보 사이트에서 제공하는 모든 서비스(이하 “서비스”)의 이용조건 및 절차, 이용자와 각 사이트의 권리, 의무, 책임사항과 기타 필요한",
+    });
+  };
+
+
+  const Privacy = () => {
+    Swal.fire({
+      title: "개인정보 처리방침",
+      text:"알쓸신잡 코스모는 개인정보보호법을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다."
     })
   }
 
@@ -90,10 +110,9 @@ function Footer() {
     <FooterContainer>
       <FooterLinks>
         <ButtonLists>
-          
           <ButtonDiv>
             <ButtonList>
-              <StyledButton>개인정보 처리방침</StyledButton>
+              <StyledButton onClick={Privacy}>개인정보 처리방침</StyledButton>
             </ButtonList>
             <ButtonList>
               <StyledButton onClick={Terms}>이용약관</StyledButton>
@@ -102,14 +121,16 @@ function Footer() {
               <StyledButton onClick={SiteMap}>사이트맵</StyledButton>
             </ButtonList>
             <ButtonList>
-             <StyledButton onClick={Company}>회사 세부정보</StyledButton>
+              <StyledButton onClick={Company}>회사 세부정보</StyledButton>
             </ButtonList>
             <ButtonList>
               <StyledButton onClick={Customer}>고객센터</StyledButton>
             </ButtonList>
           </ButtonDiv>
           <div>
-            <ButtonList onClick={Kosmo}>© 2023 KOSMO. All rights reserved.</ButtonList>
+            <ButtonList onClick={Kosmo}>
+              © 2023 KOSMO. All rights reserved.
+            </ButtonList>
           </div>
         </ButtonLists>
       </FooterLinks>
