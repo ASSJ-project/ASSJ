@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -116,5 +118,32 @@ public class UserController {
             log.warn(e.getMessage());
             return false;
         }
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @DeleteMapping("/deleteUser")
+    public Boolean deleteUser(HttpServletRequest request) {
+        User user = new User();
+        user.setUserEmail(request.getHeader("userEmail"));
+        user.setUserPassword(request.getHeader("userPassword"));
+
+        try {
+            if (userService.checkEmail(user.getUserEmail())) {
+                if (userService.checkPassword(user)) {
+                    if (userService.deleteUser(user) > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            } else
+                return false;
+
+        } catch (DataAccessException e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import "../MyPage/MyPage-Test.css";
+import { deleteUser } from "@/apis/resign/resign";
 //
 //나의 정보를 눌렀을 때 나오는 페이지입니다.
 const MyPageTest = (data) => {
@@ -9,6 +10,7 @@ const MyPageTest = (data) => {
   const [isDelete, setIsDelete] = useState(false);
   const [yesDelete, setYesDelete] = useState(true);
   const [pw, setPw] = useState("");
+  const [resignSuccess, setResignSuccess] = useState(false);
 
   useEffect(() => {
     setIsSocial(sessionStorage.getItem("role")); // 로컬에 있는 role 값 가져옴
@@ -20,7 +22,7 @@ const MyPageTest = (data) => {
       <div className="MyPagebox-Info">
         <p style={{ marginLeft: "15px" }}>{name}</p>
         {isLogin ? (
-          isSocial === "ROLE_SOCIAL" ? (
+          isSocial === "ROLE_SNS" ? (
             <p style={{ marginRight: "15px" }}>소셜은 이용 불가합니다.</p>
           ) : (
             <p style={{ marginRight: "15px" }}>{data}</p>
@@ -45,7 +47,7 @@ const MyPageTest = (data) => {
     setYesDelete(true);
   };
 
-  const onChange = (e) => {
+  const onPasswordChange = (e) => {
     setPw(e.target.value);
   };
 
@@ -66,7 +68,7 @@ const MyPageTest = (data) => {
         variant="contained"
         style={{ marginTop: "10px", fontSize: "20px" }}
         onClick={() => {
-          isSocial === "ROLE_SOCIAL"
+          isSocial === "ROLE_SNS"
             ? alert("이용 불가능 합니다")
             : (window.location.href = "findpassword");
         }}
@@ -112,13 +114,17 @@ const MyPageTest = (data) => {
           <input
             placeholder="비밀번호를 입력해주세요"
             type="password"
-            onChange={onChange}
+            onChange={onPasswordChange}
             className="MyPage-Input"
           ></input>
           <Button
             variant="contained"
             style={{ marginTop: "10px", fontSize: "20px" }}
-            onClick={Woo}
+            onClick={() => {
+              deleteUser(data["data"].userEmail, pw).then((result) => {
+                setResignSuccess(result);
+              });
+            }}
           >
             탈퇴
           </Button>

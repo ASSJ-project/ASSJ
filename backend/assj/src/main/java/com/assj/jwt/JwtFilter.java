@@ -67,8 +67,6 @@ public class JwtFilter extends OncePerRequestFilter {
       return;
     }
 
-    String userEmail = JwtToken.getUserEmail(tokens[0], secretKey);
-
     // // token 에서 꺼낸 user role 쌍따옴표가 붙어서 들어오기 때문에 제거
     String role = JwtToken.getUserRole(tokens[0], secretKey).replaceAll("\\\"", "");
 
