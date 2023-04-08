@@ -41,6 +41,7 @@
     "recharts": "^2.5.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.9",
+    "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
