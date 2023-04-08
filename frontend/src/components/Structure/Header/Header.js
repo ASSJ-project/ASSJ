@@ -86,8 +86,8 @@ function Header() {
   const [isAdmin, SetIsAdmin] = useState("");
 
   useEffect(() => {
-    let login = localStorage.getItem("login");
-    let role = localStorage.getItem("role");
+    let login = sessionStorage.getItem("login");
+    let role = sessionStorage.getItem("role");
     if (login == "true") {
       if (role == "ROLE_ADMIN") {
         SetIsAdmin(true);
@@ -101,7 +101,7 @@ function Header() {
   }, []);
 
   function logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     alert("로그아웃되었습니다.");
     window.location.href = "login";
   }

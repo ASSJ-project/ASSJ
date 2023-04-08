@@ -17,12 +17,13 @@ export default function KakaoLoginBtn() {
   const handleClose = () => setOpen(false);
 
   const responseKakao = (response) => {
-    sessionStorage.removeItem("access_token");
     if (response) {
-      snsLoginDo(response.id).then((result) => {
-        setId(response.id);
-        if (!result) sessionStorage.setItem("sns_inDB", result);
-        handleOpen();
+      snsLoginDo(response.profile.id).then((result) => {
+        setId(response.profile.id);
+        if (result) handleClose();
+        else {
+          handleOpen();
+        }
       });
     } else {
       handleClose();
@@ -44,10 +45,10 @@ export default function KakaoLoginBtn() {
       }}
     >
       <Typography id="modal-title" variant="h6" component="h2">
-        카카오 로그인 실패
+        카카오 계정으로 가입하시겠습니까?
       </Typography>
       <Typography id="modal-description" sx={{ mt: 2 }}>
-        카카오 로그인에 실패했습니다. 다시 시도해 주세요.
+        카카오 계정으로 가입하시려면 가입 버튼을 눌러주세요.
       </Typography>
       <Button onClick={handleClose} sx={{ mt: 2 }}>
         닫기

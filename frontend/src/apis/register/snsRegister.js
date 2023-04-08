@@ -7,7 +7,8 @@ export async function snsRegisterDo(id) {
     })
     .then((response) => {
       if (response.data) {
-        window.location.href = "login";
+        sessionStorage.setItem("login", true);
+        window.location.href = "map";
         return true;
       } else return false;
     })

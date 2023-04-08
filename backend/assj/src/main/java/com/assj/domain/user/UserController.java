@@ -54,7 +54,6 @@ public class UserController {
 
         if (userService.checkEmail(user.getUserEmail())) {
             if (userService.checkPassword(user)) {
-                log.info("컨트롤러 진입");
                 return userService.generateTokens(user.getUserEmail(), response, request, "user");
             }
         }
@@ -101,7 +100,6 @@ public class UserController {
 
     @PostMapping("/snslogin.do")
     public String snsLogin(@RequestBody SnsUser user, HttpServletResponse response, HttpServletRequest request) {
-        System.out.println("로그인 시도한 SNS 유저 : " + user.getUserId());
         if (userService.checkEmailSns(user.getUserId())) {
             return userService.generateTokens(user.getUserId(), response, request,
                     "sns_user");
@@ -115,10 +113,8 @@ public class UserController {
             userService.addSnsUser(user.getUserId());
             return true;
         } catch (DataAccessException e) {
-            log.warn(e.toString());
+            log.warn(e.getMessage());
             return false;
         }
-
     }
-
 }

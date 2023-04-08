@@ -16,7 +16,7 @@ function LoginPage() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    setIsLogin(localStorage.getItem("login"));
+    setIsLogin(sessionStorage.getItem("login"));
   }, []);
 
   const emailChange = (e) => {
@@ -34,7 +34,7 @@ function LoginPage() {
   };
 
   const logout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     alert("로그아웃되었습니다.");
     window.location.href = "login";
   };

@@ -10,8 +10,8 @@ export async function loginDo(e, p) {
     });
     if (result.status === 200) {
       if (result.data === "") return false;
-      localStorage.setItem("role", result.data);
-      localStorage.setItem("login", true);
+      sessionStorage.setItem("role", result.data);
+      sessionStorage.setItem("login", true);
       window.location.href = "map";
       return true;
     } else {
