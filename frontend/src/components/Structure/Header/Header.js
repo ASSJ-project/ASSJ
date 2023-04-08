@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from "assets/images/logo_only_word.svg";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import Swal from "sweetalert2";
 
 const HeadContainer = styled.div`
   margin: 0;
@@ -102,8 +103,12 @@ function Header() {
 
   function logout() {
     sessionStorage.clear();
-    alert("로그아웃되었습니다.");
+    Swal.fire({
+      icon: "success",
+      title : "로그아웃되었습니다."
+    }).then(function(){
     window.location.href = "login";
+    });
   }
 
   return (

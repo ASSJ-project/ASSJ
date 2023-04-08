@@ -7,8 +7,21 @@ const FooterContainer = styled.div`
 `;
 
 const FooterLinks = styled.div`
-  margin: 0 10px;
+  width: 480px;
+  margin: 0 auto;
   border-top: solid 1px #dfe2d5;
+
+  @media screen and (max-width: 768px) {
+    width: 420px;
+    margin: 0 auto;
+    border-top: solid 1px #dfe2d5;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 350px;
+    margin: 0 auto;
+    border-top: solid 1px #dfe2d5;
+  }
 `;
 
 const ButtonLists = styled.ol`
@@ -21,7 +34,7 @@ const ButtonList = styled.li`
   text-align: center;
   margin: 5px auto;
   color: #878982;
-  font-size: 0.8em;
+  font-size: 0.7em;
 `;
 
 const StyledButton = styled.button`
@@ -85,6 +98,8 @@ function Footer() {
     });
   };
 
+
+  
   return (
     <FooterContainer>
       <FooterLinks>
