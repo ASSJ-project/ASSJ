@@ -2,6 +2,7 @@ import "@/components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "../components/Structure/Footer/Footer";
 import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
@@ -87,13 +88,18 @@ function LoginPage() {
                 </p>
               </div>
               <div className="login-btn-container">
-                <p className="errorMessage errorMessage_mg">
+                <p className="errorMessage errorMessage_mg ">
                   {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
                 </p>
                 <Button
                   className="login-btn"
                   variant="contained"
                   onClick={login}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      login();
+                    }
+                  }}
                 >
                   로그인
                 </Button>
@@ -114,6 +120,7 @@ function LoginPage() {
             </>
           )}
         </Paper>
+        <Footer />
       </div>
     </>
   );
