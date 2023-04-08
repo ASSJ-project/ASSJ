@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "@/components/Structure/Footer/Footer";
 
 function FindPassword() {
   const [key, setKey] = useState('');
