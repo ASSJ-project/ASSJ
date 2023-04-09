@@ -116,3 +116,13 @@ This generated password is for development use only. Your security configuration
 2023-04-09 15:45:26.582  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
 2023-04-09 15:45:26.595  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
 2023-04-09 15:45:26.602  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:13:25.166  INFO 2320 --- [http-nio-8080-exec-2] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-09 16:16:12.250  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 16:16:12.258  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 16:16:12.264  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:22:25.852  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 16:22:25.868  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 16:22:25.875  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:22:49.616  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 16:22:49.621  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 16:24:42.814  INFO 2320 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
