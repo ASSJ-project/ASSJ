@@ -12,7 +12,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -90,8 +89,8 @@ public class UserController {
 
     @PreAuthorize("hasAnyRole('ADMIN', 'USER', 'SNS')")
     @GetMapping("/getUser")
-    public ResponseEntity<User> getUser(Authentication authentication, HttpServletRequest request) {
-        return new ResponseEntity<>(userService.getUser(request).get(0), HttpStatus.OK);
+    public ResponseEntity<User> getUser() {
+        return new ResponseEntity<>(userService.getUser().get(0), HttpStatus.OK);
     }
 
     @PostMapping("/passwordChange.do")
