@@ -142,20 +142,14 @@ public class UserService {
 	}
 
 	/**
-	 * 특정 유저 1명만 가져오는 메소드
+	 * 자기자신의 정보를 가져오는 메소드
 	 * 
 	 * @param userEmail 유저 이메일
 	 * @return 이메일과 일치하는 유저
 	 * @throws DataAccessException
 	 */
-	public List<User> getUser(HttpServletRequest request) throws DataAccessException {
+	public List<User> getUser() throws DataAccessException {
 		String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-		// String userEmail = "";
-		// for (Cookie cookie : request.getCookies()) {
-		// if (cookie.getName().equals("access_token")) {
-		// userEmail = JwtToken.getUserEmail(cookie.getValue(), secretKey);
-		// }
-		// }
 		if (userEmail == null) {
 			User emptyUser = new User();
 			emptyUser.setUserName("유저가 존재하지 않습니다");
