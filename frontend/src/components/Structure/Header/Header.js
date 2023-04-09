@@ -6,81 +6,67 @@ import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 
 const HeadContainer = styled.div`
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-NotoSansKorean);
+  width: 480px;
+  min-width: 420px;
+  height: 10vh;
+  margin: auto;
 `;
 
 const Head = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: solid 1px #dfe2d5;
+  margin: 0 10px;
+
+  img {
+    margin-top: 10px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .header-right {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    border-bottom: solid 1px #dfe2d5;
-    margin: 0 10px;
+    width: 220px;
+  }
 
-    img {
-      margin-top : 10px;
-      width: 200px;
-      height: 60px;
-    }
+  .header-right Button {
+    margin: 0 4px;
+  }
 
+  .toggle {
+    display: none;
+    font-size: 30px;
+    width: 100px;
+  }
+
+  @media screen and (max-width: 780px) {
     .header-right {
-      list-style: none;
-      display: flex;
+      flex-direction: row;
       width: 220px;
     }
 
-    .header-right Button{
-      margin:0 4px;
+    .header-right Button {
+      margin: 0 3px;
     }
 
-    .toggle {
-      display: none;
-      font-size: 30px;
-      width: 100px;
+    .header-logo {
+      width: 180px;
     }
 
-    @media screen and (max-width: 768px) {
-      .header-right {
-        flex-direction: row;
-        width: 220px;
-      }
-
-      .header-right Button{
-        margin:0 3px;
-      }
-
-      .header-logo {
-        width: 180px;
-      }
-
-      img {
-        width: 160px;
-        height: 60px;
-      }
-
-      .toggle,
-      .user {
-        display: block;
-      }
+    img {
+      width: 160px;
+      height: 60px;
     }
 
-    @media screen and (max-width: 480px) {
-      .header-right {
-        flex-direction: row;
-        width: 200px;
-        font-size: 8px;
-      }
-
-      img{
-        width: 130px;
-      }
-
-      .header-right Button{
-        margin:0 1px;
-      }
-  `;
+    .toggle,
+    .user {
+      display: block;
+    }
+  }
+`;
 
 function Header() {
   const [isLogin, SetIsLogin] = useState("");
@@ -105,14 +91,14 @@ function Header() {
     sessionStorage.clear();
     Swal.fire({
       icon: "success",
-      title : "로그아웃되었습니다."
-    }).then(function(){
-    window.location.href = "login";
+      title: "로그아웃되었습니다.",
+    }).then(function () {
+      window.location.href = "login";
     });
   }
 
   return (
-    <HeadContainer>
+    <HeadContainer className="img_header">
       <Head>
         {/* 알쓸신잡 로고 */}
         <div className="header-logo">

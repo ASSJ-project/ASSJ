@@ -1,21 +1,12 @@
 .signup-all-container {
   width: 480px;
-  min-width: 520px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   margin: auto;
 }
 
-.signup-container {
-  margin-top: 1.8em;
-  margin-bottom: 3em;
-  text-align: center;
-}
-
 .input-container {
   display: flex;
-  max-width: 90%;
   flex-direction: column;
   justify-items: center;
   margin: 1em 5%;
@@ -39,7 +30,6 @@
   background: var(--input-color);
   border-radius: 5px;
   width: 100%;
-  padding: 1.5em;
 }
 .total_input:focus {
   border: 1px solid;
@@ -88,9 +78,8 @@
   margin-top: 2em;
 }
 
-@media (max-width: 780px) {
+@media screen and (max-width: 780px) {
   .signup-all-container {
-    width: 90%;
-    text-align: center;
+    width: 100vw;
   }
 }

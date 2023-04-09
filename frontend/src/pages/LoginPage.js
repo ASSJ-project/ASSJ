@@ -39,93 +39,93 @@ function LoginPage() {
     sessionStorage.clear();
     Swal.fire({
       icon: "success",
-      title : "로그아웃되었습니다."
-    }).then(function(){
-    window.location.href = "login";
+      title: "로그아웃되었습니다.",
+    }).then(function () {
+      window.location.href = "login";
     });
   };
   return (
-    <>
-      <div className="login-full-container">
-        <div className="login-header-container">
-          <ImgHeader />
-        </div>
-        <Paper className="login-paper-container" elevation={8}>
-          {/* 로그인 되어있으면 logout 버튼 노출 */}
-          {isLogin ? (
-            <Button variant="contained" onClick={logout}>
-              로그아웃
-            </Button>
-          ) : (
-            <>
-              <div className="logintext">로그인</div>
+    <div className="login-full-container">
+      <ImgHeader />
+      <Paper className="login-paper-container" elevation={8}>
+        {/* 로그인 되어있으면 logout 버튼 노출 */}
+        {isLogin ? (
+          <Button variant="contained" onClick={logout}>
+            로그아웃
+          </Button>
+        ) : (
+          <>
+            <div className="logintext">로그인</div>
 
-              <div className="mail_pw_container">
-                <p className="id_pw_text">이메일</p>
-                <TextField
-                  className="login_input"
-                  placeholder="Email"
-                  type="email"
-                  value={email}
-                  onChange={emailChange}
-                />
-              </div>
+            <div className="mail_pw_container">
+              <p className="id_pw_text">이메일</p>
+              <TextField
+                className="login_input"
+                placeholder="Email"
+                type="email"
+                value={email}
+                onChange={emailChange}
+              />
+            </div>
 
-              <div className="mail_pw_container">
-                <p className="id_pw_text">비밀번호</p>
-                <TextField
-                  className="login_input"
-                  placeholder="Password"
-                  type="password"
-                  value={password}
-                  onChange={passwordChange}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      login();
-                    }
-                  }}
-                />
-              </div>
+            <div className="mail_pw_container">
+              <p className="id_pw_text">비밀번호</p>
+              <TextField
+                className="login_input"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={passwordChange}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    login();
+                  }
+                }}
+              />
+            </div>
 
-              <div className="find-pw-container">
-                <p className="find-pw">
-                  <Link to="/findpassword" style={{textDecoration:"none"}}>비밀번호 찾기</Link>
-                </p>
-              </div>
-              <div className="login-btn-container">
-                <p className="errorMessage errorMessage_mg ">
-                  {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
-                </p>
-                <Button
-                  className="login-btn"
-                  variant="contained"
-                  onClick={login}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      login();
-                    }
-                  }}
-                >
-                  로그인
-                </Button>
-              </div>
-              <div className="api-btn">
-                <GoogleLoginBtn />
-                <KakaoLoginBtn />
-              </div>
+            <div className="find-pw-container">
+              <p className="find-pw">
+                <Link to="/findpassword" style={{ textDecoration: "none" }}>
+                  비밀번호 찾기
+                </Link>
+              </p>
+            </div>
+            <div className="login-btn-container">
+              <p className="errorMessage errorMessage_mg ">
+                {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
+              </p>
+              <Button
+                className="login-btn"
+                variant="contained"
+                onClick={login}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    login();
+                  }
+                }}
+              >
+                로그인
+              </Button>
+            </div>
+            <div className="api-btn">
+              <GoogleLoginBtn />
+              <KakaoLoginBtn />
+            </div>
 
-              <div className="signup-div">
-                <p>
-                  계정이 없으신가요?{" "}                  
-                    <Link to="/register" style={{textDecoration: "none"}}>회원가입</Link>                 
-                </p>
-              </div>
-            </>
-          )}
-        </Paper>
-        <Footer />
-      </div>
-    </>
+            <div className="signup-div">
+              <p>
+                계정이 없으신가요?{" "}
+                <Link to="/register" style={{ textDecoration: "none" }}>
+                  회원가입
+                </Link>
+              </p>
+            </div>
+          </>
+        )}
+      </Paper>
+      <Footer />
+    </div>
   );
 }
 

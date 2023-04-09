@@ -7,27 +7,21 @@ const FooterContainer = styled.div`
 `;
 
 const FooterLinks = styled.div`
-  width: 100%;
-  height: 40px;
+  width: 480px;
   margin: 0 auto;
   border-top: solid 1px #dfe2d5;
 
-  @media screen and (max-width: 768px) {
-    width: 420px;
-    margin: 0 auto;
-    border-top: solid 1px #dfe2d5;
-  }
+  
+  @media screen and (max-width: 780px) {
+    .FooterLinks {
+      width: 100vw;
+    }
 
-  @media screen and (max-width: 480px) {
-    width: 350px;
-    margin: 0 auto;
-    border-top: solid 1px #dfe2d5;
-  }
 `;
 
 const ButtonLists = styled.ol`
   list-style-type: none;
-  margin: 0.8em auto;
+  margin: 0;
   padding: 10px;
 `;
 
@@ -35,7 +29,7 @@ const ButtonList = styled.li`
   text-align: center;
   margin: 5px auto;
   color: #878982;
-  font-size: 0.7em;
+  font-size: 0.8em;
 `;
 
 const StyledButton = styled.button`
@@ -48,15 +42,6 @@ const StyledButton = styled.button`
 const ButtonDiv = styled.div`
   display: flex;
   justifycontent: space-around;
-  font-size: 20px;
-
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 12px;
-  }
 `;
 
 function Footer() {
@@ -95,17 +80,16 @@ function Footer() {
   const Terms = () => {
     Swal.fire({
       title: "이용약관",
-      text: "본 페이지에서는 본 웹사이트(이하 “사이트”)의 이용에 관하여 적용되는 이용 약관을 설명 합니다. 본 사이트를 이용하실 경우, 본 이용약관을 상세하게 확인하시기 바랍니다."
+      text: "본 페이지에서는 본 웹사이트(이하 “사이트”)의 이용에 관하여 적용되는 이용 약관을 설명 합니다. 본 사이트를 이용하실 경우, 본 이용약관을 상세하게 확인하시기 바랍니다.",
     });
   };
-
 
   const Privacy = () => {
     Swal.fire({
       title: "개인정보 처리방침",
-      text:"알쓸신잡 코스모는 개인정보보호법을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.",
-    })
-  }
+      text: "알쓸신잡 코스모는 개인정보보호법을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.",
+    });
+  };
 
   return (
     <FooterContainer>
