@@ -9,6 +9,11 @@
   font-size: 1em;
 }
 
+.admin_container > h2 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
 .button_container {
   display: flex;
   justify-content: space-between;
@@ -27,14 +32,24 @@
 
 /* userInfo_InfoTable Css */
 /* 검색창, 버튼 (검색, 삭제) */
-.search_input_btn {
+.search_input_title {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 0.8em;
 }
 
-.search_input:focus {
-  outline: 2px solid var(--button-color) !important;
+.search_input_btn_container {
+  display: flex;
+  text-align: left;
+}
+
+.search_btn {
+  margin-left: 0.5em !important;
+}
+
+/* 이전, 다음페이지 */
+.iconbtn-container {
+  text-align: right;
 }
 
 #page-num {
@@ -51,14 +66,21 @@
 
 /* border */
 table {
-  border: 1px solid black;
+  border: 1px solid grey;
+  border-radius: 5px;
   border-collapse: collapse;
 }
 
 table th,
-tr,
 td {
-  border: 1px solid grey;
+  border-bottom: 1px solid grey;
+  height: 35px;
+}
+
+table th,
+td {
+  border-right: 1px dotted grey;
+  border-left: 1px dotted grey;
 }
 
 .user_table tr:last-child td {
@@ -85,26 +107,28 @@ td {
 }
 
 .head_title th:nth-child(3) {
-  width: 35%;
+  width: 30%;
 }
 
 .head_title th:nth-child(4) {
-  width: 35%;
-}
-
-.head_title th:nth-child(5) {
-  width: 5%;
+  width: 40%;
 }
 
 /* tbody 배경색 지정 */
 thead {
-  background-color: #a2d5ff;
+  background-color: #d1d0d0;
 }
 
 tr:nth-child(2n) {
-  background-color: #e7f4ff;
+  background-color: #f1f1f1;
 }
 
 .box_select {
   width: 15px;
+}
+
+@media (max-width: 780px) {
+  .admin_full_container {
+    width: 100vw;
+  }
 }

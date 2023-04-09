@@ -10,7 +10,7 @@ function Admin() {
       <Header />
       <div className="admin_container">
         {/* 회원정보 / 통계 메뉴 버튼 */}
-        <button className="user_info_btn">회원정보</button>
+        <h2>회원정보</h2>
         <InfoTable />
       </div>
       <Footer />

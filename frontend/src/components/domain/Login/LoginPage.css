@@ -1,14 +1,9 @@
 .login-full-container {
   width: 480px;
-  min-width: 520px;
-  height: 100vh;
   margin: auto;
   text-align: center;
-}
-
-.login-header-container {
-  margin-top: 1.8em;
-  margin-bottom: 3em;
+  display: flex;
+  flex-direction: column;
 }
 
 .login-paper-container {
@@ -95,8 +90,7 @@
 @media (max-width: 780px) {
   .login-container {
     padding: 20px;
-    width: 90%;
-    margin: auto;
+    width: 100vw;
   }
   .find-pw-container {
     margin-bottom: 1em;

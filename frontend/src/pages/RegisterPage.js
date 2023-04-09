@@ -131,9 +131,7 @@ function Register() {
 
   return (
     <div className="signup-all-container">
-      <div className="signup-container">
-        <ImgHeader />
-      </div>
+      <ImgHeader />
       <div className="signup-paper-container">
         <Paper className="fpwd-container container_border" elevation={8}>
           <div className="signuptext">회원가입</div>

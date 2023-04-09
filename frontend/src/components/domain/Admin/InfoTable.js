@@ -59,36 +59,37 @@ function InfoTable() {
 
   return (
     <div className="user_info_container">
-      <div className="search_input_btn">
-        <input
-          className="search_input"
-          type="text"
-          onChange={(e) => setSearchText(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              setSearchData(filteredData(userData));
-            }
-          }}
-        ></input>{" "}
-        <Button
-          className="search_btn"
-          variant="contained"
-          onClick={() => setSearchData(filteredData(userData))}
-        >
-          검색
-        </Button>
-        <IconButton onClick={onDecrease}>
-          <ArrowBackIosNewIcon fontSize="small" />
-        </IconButton>
-        <span id="page-num">
-          {page}/{pageSize}
-        </span>
-        <IconButton onClick={onIncrease}>
-          <ArrowForwardIosIcon fontSize="small" />
-        </IconButton>
-        <Button className="user_delete_btn" variant="contained">
-          삭제
-        </Button>
+      <div className="search_input_title">
+        <div className="search_input_btn_container">
+          <input
+            className="search_input"
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setSearchData(filteredData(userData));
+              }
+            }}
+          ></input>{" "}
+          <Button
+            className="search_btn"
+            variant="contained"
+            onClick={() => setSearchData(filteredData(userData))}
+          >
+            검색
+          </Button>
+        </div>
+        <div className="iconbtn-container">
+          <IconButton onClick={onDecrease}>
+            <ArrowBackIosNewIcon fontSize="small" />
+          </IconButton>
+          <span id="page-num">
+            {page}/{pageSize}
+          </span>
+          <IconButton onClick={onIncrease}>
+            <ArrowForwardIosIcon fontSize="small" />
+          </IconButton>
+        </div>
       </div>
       <table className="user_table">
         <thead>
@@ -98,7 +99,6 @@ function InfoTable() {
             <th>이름</th>
             <th>메일</th>
             <th>주소</th>
-            <th>선택</th>
           </tr>
         </thead>
         <tbody>
@@ -109,9 +109,6 @@ function InfoTable() {
                 <td>{userName}</td>
                 <td>{userEmail}</td>
                 <td>{userAddress}</td>
-                <td>
-                  <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 18 } }} />
-                </td>
               </tr>
             ))}
         </tbody>

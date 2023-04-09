@@ -38,7 +38,7 @@ export default function MyPage() {
   }, []);
 
   return (
-    <>
+    <div className="mypage_full_container">
       <Header />
       <Main>
         <div className="mypage-main">
@@ -48,6 +48,6 @@ export default function MyPage() {
         </div>
       </Main>
       <Footer />
-    </>
+    </div>
   );
 }
