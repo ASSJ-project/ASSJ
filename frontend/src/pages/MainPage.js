@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
 import { useSelector } from 'react-redux';
-import JobFilter from '@/components/domain/Map/DataFilter/JobFilter';
-import RegionFilter from '@/components/domain/Map/DataFilter/RegionFilter';
 import { useState, useEffect } from 'react';
 import MapToggle from '@/components/domain/Map/ToggleButton';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
-import AddressSelect from '@/components/domain/Map/AddressSelect/AddressSelect2';
+import RegionFilter from '@/components/domain/Map/AddressSelect/RegionFilter';
+import JobFilter from '@/components/domain/Map/AddressSelect/JobFilter';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -136,8 +135,8 @@ function MainContainer() {
   );
   const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
 
-  const [region, setRegion] = useState('');
-  const [jobsCd, setJobsCd] = useState('');
+  const [region, setRegion] = useState('서울');
+  const [jobsCd, setJobsCd] = useState('550104');
 
   const [cookie, setCookie, removeCookie] = useCookie('data', [], 1);
 
@@ -199,7 +198,7 @@ function MainContainer() {
       <Header />
       <button onClick={removeCookie}>데이터 삭제하기</button>
 
-      {cookie.length === 0 && <AddressSelect />}
+      {cookie.length === 0 && <RegionFilter />}
       <ToolBar>
         <ToolBox>
           <RegionFilter />
@@ -225,21 +224,29 @@ function MainContainer() {
             {data && <KakaoMap data={data} />}
           </MapBoundary>
         ) : (
-          <CompanyList
-            className="companyList"
-            region={region}
-            jobsCd={jobsCd}
-          />
+          <>
+            {data && (
+              <CompanyList
+                data={data}
+                className="companyList"
+                region={region}
+                jobsCd={jobsCd}
+              />
+            )}
+          </>
         )}
 
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          <CompanyList
-            className="companyList"
-            region={region}
-            jobsCd={jobsCd}
-          />
+          {data && (
+            <CompanyList
+              data={data}
+              className="companyList"
+              region={region}
+              jobsCd={jobsCd}
+            />
+          )}
         </List>
       </Content>
       <Footer />
