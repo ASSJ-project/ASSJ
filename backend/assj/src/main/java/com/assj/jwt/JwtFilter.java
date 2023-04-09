@@ -1,7 +1,6 @@
 package com.assj.jwt;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -60,20 +55,6 @@ public class JwtFilter extends OncePerRequestFilter {
       return;
     }
 
-    // try {
-    // JwtToken.isExpired(tokens[0], secretKey);
-
-    // } catch (TokenExpiredException e) {
-    // log.error("토큰이 만료되었습니다");
-    // newToken = JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey,
-    // accessExpiredAt, request, response,
-    // refreshTokenRedisRepository);
-    // filterChain.doFilter(request, response);
-    // return;
-
-    // }
-
-    //
     String role = "";
     String userEmail = "";
     try {
@@ -85,25 +66,17 @@ public class JwtFilter extends OncePerRequestFilter {
       newToken = JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey,
           accessExpiredAt, request, response,
           refreshTokenRedisRepository);
+
+      // 새 토큰으로 권한 부여
       role = JwtToken.getUserRole(newToken, secretKey).replaceAll("\\\"", "");
       userEmail = JwtToken.getUserEmail(newToken, secretKey);
-
-      UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userEmail, null,
-          List.of(new SimpleGrantedAuthority(role)));
-
-      authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-      SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+      Authentication.userNameRoleAuth(userEmail, role, request);
       filterChain.doFilter(request, response);
       return;
     }
 
     // 권한 부여
-    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userEmail, null,
-        List.of(new SimpleGrantedAuthority(role)));
-
-    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+    Authentication.userNameRoleAuth(userEmail, role, request);
     filterChain.doFilter(request, response);
   }
-
 }
