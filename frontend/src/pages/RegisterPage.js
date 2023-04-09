@@ -30,9 +30,9 @@ function Register() {
 
   const nameRegex = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,}$/; // 이름 정규식 (한글, 영문 2글자 이상)
   const emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/; // 이메일 정규식
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.([.]).[a-zA-Z]{0,}$/; // 이메일 정규식
   const passwordRegex =
-    /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/; // 비밀번호 정규식 (숫자 영문 특수문자 조합 8자리 이상)
+    /^(?=.*[a-z,A-Z])(?=.*[0-9])(?=.*[!@#$%^&*+=-]).{8,25}$/; // 비밀번호 정규식 (숫자 영문 특수문자 조합 8자리 이상)
 
   // 마운트시에 주소검색 기능 불러오기
   useEffect(() => {
@@ -71,12 +71,12 @@ function Register() {
     emailjs.init("O8bUvMyNJhc1Z6tVI");
     const ranNum = generateRandom();
     setRandom(ranNum);
-    console.log(ranNum);
+    //console.log(ranNum);
     let templateParams = {
       sendemail: email,
       number: ranNum,
     };
-    // emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
+    emailjs.send("service_vpprlhi", "template_w9u1t6g", templateParams);
     setEmailSend(true);
     alert("입력하신 이메일로 인증번호가 전송되었습니다");
   };
@@ -101,7 +101,6 @@ function Register() {
       return;
     }
     emailCheck(email).then((result) => {
-      console.log(result.data);
       if (result.data === false)
         alert("사용할 수 있는 이메일 입니다 인증번호 전송 버튼을 눌러주십시오");
       setEmailInDB(result.data);
@@ -110,7 +109,7 @@ function Register() {
   };
 
   // 메일 전송 버튼 색깔 토글 함수
-  const sendBtn = (checked) => (checked ? "red" : "blue");
+  const sendBtn = (checked) => (checked ? "red" : "rgb(25,118,210)");
 
   // 회원가입 함수
   const enterClick = () => {
@@ -157,7 +156,7 @@ function Register() {
               <TextField
                 className="total_input"
                 label="이메일"
-                type="email"
+                type="text"
                 size="large"
                 onChange={(e) =>
                   setState(e, setEmail, emailRegex, setEmailVisable)
@@ -169,6 +168,7 @@ function Register() {
                 onClick={() => {
                   checked ? sendEmail() : mailCheck();
                 }}
+                disabled={!emailVisable}
                 style={{ background: sendBtn(checked) }}
                 className="btn-send-email"
               >
