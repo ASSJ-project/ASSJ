@@ -1,7 +1,8 @@
 // coding by 'ikki'
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
-import card1 from "../assets/images/Start-Card1.png";
+import card1 from "../assets/images/start-card1.png";
+import card2 from "../assets/images/start-card2.png";
 import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
@@ -9,9 +10,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 
 const StartPage = () => {
   const customeSlider = useRef();
@@ -72,52 +70,27 @@ const StartPage = () => {
       <Slider {...settings} ref={customeSlider} className="slider">
         <div>
           <Card className="start_card">
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="400"
-              image={card1}
-            />
+            <img src={card1} alt="" />
           </Card>
         </div>
 
         <div>
           <Card className="start_card">
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
+            <img src={card2} alt="" />
           </Card>
         </div>
 
         <div>
+          <Card className="start_card"></Card>
+        </div>
+
+        <div>
+          <Card className="start_card"></Card>
+        </div>
+
+        <div>
           <Card className="start_card">
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
+            <img src={card1} alt="" />
           </Card>
         </div>
       </Slider>
