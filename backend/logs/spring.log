@@ -1,0 +1,118 @@
+2023-04-09 15:26:59.282  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:27:32.432  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-04-09 15:27:32.517  INFO 2320 --- [Thread-35] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-09 15:27:32.521  WARN 2320 --- [Thread-35] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-36-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/java.lang.Thread.sleep(Native Method)
+ app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
+ app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-09 15:27:32.800  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
+2023-04-09 15:27:32.864  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 172 ms
+2023-04-09 15:27:32.908  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-09 15:27:32.934  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2ba632cc-51b6-41a8-ab34-547f9d5973e3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-09 15:27:32.980  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@8a9bded, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ac332ff, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b163161, org.springframework.security.web.header.HeaderWriterFilter@6c3db674, org.springframework.web.filter.CorsFilter@c8a329d, org.springframework.security.web.authentication.logout.LogoutFilter@2fe151a, com.assj.jwt.JwtFilter@26e565b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44d0fa44, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@455f7abc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fa4f048, org.springframework.security.web.session.SessionManagementFilter@28b4b9e1, org.springframework.security.web.access.ExceptionTranslationFilter@2c127d6a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a6efa]
+2023-04-09 15:27:33.020  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-09 15:27:33.022  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.337 seconds (JVM running for 962.239)
+2023-04-09 15:27:33.023  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:28:03.171  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-09 15:28:03.172  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-09 15:28:03.173  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-04-09 15:28:03.175  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:28:03.186  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:28:03.194  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:28:03.199  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-04-09 15:28:03.203  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-04-09 15:28:39.083  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:28:39.085  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:28:39.089  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:28:47.920  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 15:28:47.927  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 15:33:00.835  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-04-09 15:33:00.929  INFO 2320 --- [Thread-39] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-09 15:33:00.930  INFO 2320 --- [Thread-39] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-04-09 15:33:00.932  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-40-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/java.lang.Thread.sleep(Native Method)
+ app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
+ app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.933  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-nioEventLoop-43-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+ java.base@11.0.17/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+ java.base@11.0.17/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:141)
+ app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+ app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+ app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+ app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.934  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.17/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.17/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.938  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-04-09 15:33:00.942  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-09 15:33:01.221  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
+2023-04-09 15:33:01.294  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 180 ms
+2023-04-09 15:33:01.343  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-09 15:33:01.367  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 25c8882e-7e4f-4d8e-8907-fd64693197e7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-09 15:33:01.410  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d3d0cb9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13742db4, org.springframework.security.web.context.SecurityContextPersistenceFilter@7589400b, org.springframework.security.web.header.HeaderWriterFilter@645b6048, org.springframework.web.filter.CorsFilter@3bcb19bd, org.springframework.security.web.authentication.logout.LogoutFilter@3b62b60f, com.assj.jwt.JwtFilter@45c00936, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55ca8ea4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a2cfd75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37340e6b, org.springframework.security.web.session.SessionManagementFilter@1ddf967, org.springframework.security.web.access.ExceptionTranslationFilter@723a5b2d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4469135c]
+2023-04-09 15:33:01.448  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-09 15:33:01.450  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.342 seconds (JVM running for 1290.667)
+2023-04-09 15:33:01.451  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:33:13.685  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-09 15:33:13.688  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-09 15:33:13.690  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-09 15:33:13.700  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-04-09 15:33:13.702  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-04-09 15:38:53.739  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:38:53.750  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:38:53.757  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:39:20.908  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-09 15:39:34.955  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 15:39:34.970  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 15:40:53.747  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:40:53.749  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:40:53.753  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:40:53.754  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:40:53.755  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:40:53.760  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:45:26.582  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:45:26.595  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:45:26.602  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료

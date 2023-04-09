@@ -247,7 +247,9 @@ function Register() {
               className="total_input"
               label="비밀번호 확인"
               type="password"
-              onChange={(e) => setState(e, setcheckPassword)}
+              onChange={(e) =>
+                setState(e, setcheckPassword, passwordRegex, (f) => f)
+              }
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   enterClick();

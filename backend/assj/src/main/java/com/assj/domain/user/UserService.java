@@ -3,7 +3,6 @@ package com.assj.domain.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -202,10 +200,12 @@ public class UserService {
 	}
 
 	/**
-	 * 토큰 쌍을 생성하는 메소드
+	 * 토큰 쌍을 생성
+	 * 토큰을 쿠키로 보냄
+	 * 회원 롤을 리턴
 	 * 
 	 * @param userEmail
-	 * @return 엑세스 토큰, 리프레시 토큰
+	 * @return 회원 롤
 	 */
 	public String generateTokens(String userEmail, HttpServletResponse response, HttpServletRequest request,
 			String userType) {
@@ -241,7 +241,8 @@ public class UserService {
 		// 리프레시 토큰을 redis에 저장
 		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken, role));
 
+		log.info("토큰 발행 완료");
+
 		return role;
 	}
-
 }

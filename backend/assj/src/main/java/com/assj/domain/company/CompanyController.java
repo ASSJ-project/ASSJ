@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.assj.dto.Company;
 
-import lombok.extern.slf4j.Slf4j;
-
 @RestController
 @RequestMapping("/api/company")
 public class CompanyController {
