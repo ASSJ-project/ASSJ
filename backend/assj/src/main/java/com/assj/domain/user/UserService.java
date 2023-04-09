@@ -243,5 +243,4 @@ public class UserService {
 
 		return role;
 	}
-
 }

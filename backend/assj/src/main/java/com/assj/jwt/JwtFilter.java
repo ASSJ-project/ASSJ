@@ -81,7 +81,7 @@ public class JwtFilter extends OncePerRequestFilter {
       role = JwtToken.getUserRole(newToken, secretKey).replaceAll("\\\"", "");
       userEmail = JwtToken.getUserEmail(newToken, secretKey);
     } catch (TokenExpiredException e) {
-      log.error("토큰이 만료되었습니다");
+      log.info("토큰이 만료되었습니다");
       newToken = JwtToken.tokenRefresh(tokens[0], tokens[1], secretKey,
           accessExpiredAt, request, response,
           refreshTokenRedisRepository);
@@ -93,7 +93,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
       authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
       SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-      log.info(authenticationToken.getAuthorities().toString());
       filterChain.doFilter(request, response);
       return;
     }
@@ -104,7 +103,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-    log.info(authenticationToken.getAuthorities().toString());
     filterChain.doFilter(request, response);
   }
 
