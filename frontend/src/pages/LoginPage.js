@@ -2,12 +2,14 @@ import "@/components/domain/Login/LoginPage.css";
 import GoogleLoginBtn from "@/components/domain/Login/GoogleLoginBtn";
 import KakaoLoginBtn from "@/components/domain/Login/KakaoLoginBtn";
 import ImgHeader from "../components/Structure/Header/ImgHeader";
+import Footer from "../components/Structure/Footer/Footer";
 import React, { useState, useEffect } from "react";
 import { loginDo } from "@/apis/login/loginDo";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import Swal from "sweetalert2";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -35,8 +37,12 @@ function LoginPage() {
 
   const logout = () => {
     sessionStorage.clear();
-    alert("로그아웃되었습니다.");
+    Swal.fire({
+      icon: "success",
+      title : "로그아웃되었습니다."
+    }).then(function(){
     window.location.href = "login";
+    });
   };
   return (
     <>
@@ -83,17 +89,22 @@ function LoginPage() {
 
               <div className="find-pw-container">
                 <p className="find-pw">
-                  <Link to="/findpassword">비밀번호 찾기</Link>
+                  <Link to="/findpassword" style={{textDecoration:"none"}}>비밀번호 찾기</Link>
                 </p>
               </div>
               <div className="login-btn-container">
-                <p className="errorMessage errorMessage_mg">
+                <p className="errorMessage errorMessage_mg ">
                   {loginError ? "" : "이메일과 비밀번호를 확인해주세요"}
                 </p>
                 <Button
                   className="login-btn"
                   variant="contained"
                   onClick={login}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      login();
+                    }
+                  }}
                 >
                   로그인
                 </Button>
@@ -105,15 +116,14 @@ function LoginPage() {
 
               <div className="signup-div">
                 <p>
-                  계정이 없으신가요?{" "}
-                  <span className="signup-btn">
-                    <Link to="/register">회원가입</Link>
-                  </span>
+                  계정이 없으신가요?{" "}                  
+                    <Link to="/register" style={{textDecoration: "none"}}>회원가입</Link>                 
                 </p>
               </div>
             </>
           )}
         </Paper>
+        <Footer />
       </div>
     </>
   );

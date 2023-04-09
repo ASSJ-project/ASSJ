@@ -72,6 +72,7 @@ function InfoTable() {
         ></input>{" "}
         <Button
           className="search_btn"
+          variant="contained"
           onClick={() => setSearchData(filteredData(userData))}
         >
           검색
@@ -109,7 +110,7 @@ function InfoTable() {
                 <td>{userEmail}</td>
                 <td>{userAddress}</td>
                 <td>
-                  <Checkbox />
+                  <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 18 } }} />
                 </td>
               </tr>
             ))}

@@ -1,10 +1,12 @@
 /* AdminPage Css */
+.admin_full_container {
+  width: 480px;
+  height: 100vh;
+  margin: auto;
+}
 .admin_container {
   padding: 2em 1em;
   font-size: 1em;
-  width: 480px;
-  height: 80vh;
-  margin: auto;
 }
 
 .button_container {
@@ -16,8 +18,9 @@
   width: 100%;
   font-size: 1.5em;
   padding: 0.4em;
-  background: var(--button-color);
-  border-radius: 10px;
+  background: var(--input-color);
+  box-shadow: 2px 2px 2px rgb(129, 129, 129);
+  border-radius: 5px;
   margin-bottom: 0.6em;
   border: none;
 }
@@ -27,24 +30,15 @@
 .search_input_btn {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.8em;
 }
 
 .search_input:focus {
   outline: 2px solid var(--button-color) !important;
 }
 
-.search_btn {
-  background-color: var(--input-color) !important;
-  /* margin-left: 0.5em !important; */
-}
-
 #page-num {
   margin-top: 0.5em;
-}
-
-.user_delete_btn {
-  /* margin-left: 11em !important; */
 }
 
 /* table전체 */
@@ -52,16 +46,23 @@
   width: 100%;
   border-spacing: 0;
   text-align: center;
+  font-size: 0.8em;
 }
 
 /* border */
-.user_table th,
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table th,
+tr,
 td {
-  border-top: 1px solid black;
+  border: 1px solid grey;
 }
 
 .user_table tr:last-child td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid grey;
 }
 
 /* head */
@@ -76,32 +77,32 @@ td {
 
 /* columns 너비 지정 */
 .head_title th:first-child {
-  width: 4%;
+  width: 5%;
 }
 
 .head_title th:nth-child(2) {
-  width: 10%;
+  width: 13%;
 }
 
 .head_title th:nth-child(3) {
-  width: 10%;
+  width: 35%;
 }
 
 .head_title th:nth-child(4) {
-  width: 30%;
+  width: 35%;
 }
 
 .head_title th:nth-child(5) {
-  width: 7%;
+  width: 5%;
 }
 
 /* tbody 배경색 지정 */
 thead {
-  background-color: var(--button-color);
+  background-color: #a2d5ff;
 }
 
 tr:nth-child(2n) {
-  background-color: var(--input-color);
+  background-color: #e7f4ff;
 }
 
 .box_select {

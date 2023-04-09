@@ -1,5 +1,5 @@
 import "@/components/domain/MyPage/MyPage.css";
-// import MyPageInfo from '@/components/domain/MyPage/MyPage-Info';
+// import MyPageTest from '@/components/domain/MyPage/MyPage-Test';
 import MyPageCheck from "@/components/domain/MyPage/MyPage-Check";
 import MyPageHeader from "@/components/domain/MyPage/MyPage-Header";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import Header from "@/components/Structure/Header/Header";
 import Footer from "@/components/Structure/Footer/Footer";
 import styled from "styled-components";
 import { getUser } from "@/apis/mypage/mypage";
-import MyPageTest from "@/components/domain/MyPage/MyPage-Test";
+import MyPageInfo from "@/components/domain/MyPage/MyPage-Info";
 
 const Main = styled.div`
   flex: 1;
@@ -43,8 +43,8 @@ export default function MyPage() {
       <Main>
         <div className="mypage-main">
           <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2} />
-          {/* {value === true ? <MyPageCheck /> : <MyPageInfo data={userData} />} */}
-          {value === true ? <MyPageCheck /> : <MyPageTest data={userData} />}
+          {/* {value === true ? <MyPageCheck /> : <MyPageTest data={userData} />} */}
+          {value === true ? <MyPageCheck /> : <MyPageInfo data={userData} />}
         </div>
       </Main>
       <Footer />

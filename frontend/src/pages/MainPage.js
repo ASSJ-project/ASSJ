@@ -1,4 +1,5 @@
 import useFetch from '@/hooks/useFetch';
+import useCookie from '@/hooks/useCookie';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
@@ -10,7 +11,7 @@ import MapToggle from '@/components/domain/Map/ToggleButton';
 import CompanyList from '@/components/domain/Map/CompanyList';
 import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
-
+import AddressSelect from '@/components/domain/Map/AddressSelect/AddressSelect2';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -105,7 +106,7 @@ const SearchInput = styled.input`
   margin-right: 5px;
   @media (max-width: 768px) {
     width: 120px;
-    height: 18px; 
+    height: 18px;
     font-size: 13px;
   }
 `;
@@ -119,11 +120,10 @@ const SearchButton = styled.button`
   color: white;
   cursor: pointer;
   @media (max-width: 768px) {
-    height: 40px; 
+    height: 40px;
     font-size: 13px;
   }
 `;
-
 
 function MainContainer() {
   const [filteredData, setFilteredData] = useState('');
@@ -136,8 +136,10 @@ function MainContainer() {
   );
   const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
 
-  const [region, setRegion] = useState('서울 금천구');
-  const [jobsCd, setJobsCd] = useState(133300);
+  const [region, setRegion] = useState('');
+  const [jobsCd, setJobsCd] = useState('');
+
+  const [cookie, setCookie, removeCookie] = useCookie('data', [], 1);
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -175,6 +177,11 @@ function MainContainer() {
     header
   );
 
+  // 데이터를 추가하는 함수 (예시)
+  const addCookie = () => {
+    setCookie([...data, '새로운 데이터']);
+  };
+
   if (loading) {
     return (
       <LoadingContainer>
@@ -190,6 +197,9 @@ function MainContainer() {
   return (
     <>
       <Header />
+      <button onClick={removeCookie}>데이터 삭제하기</button>
+
+      {cookie.length === 0 && <AddressSelect />}
       <ToolBar>
         <ToolBox>
           <RegionFilter />
@@ -210,7 +220,7 @@ function MainContainer() {
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
 
-        {selected === "map" ? (
+        {selected === 'map' ? (
           <MapBoundary className="MapBoundary">
             {data && <KakaoMap data={data} />}
           </MapBoundary>
@@ -236,6 +246,5 @@ function MainContainer() {
     </>
   );
 }
-
 
 export default MainContainer;

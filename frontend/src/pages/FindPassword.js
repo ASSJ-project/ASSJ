@@ -49,10 +49,11 @@ function FindPassword() {
   //비밀번호 재입력 확인
   const changeconfirmPwd = (e) => {
     setConfirmPwd(e.target.value);
-    if (e.target.value == pwd) {
+    if (passwordRegex.test(e.target.value) && e.target.value == pwd) {
       setConfirmPwdErrorMessage(true);
       setBtnDisable(false);
     } else {
+      setBtnDisable(true);
       setConfirmPwdErrorMessage(false);
     }
     // pwd == (e.target.value) ? setConfirmPwdErrorMessage(true) && setBtnDisable(false) : setConfirmPwdErrorMessage(false);
