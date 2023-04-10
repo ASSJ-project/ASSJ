@@ -203,7 +203,6 @@ function MainContainer() {
           <>
             {data && (
               <CompanyList
-                data={data}
                 className="companyList"
                 region={region}
                 jobsCd={jobsCd}
@@ -217,7 +216,6 @@ function MainContainer() {
           <JobFilter />
           {data && (
             <CompanyList
-              data={data}
               className="companyList"
               region={region}
               jobsCd={jobsCd}
