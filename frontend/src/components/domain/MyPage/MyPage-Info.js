@@ -35,11 +35,7 @@ const MyPageTest = (data) => {
   };
 
   const mypagedelete = () => { // 회원탈퇴 눌렀을 때 실행되는 onclick 이벤트입니다
-    isLogin ? setIsDelete(true)
-      // isSocial === "ROLE_SNS"  // 이부분은 소셜유저일때 회원탈퇴를 하지 못하게 만들었으나 보류하겠습니다.
-      //   ? alert("소셜은 이용 불가능합니다.")
-        // : setIsDelete(true)
-      : alert("로그인 후 이용 가능합니다");
+    setIsDelete(true)
   };
 
   const mypagenodelete = () => { // 회원탈퇴 누르면 생기는 취수버튼을 눌렀을 때 실행되는 onclick 이벤트입니다
@@ -65,7 +61,8 @@ const MyPageTest = (data) => {
         </Button>
       } 
 
-      {!isDelete ? 
+      {!isLogin || isSocial === "ROLE_SNS"? <div className="MyPagebox-none"></div>:
+      !isDelete ? 
         <Button variant="contained" style={{ marginTop: "10px", fontSize: "20px" }} onClick={mypagedelete}>
           회원탈퇴
         </Button>
