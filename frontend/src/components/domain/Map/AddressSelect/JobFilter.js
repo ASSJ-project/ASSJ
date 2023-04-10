@@ -215,7 +215,6 @@ export default function JobFilter() {
   return (
     <>
       <Button onClick={handleOpen}>업종</Button>
-      
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <div style={{ textAlign: 'center' }}>업종</div>
