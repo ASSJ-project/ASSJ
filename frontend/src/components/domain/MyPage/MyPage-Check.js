@@ -7,7 +7,7 @@ const MyPageCheck = () => {
   let [company, setcompany] = useState([]);
 
   useEffect(() => {
-    let info = localStorage.getItem('data');
+    let info = sessionStorage.getItem('data');
     if (info == null) {
       info = [];
     } else {
@@ -18,13 +18,13 @@ const MyPageCheck = () => {
 
   //검색어 삭제 함수에용
   function lol(i) {
-    let info = localStorage.getItem('data');
+    let info = sessionStorage.getItem('data');
     info = JSON.parse(info);
-    localStorage.removeItem('data');
+    sessionStorage.removeItem('data');
     info.splice(i, 1);
     console.log(info);
     setcompany(info);
-    localStorage.setItem('data', JSON.stringify(info));
+    sessionStorage.setItem('data', JSON.stringify(info));
   }
 
   //최근조회한것을 보여줍니다.
@@ -52,7 +52,7 @@ const MyPageCheck = () => {
 
   //검색어 전체 삭제
   const handleClearKeywords = () => {
-    localStorage.removeItem('data');
+    sessionStorage.removeItem('data');
     setcompany([]);
   };
 

@@ -3,6 +3,7 @@ import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
 import card1 from "../assets/images/start-card1.png";
 import card2 from "../assets/images/start-card2.png";
+import card3 from "../assets/images/start-card3.png"
 import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
@@ -81,7 +82,9 @@ const StartPage = () => {
         </div>
 
         <div>
-          <Card className="start_card"></Card>
+        <Card className="start_card">
+            <img src={card3} alt="" />
+          </Card>
         </div>
 
         <div>
@@ -96,12 +99,15 @@ const StartPage = () => {
       </Slider>
 
       <div className="pvne_btn">
-        <button className="previous" onClick={gotoPrev}>
+        {/* <button className="previous" onClick={gotoPrev}>
           이전
-        </button>
-        <button className="next-btn" onClick={gotoNext}>
+        </button> */}
+        <Button onClick={gotoPrev} variant="contained">
+          이전
+        </Button>
+        <Button className="next-btn" onClick={gotoNext} variant="contained">
           다음
-        </button>
+        </Button>
       </div>
 
       <div className="btn-container">
