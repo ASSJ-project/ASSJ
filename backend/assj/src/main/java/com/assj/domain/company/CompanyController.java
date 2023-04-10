@@ -38,8 +38,8 @@ public class CompanyController {
     }
 
     @GetMapping("/test")
-    public List<Company> test(@RequestParam String basicAddr) {
-        return companyService.test(basicAddr);
+    public List<Company> test(@RequestParam String region) {
+        return companyService.test(region);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

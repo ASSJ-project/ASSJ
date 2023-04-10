@@ -87,11 +87,10 @@ public class CompanyService {
         return companies;
     }
 
-    public List<Company> test(String basicAddr) {
-        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString";
-        String addressString = basicAddr + "%";
+    public List<Company> test(String region) {
+        String sql = "SELECT * FROM company WHERE region IN (:region)";
         MapSqlParameterSource params = new MapSqlParameterSource()
-                .addValue("addressString", addressString);
+                .addValue("region", region);
 
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
