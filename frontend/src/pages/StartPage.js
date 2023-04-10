@@ -2,9 +2,13 @@
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
 import card1 from "../assets/images/start-card1.png";
-import card2 from "../assets/images/start-card2.png";
-import card3 from "../assets/images/start-card3.png"
-import React, { useEffect, useRef } from "react";
+import card2 from "../assets/images/start-card2.svg";
+import card3 from "../assets/images/start-card3.svg";
+import card4 from "../assets/images/start-card4.svg";
+import card5 from "../assets/images/start-card5.svg"
+import card6 from "../assets/images/start-card5.png";
+
+import React, {  useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -82,18 +86,26 @@ const StartPage = () => {
         </div>
 
         <div>
-        <Card className="start_card">
-            <img src={card3} alt="" />
+          <Card className="start_card">
+           <img src={card3} alt="" />
           </Card>
         </div>
 
         <div>
-          <Card className="start_card"></Card>
+          <Card className="start_card">
+           <img src={card4} alt="" />
+          </Card>
         </div>
 
         <div>
           <Card className="start_card">
-            <img src={card1} alt="" />
+           <img src={card5} alt="" />
+          </Card>
+        </div>
+
+        <div>
+          <Card className="start_card">
+            <img src={card6} alt="" />
           </Card>
         </div>
       </Slider>
