@@ -145,7 +145,7 @@ function MainContainer() {
     (state) => state.dataInfo.setMarkerAddress
   );
 
-  const [basicAddr, setBasicAddr] = useState('initial');
+  const [basicAddr, setBasicAddr] = useState('블락');
   const [region, setRegion] = useState('');
   const [jobsCd, setJobsCd] = useState('');
 
@@ -157,7 +157,7 @@ function MainContainer() {
   }, [setFilterRegion, setFilterJob]);
 
   useEffect(() => {
-    setBasicAddr(setMarkerAddress);
+    setRegion(setMarkerAddress);
   }, [setMarkerAddress]);
 
   const handleSearch = () => {
@@ -177,9 +177,7 @@ function MainContainer() {
   };
 
   const queryParam = {
-    basicAddr,
-    // region,
-    // jobsCd,
+    region,
   };
 
   const header = {

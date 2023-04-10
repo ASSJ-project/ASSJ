@@ -17,7 +17,6 @@ export default function CompanyList(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(`데앝: ${data}`)
   function handleClick() {
     navigate('/test');
   }

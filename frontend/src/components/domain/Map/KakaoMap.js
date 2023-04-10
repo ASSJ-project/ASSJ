@@ -36,16 +36,16 @@ export default function KakaoMap(props) {
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-        // kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-        //   // 클릭한 위도, 경도 정보를 가져옵니다
-        //   var latlng = mouseEvent.latLng;
+        kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+          // 클릭한 위도, 경도 정보를 가져옵니다
+          var latlng = mouseEvent.latLng;
 
-        //   // 마커 위치를 클릭한 위치로 옮깁니다
-        //   marker.setPosition(latlng);
+          // 마커 위치를 클릭한 위치로 옮깁니다
+          marker.setPosition(latlng);
 
-        //   setUserY(latlng.getLat());
-        //   setUserX(latlng.getLng());
-        // });
+          setUserY(latlng.getLat());
+          setUserX(latlng.getLng());
+        });
 
         // 마우스 드래그로 지도 이동이 완료되었을 때 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
         kakao.maps.event.addListener(map, 'dragend', function () {
@@ -245,45 +245,42 @@ export default function KakaoMap(props) {
     kakaoMap.panTo(newPosition);
   }, [kakaoMap, center]);
 
-  // useEffect(() => {
-  //   if (!kakaoMap || !data) {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!kakaoMap || !data) {
+      return;
+    }
 
-  //   var geocoder = new kakao.maps.services.Geocoder();
+    var geocoder = new kakao.maps.services.Geocoder();
 
-  //   var coord = new kakao.maps.LatLng(userY, userX);
-  //   var callback = function (result, status) {
-  //     if (status === kakao.maps.services.Status.OK) {
-  //       console.log(result);
-  //       const [first, second, third] = result[0].address.address_name.split(
-  //         ' ',
-  //         3
-  //       );
-  //       const clickedMarkerAddress = `${first} ${second} ${third}`;
-  //       const testAddress = `${first} ${second} ${third}`;
-  //       dispatch(setMarkerAddress(testAddress));
-  //     }
-  //   };
+    var coord = new kakao.maps.LatLng(userY, userX);
+    var callback = function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        console.log(result);
+        const [first, second] = result[0].address.address_name.split(' ', 2);
+        const clickedMarkerAddress = `${first} ${second}`;
+        console.log(clickedMarkerAddress);
+        dispatch(setMarkerAddress(clickedMarkerAddress));
+      }
+    };
 
-  //   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-  // }, [userX, userY]);
+    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+  }, [userX, userY]);
 
-  const queryParam = {
-    x: userX,
-    y: userY,
-    input_coord: 'WGS84',
-  };
+  // const queryParam = {
+  //   x: userX,
+  //   y: userY,
+  //   input_coord: 'WGS84',
+  // };
 
-  const header = {
-    Authorization: `KakaoAK ${restApiKey}`,
-  };
+  // const header = {
+  //   Authorization: `KakaoAK ${restApiKey}`,
+  // };
 
-  const { result, loading, error } = useFetch(
-    'https://dapi.kakao.com/v2/local/geo/coord2address.json',
-    queryParam,
-    header
-  );
+  // const { result, loading, error } = useFetch(
+  //   'https://dapi.kakao.com/v2/local/geo/coord2address.json',
+  //   queryParam,
+  //   header
+  // );
 
   return (
     <div style={{ width: '100%', height: '100%' }} id="map">
