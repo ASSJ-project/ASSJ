@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function useGetCompany(region, jobsCd, page) {
-  const [items, setItems] = useState([]);
+  const [newItems, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -42,7 +42,7 @@ function useGetCompany(region, jobsCd, page) {
     fetchData();
   }, [region, jobsCd, page]);
 
-  return { items, loading, error };
+  return { newItems, loading, error };
 }
 
 export default useGetCompany;
