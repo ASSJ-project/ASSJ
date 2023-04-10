@@ -130,13 +130,24 @@ function MainContainer() {
   const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
   const [searchText, setSearchText] = useState('');
 
+  /**
+   * 리덕스 상태 저장
+   * setFilterRegion  지역 코드 출력
+   * setFilterJob     업종 코드 출력
+   * setMarkerAddress 마커를 찍은 위치 출력
+   */
   const setFilterRegion = useSelector(
     (state) => state.dataFilter.setFilterRegion
   );
   const setFilterJob = useSelector((state) => state.dataFilter.setFilterJob);
 
-  const [region, setRegion] = useState('서울');
-  const [jobsCd, setJobsCd] = useState('550104');
+  const setMarkerAddress = useSelector(
+    (state) => state.dataInfo.setMarkerAddress
+  );
+
+  const [basicAddr, setBasicAddr] = useState('initial');
+  const [region, setRegion] = useState('');
+  const [jobsCd, setJobsCd] = useState('');
 
   const [cookie, setCookie, removeCookie] = useCookie('data', [], 1);
 
@@ -144,6 +155,10 @@ function MainContainer() {
     setRegion(setFilterRegion);
     setJobsCd(setFilterJob);
   }, [setFilterRegion, setFilterJob]);
+
+  useEffect(() => {
+    setBasicAddr(setMarkerAddress);
+  }, [setMarkerAddress]);
 
   const handleSearch = () => {
     let filtered = data.filter((item) => {
@@ -162,8 +177,9 @@ function MainContainer() {
   };
 
   const queryParam = {
-    region,
-    jobsCd,
+    basicAddr,
+    // region,
+    // jobsCd,
   };
 
   const header = {
@@ -171,7 +187,7 @@ function MainContainer() {
   };
 
   const { data, loading, error } = useFetch(
-    '/api/company/getItems',
+    '/api/company/test',
     queryParam,
     header
   );

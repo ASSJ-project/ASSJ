@@ -1,18 +1,21 @@
 /* global kakao */
 
 import React, { useEffect, useState, useRef } from 'react';
+import useFetch from '@/hooks/useFetch';
 import { userBasedtransCoordCB } from '@/libs/utils/mapUtils';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import '@/components/domain/Map/css/style_addMouseOver.css';
+import { setMarkerAddress } from '@/actions/dataInfoAction';
 
 export default function KakaoMap(props) {
-  const { data, location } = props;
+  const { data } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const activeOverlayContent = useRef(null);
+  const dispatch = useDispatch();
   const apiKey = process.env.REACT_APP_KAKAO_API_KEY;
-  const navigate = useNavigate();
+  const restApiKey = process.env.REACT_APP_KAKAO_REST_API_KEY;
 
   const center = useSelector((state) => state.map.center);
 
@@ -32,6 +35,26 @@ export default function KakaoMap(props) {
           level: 9,
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
+
+        // kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+        //   // 클릭한 위도, 경도 정보를 가져옵니다
+        //   var latlng = mouseEvent.latLng;
+
+        //   // 마커 위치를 클릭한 위치로 옮깁니다
+        //   marker.setPosition(latlng);
+
+        //   setUserY(latlng.getLat());
+        //   setUserX(latlng.getLng());
+        // });
+
+        // 마우스 드래그로 지도 이동이 완료되었을 때 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+        kakao.maps.event.addListener(map, 'dragend', function () {
+          // 지도 중심좌표를 얻어옵니다
+          var latlng = map.getCenter();
+
+          setUserY(latlng.getLat());
+          setUserX(latlng.getLng());
+        });
 
         // 마커를 생성합니다.
         var marker = new kakao.maps.Marker({
@@ -70,6 +93,30 @@ export default function KakaoMap(props) {
       const overlayContent = document.createElement('div');
       overlayContent.innerHTML = content;
       overlayContent.classList.add('overlay_content'); // 클래스 추가
+
+      overlayContent.onclick = () => {
+        if (isMobileResolution()) {
+          if (overlayContent.style.opacity === '1') {
+            hideMoreInfo(overlayContent);
+            setHideOverlayZIndex(overlay);
+          } else {
+            showMoreInfo(overlayContent, item);
+            setCoverdOverlayZIndex(overlay);
+          }
+        }
+      };
+
+      // 마우스 오버/아웃 이벤트 대신 터치 이벤트를 사용하여 모바일에서도 오버레이 추가 정보 표시/숨기기 구현
+      if (!isMobileResolution()) {
+        overlayContent.onmouseover = () => {
+          showMoreInfo(overlayContent, item);
+          setCoverdOverlayZIndex(overlay);
+        };
+        overlayContent.onmouseout = () => {
+          hideMoreInfo(overlayContent);
+          setHideOverlayZIndex(overlay);
+        };
+      }
 
       // overlayContent에 이벤트 추가
       if (!isMobileResolution()) {
@@ -184,7 +231,7 @@ export default function KakaoMap(props) {
     });
 
     setMarkers(newMarkers);
-  }, [kakaoMap, data]);
+  }, [kakaoMap, data, userX, userY]);
 
   useEffect(() => {
     if (!kakaoMap || !data) {
@@ -197,6 +244,46 @@ export default function KakaoMap(props) {
     );
     kakaoMap.panTo(newPosition);
   }, [kakaoMap, center]);
+
+  // useEffect(() => {
+  //   if (!kakaoMap || !data) {
+  //     return;
+  //   }
+
+  //   var geocoder = new kakao.maps.services.Geocoder();
+
+  //   var coord = new kakao.maps.LatLng(userY, userX);
+  //   var callback = function (result, status) {
+  //     if (status === kakao.maps.services.Status.OK) {
+  //       console.log(result);
+  //       const [first, second, third] = result[0].address.address_name.split(
+  //         ' ',
+  //         3
+  //       );
+  //       const clickedMarkerAddress = `${first} ${second} ${third}`;
+  //       const testAddress = `${first} ${second} ${third}`;
+  //       dispatch(setMarkerAddress(testAddress));
+  //     }
+  //   };
+
+  //   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+  // }, [userX, userY]);
+
+  const queryParam = {
+    x: userX,
+    y: userY,
+    input_coord: 'WGS84',
+  };
+
+  const header = {
+    Authorization: `KakaoAK ${restApiKey}`,
+  };
+
+  const { result, loading, error } = useFetch(
+    'https://dapi.kakao.com/v2/local/geo/coord2address.json',
+    queryParam,
+    header
+  );
 
   return (
     <div style={{ width: '100%', height: '100%' }} id="map">

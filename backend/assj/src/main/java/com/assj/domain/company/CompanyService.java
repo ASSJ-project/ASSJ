@@ -87,6 +87,17 @@ public class CompanyService {
         return companies;
     }
 
+    public List<Company> test(String basicAddr) {
+        String sql = "SELECT * FROM company WHERE basicAddr LIKE :addressString";
+        String addressString = basicAddr + "%";
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("addressString", addressString);
+
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        List<Company> companies = namedParameterJdbcTemplate.query(sql, params, new CompanyRowMapper());
+        return companies;
+    }
+
     /**
      * 주소 좌표 호출
      */

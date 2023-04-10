@@ -1,5 +1,5 @@
 // 리듀서 작성
-import { SET_CLICK_DATA } from '@/actions/dataInfoAction';
+import { SET_CLICK_DATA, SET_MAKER_ADDRESS } from '@/actions/dataInfoAction';
 
 // 리듀서 초기화
 const initialState = {
@@ -15,6 +15,11 @@ const dataInfoReducer = (state = initialState, action) => {
           x: action.payload.x,
           y: action.payload.y,
         },
+      };
+    case SET_MAKER_ADDRESS:
+      return {
+        ...state,
+        setMarkerAddress: action.payload,
       };
     default:
       return state;
