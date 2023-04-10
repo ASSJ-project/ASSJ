@@ -11,8 +11,8 @@ import { setFilterRegion } from '@/actions/dataFilterActions';
 /* ListWrapper와 SubListWrapper에 공통 스타일 추가 */
 const ScrollbarStyles = `
   &::-webkit-scrollbar {
-    width: 0.5em;
-    height: 0.5em;
+    width: 0.3em;
+    height: 0.3em;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -36,7 +36,7 @@ const ListWrapper = styled(List)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  width: 50%;
+  width: 40%;
   max-height: 400px; // Remove comment
   overflow-y: auto; // Remove comment
 
@@ -60,7 +60,7 @@ const SubListWrapper = styled(List)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  width: 50%;
+  width: 60%;
   max-height: 400px; // Add max height
   overflow-y: auto; // Add overflow-y
 
@@ -121,13 +121,31 @@ const CheckMark = styled.span`
 `;
 
 const AutoComplete = styled.div`
+  background-color: white;
+  padding: 5px;
+  border-top-left-radius: 12px;
+  box-shadow: 0 -2px 16px 0 rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
+`;
+
+const AutoCompleteWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100px;
   background-color: white;
-  padding: 20px;
+  padding: 20px 10px;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   box-shadow: 0 -2px 16px 0 rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
 `;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+`;
+
 const data = json;
 
 export default function RegionFilter() {
@@ -177,9 +195,18 @@ export default function RegionFilter() {
     }
   };
 
+  const handleReset = () => {
+    const resetSubItems = {};
+    Object.keys(selectedSubItems).forEach((key) => {
+      resetSubItems[key] = false;
+    });
+    setSelectedSubItems(resetSubItems);
+    setSelectedRegions([]);
+  };
+
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>지역</Button>
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <div style={{ textAlign: 'center' }}>지역</div>
@@ -220,40 +247,41 @@ export default function RegionFilter() {
               </SubListWrapper>
             )}
           </Container>
-          <AutoComplete>
-            {selectedRegions.length > 0
-              ? selectedRegions.map((region, index) => (
+          <AutoCompleteWrapper>
+            <AutoComplete>
+              {selectedRegions.length > 0 ? (
+                selectedRegions.map((region, index) => (
                   <Chip
                     key={index}
                     label={region}
                     style={{
                       marginRight: 8,
                       marginBottom: 8,
-                      backgroundColor: '#b1dbf3',
-                      fontSize: '8px',
+                      backgroundColor: '#e3f2fd',
                     }}
                     onDelete={() => handleDelete(region)}
                   />
                 ))
-              : '지역을 선택해주세요'}
-
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}
-            >
-              <Button onClick={() => {}}>초기화</Button>
+              ) : (
+                <span style={{ color: 'grey' }}>지역을 선택해주세요</span>
+              )}
+            </AutoComplete>
+            <ButtonWrapper>
+              <Button variant="outlined" onClick={handleReset}>
+                초기화
+              </Button>
               <Button
-                onClick={() =>
-                  dispatch(setFilterRegion(selectedRegions.join(', ')))
-                }
+                variant="contained"
+                style={{ width: '200px' }}
+                onClick={() => {
+                  handleClose();
+                  dispatch(setFilterRegion(selectedRegions.join(', ')));
+                }}
               >
                 적용
               </Button>
-            </div>
-          </AutoComplete>
+            </ButtonWrapper>
+          </AutoCompleteWrapper>
         </ModalContent>
       </Modal>
     </>
