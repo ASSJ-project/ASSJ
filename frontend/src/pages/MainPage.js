@@ -52,7 +52,7 @@ const Content = styled.div`
   border: 1px solid #b4c0d3;
 
   @media (max-width: 768px) {
-    margin-top: 0;
+    margin-top: 1em;
   }
 `;
 const ToolBar = styled.div`
@@ -91,6 +91,7 @@ const SearchContainer = styled.div`
   margin-right: auto;
   @media (max-width: 768px) {
     width: 60%;
+    
     display: inline;
     float: right;
     margin-right: 0;
@@ -115,7 +116,7 @@ const SearchButton = styled.button`
   padding: 10px;
   border: none;
   border-radius: 6px;
-  background-color: #b4c0d3;
+  background-color: #1976d2;
   color: white;
   cursor: pointer;
   @media (max-width: 768px) {
