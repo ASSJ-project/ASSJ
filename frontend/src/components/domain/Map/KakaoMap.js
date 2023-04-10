@@ -22,13 +22,13 @@ export default function KakaoMap(props) {
   const json1 = json;
 
   const colors = {
-    '022': '#ef9a9a',
-    '023': '#81d4fa',
-    '024': '#a5d6a7',
-    '025': '#fff59d',
-    '026': '#ce93d8',
-    '033': '#ffcc80',
-    '056': '#f48fb1',
+    '022': '#e53935',
+    '023': '#039be5',
+    '024': '#43a047',
+    '025': '#fdd835',
+    '026': '#8e24aa',
+    '033': '#fb8c00',
+    '056': '#d81b60',
   };
 
   useEffect(() => {
@@ -88,9 +88,17 @@ export default function KakaoMap(props) {
       );
 
       const color = findColorById(item.jobsCd);
-      const iconHTML = `<i class="fas fa-building" style="color: black;"></i>`;
+      const iconHTML = `<i class="fas fa-building" style="color: white;"></i>`;
       // 지도에 띄우는 기본적인 마커 내용
-      const content = `<div class="label" id="remove-default-browser-effect" style="background-color: ${color}">${iconHTML}${item.company}</div>`;
+      const content = `
+        <div class="label" id="remove-default-browser-effect" style="border: 2px solid ${color}">
+          <div class="icon-circle" style="background-color: ${color};">${iconHTML}</div>
+          <div class="text-container">
+            <div>${item.company}</div>
+            <div class="small-text">${distance}</div>
+          </div>
+        </div>`;
+
       const overlayContent = document.createElement('div');
       overlayContent.innerHTML = content;
       overlayContent.classList.add('overlay_content'); // 클래스 추가

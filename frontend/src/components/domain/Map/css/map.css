@@ -2,19 +2,35 @@
 
 /* 기본 마커 */
 .label {
-  cursor: pointer; /* 마우스 포인터가 라벨 위에 있을 때 포인터 모양으로 변경 */
-  transition: transform 0.3s ease; /* 크기 변화에 대한 부드러운 애니메이션 효과 적용 */
-  background-color: rgba(255, 255, 255, 0.952);
+  /* ... 기존 스타일 유지 ... */
+  display: flex; /* 추가 */
+  align-items: center; /* 추가 */
   border-radius: 24px;
-  border: 0.1em solid rgb(108, 104, 148);
-  color: black;
+  /* border: 1px solid #1565c0; */
+  background-color: white;
   font-size: 0.8em;
-  box-shadow: 0 2px 4px rgba(146, 143, 143, 0.18);
-  padding: 3px 7px;
-  position: relative;
-  transform: scale(1);
-  transform-origin: 50% 50%;
-  font-family: var(--font-NotoSansKorean);
+  font-weight: bolder;
+  display: flex; /* 추가 */
+  align-items: center; /* 추가 */
+  padding-left: 5px;
+}
+
+.text-container {
+  padding: 5px 10px;
+}
+
+.icon-circle {
+  width: 25px; /* 원하는 크기로 조절 */
+  height: 25px; /* 원하는 크기로 조절 */
+  border-radius: 50%; /* 원 모양 유지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-text {
+  font-size: 0.6em; /* 작은 글씨 크기 설정 */
+  color: rgba(14, 0, 0, 0.692); /* 작은 글씨 색상 설정 */
 }
 
 /* 주소 크기 조절 */
@@ -32,8 +48,8 @@
 
 .label:hover {
   transform: scale(1.2); /* 마우스 오버 시 크기를 20% 증가 */
-  background-color: rgba(161, 161, 226, 0.952);
-  box-shadow: 0 0 15px rgba(115, 115, 221, 0.5);
+  background-color: rgb(249, 249, 252);
+  box-shadow: 0 0 15px rgba(56, 56, 131, 0.5);
 }
 
 /* 퍼지는 효과를 위한 설정 */
