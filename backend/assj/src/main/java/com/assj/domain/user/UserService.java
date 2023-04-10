@@ -237,7 +237,7 @@ public class UserService {
 		if (userIp == null) {
 			userIp = request.getRemoteAddr();
 		}
-		// 두 조건 다 아닐 경우의 exception 처리도 필요해질것 같다
+
 		// 리프레시 토큰을 redis에 저장
 		refreshTokenRedisRepository.save(new RefreshToken(redisId, userEmail, userIp, refreshToken, role));
 
