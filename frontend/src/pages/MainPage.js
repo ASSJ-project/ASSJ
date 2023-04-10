@@ -1,4 +1,5 @@
 import useFetch from '@/hooks/useFetch';
+import useApiFetch from '@/hooks/useApiFetch';
 import useCookie from '@/hooks/useCookie';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
@@ -115,7 +116,7 @@ const SearchButton = styled.button`
   padding: 10px;
   border: none;
   border-radius: 6px;
-  background-color: #1976d2;
+  background-color: #b4c0d3;
   color: white;
   cursor: pointer;
   @media (max-width: 768px) {
@@ -125,17 +126,10 @@ const SearchButton = styled.button`
 `;
 
 function MainContainer() {
-  const [filteredData, setFilteredData] = useState('');
   const [selected, setSelected] = useState('map');
-  const selectedSubcategory = useSelector((state) => state.selectedSubcategory);
   const [searchText, setSearchText] = useState('');
+  const [mapData, setMapData] = useState('');
 
-  /**
-   * 리덕스 상태 저장
-   * setFilterRegion  지역 코드 출력
-   * setFilterJob     업종 코드 출력
-   * setMarkerAddress 마커를 찍은 위치 출력
-   */
   const setFilterRegion = useSelector(
     (state) => state.dataFilter.setFilterRegion
   );
@@ -145,11 +139,8 @@ function MainContainer() {
     (state) => state.dataInfo.setMarkerAddress
   );
 
-  const [basicAddr, setBasicAddr] = useState('블락');
   const [region, setRegion] = useState('');
   const [jobsCd, setJobsCd] = useState('');
-
-  const [cookie, setCookie, removeCookie] = useCookie('data', [], 1);
 
   useEffect(() => {
     setRegion(setFilterRegion);
@@ -160,40 +151,15 @@ function MainContainer() {
     setRegion(setMarkerAddress);
   }, [setMarkerAddress]);
 
-  const handleSearch = () => {
-    let filtered = data.filter((item) => {
-      // if (salary && item.salary !== salary) {
-      //   return false;
-      // }
-      if (selectedSubcategory && item.jobsCd !== selectedSubcategory) {
-        return false;
-      }
-      if (searchText && !item.basicAddr.includes(searchText)) {
-        return false;
-      }
-      return true;
-    });
-    setFilteredData(filtered);
-  };
-
-  const queryParam = {
-    region,
-  };
-
-  const header = {
-    'X-Custom-Header': 'YourCustomHeaderValue',
-  };
-
-  const { data, loading, error } = useFetch(
-    '/api/company/test',
-    queryParam,
-    header
+  const { data, loading, error } = useApiFetch(
+    `/api/company/getItems?region=${region}&jobsCd=${jobsCd}`
   );
 
-  // 데이터를 추가하는 함수 (예시)
-  const addCookie = () => {
-    setCookie([...data, '새로운 데이터']);
-  };
+  useEffect(() => {
+    if (data) {
+      setMapData(data);
+    }
+  }, [data]);
 
   if (loading) {
     return (
@@ -210,9 +176,6 @@ function MainContainer() {
   return (
     <>
       <Header />
-      <button onClick={removeCookie}>데이터 삭제하기</button>
-
-      {cookie.length === 0 && <RegionFilter />}
       <ToolBar>
         <ToolBox>
           <RegionFilter />
@@ -225,7 +188,6 @@ function MainContainer() {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <SearchButton onClick={handleSearch}>검색</SearchButton>
         </SearchContainer>
       </ToolBar>
       <Content className="Content">
@@ -235,7 +197,7 @@ function MainContainer() {
 
         {selected === 'map' ? (
           <MapBoundary className="MapBoundary">
-            {data && <KakaoMap data={data} />}
+            {mapData && <KakaoMap data={mapData} />}
           </MapBoundary>
         ) : (
           <>
