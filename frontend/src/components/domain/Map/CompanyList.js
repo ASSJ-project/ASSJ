@@ -9,7 +9,6 @@ import { setCenter } from '@/actions/mapActions';
 import { useDispatch } from 'react-redux';
 import Modal from '@mui/material/Modal';
 import styled from 'styled-components';
-import ModalMap from './ModalMap';
 
 export default function CompanyList(props) {
   const { region, jobsCd, data } = props;
@@ -142,10 +141,6 @@ export default function CompanyList(props) {
             <dt className='modal-dt'>모집기간</dt>
             <dd className='modal-dd'>{selectedItem?.regDt} ~ {selectedItem?.closeDt}</dd>
           </dl>
-
-          <div className='modal-map' >
-            <ModalMap userY={selectedItem?.wgsY} userX={selectedItem?.wgsX} />
-          </div>
         </div>
       </Modal>
       </div>
