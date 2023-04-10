@@ -42,6 +42,11 @@ public class CompanyController {
         return companyService.test(region);
     }
 
+    @GetMapping("/basic")
+    public List<Company> basic(@RequestParam String basicAddr) {
+        return companyService.basic(basicAddr);
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/set")
     public void setCompaniesData() {
