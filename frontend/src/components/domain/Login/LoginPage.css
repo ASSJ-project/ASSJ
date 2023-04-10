@@ -11,6 +11,10 @@
   padding-bottom: 4em;
 }
 
+.login_button_container Button {
+  margin: 2.5em 0.5em 0 0.5em;
+}
+
 .logintext {
   font-size: 2em;
   font-weight: 700;
@@ -87,15 +91,9 @@
   color: var(--text-color);
   text-decoration: underline;
 }
-@media (max-width: 780px) {
-  .login-container {
-    padding: 20px;
+
+@media screen and (max-width: 780px) {
+  .login-full-container {
     width: 100vw;
-  }
-  .find-pw-container {
-    margin-bottom: 1em;
-  }
-  .pw-text {
-    margin-top: 35px;
   }
 }

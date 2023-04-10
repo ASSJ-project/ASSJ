@@ -3,7 +3,7 @@ import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
 import card1 from "../assets/images/start-card1.png";
 import card2 from "../assets/images/start-card2.png";
-import card3 from "../assets/images/start-card3.png"
+import card3 from "../assets/images/start-card3.png";
 import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
@@ -82,7 +82,7 @@ const StartPage = () => {
         </div>
 
         <div>
-        <Card className="start_card">
+          <Card className="start_card">
             <img src={card3} alt="" />
           </Card>
         </div>

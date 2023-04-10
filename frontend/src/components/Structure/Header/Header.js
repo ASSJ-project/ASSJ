@@ -35,37 +35,6 @@ const Head = styled.div`
   .header-right Button {
     margin: 0 4px;
   }
-
-  .toggle {
-    display: none;
-    font-size: 30px;
-    width: 100px;
-  }
-
-  @media screen and (max-width: 780px) {
-    .header-right {
-      flex-direction: row;
-      width: 220px;
-    }
-
-    .header-right Button {
-      margin: 0 3px;
-    }
-
-    .header-logo {
-      width: 180px;
-    }
-
-    img {
-      width: 160px;
-      height: 60px;
-    }
-
-    .toggle,
-    .user {
-      display: block;
-    }
-  }
 `;
 
 function Header() {

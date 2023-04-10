@@ -44,15 +44,24 @@ function LoginPage() {
       window.location.href = "login";
     });
   };
+
+  const mainPage = () => {
+    window.location.href = "map";
+  };
   return (
     <div className="login-full-container">
       <ImgHeader />
       <Paper className="login-paper-container" elevation={8}>
         {/* 로그인 되어있으면 logout 버튼 노출 */}
         {isLogin ? (
-          <Button variant="contained" onClick={logout}>
-            로그아웃
-          </Button>
+          <div className="login_button_container">
+            <Button variant="contained" onClick={mainPage}>
+              돌아가기
+            </Button>
+            <Button variant="contained" onClick={logout}>
+              로그아웃
+            </Button>
+          </div>
         ) : (
           <>
             <div className="logintext">로그인</div>
