@@ -3,8 +3,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { userBasedtransCoordCB } from '@/libs/utils/mapUtils';
 import { useSelector } from 'react-redux';
-import '@/components/domain/Map/css/style_addMouseOver.css';
+import '@/components/domain/Map/css/map.css';
 import json from '@/libs/json/job_code.json';
+import { BsBuildingsFill } from 'react-icons/bs';
 
 export default function KakaoMap(props) {
   const { data } = props;
@@ -21,13 +22,13 @@ export default function KakaoMap(props) {
   const json1 = json;
 
   const colors = {
-    '022': 'red',
-    '023': 'blue',
-    '024': 'green',
-    '025': 'yellow',
-    '026': 'purple',
-    '033': 'orange',
-    '056': 'pink',
+    '022': '#ef9a9a',
+    '023': '#81d4fa',
+    '024': '#a5d6a7',
+    '025': '#fff59d',
+    '026': '#ce93d8',
+    '033': '#ffcc80',
+    '056': '#f48fb1',
   };
 
   useEffect(() => {
@@ -79,7 +80,6 @@ export default function KakaoMap(props) {
     });
     setMarkers([]);
     const newMarkers = data.map((item) => {
-      let content;
       const distance = userBasedtransCoordCB(
         item.wtmY,
         item.wtmX,
@@ -88,9 +88,9 @@ export default function KakaoMap(props) {
       );
 
       const color = findColorById(item.jobsCd);
-
+      const iconHTML = `<i class="fas fa-building" style="color: black;"></i>`;
       // 지도에 띄우는 기본적인 마커 내용
-      content = `<div class="label" id="remove-default-browser-effect" style="background-color: ${color}">${distance}</div>`;
+      const content = `<div class="label" id="remove-default-browser-effect" style="background-color: ${color}">${iconHTML}${item.company}</div>`;
       const overlayContent = document.createElement('div');
       overlayContent.innerHTML = content;
       overlayContent.classList.add('overlay_content'); // 클래스 추가
@@ -98,44 +98,16 @@ export default function KakaoMap(props) {
       // overlayContent에 이벤트 추가
       overlayContent.onmouseover = () => {
         setCoverdOverlayZIndex(overlay);
-        showMoreInfo(overlayContent, item);
       };
 
       overlayContent.onmouseout = () => {
-        hideMoreInfo(overlayContent);
         setHideOverlayZIndex(overlay);
       };
-      overlayContent.onclick = () => showMoreInfo(overlayContent, item);
 
       const overlay = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(item.wgsY, item.wgsX),
         content: overlayContent,
       });
-      // 커스텀 오버레이를 클릭했을 때 원하는 내용을 표시하는 함수입니다
-      function showMoreInfo(overlayContent, item) {
-        // 활성화된 moreInfoContent가 있다면 제거합니다
-        if (activeOverlayContent.current) {
-          hideMoreInfo(activeOverlayContent.current);
-        }
-
-        // 새로운 moreInfoContent를 활성화합니다
-        activeOverlayContent.current = overlayContent;
-
-        const moreInfoContent = `
-                  <div class="overlay_info clicked" style="position: absolute; bottom: 100%;">
-                    <a href="https://place.map.kakao.com/17600274" target="_blank"><strong>${item.company}</strong></a>
-                    <div class="desc">${distance}<span class="address">${item.basicAddr}</span></div>
-                  </div>`;
-        overlayContent.insertAdjacentHTML('beforeend', moreInfoContent);
-      }
-
-      function hideMoreInfo(overlayContent) {
-        const moreInfo = overlayContent.querySelector('.overlay_info.clicked');
-        if (moreInfo) {
-          moreInfo.classList.remove('clicked'); // 클릭한 moreInfoContent에서 clicked 클래스를 제거합니다
-          overlayContent.removeChild(moreInfo);
-        }
-      }
 
       // 마우스를 올릴 때 CustomOverlay의 zIndex의 값을 올립니다.
       function setCoverdOverlayZIndex(overlay) {
