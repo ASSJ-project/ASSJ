@@ -14,7 +14,12 @@
   margin: 1.5em;
 }
 
- .clist-container :hover {
+.card-content {
+  padding: 10px;
+}
+
+
+.clist-container :hover {
   transform: scale(1.02);
   transition: transform 0.1s ease;
   transition-duration: 0.5s;
@@ -25,3 +30,57 @@
 .company-card > * {
   pointer-events: none;
 }
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  max-height: 80%;
+  overflow-y: scroll;
+  background-color: #fff;
+  border: 2px solid 000;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px 20px 20px 20px;
+  border-radius: 16px;
+
+}
+
+.modal-content > dl {
+  display: flex;
+  padding: 1px;
+  flex-flow: row wrap;
+  position: relative;
+  min-height: 24px;
+
+}
+
+.modal-dt {
+  width: 70px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-dd {
+  line-height: 24px;
+  color: rgba(45, 73, 144, 1);
+}
+
+.modal-company {
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1em;
+}
+
+.modal-map {
+  width: 400px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: solid 1px #2D4990;
+}
+
+
