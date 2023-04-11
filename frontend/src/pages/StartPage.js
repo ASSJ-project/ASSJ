@@ -7,6 +7,7 @@ import card3 from "../assets/images/start-card3.png";
 import card4 from "../assets/images/start-card4.svg";
 import card5 from "../assets/images/start-card5.svg";
 import card6 from "../assets/images/start-card5.png";
+
 import React, { useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
