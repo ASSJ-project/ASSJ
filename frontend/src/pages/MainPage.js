@@ -1,5 +1,4 @@
 import useApiFetch from '@/hooks/useApiFetch';
-import tip from '../assets/images/tip.png';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
@@ -14,7 +13,6 @@ import JobFilter from '@/components/domain/Map/AddressSelect/JobFilter';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Swal from 'sweetalert2';
-
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -53,7 +51,7 @@ const Tip = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
-  justify-content: center;  
+  justify-content: center;
   border: 1px solid #b4c0d3;
   background-color: rgba(25, 100, 225, 0.2);
   color: #0e183c;
@@ -112,9 +110,6 @@ const ToolBar = styled.div`
   }
 `;
 
-
-
-
 function MainContainer() {
   const [selected, setSelected] = useState('map');
   const [mapData, setMapData] = useState('');
@@ -153,9 +148,12 @@ function MainContainer() {
     handleClick({ vertical: 'bottom', horizontal: 'center' })();
   };
 
-  const tip = () =>{
-    Swal.fire("TIP !" , "1. 자신의 위치는 우클릭으로 표시 할 수 있습니다. <br> 2. 지역, 업종을 선택하고 검색을 해야 합니다.  <br>    3. 오른쪽 회사 목록 클릭시 상세정보를 볼 수있습니다." ,  )
-  }
+  const tip = () => {
+    Swal.fire(
+      'TIP !',
+      '1. 자신의 위치는 우클릭으로 표시 할 수 있습니다. <br> 2. 지역, 업종을 선택하고 검색을 해야 합니다.  <br>    3. 오른쪽 회사 목록 클릭시 상세정보를 볼 수있습니다.'
+    );
+  };
 
   useEffect(() => {
     setRegion(setMarkerAddress);
@@ -180,18 +178,32 @@ function MainContainer() {
       <Header />
 
       <ToolBox>
-        <ToolBar><RegionFilter /></ToolBar> 
         <ToolBar>
-          <JobFilter/> 
-          <Button variant="contained" onClick={handleButtonClick} style={{marginRight: '5px'}}
-          className='search-btn'>검색</Button>
+          <RegionFilter />
         </ToolBar>
-        
-          <Button variant="contained" onClick={tip} className='search-btn' style={{backgroundColor:"Red", float: 'right'}}>TIP</Button> 
-        
-      </ToolBox>  
+        <ToolBar>
+          <JobFilter />
+          <Button
+            variant="contained"
+            onClick={handleButtonClick}
+            style={{ marginRight: '5px' }}
+            className="search-btn"
+          >
+            검색
+          </Button>
+        </ToolBar>
 
-      <Snackbar 
+        <Button
+          variant="contained"
+          onClick={tip}
+          className="search-btn"
+          style={{ backgroundColor: 'Red', float: 'right' }}
+        >
+          TIP
+        </Button>
+      </ToolBox>
+
+      <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
@@ -217,10 +229,22 @@ function MainContainer() {
           <>
             {mapData.length === 0 && (
               <Tip>
-                <strong style={{fontSize: '22px'}}>Tip</strong>
-                <div style={{marginTop: '20px', fontSize: '18px'}}>현재 목록에 회사가 없습니다.</div>
-                <div style={{marginTop: '20px', fontSize: '18px'}}>필터를 사용하여 업종 및 직업을 입력해주세요.</div>
-                <div style={{marginTop: '20px', fontSize: '17px', paddingBottom: '20px'}}>추가 사항은 왼쪽 상단의 TIP 버튼을 눌러주세요</div>
+                <strong style={{ fontSize: '22px' }}>Tip</strong>
+                <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                  현재 목록에 회사가 없습니다.
+                </div>
+                <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                  필터를 사용하여 업종 및 직업을 입력해주세요.
+                </div>
+                <div
+                  style={{
+                    marginTop: '20px',
+                    fontSize: '17px',
+                    paddingBottom: '20px',
+                  }}
+                >
+                  추가 사항은 왼쪽 상단의 TIP 버튼을 눌러주세요
+                </div>
               </Tip>
             )}
 
@@ -238,13 +262,25 @@ function MainContainer() {
         <List className="List">
           {mapData.length === 0 && (
             <Tip>
-              <strong style={{fontSize: '22px'}}>Tip</strong>
-              <div style={{marginTop: '20px', fontSize: '18px'}}>현재 목록에 회사가 없습니다.</div>
-              <div style={{marginTop: '20px', fontSize: '18px'}}>필터를 사용하여 업종 및 직업을 입력해주세요.</div>
-              <div style={{marginTop: '20px', fontSize: '17px', paddingBottom: '20px'}}>추가 사항은 왼쪽 상단의 TIP 버튼을 눌러주세요</div>
+              <strong style={{ fontSize: '22px' }}>Tip</strong>
+              <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                현재 목록에 회사가 없습니다.
+              </div>
+              <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                필터를 사용하여 업종 및 직업을 입력해주세요.
+              </div>
+              <div
+                style={{
+                  marginTop: '20px',
+                  fontSize: '17px',
+                  paddingBottom: '20px',
+                }}
+              >
+                추가 사항은 왼쪽 상단의 TIP 버튼을 눌러주세요
+              </div>
             </Tip>
           )}
-        
+
           {mapData.length !== 0 && (
             <CompanyList
               className="companyList"

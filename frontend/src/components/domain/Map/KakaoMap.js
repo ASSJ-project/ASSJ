@@ -1,17 +1,15 @@
 /* global kakao */
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { userBasedtransCoordCB } from "@/libs/utils/mapUtils";
 import { useSelector } from "react-redux";
 import "@/components/domain/Map/css/map.css";
 import json from "@/libs/json/job_code.json";
-import { BsBuildingsFill } from "react-icons/bs";
 
 export default function KakaoMap(props) {
   const { data } = props;
   const [kakaoMap, setKakaoMap] = useState(null);
   const [markers, setMarkers] = useState([]);
-  const activeOverlayContent = useRef(null);
   const apiKey = process.env.REACT_APP_KAKAO_API_KEY;
 
   const center = useSelector((state) => state.map.center);
