@@ -34,7 +34,7 @@ const MapBoundary = styled.div`
 `;
 
 const List = styled.div`
-  width: 40%;
+  width: 20%;
   height: 80vh;
   margin-left: auto;
   margin-right: auto;
@@ -87,7 +87,7 @@ const ToolBar = styled.div`
     display: block;
     text-align: left;
     margin-bottom: 5px;
-    
+
     .search-btn {
       float: right;
     }
