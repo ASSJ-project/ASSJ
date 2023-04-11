@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useApiFetch = (url, options) => {
   const [data, setData] = useState(null);
@@ -6,7 +6,7 @@ const useApiFetch = (url, options) => {
   const [error, setError] = useState(null);
 
   console.log(url);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
