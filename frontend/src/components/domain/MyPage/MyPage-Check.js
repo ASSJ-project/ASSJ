@@ -58,7 +58,7 @@ const MyPageCheck = () => {
   return (
     <>
       <div className="MyPage-SearchMenu">
-        <div className="MyPage-Recently">최근조회내역</div>
+        <h2 className="MyPage-Recently">최근조회내역</h2>
         <Button
           variant="contained"
           size="small"
