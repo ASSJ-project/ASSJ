@@ -17,7 +17,7 @@ const useGetCompany = (region, jobsCd, page) => {
 
     setLoading(true);
     fetch(
-      `/api/company/getItems?region=${region}&jobsCd=${jobsCd}&page=${page}`
+      `/api/company/items?region=${region}&jobsCd=${jobsCd}&page=${page}&size=10`
     )
       .then((response) => response.json())
       .then((data) => {

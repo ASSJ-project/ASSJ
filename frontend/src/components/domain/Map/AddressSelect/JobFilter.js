@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Button, List, ListItem, ListItemText, Box } from '@mui/material';
-import styled from 'styled-components';
-import json from '@/libs/json/job_code.json';
-import Modal from '@mui/material/Modal';
-import { Chip } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { setFilterJob } from '@/actions/dataFilterActions';
+import React, { useState } from "react";
+import { Button, List, ListItem, ListItemText, Box } from "@mui/material";
+import styled from "styled-components";
+import json from "@/libs/json/job_code.json";
+import Modal from "@mui/material/Modal";
+import { Chip } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setFilterJob } from "@/actions/dataFilterActions";
 
 /* ListWrapper와 SubListWrapper에 공통 스타일 추가 */
 const ScrollbarStyles = `
@@ -51,7 +51,7 @@ const ListItemStyled = styled(ListItem)`
   }
 
   .list-item-text {
-    color: ${({ isSelected }) => (isSelected ? '#4876ef' : 'initial')};
+    color: ${({ isSelected }) => (isSelected ? "#4876ef" : "initial")};
   }
 `;
 
@@ -75,7 +75,7 @@ const SubListItemStyled = styled.div`
   cursor: pointer;
 
   span {
-    color: ${({ isChecked }) => (isChecked ? '#4876ef' : 'initial')};
+    color: ${({ isChecked }) => (isChecked ? "#4876ef" : "initial")};
   }
 `;
 
@@ -101,16 +101,16 @@ const CheckBox = styled.span`
   height: 16px;
   margin-left: 8px;
   border: ${({ isChecked }) =>
-    isChecked ? '1px solid transparent' : '1px solid #fff'};
+    isChecked ? "1px solid transparent" : "1px solid #fff"};
   border-radius: 3px;
-  background-color: ${({ isChecked }) => (isChecked ? 'transparent' : '#fff')};
+  background-color: ${({ isChecked }) => (isChecked ? "transparent" : "#fff")};
   position: relative;
 `;
 const CheckMark = styled.span`
   border-bottom: ${({ isChecked }) =>
-    isChecked ? '2px solid #4876ef' : '1px solid #d6d6cd'};
+    isChecked ? "2px solid #4876ef" : "1px solid #d6d6cd"};
   border-right: ${({ isChecked }) =>
-    isChecked ? '2px solid #4876ef' : '1px solid #d6d6cd'};
+    isChecked ? "2px solid #4876ef" : "1px solid #d6d6cd"};
   width: 5px;
   height: 10px;
   transform: rotate(45deg);
@@ -158,6 +158,10 @@ export default function JobFilter() {
   const [selectedSubItems, setSelectedSubItems] = useState({});
   const [selectedJobs, setSelectedJobs] = useState([]);
   const [selectedSubItemIds, setSelectedSubItemIds] = useState([]); // Add this line
+
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+  };
 
   const [isAllSelected, setIsAllSelected] = useState(false);
 
@@ -274,7 +278,7 @@ export default function JobFilter() {
           onClick={handleOpen}
           style={{ borderRadius: '12px' }}
         >
-          지역
+          업종
         </Button>
       ) : (
         <Button
@@ -282,12 +286,12 @@ export default function JobFilter() {
           onClick={handleOpen}
           style={{ borderRadius: '12px' }}
         >
-          {selectedJobs[0]} 외 {selectedJobs.length - 1} 건
+          {truncate(selectedJobs[0], 9)} 외 {selectedJobs.length - 1} 건
         </Button>
       )}
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
-          <div style={{ textAlign: 'center' }}>업종</div>
+          <div style={{ textAlign: "center" }}>업종</div>
           <Container>
             <ListWrapper>
               {data.map((item) => (
@@ -296,8 +300,8 @@ export default function JobFilter() {
                   onClick={() => handleClick(item)}
                   className={
                     selectedItem && selectedItem.id === item.id
-                      ? 'selected'
-                      : ''
+                      ? "selected"
+                      : ""
                   }
                   isSelected={selectedItem && selectedItem.id === item.id}
                 >
@@ -346,13 +350,13 @@ export default function JobFilter() {
                     style={{
                       marginRight: 8,
                       marginBottom: 8,
-                      backgroundColor: '#e3f2fd',
+                      backgroundColor: "#e3f2fd",
                     }}
                     onDelete={() => handleDelete(job)}
                   />
                 ))
               ) : (
-                <span style={{ color: 'grey' }}>업종을 선택해주세요</span>
+                <span style={{ color: "grey" }}>업종을 선택해주세요</span>
               )}
             </AutoComplete>
             <ButtonWrapper>
@@ -361,10 +365,10 @@ export default function JobFilter() {
               </Button>
               <Button
                 variant="contained"
-                style={{ width: '200px' }}
+                style={{ width: "200px" }}
                 onClick={() => {
                   handleClose();
-                  dispatch(setFilterJob(selectedSubItemIds.join(', ')));
+                  dispatch(setFilterJob(selectedSubItemIds.join(", ")));
                 }}
               >
                 적용

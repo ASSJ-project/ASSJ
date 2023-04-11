@@ -25,7 +25,7 @@ function InfoTable() {
       setSearchData(data.user_list);
       setDataSize(data.user_list.length); // 현재 들어온 리스트의 사이즈
 
-      // 전체 페이지 수는 전체 회원수 / 한페이지에 보여줄 수 + 1 에서 소수점을 없앤 수
+      // 전체 페이지 수는 전체 회원수 / 한페이지에 보여줄 수
       setpageSize(Math.floor(data.count / limit + 1));
     };
     getUserData();
