@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 
 export default function CompanyList(props) {
-  const { region, jobsCd, data } = props;
+  const { region, jobsCd } = props;
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -68,6 +68,7 @@ export default function CompanyList(props) {
     resetItems();
     setPage(1);
   }, [region, jobsCd]);
+  
   //메인 컨테이너에 미디어쿼리 적용, div -> main -> div() -> div(회사내용) {item.company} {item.title} {item.jobsCd} {item.salTpNm} {item.sal} {item.closeDt} {item.}
   return (
     <div className="main-container" onScroll={handleScroll}>
