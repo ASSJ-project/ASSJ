@@ -21,7 +21,7 @@ const useGetCompany = (region, jobsCd, page) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (data.length === 0) {
+        if (data.length === null) {
           setHasMore(false);
         } else {
           setItems((prevItems) => [...prevItems, ...data]);
