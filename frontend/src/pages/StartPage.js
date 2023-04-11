@@ -2,13 +2,13 @@
 import "../components/domain/Start/StartPage.css";
 import logo from "../assets/images/logo.svg";
 import card1 from "../assets/images/start-card1.png";
-import card2 from "../assets/images/start-card2.svg";
-import card3 from "../assets/images/start-card3.svg";
-import card4 from "../assets/images/start-card4.svg";
-import card5 from "../assets/images/start-card5.svg"
-import card6 from "../assets/images/start-card6.svg";
+import card2 from "../assets/images/start-card2.png";
+import card3 from "../assets/images/start-card3.png";
+import card4 from "../assets/images/start-card4.png";
+import card5 from "../assets/images/start-card5.png";
+import card6 from "../assets/images/start-card6.png";
 
-import React, {  useRef } from "react";
+import React, { useRef } from "react";
 import Button from "@mui/material/Button";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Card from "@mui/material/Card";
 
-import {AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const StartPage = () => {
   const customeSlider = useRef();
@@ -40,19 +40,15 @@ const StartPage = () => {
   };
 
   const StartSlider = styled.div`
-
-    
-
     .slick-list {
       //크기조정
       width: 100%;
       height: 100%;
       margin: 0% auto;
-      
     }
     .slick-prev {
       // 양염 버튼 위치
-      z-index: 1 ;
+      z-index: 1;
       left: 30%;
     }
     .slick-next {
@@ -92,19 +88,19 @@ const StartPage = () => {
 
         <div>
           <Card className="start_card">
-           <img src={card3} alt="" />
+            <img src={card3} alt="" />
           </Card>
         </div>
 
         <div>
           <Card className="start_card">
-           <img src={card4} alt="" />
+            <img src={card4} alt="" />
           </Card>
         </div>
 
         <div>
           <Card className="start_card">
-           <img src={card5} alt="" />
+            <img src={card5} alt="" />
           </Card>
         </div>
 
@@ -119,11 +115,20 @@ const StartPage = () => {
         {/* <button className="previous" onClick={gotoPrev}>
           이전
         </button> */}
-        <Button onClick={gotoPrev} variant="contained" style={{backgroundColor:"#969cab"}} >
-          <AiOutlineArrowLeft/>
+        <Button
+          onClick={gotoPrev}
+          variant="contained"
+          style={{ backgroundColor: "#969cab" }}
+        >
+          <AiOutlineArrowLeft />
         </Button>
-        <Button className="next-btn" onClick={gotoNext} variant="contained" style={{backgroundColor:"#969cab"}} >
-          <AiOutlineArrowRight/>
+        <Button
+          className="next-btn"
+          onClick={gotoNext}
+          variant="contained"
+          style={{ backgroundColor: "#969cab" }}
+        >
+          <AiOutlineArrowRight />
         </Button>
       </div>
 
