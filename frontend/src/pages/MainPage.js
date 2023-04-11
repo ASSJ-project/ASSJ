@@ -162,7 +162,11 @@ function MainContainer() {
           </MapBoundary>
         ) : (
           <>
-            {mapData && (
+            {mapData && isLoading ? (
+              <LoadingContainer>
+                <TailSpin color="#9588e0" height={80} width={80} />
+              </LoadingContainer>
+            ) : (
               <CompanyList
                 className="companyList"
                 data={mapData}
@@ -174,14 +178,20 @@ function MainContainer() {
         )}
 
         <List className="List">
-          {mapData && (
-            <CompanyList
-              className="companyList"
-              data={mapData}
-              region={region}
-              jobsCd={jobsCd}
-            />
-          )}
+          <>
+            {mapData && isLoading ? (
+              <LoadingContainer>
+                <TailSpin color="#9588e0" height={80} width={80} />
+              </LoadingContainer>
+            ) : (
+              <CompanyList
+                className="companyList"
+                data={mapData}
+                region={region}
+                jobsCd={jobsCd}
+              />
+            )}
+          </>
         </List>
       </Content>
       <Footer />
