@@ -84,10 +84,13 @@ const ToolBox = styled.div`
 const ToolBar = styled.div`
   display: inline;
   @media (max-width: 480px) {
-    
     display: block;
     text-align: left;
     margin-bottom: 5px;
+    
+    .search-btn {
+      float: right;
+    }
   }
 `;
 
@@ -154,11 +157,12 @@ function MainContainer() {
 
       <ToolBox>
         <ToolBar><RegionFilter /></ToolBar> 
-        <ToolBar><JobFilter/></ToolBar>
+        <ToolBar>
+          <JobFilter/> 
+          <Button variant="contained" onClick={handleButtonClick} className='search-btn'>검색</Button>
+        </ToolBar>
          
-        <Button variant="contained" onClick={handleButtonClick}>
-          검색
-        </Button>
+        
       </ToolBox>  
 
       <Snackbar
