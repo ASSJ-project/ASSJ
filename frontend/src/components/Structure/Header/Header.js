@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 
 const HeadContainer = styled.div`
-  width: 480px;
+  width: 100%;
   min-width: 420px;
   height: 10vh;
   margin: auto;
@@ -34,6 +34,15 @@ const Head = styled.div`
 
   .header-right Button {
     margin: 0 4px;
+  }
+
+  @media screen and (max-width: 480px){
+    img{
+      width: 140px;
+    }
+    .header-right {
+      width: 300px;
+    }
   }
 `;
 

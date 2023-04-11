@@ -5,6 +5,8 @@ const useApiFetch = (url, options) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(url);
+  
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);

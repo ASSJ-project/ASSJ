@@ -145,6 +145,10 @@ const ButtonWrapper = styled.div`
   margin-top: 8px;
 `;
 
+const SelectAllButton = styled(SubListItemStyled)`
+  font-weight: bold;
+`;
+
 const data = json;
 
 export default function JobFilter() {
@@ -155,9 +159,16 @@ export default function JobFilter() {
   const [selectedJobs, setSelectedJobs] = useState([]);
   const [selectedSubItemIds, setSelectedSubItemIds] = useState([]); // Add this line
 
+  const [isAllSelected, setIsAllSelected] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleClick = (item) => setSelectedItem(item);
+  const handleClick = (item) => {
+    if (selectedItem !== item) {
+      setIsAllSelected(false);
+    }
+    setSelectedItem(item);
+  };
   const handleSubItemClick = (subItemId, subJob) => {
     setSelectedSubItems((prev) => ({
       ...prev,
@@ -175,6 +186,46 @@ export default function JobFilter() {
     } else {
       setSelectedSubItemIds([...selectedSubItemIds, subItemId]);
     }
+  };
+
+  const handleSelectAll = () => {
+    setIsAllSelected((prevIsAllSelected) => {
+      const newIsAllSelected = !prevIsAllSelected;
+      const newSelectedSubItems = { ...selectedSubItems };
+      const newSelectedJobs = [...selectedJobs];
+      const newSelectedSubItemIds = [...selectedSubItemIds];
+
+      if (newIsAllSelected) {
+        // 전체 선택
+        selectedItem.subcategories.forEach((sub) => {
+          if (!newSelectedSubItems[sub.id]) {
+            newSelectedSubItems[sub.id] = true;
+            newSelectedJobs.push(sub.subcategories);
+            newSelectedSubItemIds.push(sub.id);
+          }
+        });
+      } else {
+        // 전체 선택 해제
+        selectedItem.subcategories.forEach((sub) => {
+          if (newSelectedSubItems[sub.id]) {
+            newSelectedSubItems[sub.id] = false;
+            newSelectedJobs.splice(
+              newSelectedJobs.indexOf(sub.subcategories),
+              1
+            );
+            newSelectedSubItemIds.splice(
+              newSelectedSubItemIds.indexOf(sub.id),
+              1
+            );
+          }
+        });
+      }
+
+      setSelectedSubItems(newSelectedSubItems);
+      setSelectedJobs(newSelectedJobs);
+      setSelectedSubItemIds(newSelectedSubItemIds);
+      return newIsAllSelected;
+    });
   };
 
   const handleDelete = (jobToDelete) => {
@@ -203,6 +254,8 @@ export default function JobFilter() {
     }
   };
 
+  console.log(selectedSubItemIds);
+
   const handleReset = () => {
     const resetSubItems = {};
     Object.keys(selectedSubItems).forEach((key) => {
@@ -210,11 +263,28 @@ export default function JobFilter() {
     });
     setSelectedSubItems(resetSubItems);
     setSelectedJobs([]);
+    setSelectedSubItemIds([]);
   };
 
   return (
     <>
-      <Button onClick={handleOpen}>업종</Button>
+      {selectedJobs.length === 0 ? (
+        <Button
+          variant="outlined"
+          onClick={handleOpen}
+          style={{ borderRadius: '12px' }}
+        >
+          지역
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          onClick={handleOpen}
+          style={{ borderRadius: '12px' }}
+        >
+          {selectedJobs[0]} 외 {selectedJobs.length - 1} 건
+        </Button>
+      )}
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <div style={{ textAlign: "center" }}>업종</div>
@@ -240,6 +310,15 @@ export default function JobFilter() {
             </ListWrapper>
             {selectedItem && (
               <SubListWrapper>
+                <SelectAllButton
+                  onClick={() => handleSelectAll()}
+                  isChecked={isAllSelected}
+                >
+                  <span>전체 선택</span>
+                  <CheckBox isChecked={isAllSelected}>
+                    <CheckMark isChecked={isAllSelected} />
+                  </CheckBox>
+                </SelectAllButton>
                 {selectedItem.subcategories.map((sub) => (
                   <SubListItemStyled
                     key={sub.id}
