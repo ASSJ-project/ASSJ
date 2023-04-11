@@ -1,17 +1,17 @@
-import useApiFetch from "@/hooks/useApiFetch";
-import styled from "styled-components";
-import { TailSpin } from "react-loader-spinner";
-import KakaoMap from "@/components/domain/Map/KakaoMap";
-import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import MapToggle from "@/components/domain/Map/ToggleButton";
-import CompanyList from "@/components/domain/Map/CompanyList";
-import Footer from "@/components/Structure/Footer/Footer";
-import Header from "@/components/Structure/Header/Header";
-import RegionFilter from "@/components/domain/Map/AddressSelect/RegionFilter";
-import JobFilter from "@/components/domain/Map/AddressSelect/JobFilter";
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
+import useApiFetch from '@/hooks/useApiFetch';
+import styled from 'styled-components';
+import { TailSpin } from 'react-loader-spinner';
+import KakaoMap from '@/components/domain/Map/KakaoMap';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import MapToggle from '@/components/domain/Map/ToggleButton';
+import CompanyList from '@/components/domain/Map/CompanyList';
+import Footer from '@/components/Structure/Footer/Footer';
+import Header from '@/components/Structure/Header/Header';
+import RegionFilter from '@/components/domain/Map/AddressSelect/RegionFilter';
+import JobFilter from '@/components/domain/Map/AddressSelect/JobFilter';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -71,15 +71,16 @@ const ToggleBoundary = styled.div`
 `;
 
 function MainContainer() {
-  const [selected, setSelected] = useState("map");
-  const [mapData, setMapData] = useState("");
-  const [region, setRegion] = useState("");
-  const [jobsCd, setJobsCd] = useState("");
+  const [selected, setSelected] = useState('map');
+  const [mapData, setMapData] = useState('');
+  const [region, setRegion] = useState('');
+  const [jobsCd, setJobsCd] = useState('');
+  //const [loading, setLoading] = useState(true);
 
   const [state, setState] = useState({
     open: false,
-    vertical: "top",
-    horizontal: "center",
+    vertical: 'top',
+    horizontal: 'center',
   });
 
   const { vertical, horizontal, open } = state;
@@ -105,7 +106,7 @@ function MainContainer() {
     setRegion(setFilterRegion);
     setJobsCd(setFilterJob);
     if (data.length === 0) {
-      handleClick({ vertical: "bottom", horizontal: "center" })();
+      handleClick({ vertical: 'bottom', horizontal: 'center' })();
     }
   };
 
@@ -131,7 +132,7 @@ function MainContainer() {
     <>
       <Header />
 
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: 'center' }}>
         <RegionFilter />
         <JobFilter />
         <Button variant="contained" onClick={handleButtonClick}>
@@ -151,7 +152,7 @@ function MainContainer() {
           <MapToggle setSelected={setSelected} />
         </ToggleBoundary>
 
-        {selected === "map" ? (
+        {selected === 'map' ? (
           <MapBoundary className="MapBoundary">
             {mapData && isLoading ? (
               <LoadingContainer>
