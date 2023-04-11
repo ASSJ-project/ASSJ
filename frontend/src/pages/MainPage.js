@@ -201,9 +201,10 @@ function MainContainer() {
           </MapBoundary>
         ) : (
           <>
-            {data && (
+            {mapData && (
               <CompanyList
                 className="companyList"
+                data={mapData}
                 region={region}
                 jobsCd={jobsCd}
               />
@@ -214,9 +215,10 @@ function MainContainer() {
         <List className="List">
           <RegionFilter />
           <JobFilter />
-          {data && (
+          {mapData && (
             <CompanyList
               className="companyList"
+              data={mapData}
               region={region}
               jobsCd={jobsCd}
             />
