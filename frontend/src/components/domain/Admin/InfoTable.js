@@ -76,7 +76,7 @@ function InfoTable() {
             variant="contained"
             onClick={() => setSearchData(filteredData(userData))}
           >
-            검색
+            이름 검색
           </Button>
         </div>
         <div className="iconbtn-container">
