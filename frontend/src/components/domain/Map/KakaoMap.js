@@ -47,7 +47,7 @@ export default function KakaoMap(props) {
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-        kakao.maps.event.addListener(map, "rightclick", function (mouseEvent) {
+        kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
           // 클릭한 위도, 경도 정보를 가져옵니다
           var latlng = mouseEvent.latLng;
 
