@@ -1,48 +1,40 @@
+// useGetCompany.js
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
-function useGetCompany(region, jobsCd, page) {
-  const [newItems, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+const useGetCompany = (region, jobsCd, page) => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
+
+  const resetItems = () => {
+    setItems([]);
+    setHasMore(true);
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      setError(null);
+    if (!hasMore) return;
 
-      const token = sessionStorage.getItem('access_token');
-
-      const queryParam = {
-        page: page,
-        size: 10,
-        region: region,
-        jobsCd: jobsCd,
-      };
-
-      const header = {
-        'X-Custom-Header': 'YourCustomHeaderValue',
-        authorization: 'Bearer ' + token,
-      };
-
-      try {
-        const { data } = await axios.get('/api/company/items', {
-          params: queryParam,
-          headers: header,
-        });
-
-        setItems((prev) => [...prev, ...data]);
-      } catch (error) {
+    setLoading(true);
+    fetch(
+      `/api/company/getItems?region=${region}&jobsCd=${jobsCd}&page=${page}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length === 0) {
+          setHasMore(false);
+        } else {
+          setItems((prevItems) => [...prevItems, ...data]);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
         setError(error);
-      }
-
-      setLoading(false);
-    }
-
-    fetchData();
+        setLoading(false);
+      });
   }, [region, jobsCd, page]);
 
-  return { newItems, loading, error };
-}
+  return { items, loading, error, resetItems, hasMore };
+};
 
 export default useGetCompany;
