@@ -1,13 +1,13 @@
 /* global kakao */
 
-import React, { useEffect, useState, useRef, useMemo } from 'react';
-import useFetch from '@/hooks/useFetch';
-import useApiFetch from '@/hooks/useApiFetch';
-import { userBasedtransCoordCB } from '@/libs/utils/mapUtils';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import '@/components/domain/Map/css/style_addMouseOver.css';
-import { setMarkerAddress } from '@/actions/dataInfoAction';
+import React, { useEffect, useState, useRef, useMemo } from "react";
+import useFetch from "@/hooks/useFetch";
+import useApiFetch from "@/hooks/useApiFetch";
+import { userBasedtransCoordCB } from "@/libs/utils/mapUtils";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import "@/components/domain/Map/css/style_addMouseOver.css";
+import { setMarkerAddress } from "@/actions/dataInfoAction";
 
 export default function KakaoMap(props) {
   const { data } = props;
@@ -24,20 +24,20 @@ export default function KakaoMap(props) {
   const [userX, setUserX] = useState(126.823532587);
 
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false&libraries=services,clusterer,drawing`;
     document.head.appendChild(script);
     script.onload = () => {
       // 지도를 렌더링 합니다.
       kakao.maps.load(() => {
-        const mapContainer = document.getElementById('map');
+        const mapContainer = document.getElementById("map");
         const mapOptions = {
           center: new kakao.maps.LatLng(userY, userX),
           level: 9,
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-        kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+        kakao.maps.event.addListener(map, "click", function (mouseEvent) {
           // 클릭한 위도, 경도 정보를 가져옵니다
           var latlng = mouseEvent.latLng;
 
@@ -49,7 +49,7 @@ export default function KakaoMap(props) {
         });
 
         // 마우스 드래그로 지도 이동이 완료되었을 때 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-        kakao.maps.event.addListener(map, 'dragend', function () {
+        kakao.maps.event.addListener(map, "dragend", function () {
           // 지도 중심좌표를 얻어옵니다
           var latlng = map.getCenter();
 
@@ -91,13 +91,13 @@ export default function KakaoMap(props) {
 
       // 지도에 띄우는 기본적인 마커 내용
       content = `<div class="label" id="remove-default-browser-effect">${distance}</div>`;
-      const overlayContent = document.createElement('div');
+      const overlayContent = document.createElement("div");
       overlayContent.innerHTML = content;
-      overlayContent.classList.add('overlay_content'); // 클래스 추가
+      overlayContent.classList.add("overlay_content"); // 클래스 추가
 
       overlayContent.onclick = () => {
         if (isMobileResolution()) {
-          if (overlayContent.style.opacity === '1') {
+          if (overlayContent.style.opacity === "1") {
             hideMoreInfo(overlayContent);
             setHideOverlayZIndex(overlay);
           } else {
@@ -160,33 +160,33 @@ export default function KakaoMap(props) {
         // 새로운 moreInfoContent를 활성화합니다
         activeOverlayContent.current = overlayContent;
 
-        const isMobile = window.matchMedia('(max-width: 779px)').matches;
+        const isMobile = window.matchMedia("(max-width: 779px)").matches;
         let moreInfoContent;
 
-        moreInfoContent = document.createElement('div');
-        moreInfoContent.classList.add('overlay_info');
-        moreInfoContent.classList.add('clicked');
+        moreInfoContent = document.createElement("div");
+        moreInfoContent.classList.add("overlay_info");
+        moreInfoContent.classList.add("clicked");
 
         if (isMobile) {
           // 모바일 화면 (해상도 780px 미만)에 표시할 내용을 정의합니다
-          moreInfoContent.style.position = 'fixed';
-          moreInfoContent.style.bottom = '0';
-          moreInfoContent.style.width = '100%';
-          moreInfoContent.style.zIndex = '1000'; // z-index 값을 1000으로 설정
+          moreInfoContent.style.position = "fixed";
+          moreInfoContent.style.bottom = "0";
+          moreInfoContent.style.width = "100%";
+          moreInfoContent.style.zIndex = "1000"; // z-index 값을 1000으로 설정
         } else {
           // 데스크톱 화면에 표시할 내용을 정의합니다
-          moreInfoContent.style.position = 'absolute';
-          moreInfoContent.style.bottom = '100%';
+          moreInfoContent.style.position = "absolute";
+          moreInfoContent.style.bottom = "100%";
         }
 
-        const companyLink = document.createElement('a');
-        companyLink.href = 'https://place.map.kakao.com/17600274';
-        companyLink.target = '_blank';
+        const companyLink = document.createElement("a");
+        companyLink.href = "https://place.map.kakao.com/17600274";
+        companyLink.target = "_blank";
         companyLink.innerHTML = `<strong>${item.company}</strong>`;
         moreInfoContent.appendChild(companyLink);
 
-        const descDiv = document.createElement('div');
-        descDiv.classList.add('desc');
+        const descDiv = document.createElement("div");
+        descDiv.classList.add("desc");
         descDiv.innerHTML = `${distance}<span class="address">${item.basicAddr}</span>`;
         moreInfoContent.appendChild(descDiv);
 
@@ -201,7 +201,7 @@ export default function KakaoMap(props) {
       function hideMoreInfo(overlayContent) {
         const moreInfo =
           overlayContent.moreInfoContent ||
-          overlayContent.querySelector('.overlay_info.clicked');
+          overlayContent.querySelector(".overlay_info.clicked");
         if (moreInfo) {
           if (moreInfo.parentElement === document.body) {
             document.body.removeChild(moreInfo); // body에서 moreInfoContent를 제거합니다
@@ -223,7 +223,7 @@ export default function KakaoMap(props) {
       overlay.setMap(kakaoMap);
 
       function isMobileResolution() {
-        return window.matchMedia('(max-width: 780px)').matches;
+        return window.matchMedia("(max-width: 780px)").matches;
       }
 
       return {
@@ -256,10 +256,8 @@ export default function KakaoMap(props) {
     var coord = new kakao.maps.LatLng(userY, userX);
     var callback = function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
-        console.log(result);
-        const [first, second] = result[0].address.address_name.split(' ', 2);
+        const [first, second] = result[0].address.address_name.split(" ", 2);
         const clickedMarkerAddress = `${first} ${second}`;
-        console.log(clickedMarkerAddress);
         dispatch(setMarkerAddress(clickedMarkerAddress));
       }
     };
@@ -270,7 +268,7 @@ export default function KakaoMap(props) {
   const requestOptions = useMemo(() => {
     return {
       headers: new Headers({
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `KakaoAK ${restApiKey}`,
       }),
     };
@@ -280,10 +278,10 @@ export default function KakaoMap(props) {
   const queryParams = new URLSearchParams({
     x: userX,
     y: userY,
-    input_coord: 'WGS84',
+    input_coord: "WGS84",
   });
 
-  const url = 'https://dapi.kakao.com/v2/local/geo/coord2address.json';
+  const url = "https://dapi.kakao.com/v2/local/geo/coord2address.json";
   // Use the hook with headers and params
   const { data1, isLoading, error } = useApiFetch(
     `${url}?${queryParams}`,
@@ -292,9 +290,8 @@ export default function KakaoMap(props) {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data1);
   return (
-    <div style={{ width: '100%', height: '100%' }} id="map">
+    <div style={{ width: "100%", height: "100%" }} id="map">
       {kakaoMap && <p>Kakao Map is loaded.</p>}
     </div>
   );

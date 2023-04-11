@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useGetCompany from '@/hooks/useGetCompany';
-import useApiFetch from '@/hooks/useApiFetch';
-import './css/CompanyList.css';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { setCenter } from '@/actions/mapActions';
-import { useDispatch } from 'react-redux';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useGetCompany from "@/hooks/useGetCompany";
+import useApiFetch from "@/hooks/useApiFetch";
+import "./css/CompanyList.css";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { setCenter } from "@/actions/mapActions";
+import { useDispatch } from "react-redux";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
+import styled from "styled-components";
 
 export default function CompanyList(props) {
   const { region, jobsCd } = props;
@@ -41,7 +41,7 @@ export default function CompanyList(props) {
 
   function handleCompanyClick(item) {
     dispatch(setCenter(item.wgsY, item.wgsX));
-    let get_session = sessionStorage.getItem('data');
+    let get_session = sessionStorage.getItem("data");
     if (get_session == null) {
       get_session = [];
     } else {
@@ -55,17 +55,16 @@ export default function CompanyList(props) {
         get_session.shift(); //최대 8개의 회사 이름이 나오게 이거 쓰시면 될거같습니다
       }
     }
-    sessionStorage.setItem('data', JSON.stringify(get_session));
+    sessionStorage.setItem("data", JSON.stringify(get_session));
   }
   const handleButtonClick = () => {
-    window.open(websiteUrl, '_blank', 'width=1000, height=1000');
+    window.open(websiteUrl, "_blank", "width=1000, height=1000");
   };
 
   const { newItems, loading, error } = useApiFetch(
     `/api/company/items?region=${region}&jobsCd=${jobsCd}&page=${page}`
   );
 
-  console.log(newItems);
   useEffect(() => {
     if (newItems) {
       if (page === 1) {
@@ -93,8 +92,8 @@ export default function CompanyList(props) {
                   }}
                   sx={{
                     m: 1.5,
-                    backgroundColor: '#ffffff',
-                    border: 'solid 1px #b4c0d3',
+                    backgroundColor: "#ffffff",
+                    border: "solid 1px #b4c0d3",
                   }}
                 >
                   <CardContent>
@@ -128,7 +127,7 @@ export default function CompanyList(props) {
           <div className="modal-company">{selectedItem?.company}</div>
           <div className="modal-title">
             <h3>{selectedItem?.title}</h3>
-          </div>{' '}
+          </div>{" "}
           <hr />
           <dl className="modal-dl">
             <dt className="modal-dt">경력</dt>
@@ -163,10 +162,10 @@ export default function CompanyList(props) {
                 variant="contained"
                 disableElevation
                 style={{
-                  width: '45px',
-                  height: '35px',
-                  fontSize: '11px',
-                  padding: '0',
+                  width: "45px",
+                  height: "35px",
+                  fontSize: "11px",
+                  padding: "0",
                 }}
                 onClick={handleButtonClick}
               >

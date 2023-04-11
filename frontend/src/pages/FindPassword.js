@@ -70,7 +70,6 @@ function FindPassword() {
     emailjs.init("O8bUvMyNJhc1Z6tVI");
     const ranNum = generateRandom();
     setCheckKey(ranNum);
-    console.log(ranNum);
     //이메일 값과 인증번호 값 딕셔너리에 추가
     let templateParams = {
       sendemail: email,
@@ -92,8 +91,6 @@ function FindPassword() {
   };
   //인증코드 확인 후 일치할 시 버튼 활성화 일치하지 않을 경우 버튼 비활성화, 에러메시지 출력
   const checkKeyValue = () => {
-    console.log(key);
-    console.log(checkKey);
     if (key != checkKey) {
       setPasswordDisable(true);
       setKeyErrorMessage(false);
