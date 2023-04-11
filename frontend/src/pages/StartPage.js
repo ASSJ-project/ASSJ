@@ -49,7 +49,6 @@ const StartPage = () => {
       z-index: 1;
       left: 30%;
     }
-
     .slick-next {
       // 양옆 버튼 위치
       right: 30%;
