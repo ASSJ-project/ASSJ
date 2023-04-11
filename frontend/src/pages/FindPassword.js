@@ -110,15 +110,6 @@ function FindPassword() {
   return (
     <div className="fpwd-all-container">
       <div className="fpwd-title-container">
-        <Button
-          className="backbtn "
-          variant="contained"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          이전
-        </Button>
         <ImgHeader />
       </div>
 
