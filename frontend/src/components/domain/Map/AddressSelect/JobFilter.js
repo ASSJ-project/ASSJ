@@ -159,6 +159,10 @@ export default function JobFilter() {
   const [selectedJobs, setSelectedJobs] = useState([]);
   const [selectedSubItemIds, setSelectedSubItemIds] = useState([]); // Add this line
 
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+  };
+
   const [isAllSelected, setIsAllSelected] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -274,7 +278,7 @@ export default function JobFilter() {
           onClick={handleOpen}
           style={{ borderRadius: '12px' }}
         >
-          지역
+          업종
         </Button>
       ) : (
         <Button
@@ -282,7 +286,7 @@ export default function JobFilter() {
           onClick={handleOpen}
           style={{ borderRadius: '12px' }}
         >
-          {selectedJobs[0]} 외 {selectedJobs.length - 1} 건
+          {truncate(selectedJobs[0], 9)} 외 {selectedJobs.length - 1} 건
         </Button>
       )}
       <Modal open={open} onClick={handleClose}>

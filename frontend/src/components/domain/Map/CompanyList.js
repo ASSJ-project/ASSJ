@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 
 export default function CompanyList(props) {
-  const { region, jobsCd, data } = props;
+  const { region, jobsCd } = props;
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -58,16 +58,10 @@ export default function CompanyList(props) {
     sessionStorage.setItem('data', JSON.stringify(get_session));
   }
 
-  const { items, loading, error, resetItems } = useGetCompany(
-    region,
-    jobsCd,
-    page
-  );
+  const { items, loading, error } = useGetCompany(region, jobsCd, page);
 
-  useEffect(() => {
-    resetItems();
-    setPage((prevPage) => 1);
-  }, [region, jobsCd]);
+  console.log(items);
+
   //메인 컨테이너에 미디어쿼리 적용, div -> main -> div() -> div(회사내용) {item.company} {item.title} {item.jobsCd} {item.salTpNm} {item.sal} {item.closeDt} {item.}
 
   return (
