@@ -50,7 +50,7 @@ const Tip = styled.div`
   border: none;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 10px;
   justify-content: center;
   border: 1px solid #b4c0d3;
   background-color: rgba(25, 100, 225, 0.2);
@@ -184,16 +184,6 @@ function MainContainer() {
         <ToolBar>
           <JobFilter />
           <Button
-            variant="contained"
-            onClick={handleButtonClick}
-            style={{ marginRight: '5px' }}
-            className="search-btn"
-          >
-            검색
-          </Button>
-        </ToolBar>
-
-        <Button
           variant="contained"
           onClick={tip}
           className="search-btn"
@@ -201,6 +191,18 @@ function MainContainer() {
         >
           TIP
         </Button>
+          <Button
+            variant="contained"
+            onClick={handleButtonClick}
+            style={{ marginRight: '5px' }}
+            className="search-btn"
+          >
+            검색
+          </Button>
+          
+        </ToolBar>
+
+        
       </ToolBox>
 
       <Snackbar
@@ -229,17 +231,17 @@ function MainContainer() {
           <>
             {mapData.length === 0 && (
               <Tip>
-                <strong style={{ fontSize: '22px' }}>Tip</strong>
-                <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                <strong style={{ fontSize: '18px' }}>Tip</strong>
+                <div style={{ marginTop: '20px', fontSize: '14px' }}>
                   현재 목록에 회사가 없습니다.
                 </div>
-                <div style={{ marginTop: '20px', fontSize: '18px' }}>
+                <div style={{ marginTop: '20px', fontSize: '14px' }}>
                   필터를 사용하여 업종 및 직업을 입력해주세요.
                 </div>
                 <div
                   style={{
                     marginTop: '20px',
-                    fontSize: '17px',
+                    fontSize: '14px',
                     paddingBottom: '20px',
                   }}
                 >
