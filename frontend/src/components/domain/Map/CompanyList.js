@@ -8,18 +8,44 @@ import Typography from '@mui/material/Typography';
 import { setCenter } from '@/actions/mapActions';
 import { useDispatch } from 'react-redux';
 import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
 
 export default function CompanyList(props) {
   const { region, jobsCd, data } = props;
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const dispatch = useDispatch();
+  const websiteUrl = `https://map.kakao.com/link/map/${selectedItem?.company},${selectedItem?.wgsY},${selectedItem?.wgsX}`;
 
   const handleClose = () => setOpen(false);
 
   const handleCardClick = (item) => {
     setSelectedItem(item);
     setOpen(true);
+  };
+
+  function handleCompanyClick(item) {
+    dispatch(setCenter(item.wgsY, item.wgsX));
+    let get_session = sessionStorage.getItem('data');
+    if (get_session == null) {
+      get_session = [];
+    } else {
+      get_session = JSON.parse(get_session); // 값이 있다면 배열로만들어준다 세션스토리지에는 key,value로 밖에 저장되지 않아서 JSON.parse 를 이용해야 한다.
+    }
+    get_session.push(item.company);
+    get_session = new Set(get_session);
+    get_session = [...get_session];
+    if (get_session.length > 8) {
+      for (let i = 0; i < get_session.length - 8; i++) {
+        get_session.shift(); //최대 8개의 회사 이름이 나오게 이거 쓰시면 될거같습니다
+      }
+    }
+    sessionStorage.setItem('data', JSON.stringify(get_session));
+  }
+
+  const handleButtonClick = () => {
+    window.open(websiteUrl, '_blank', 'width=1000, height=1000');
   };
 
   const navigate = useNavigate();
@@ -53,6 +79,7 @@ export default function CompanyList(props) {
                 className="company-card"
                 key={item.id}
                 onClick={() => {
+                  handleCompanyClick(item);
                   handleCardClick(item);
                 }}
                 sx={{
@@ -118,6 +145,24 @@ export default function CompanyList(props) {
             <dt className="modal-dt">모집기간</dt>
             <dd className="modal-dd">
               {selectedItem?.regDt} ~ {selectedItem?.closeDt}
+            </dd>
+          </dl>
+          <dl className="modal-dl">
+            <dt className="modal-dt">길찾기</dt>
+            <dd className="modal-dd">
+              <Button
+                variant="contained"
+                disableElevation
+                style={{
+                  width: '45px',
+                  height: '35px',
+                  fontSize: '11px',
+                  padding: '0',
+                }}
+                onClick={handleButtonClick}
+              >
+                길찾기
+              </Button>
             </dd>
           </dl>
         </div>
