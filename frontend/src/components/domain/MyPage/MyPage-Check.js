@@ -1,13 +1,13 @@
 //최근 조회 기록 누르면 나오는 페이지
-import { useEffect, useState } from 'react';
-import '@/components/domain/MyPage/MyPage-Check.css';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from "react";
+import "@/components/domain/MyPage/MyPage-Check.css";
+import Button from "@mui/material/Button";
 
 const MyPageCheck = () => {
   let [company, setcompany] = useState([]);
 
   useEffect(() => {
-    let info = sessionStorage.getItem('data');
+    let info = sessionStorage.getItem("data");
     if (info == null) {
       info = [];
     } else {
@@ -16,15 +16,15 @@ const MyPageCheck = () => {
     setcompany(info);
   }, []);
 
-  //검색어 삭제 
+  //검색어 삭제
   function lol(i) {
-    let info = sessionStorage.getItem('data');
+    let info = sessionStorage.getItem("data");
     info = JSON.parse(info);
-    sessionStorage.removeItem('data');
+    sessionStorage.removeItem("data");
     info.splice(i, 1);
     console.log(info);
     setcompany(info);
-    sessionStorage.setItem('data', JSON.stringify(info));
+    sessionStorage.setItem("data", JSON.stringify(info));
   }
 
   //최근조회한것 보여줌 max 8개
@@ -52,19 +52,19 @@ const MyPageCheck = () => {
 
   //검색어 전체 삭제
   const handleClearKeywords = () => {
-    sessionStorage.removeItem('data');
+    sessionStorage.removeItem("data");
     setcompany([]);
   };
 
   return (
     <>
       <div className="MyPage-SearchMenu">
-        <div className="MyPage-Recently">최근조회내역</div>
+        <h2 className="MyPage-Recently">최근조회내역</h2>
         <Button
           variant="contained"
           size="small"
           onClick={handleClearKeywords}
-          style={{ marginTop: '5px' }}
+          style={{ marginTop: "5px" }}
         >
           전체삭제
         </Button>

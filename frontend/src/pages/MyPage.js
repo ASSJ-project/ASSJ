@@ -14,6 +14,8 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-top: 0.5em;
+  color: var(--text-color);
 `;
 
 export default function MyPage() {

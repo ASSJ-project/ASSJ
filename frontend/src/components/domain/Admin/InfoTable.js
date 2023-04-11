@@ -3,7 +3,6 @@ import { getUser } from "@/apis/admin/getUser";
 import { useEffect, useState, useReducer } from "react";
 import "./Admin.css";
 
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
