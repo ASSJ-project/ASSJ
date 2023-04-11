@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '@/components/domain/MyPage/MyPage-Header.css';
 import { ToggleButtonGroup } from '@mui/material';
 import { ToggleButton } from '@mui/material';
 
@@ -22,22 +21,6 @@ export default function MyPageHeader(props) {
 
   return (
     <>
-      {/* <div className="MyPage-Header">MY PAGE</div>
-      <div className="MyPage-ClickMenu">
-        <button
-          className={tab ? 'MyPage-MyInfo2' : 'MyPage-MyInfo1'}
-          onClick={mypage1}
-        >
-          나의 정보
-        </button>
-        <button
-          className={tab ? 'MyPage-MyInfo1' : 'MyPage-MyInfo2'}
-          style={{ textDecoration: 'none' }}
-          onClick={mypage2}
-        >
-          최근 조회 기록
-        </button>
-      </div> */}
       <ToggleButtonGroup
         color="primary"
         value={alignment}
