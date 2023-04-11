@@ -243,7 +243,7 @@ function MainContainer() {
                     paddingBottom: '20px',
                   }}
                 >
-                  추가 사항은 왼쪽 상단의 TIP 버튼을 눌러주세요
+                  추가 사항은 상단의 TIP 버튼을 눌러주세요.
                 </div>
               </Tip>
             )}
