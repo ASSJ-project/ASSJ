@@ -71,10 +71,10 @@ const ToggleBoundary = styled.div`
 `;
 
 function MainContainer() {
-  const [selected, setSelected] = useState('map');
-  const [mapData, setMapData] = useState('');
-  const [region, setRegion] = useState('');
-  const [jobsCd, setJobsCd] = useState('');
+  const [selected, setSelected] = useState("map");
+  const [mapData, setMapData] = useState("");
+  const [region, setRegion] = useState("");
+  const [jobsCd, setJobsCd] = useState("");
   //const [loading, setLoading] = useState(true);
 
   const [state, setState] = useState({
