@@ -206,7 +206,24 @@ export default function RegionFilter() {
 
   return (
     <>
-      <Button onClick={handleOpen}>지역</Button>
+      {selectedRegions.length === 0 ? (
+        <Button
+          variant="outlined"
+          onClick={handleOpen}
+          style={{ borderRadius: '12px' }}
+        >
+          지역
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          onClick={handleOpen}
+          style={{ borderRadius: '12px' }}
+        >
+          {selectedRegions[0]} 외 {selectedRegions.length - 1} 건
+        </Button>
+      )}
+
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <div style={{ textAlign: 'center' }}>지역</div>

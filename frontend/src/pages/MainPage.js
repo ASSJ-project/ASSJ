@@ -1,6 +1,4 @@
-import useFetch from '@/hooks/useFetch';
 import useApiFetch from '@/hooks/useApiFetch';
-import useCookie from '@/hooks/useCookie';
 import styled from 'styled-components';
 import { TailSpin } from 'react-loader-spinner';
 import KakaoMap from '@/components/domain/Map/KakaoMap';
@@ -12,6 +10,8 @@ import Footer from '@/components/Structure/Footer/Footer';
 import Header from '@/components/Structure/Header/Header';
 import RegionFilter from '@/components/domain/Map/AddressSelect/RegionFilter';
 import JobFilter from '@/components/domain/Map/AddressSelect/JobFilter';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -56,20 +56,6 @@ const Content = styled.div`
     margin-top: 0;
   }
 `;
-const ToolBar = styled.div`
-  width: 90%;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const ToolBox = styled.div`
-  display: none;
-  @media (max-width: 768px) {
-    display: inline;
-    width: auto;
-  }
-`;
 
 const ToggleBoundary = styled.div`
   display: none;
@@ -84,51 +70,27 @@ const ToggleBoundary = styled.div`
   }
 `;
 
-const SearchContainer = styled.div`
-  width: 100%;
-  text-align: right;
-  margin-top: 0.3em;
-  margin-left: auto;
-  margin-right: auto;
-  @media (max-width: 768px) {
-    width: 60%;
-    display: inline;
-    float: right;
-    margin-right: 0;
-  }
-`;
-
-const SearchInput = styled.input`
-  font-size: 16px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-right: 5px;
-  @media (max-width: 768px) {
-    width: 120px;
-    height: 18px;
-    font-size: 13px;
-  }
-`;
-
-const SearchButton = styled.button`
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  background-color: #b4c0d3;
-  color: white;
-  cursor: pointer;
-  @media (max-width: 768px) {
-    height: 40px;
-    font-size: 13px;
-  }
-`;
-
 function MainContainer() {
   const [selected, setSelected] = useState('map');
-  const [searchText, setSearchText] = useState('');
   const [mapData, setMapData] = useState('');
+  const [region, setRegion] = useState('');
+  const [jobsCd, setJobsCd] = useState('');
+
+  const [state, setState] = useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+
+  const { vertical, horizontal, open } = state;
+
+  const handleClick = (newState) => () => {
+    setState({ open: true, ...newState });
+  };
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
 
   const setFilterRegion = useSelector(
     (state) => state.dataFilter.setFilterRegion
@@ -139,13 +101,14 @@ function MainContainer() {
     (state) => state.dataInfo.setMarkerAddress
   );
 
-  const [region, setRegion] = useState('');
-  const [jobsCd, setJobsCd] = useState('');
-
-  useEffect(() => {
+  const handleButtonClick = () => {
     setRegion(setFilterRegion);
     setJobsCd(setFilterJob);
-  }, [setFilterRegion, setFilterJob]);
+
+    if (data.length === 0) {
+      handleClick({ vertical: 'bottom', horizontal: 'center' })();
+    }
+  };
 
   useEffect(() => {
     setRegion(setMarkerAddress);
@@ -176,20 +139,22 @@ function MainContainer() {
   return (
     <>
       <Header />
-      <ToolBar>
-        <ToolBox>
-          <RegionFilter />
-          <JobFilter />
-        </ToolBox>
-        <SearchContainer>
-          <SearchInput
-            type="text"
-            placeholder="검색어를 입력하세요"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-        </SearchContainer>
-      </ToolBar>
+
+      <div style={{ textAlign: 'center' }}>
+        <RegionFilter />
+        <JobFilter />
+        <Button variant="contained" onClick={handleButtonClick}>
+          검색
+        </Button>
+      </div>
+
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        message="검색 결과가 없습니다."
+        key={vertical + horizontal}
+      />
       <Content className="Content">
         <ToggleBoundary className="App">
           <MapToggle setSelected={setSelected} />
@@ -213,8 +178,6 @@ function MainContainer() {
         )}
 
         <List className="List">
-          <RegionFilter />
-          <JobFilter />
           {mapData && (
             <CompanyList
               className="companyList"
