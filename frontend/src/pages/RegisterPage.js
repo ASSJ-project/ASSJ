@@ -71,7 +71,6 @@ function Register() {
     emailjs.init("O8bUvMyNJhc1Z6tVI");
     const ranNum = generateRandom();
     setRandom(ranNum);
-    //console.log(ranNum);
     let templateParams = {
       sendemail: email,
       number: ranNum,
