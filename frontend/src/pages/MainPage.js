@@ -13,6 +13,8 @@ import JobFilter from '@/components/domain/Map/AddressSelect/JobFilter';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 
+
+
 const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -60,7 +62,7 @@ const ToggleBoundary = styled.div`
     display: inline;
     width: 10%;
     position: fixed;
-    bottom: 20%;
+    bottom: 15%;
     left 38%;
     text-align: center;
     z-index 2;
@@ -75,15 +77,17 @@ const ToolBox = styled.div`
   margin-top: 1em;
 
   @media (max-width: 480px) {
-    text-align: left;
-
+    text-align: right;
   }
 `;
 
 const ToolBar = styled.div`
   display: inline;
   @media (max-width: 480px) {
-    display: flexbox;
+    
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
   }
 `;
 
@@ -149,14 +153,13 @@ function MainContainer() {
       <Header />
 
       <ToolBox>
-        <ToolBar>
-          <RegionFilter />
-          <JobFilter />
-        </ToolBar>
+        <ToolBar><RegionFilter /></ToolBar> 
+        <ToolBar><JobFilter/></ToolBar>
+         
         <Button variant="contained" onClick={handleButtonClick}>
           검색
         </Button>
-      </ToolBox>
+      </ToolBox>  
 
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
@@ -182,11 +185,7 @@ function MainContainer() {
           </MapBoundary>
         ) : (
           <>
-            {mapData && isLoading ? (
-              <LoadingContainer>
-                <TailSpin color="#9588e0" height={80} width={80} />
-              </LoadingContainer>
-            ) : (
+            {mapData && (
               <CompanyList
                 className="companyList"
                 data={mapData}
@@ -198,20 +197,14 @@ function MainContainer() {
         )}
 
         <List className="List">
-          <>
-            {mapData && isLoading ? (
-              <LoadingContainer>
-                <TailSpin color="#9588e0" height={80} width={80} />
-              </LoadingContainer>
-            ) : (
-              <CompanyList
-                className="companyList"
-                data={mapData}
-                region={region}
-                jobsCd={jobsCd}
-              />
-            )}
-          </>
+          {mapData && (
+            <CompanyList
+              className="companyList"
+              data={mapData}
+              region={region}
+              jobsCd={jobsCd}
+            />
+          )}
         </List>
       </Content>
       <Footer />

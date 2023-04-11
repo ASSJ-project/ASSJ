@@ -158,6 +158,10 @@ export default function RegionFilter() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleClick = (item) => setSelectedItem(item);
+
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+  };
   const handleSubItemClick = (subItemId, subRegion) => {
     setSelectedSubItems((prev) => ({
       ...prev,
@@ -210,7 +214,7 @@ export default function RegionFilter() {
         <Button
           variant="outlined"
           onClick={handleOpen}
-          style={{ borderRadius: '5px', marginRight: '5px', backgroundColor: '#fff' }}
+          style={{ borderRadius: '5px', marginRight: '5px', marginbottom: '5px' , backgroundColor: '#fff', width: 'auto' }}
         >
           지역
         </Button>
@@ -218,9 +222,9 @@ export default function RegionFilter() {
         <Button
           variant="contained"
           onClick={handleOpen}
-          style={{ borderRadius: '5px', marginRight: '5px' }}
+          style={{ borderRadius: '5px', marginRight: '5px', marginbottom: '5px', width: 'auto' }}
         >
-          {selectedRegions[0]} 외 {selectedRegions.length - 1} 건
+          {truncate(selectedRegions[0], 4)} 외 {selectedRegions.length - 1} 건
         </Button>
       )}
 
