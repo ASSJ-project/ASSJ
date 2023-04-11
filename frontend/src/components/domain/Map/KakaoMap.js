@@ -19,8 +19,6 @@ export default function KakaoMap(props) {
   const [userY, setUserY] = useState(37.495423523338);
   const [userX, setUserX] = useState(126.823532587);
 
-  const [onMarker, setOnMarker] = useState(false);
-
   const json1 = json;
 
   const colors = {
@@ -47,7 +45,7 @@ export default function KakaoMap(props) {
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
 
-        kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
+        kakao.maps.event.addListener(map, "rightclick", function (mouseEvent) {
           // 클릭한 위도, 경도 정보를 가져옵니다
           var latlng = mouseEvent.latLng;
 
@@ -136,7 +134,7 @@ export default function KakaoMap(props) {
     });
 
     setMarkers(newMarkers);
-  }, [kakaoMap, data, userY, userX, onMarker]);
+  }, [kakaoMap, data, userY, userX]);
 
   function findColorById(jobsCd) {
     for (const category of json1) {
