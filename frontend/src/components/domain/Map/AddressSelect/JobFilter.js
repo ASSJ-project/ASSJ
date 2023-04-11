@@ -274,7 +274,7 @@ export default function JobFilter() {
           onClick={handleOpen}
           style={{ borderRadius: '12px' }}
         >
-          지역
+          업종
         </Button>
       ) : (
         <Button
