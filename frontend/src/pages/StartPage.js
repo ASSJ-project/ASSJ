@@ -16,6 +16,8 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Card from "@mui/material/Card";
 
+import {AiOutlineArrowLeft , AiOutlineArrowRight} from "react-icons/ai"
+
 const StartPage = () => {
   const customeSlider = useRef();
 
@@ -38,11 +40,15 @@ const StartPage = () => {
   };
 
   const StartSlider = styled.div`
+
+    
+
     .slick-list {
       //크기조정
       width: 100%;
       height: 100%;
       margin: 0% auto;
+      
     }
     .slick-prev {
       // 양염 버튼 위치
@@ -113,11 +119,11 @@ const StartPage = () => {
         {/* <button className="previous" onClick={gotoPrev}>
           이전
         </button> */}
-        <Button onClick={gotoPrev} variant="contained">
-          이전
+        <Button onClick={gotoPrev} variant="contained" style={{backgroundColor:"#969cab"}} >
+          <AiOutlineArrowLeft/>
         </Button>
-        <Button className="next-btn" onClick={gotoNext} variant="contained">
-          다음
+        <Button className="next-btn" onClick={gotoNext} variant="contained" style={{backgroundColor:"#969cab"}} >
+          <AiOutlineArrowRight/>
         </Button>
       </div>
 

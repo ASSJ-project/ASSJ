@@ -1,5 +1,4 @@
 import "@/components/domain/MyPage/MyPage.css";
-// import MyPageTest from '@/components/domain/MyPage/MyPage-Test';
 import MyPageCheck from "@/components/domain/MyPage/MyPage-Check";
 import MyPageHeader from "@/components/domain/MyPage/MyPage-Header";
 import { useState, useEffect } from "react";
@@ -38,16 +37,15 @@ export default function MyPage() {
   }, []);
 
   return (
-    <div className="mypage_full_container">
+    <>
       <Header />
       <Main>
         <div className="mypage-main">
           <MyPageHeader getMyPage1={getMyPage1} getMyPage2={getMyPage2} />
-          {/* {value === true ? <MyPageCheck /> : <MyPageTest data={userData} />} */}
           {value === true ? <MyPageCheck /> : <MyPageInfo data={userData} />}
         </div>
       </Main>
       <Footer />
-    </div>
+    </>
   );
 }
