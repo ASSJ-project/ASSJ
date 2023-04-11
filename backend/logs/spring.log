@@ -282,3 +282,40 @@ This generated password is for development use only. Your security configuration
 2023-04-11 11:47:54.211  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
 2023-04-11 11:47:54.265  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
 2023-04-11 11:47:54.277  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:50:28.197  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:50:28.202  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:50:33.831  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:50:33.841  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:50:33.846  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:50:33.847  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:50:33.848  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:50:33.852  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:55:28.028  INFO 5712 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:55:28.042  INFO 5712 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:57:00.036  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:57:00.048  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 12:01:02.633  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:01:02.636  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:01:02.640  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:08:11.743  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:08:11.757  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:08:11.760  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:08:11.762  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:08:11.766  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:08:11.768  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:09:08.809  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:09:08.811  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:09:08.815  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:09:08.816  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:09:08.817  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:09:08.821  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:09:33.020  INFO 5712 --- [http-nio-8080-exec-9] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 12:09:33.025  INFO 5712 --- [http-nio-8080-exec-9] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 12:11:10.631  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:11:10.639  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:11:10.644  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:11:10.953  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 12:11:10.954  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 12:11:10.958  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 12:12:35.212  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 12:12:35.217  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
