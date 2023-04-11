@@ -276,7 +276,7 @@ export default function JobFilter() {
         <Button
           variant="outlined"
           onClick={handleOpen}
-          style={{ borderRadius: '12px' }}
+          style={{ borderRadius: '5px', marginRight: '5px', backgroundColor: '#fff' }}
         >
           업종
         </Button>
@@ -284,7 +284,7 @@ export default function JobFilter() {
         <Button
           variant="contained"
           onClick={handleOpen}
-          style={{ borderRadius: '12px' }}
+          style={{ borderRadius: '5px', marginRight: '5px' }}
         >
           {truncate(selectedJobs[0], 9)} 외 {selectedJobs.length - 1} 건
         </Button>

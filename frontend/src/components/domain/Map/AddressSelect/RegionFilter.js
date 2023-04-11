@@ -210,7 +210,7 @@ export default function RegionFilter() {
         <Button
           variant="outlined"
           onClick={handleOpen}
-          style={{ borderRadius: '12px' }}
+          style={{ borderRadius: '5px', marginRight: '5px', backgroundColor: '#fff' }}
         >
           지역
         </Button>
@@ -218,7 +218,7 @@ export default function RegionFilter() {
         <Button
           variant="contained"
           onClick={handleOpen}
-          style={{ borderRadius: '12px' }}
+          style={{ borderRadius: '5px', marginRight: '5px' }}
         >
           {selectedRegions[0]} 외 {selectedRegions.length - 1} 건
         </Button>

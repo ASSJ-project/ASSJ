@@ -52,9 +52,6 @@ const Content = styled.div`
   margin-top: 1em;
   border: 1px solid #b4c0d3;
 
-  @media (max-width: 768px) {
-    margin-top: 0;
-  }
 `;
 
 const ToggleBoundary = styled.div`
@@ -69,6 +66,27 @@ const ToggleBoundary = styled.div`
     z-index 2;
   }
 `;
+
+const ToolBox = styled.div`
+  width: 90%;
+  height auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+
+  @media (max-width: 480px) {
+    text-align: left;
+
+  }
+`;
+
+const ToolBar = styled.div`
+  display: inline;
+  @media (max-width: 480px) {
+    display: flexbox;
+  }
+`;
+
 
 function MainContainer() {
   const [selected, setSelected] = useState('map');
@@ -130,13 +148,15 @@ function MainContainer() {
     <>
       <Header />
 
-      <div style={{ textAlign: 'center' }}>
-        <RegionFilter />
-        <JobFilter />
+      <ToolBox>
+        <ToolBar>
+          <RegionFilter />
+          <JobFilter />
+        </ToolBar>
         <Button variant="contained" onClick={handleButtonClick}>
           검색
         </Button>
-      </div>
+      </ToolBox>
 
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
