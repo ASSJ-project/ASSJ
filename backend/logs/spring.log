@@ -1,56 +1,85 @@
-2023-04-09 15:26:59.282  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2023-04-09 15:27:32.432  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-04-09 15:27:32.517  INFO 2320 --- [Thread-35] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-04-09 15:27:32.521  WARN 2320 --- [Thread-35] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-36-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@11.0.17/java.lang.Thread.sleep(Native Method)
- app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
- app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
- app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
- java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
-2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
-2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
-2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-04-09 15:27:32.800  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
-2023-04-09 15:27:32.864  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
-2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 172 ms
-2023-04-09 15:27:32.908  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-04-09 15:27:32.934  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+2023-04-11 09:27:43.604  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 5712 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-11 09:27:43.612  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-11 09:27:43.699  INFO 5712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-11 09:27:43.701  INFO 5712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-11 09:27:44.417  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-11 09:27:45.065  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-11 09:27:45.409  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 289 ms. Found 1 Redis repository interfaces.
+2023-04-11 09:27:46.619  INFO 5712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-11 09:27:46.639  INFO 5712 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-11 09:27:46.639  INFO 5712 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-11 09:27:46.738  INFO 5712 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-11 09:27:46.738  INFO 5712 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3035 ms
+2023-04-11 09:27:47.556  INFO 5712 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-11 09:27:47.707  WARN 5712 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 2ba632cc-51b6-41a8-ab34-547f9d5973e3
+Using generated security password: c04b7e76-a882-4964-9f21-2b0234d88148
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2023-04-09 15:27:32.980  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@8a9bded, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ac332ff, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b163161, org.springframework.security.web.header.HeaderWriterFilter@6c3db674, org.springframework.web.filter.CorsFilter@c8a329d, org.springframework.security.web.authentication.logout.LogoutFilter@2fe151a, com.assj.jwt.JwtFilter@26e565b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44d0fa44, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@455f7abc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fa4f048, org.springframework.security.web.session.SessionManagementFilter@28b4b9e1, org.springframework.security.web.access.ExceptionTranslationFilter@2c127d6a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a6efa]
-2023-04-09 15:27:33.020  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-04-09 15:27:33.022  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.337 seconds (JVM running for 962.239)
-2023-04-09 15:27:33.023  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2023-04-09 15:28:03.171  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-04-09 15:28:03.172  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-04-09 15:28:03.173  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2023-04-09 15:28:03.175  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:28:03.186  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:28:03.194  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 15:28:03.199  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2023-04-09 15:28:03.203  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2023-04-09 15:28:39.083  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:28:39.085  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:28:39.089  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 15:28:47.920  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
-2023-04-09 15:28:47.927  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
-2023-04-09 15:33:00.835  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-04-09 15:33:00.929  INFO 2320 --- [Thread-39] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-04-09 15:33:00.930  INFO 2320 --- [Thread-39] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-04-09 15:33:00.932  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-40-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-04-11 09:27:48.144  INFO 5712 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@347dc2b5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@169b263f, org.springframework.security.web.context.SecurityContextPersistenceFilter@5aa15171, org.springframework.security.web.header.HeaderWriterFilter@3ef7cb9b, org.springframework.web.filter.CorsFilter@20fdf515, org.springframework.security.web.authentication.logout.LogoutFilter@2db16cb7, com.assj.jwt.JwtFilter@32b29d83, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e65ef08, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71a604c3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a64b4eb, org.springframework.security.web.session.SessionManagementFilter@5b77b217, org.springframework.security.web.access.ExceptionTranslationFilter@24e973eb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@612a1eee]
+2023-04-11 09:27:48.543  INFO 5712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-11 09:27:48.568  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 5.468 seconds (JVM running for 5.98)
+2023-04-11 09:33:37.277  INFO 5712 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-11 09:33:37.277  INFO 5712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-11 09:33:37.294  INFO 5712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-04-11 09:33:37.352  INFO 5712 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-11 09:33:37.449  INFO 5712 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-11 09:33:37.556  WARN 5712 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:34:31.090  WARN 5712 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:34:46.780  WARN 5712 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:35:00.550  WARN 5712 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:35:05.847  WARN 5712 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:35:08.215  WARN 5712 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:35:50.836  INFO 5712 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 09:35:51.461  INFO 5712 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 09:35:51.937  WARN 5712 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:03.776  WARN 5712 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:24.632  WARN 5712 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:34.772  WARN 5712 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:38.179  WARN 5712 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:43.878  WARN 5712 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:36:54.224  WARN 5712 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:37:02.082  WARN 5712 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:43:45.679  WARN 5712 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:44:03.446  WARN 5712 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:44:56.173  WARN 5712 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:45:04.549  WARN 5712 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:47:14.964  INFO 5712 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 09:47:14.981  INFO 5712 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 09:47:15.420  WARN 5712 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:47:24.130  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 09:47:24.142  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 09:47:24.151  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 09:47:31.061  WARN 5712 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:47:34.869  WARN 5712 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:47:40.977  WARN 5712 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 09:48:23.861  INFO 5712 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 09:48:23.873  INFO 5712 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 10:03:06.591  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:03:06.594  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:03:06.600  INFO 5712 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:03:10.777  WARN 5712 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-11 10:06:59.647  INFO 5712 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-04-11 10:06:59.729  INFO 5712 --- [Thread-4] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-11 10:06:59.730  INFO 5712 --- [Thread-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-04-11 10:06:59.734  WARN 5712 --- [Thread-4] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-3-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@11.0.17/java.lang.Thread.sleep(Native Method)
  app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
  app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
  app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
  java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
-2023-04-09 15:33:00.933  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-nioEventLoop-43-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-04-11 10:06:59.735  WARN 5712 --- [Thread-4] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.17/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.17/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-11 10:06:59.736  WARN 5712 --- [Thread-4] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-nioEventLoop-6-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
  java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
  java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
@@ -63,66 +92,193 @@ This generated password is for development use only. Your security configuration
  app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
  app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
  java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
-2023-04-09 15:33:00.934  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@11.0.17/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@11.0.17/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
- java.base@11.0.17/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
- java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
- java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
- java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
- java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
-2023-04-09 15:33:00.938  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
-2023-04-09 15:33:00.942  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
-2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
-2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
-2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-04-09 15:33:01.221  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
-2023-04-09 15:33:01.294  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
-2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 180 ms
-2023-04-09 15:33:01.343  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-04-09 15:33:01.367  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+2023-04-11 10:06:59.748  INFO 5712 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-11 10:06:59.752  INFO 5712 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-11 10:07:00.082  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 5712 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-11 10:07:00.082  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-11 10:07:00.207  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-11 10:07:00.207  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-11 10:07:00.222  INFO 5712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 Redis repository interfaces.
+2023-04-11 10:07:00.312  INFO 5712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-11 10:07:00.312  INFO 5712 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-11 10:07:00.323  INFO 5712 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-11 10:07:00.340  INFO 5712 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-11 10:07:00.340  INFO 5712 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 255 ms
+2023-04-11 10:07:00.390  INFO 5712 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-11 10:07:00.412  WARN 5712 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 25c8882e-7e4f-4d8e-8907-fd64693197e7
+Using generated security password: 92450633-393a-41ff-bf7c-80372b6a1023
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2023-04-09 15:33:01.410  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d3d0cb9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13742db4, org.springframework.security.web.context.SecurityContextPersistenceFilter@7589400b, org.springframework.security.web.header.HeaderWriterFilter@645b6048, org.springframework.web.filter.CorsFilter@3bcb19bd, org.springframework.security.web.authentication.logout.LogoutFilter@3b62b60f, com.assj.jwt.JwtFilter@45c00936, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55ca8ea4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a2cfd75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37340e6b, org.springframework.security.web.session.SessionManagementFilter@1ddf967, org.springframework.security.web.access.ExceptionTranslationFilter@723a5b2d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4469135c]
-2023-04-09 15:33:01.448  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-04-09 15:33:01.450  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.342 seconds (JVM running for 1290.667)
-2023-04-09 15:33:01.451  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2023-04-09 15:33:13.685  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-04-09 15:33:13.688  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-04-09 15:33:13.690  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-04-09 15:33:13.700  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
-2023-04-09 15:33:13.702  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
-2023-04-09 15:38:53.739  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:38:53.750  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:38:53.757  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 15:39:20.908  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserController      : 회원가입 성공
-2023-04-09 15:39:34.955  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
-2023-04-09 15:39:34.970  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
-2023-04-09 15:40:53.747  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:40:53.749  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:40:53.753  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:40:53.754  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 15:40:53.755  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:40:53.760  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 15:45:26.582  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 15:45:26.595  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 15:45:26.602  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 16:13:25.166  INFO 2320 --- [http-nio-8080-exec-2] com.assj.domain.user.UserController      : 회원가입 성공
-2023-04-09 16:16:12.250  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 16:16:12.258  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 16:16:12.264  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 16:22:25.852  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
-2023-04-09 16:22:25.868  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
-2023-04-09 16:22:25.875  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
-2023-04-09 16:22:49.616  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
-2023-04-09 16:22:49.621  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
-2023-04-09 16:24:42.814  INFO 2320 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 10:07:00.477  INFO 5712 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@74e040ee, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@338b4dfb, org.springframework.security.web.context.SecurityContextPersistenceFilter@b37c4ce, org.springframework.security.web.header.HeaderWriterFilter@d420498, org.springframework.web.filter.CorsFilter@de17baa, org.springframework.security.web.authentication.logout.LogoutFilter@4a4cdcea, com.assj.jwt.JwtFilter@4f928b00, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16800c43, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b7bbccf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3cc168ba, org.springframework.security.web.session.SessionManagementFilter@75c024e1, org.springframework.security.web.access.ExceptionTranslationFilter@832a308, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@564cebbf]
+2023-04-11 10:07:00.527  INFO 5712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-11 10:07:00.541  INFO 5712 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.487 seconds (JVM running for 2357.954)
+2023-04-11 10:07:00.546  INFO 5712 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-11 10:07:58.684  INFO 5712 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-11 10:07:58.684  INFO 5712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-11 10:07:58.695  INFO 5712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-04-11 10:07:58.704  INFO 5712 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-04-11 10:07:58.707  INFO 5712 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-04-11 10:20:43.828  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:20:43.853  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:20:43.862  INFO 5712 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:34:56.992  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:34:56.992  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:34:56.992  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:34:57.000  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:34:57.000  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:34:57.000  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:34:57.010  INFO 5712 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:34:57.010  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:34:57.012  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:36:00.609  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 1
+2023-04-11 10:36:00.708  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 2
+2023-04-11 10:36:00.792  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 3
+2023-04-11 10:36:00.905  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 4
+2023-04-11 10:36:00.988  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 5
+2023-04-11 10:36:01.072  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 6
+2023-04-11 10:36:01.159  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 7
+2023-04-11 10:36:01.257  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 8
+2023-04-11 10:36:01.351  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 9
+2023-04-11 10:36:01.441  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 10
+2023-04-11 10:36:01.527  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 11
+2023-04-11 10:36:01.625  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 12
+2023-04-11 10:36:01.717  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 13
+2023-04-11 10:36:01.818  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 14
+2023-04-11 10:36:01.909  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 15
+2023-04-11 10:36:02.003  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 16
+2023-04-11 10:36:02.092  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 17
+2023-04-11 10:36:02.189  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 18
+2023-04-11 10:36:02.275  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 19
+2023-04-11 10:36:02.362  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 20
+2023-04-11 10:36:02.459  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 21
+2023-04-11 10:36:02.560  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 22
+2023-04-11 10:36:02.642  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 23
+2023-04-11 10:36:02.724 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:02.812  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 25
+2023-04-11 10:36:02.893  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 26
+2023-04-11 10:36:02.983 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:03.055  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 28
+2023-04-11 10:36:03.140  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 29
+2023-04-11 10:36:03.225  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 30
+2023-04-11 10:36:03.300  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 31
+2023-04-11 10:36:03.375 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:03.475  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 33
+2023-04-11 10:36:03.560 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:03.648  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 35
+2023-04-11 10:36:03.748  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 36
+2023-04-11 10:36:03.834  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 37
+2023-04-11 10:36:03.924  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 38
+2023-04-11 10:36:04.003  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 39
+2023-04-11 10:36:04.093  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 40
+2023-04-11 10:36:04.191  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 41
+2023-04-11 10:36:04.271  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 42
+2023-04-11 10:36:04.355  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 43
+2023-04-11 10:36:04.442  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 44
+2023-04-11 10:36:04.539  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 45
+2023-04-11 10:36:04.618  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 46
+2023-04-11 10:36:04.690  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 47
+2023-04-11 10:36:04.769  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 48
+2023-04-11 10:36:04.845  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 49
+2023-04-11 10:36:04.925  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 50
+2023-04-11 10:36:05.015  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 51
+2023-04-11 10:36:05.100  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 52
+2023-04-11 10:36:05.189  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 53
+2023-04-11 10:36:05.293  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 54
+2023-04-11 10:36:05.376  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 55
+2023-04-11 10:36:05.458  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 56
+2023-04-11 10:36:05.546  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 57
+2023-04-11 10:36:05.634  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 58
+2023-04-11 10:36:05.726  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 59
+2023-04-11 10:36:05.817  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 60
+2023-04-11 10:36:05.895  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 61
+2023-04-11 10:36:05.989  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 62
+2023-04-11 10:36:06.075  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 63
+2023-04-11 10:36:06.159  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 64
+2023-04-11 10:36:06.256  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 65
+2023-04-11 10:36:06.337  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 66
+2023-04-11 10:36:06.429  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 67
+2023-04-11 10:36:06.512  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 68
+2023-04-11 10:36:06.606  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 69
+2023-04-11 10:36:06.694 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:06.768  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 71
+2023-04-11 10:36:06.853  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 72
+2023-04-11 10:36:06.933  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 73
+2023-04-11 10:36:07.029  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 74
+2023-04-11 10:36:07.106 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:07.192  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 76
+2023-04-11 10:36:07.283  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 77
+2023-04-11 10:36:07.367  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 78
+2023-04-11 10:36:07.442 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:07.528  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 80
+2023-04-11 10:36:07.609  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 81
+2023-04-11 10:36:07.705  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 82
+2023-04-11 10:36:07.803  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 83
+2023-04-11 10:36:07.891  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 84
+2023-04-11 10:36:07.976  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 85
+2023-04-11 10:36:08.051  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 86
+2023-04-11 10:36:08.132  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 87
+2023-04-11 10:36:08.209 ERROR 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : geo 값이 없어서 데이터를 삽입하지 않습니다. 
+2023-04-11 10:36:08.307  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 89
+2023-04-11 10:36:08.399  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 90
+2023-04-11 10:36:08.492  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 91
+2023-04-11 10:36:08.589  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 92
+2023-04-11 10:36:08.675  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 93
+2023-04-11 10:36:08.757  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 94
+2023-04-11 10:36:08.841  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 95
+2023-04-11 10:36:08.931  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 96
+2023-04-11 10:36:09.007  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 97
+2023-04-11 10:36:09.092  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : pageNum: 98
+2023-04-11 10:36:09.155  INFO 5712 --- [scheduling-1] com.assj.domain.company.CompanyService   : 출력완료
+2023-04-11 10:39:11.690  INFO 5712 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 10:39:11.703  INFO 5712 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 10:52:56.112  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:52:56.115  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:52:56.120  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:52:56.415  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:52:56.420  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:52:56.424  INFO 5712 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 10:59:17.913  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 10:59:17.931  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 10:59:17.939  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:00:00.995  INFO 5712 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:00:01.011  INFO 5712 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:03:17.524  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:03:17.526  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:03:17.530  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:03:17.539  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:03:17.541  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:03:17.549  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:08:28.669  INFO 5712 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:08:28.687  INFO 5712 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:09:29.833  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-11 11:09:34.647  INFO 5712 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:09:34.658  INFO 5712 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:17:06.109  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:17:06.111  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:17:06.116  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:17:06.120  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:17:06.123  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:17:06.128  INFO 5712 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:20:24.427  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:20:24.433  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:20:24.445  INFO 5712 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:33:38.484  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:33:38.487  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:33:38.491  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:37:45.484  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:37:45.486  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:37:45.489  INFO 5712 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:37:45.544  INFO 5712 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:37:45.559  INFO 5712 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:41:14.160  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:41:14.174  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:41:14.180  INFO 5712 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:41:14.234  INFO 5712 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:41:14.247  INFO 5712 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 11:47:54.196  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 11:47:54.207  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 11:47:54.211  INFO 5712 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 11:47:54.265  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 11:47:54.277  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료

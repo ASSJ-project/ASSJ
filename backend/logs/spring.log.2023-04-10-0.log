@@ -1,0 +1,317 @@
+2023-04-09 15:26:59.282  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:27:32.432  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-04-09 15:27:32.517  INFO 2320 --- [Thread-35] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-09 15:27:32.521  WARN 2320 --- [Thread-35] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-36-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/java.lang.Thread.sleep(Native Method)
+ app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
+ app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-09 15:27:32.704  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-09 15:27:32.796  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-09 15:27:32.800  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
+2023-04-09 15:27:32.864  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-09 15:27:32.865  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-09 15:27:32.878  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 172 ms
+2023-04-09 15:27:32.908  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-09 15:27:32.934  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2ba632cc-51b6-41a8-ab34-547f9d5973e3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-09 15:27:32.980  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@8a9bded, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ac332ff, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b163161, org.springframework.security.web.header.HeaderWriterFilter@6c3db674, org.springframework.web.filter.CorsFilter@c8a329d, org.springframework.security.web.authentication.logout.LogoutFilter@2fe151a, com.assj.jwt.JwtFilter@26e565b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44d0fa44, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@455f7abc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fa4f048, org.springframework.security.web.session.SessionManagementFilter@28b4b9e1, org.springframework.security.web.access.ExceptionTranslationFilter@2c127d6a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a6efa]
+2023-04-09 15:27:33.020  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-09 15:27:33.022  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.337 seconds (JVM running for 962.239)
+2023-04-09 15:27:33.023  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:28:03.171  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-09 15:28:03.172  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-09 15:28:03.173  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-04-09 15:28:03.175  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:28:03.186  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:28:03.194  INFO 2320 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:28:03.199  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-04-09 15:28:03.203  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-04-09 15:28:39.083  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:28:39.085  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:28:39.089  INFO 2320 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:28:47.920  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 15:28:47.927  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 15:33:00.835  INFO 2320 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-04-09 15:33:00.929  INFO 2320 --- [Thread-39] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-09 15:33:00.930  INFO 2320 --- [Thread-39] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-04-09 15:33:00.932  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-40-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/java.lang.Thread.sleep(Native Method)
+ app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
+ app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.933  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-nioEventLoop-43-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+ java.base@11.0.17/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+ java.base@11.0.17/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+ java.base@11.0.17/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:141)
+ app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+ app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+ app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+ app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.934  WARN 2320 --- [Thread-39] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.17/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.17/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.17/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.17/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.17/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.17/java.lang.Thread.run(Thread.java:834)
+2023-04-09 15:33:00.938  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-04-09 15:33:00.942  INFO 2320 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2320 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-09 15:33:01.126  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-09 15:33:01.217  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-09 15:33:01.221  INFO 2320 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 Redis repository interfaces.
+2023-04-09 15:33:01.294  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-09 15:33:01.295  INFO 2320 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-09 15:33:01.308  INFO 2320 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 180 ms
+2023-04-09 15:33:01.343  INFO 2320 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-09 15:33:01.367  WARN 2320 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 25c8882e-7e4f-4d8e-8907-fd64693197e7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-09 15:33:01.410  INFO 2320 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d3d0cb9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13742db4, org.springframework.security.web.context.SecurityContextPersistenceFilter@7589400b, org.springframework.security.web.header.HeaderWriterFilter@645b6048, org.springframework.web.filter.CorsFilter@3bcb19bd, org.springframework.security.web.authentication.logout.LogoutFilter@3b62b60f, com.assj.jwt.JwtFilter@45c00936, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55ca8ea4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a2cfd75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37340e6b, org.springframework.security.web.session.SessionManagementFilter@1ddf967, org.springframework.security.web.access.ExceptionTranslationFilter@723a5b2d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4469135c]
+2023-04-09 15:33:01.448  INFO 2320 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-09 15:33:01.450  INFO 2320 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 0.342 seconds (JVM running for 1290.667)
+2023-04-09 15:33:01.451  INFO 2320 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-04-09 15:33:13.685  INFO 2320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-09 15:33:13.688  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-09 15:33:13.690  INFO 2320 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-09 15:33:13.700  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-04-09 15:33:13.702  INFO 2320 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-04-09 15:38:53.739  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:38:53.750  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:38:53.757  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:39:20.908  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-09 15:39:34.955  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 15:39:34.970  INFO 2320 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 15:40:53.747  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:40:53.749  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:40:53.753  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:40:53.754  INFO 2320 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:40:53.755  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:40:53.760  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 15:45:26.582  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 15:45:26.595  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 15:45:26.602  INFO 2320 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:13:25.166  INFO 2320 --- [http-nio-8080-exec-2] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-09 16:16:12.250  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 16:16:12.258  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 16:16:12.264  INFO 2320 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:22:25.852  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-09 16:22:25.868  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-09 16:22:25.875  INFO 2320 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-09 16:22:49.616  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-09 16:22:49.621  INFO 2320 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-09 16:24:42.814  INFO 2320 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:18:50.777  INFO 2756 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 2756 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-10 17:18:50.779  INFO 2756 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-10 17:18:50.833  INFO 2756 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-10 17:18:50.833  INFO 2756 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-10 17:18:51.257  INFO 2756 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-10 17:18:51.259  INFO 2756 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-10 17:18:51.401  INFO 2756 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 129 ms. Found 1 Redis repository interfaces.
+2023-04-10 17:18:52.253  INFO 2756 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-10 17:18:52.264  INFO 2756 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-10 17:18:52.264  INFO 2756 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-10 17:18:52.333  INFO 2756 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-10 17:18:52.334  INFO 2756 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1500 ms
+2023-04-10 17:18:52.801  INFO 2756 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-10 17:18:52.916  WARN 2756 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 750bbdcd-50fd-4efa-a5e2-abee686407a4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-10 17:18:53.193  INFO 2756 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@14ff5d5e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10052dc5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3a3b133c, org.springframework.security.web.header.HeaderWriterFilter@471c03db, org.springframework.web.filter.CorsFilter@ba8ea95, org.springframework.security.web.authentication.logout.LogoutFilter@8f522a6, com.assj.jwt.JwtFilter@12913744, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21a26c78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3502980c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7383679, org.springframework.security.web.session.SessionManagementFilter@2d93e343, org.springframework.security.web.access.ExceptionTranslationFilter@1b027960, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43f7c090]
+2023-04-10 17:18:53.422  INFO 2756 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-10 17:18:53.436  INFO 2756 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 3.016 seconds (JVM running for 3.438)
+2023-04-10 17:18:56.830  INFO 2756 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-10 17:18:56.830  INFO 2756 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-10 17:18:56.837  INFO 2756 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-10 17:18:56.936  INFO 2756 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-10 17:18:56.985  INFO 2756 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-10 17:18:57.806  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:19:32.391  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:19:34.339  INFO 2756 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:19:34.770  INFO 2756 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 17:19:35.354  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:22:26.109  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:22:26.133  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:22:26.140  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:23:52.085  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:23:52.447  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:24:02.084  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:24:18.846  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:26:48.170  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:26:48.174  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:26:48.183  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:29:23.084  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:29:47.484  INFO 2756 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:29:47.501  INFO 2756 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 17:29:48.206  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:30:13.563  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:30:13.609  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:30:26.535  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:30:26.538  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:30:26.542  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:30:26.544  INFO 2756 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:30:26.550  INFO 2756 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 17:30:26.988  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:30:49.739  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:31:15.427  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:31:33.001  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:31:57.984  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:31:58.985  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:32:08.994  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:32:10.994  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:34:40.045  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:35:35.863  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:38:13.380  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:38:14.299  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:39:04.098  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:40:02.467  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:40:02.471  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:40:02.477  INFO 2756 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:42:14.454  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:42:15.796  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:42:46.700  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:42:49.815  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:42:50.631  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:42:51.904  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:43:56.278  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:43:56.291  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:43:56.299  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:43:57.662  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:44:02.737  INFO 2756 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:44:02.756  INFO 2756 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 17:44:03.268  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:44:05.406  INFO 2756 --- [http-nio-8080-exec-3] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 17:44:05.418  INFO 2756 --- [http-nio-8080-exec-3] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 17:44:06.247  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:44:10.369  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:44:53.653  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:45:36.157  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:46:07.256  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:46:08.084  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:47:10.616  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:47:24.200  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:48:44.031  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:48:44.048  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:48:44.051  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:48:47.926  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:48:48.185  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:48:48.269  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:49:21.653  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:49:22.722  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:49:23.547  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:52:16.814  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:52:28.003  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:54:28.754  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:54:28.774  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:54:28.778  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:56:08.984  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:56:09.000  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:56:09.002  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 17:56:09.009  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 17:56:09.014  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:56:09.015  INFO 2756 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 17:56:09.076  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:57:18.038  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 17:57:34.287  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:08.509  INFO 2756 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:04:08.522  INFO 2756 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:04:08.527  INFO 2756 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:04:08.531  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:18.515  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:19.501  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:38.431  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:39.366  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:39.485  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:04:39.668  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:05:22.509  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:06:56.506  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:06:58.869  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:05.884  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:10.107  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:21.395  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:25.169  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:26.749  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:28.971  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:29.902  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:07:39.590  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:07:39.592  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:07:39.597  INFO 2756 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:07:40.653  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:09:40.976  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:09:40.989  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:09:40.995  INFO 2756 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:09:41.063  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 18:09:41.075  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 18:09:41.646  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:12:13.156  INFO 2756 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:12:13.161  INFO 2756 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:12:13.163  INFO 2756 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:12:13.169  INFO 2756 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:12:13.171  INFO 2756 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:12:13.175  INFO 2756 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:12:46.047  WARN 2756 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:14:30.260  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:14:33.092  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:14:55.257  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:15:42.426  INFO 2756 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 18:15:42.434  INFO 2756 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 18:15:42.859  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:15:50.224  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:15:54.757  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:15:58.741  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:16:24.151  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:16:27.095  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:18:50.933  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 18:18:50.937  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 18:18:51.134  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:19:14.937  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:21:03.406  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:21:08.873  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:23:37.028  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-10 18:23:37.041  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-10 18:23:37.047  INFO 2756 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-10 18:23:43.394  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:26:43.817  WARN 2756 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-10 18:26:46.721  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-10 18:26:50.178  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-10 18:26:54.298  WARN 2756 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-10 18:27:01.142  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "1400(B"]
+2023-04-10 18:27:52.208  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-10 18:27:52.229  INFO 2756 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-10 18:27:52.751  WARN 2756 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'size' for method parameter type int is not present]
+2023-04-10 18:27:55.391  WARN 2756 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "1400(B"]
+2023-04-10 18:30:08.885  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.019  WARN 2756 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.253  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.371  WARN 2756 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.471  WARN 2756 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.703  WARN 2756 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
+2023-04-10 18:30:09.820  WARN 2756 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'region' for method parameter type String is not present]
