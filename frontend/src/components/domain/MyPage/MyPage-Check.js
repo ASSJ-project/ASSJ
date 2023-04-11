@@ -1,4 +1,4 @@
-//여기 최근조회기록 누르면 나오는 페이지에요 ㅎㅎ
+//최근 조회 기록 누르면 나오는 페이지
 import { useEffect, useState } from 'react';
 import '@/components/domain/MyPage/MyPage-Check.css';
 import Button from '@mui/material/Button';
@@ -16,7 +16,7 @@ const MyPageCheck = () => {
     setcompany(info);
   }, []);
 
-  //검색어 삭제 함수에용
+  //검색어 삭제 
   function lol(i) {
     let info = sessionStorage.getItem('data');
     info = JSON.parse(info);
@@ -27,7 +27,7 @@ const MyPageCheck = () => {
     sessionStorage.setItem('data', JSON.stringify(info));
   }
 
-  //최근조회한것을 보여줍니다.
+  //최근조회한것 보여줌 max 8개
   function repaetTitle(company) {
     let arr = [];
     for (let i = 0; i < company.length; i++) {
@@ -42,7 +42,7 @@ const MyPageCheck = () => {
         </div>
       );
     }
-    //만약 arr이 삭제하거나 전체삭제하거나 원래 빈배열이라면 최근조회한 기록이 없는걸 나오게하고 내역이있다면 내용이나오게
+    //만약 arr이 삭제하거나 전체삭제하거나 원래 빈배열이라면 최근조회한 기록이 없는걸 나오게하고 내역이있다면 내용이나오게 함
     if (arr.length < 1) {
       return <div>최근 조회한 기록이 없어요</div>;
     } else {
