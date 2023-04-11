@@ -89,12 +89,12 @@ export default function CompanyList(props) {
                 }}
               >
                 <CardContent>
-                  <Typography sx={{ fontSize: 14 }} color="blue" gutterBottom>
+                  <Typography sx={{ fontSize: 13 }} color="blue" gutterBottom>
                     {item.company}
                   </Typography>
 
                   <Typography
-                    sx={{ fontSize: 18, marginBottom: 7 }}
+                    sx={{ fontSize: 16, marginBottom: 5 }}
                     component="div"
                   >
                     {item.title}
