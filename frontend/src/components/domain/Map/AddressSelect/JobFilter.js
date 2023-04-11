@@ -160,7 +160,7 @@ export default function JobFilter() {
   const [selectedSubItemIds, setSelectedSubItemIds] = useState([]); // Add this line
 
   const truncate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
 
   const [isAllSelected, setIsAllSelected] = useState(false);
@@ -258,8 +258,6 @@ export default function JobFilter() {
     }
   };
 
-  console.log(selectedSubItemIds);
-
   const handleReset = () => {
     const resetSubItems = {};
     Object.keys(selectedSubItems).forEach((key) => {
@@ -276,7 +274,13 @@ export default function JobFilter() {
         <Button
           variant="outlined"
           onClick={handleOpen}
-          style={{ borderRadius: '5px', marginRight: '5px', marginbottom: '5px', backgroundColor: '#fff', width: 'auto' }}
+          style={{
+            borderRadius: "5px",
+            marginRight: "5px",
+            marginbottom: "5px",
+            backgroundColor: "#fff",
+            width: "auto",
+          }}
         >
           업종
         </Button>
@@ -284,13 +288,17 @@ export default function JobFilter() {
         <Button
           variant="contained"
           onClick={handleOpen}
-          style={{ borderRadius: '5px', marginRight: '5px', marginbottom: '5px', width: 'auto'}}
+          style={{
+            borderRadius: "5px",
+            marginRight: "5px",
+            marginbottom: "5px",
+            width: "auto",
+          }}
         >
           {truncate(selectedJobs[0], 9)} 외 {selectedJobs.length - 1} 건
         </Button>
-        
       )}
-      
+
       <Modal open={open} onClick={handleClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <div style={{ textAlign: "center" }}>업종</div>

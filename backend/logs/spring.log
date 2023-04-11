@@ -319,3 +319,579 @@ This generated password is for development use only. Your security configuration
 2023-04-11 12:11:10.958  INFO 5712 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
 2023-04-11 12:12:35.212  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
 2023-04-11 12:12:35.217  INFO 5712 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 14:27:07.681  INFO 9696 --- [restartedMain] com.assj.AssjApplication                 : Starting AssjApplication using Java 11.0.17 on DESKTOP-Q5MV1FC with PID 9696 (C:\FinalProject\ASSJ\backend\assj\target\classes started by kosmo in C:\FinalProject)
+2023-04-11 14:27:07.682  INFO 9696 --- [restartedMain] com.assj.AssjApplication                 : No active profile set, falling back to 1 default profile: "default"
+2023-04-11 14:27:07.736  INFO 9696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-11 14:27:07.736  INFO 9696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-11 14:27:08.194  INFO 9696 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-04-11 14:27:08.195  INFO 9696 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-04-11 14:27:08.326  INFO 9696 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132 ms. Found 1 Redis repository interfaces.
+2023-04-11 14:27:09.178  INFO 9696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-11 14:27:09.191  INFO 9696 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-11 14:27:09.191  INFO 9696 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-04-11 14:27:09.261  INFO 9696 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-11 14:27:09.262  INFO 9696 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1524 ms
+2023-04-11 14:27:09.722  INFO 9696 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-11 14:27:09.851  WARN 9696 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9396c71e-bbcc-40c0-8953-6e9e5969bde8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-11 14:27:10.145  INFO 9696 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1208d672, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3cff3e92, org.springframework.security.web.context.SecurityContextPersistenceFilter@6802127b, org.springframework.security.web.header.HeaderWriterFilter@6831b278, org.springframework.web.filter.CorsFilter@46ddc594, org.springframework.security.web.authentication.logout.LogoutFilter@69dc8788, com.assj.jwt.JwtFilter@6bd62d61, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61613e14, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15d56980, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7136917b, org.springframework.security.web.session.SessionManagementFilter@36191256, org.springframework.security.web.access.ExceptionTranslationFilter@6708c3ad, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@632e14f4]
+2023-04-11 14:27:10.401  INFO 9696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-11 14:27:10.413  INFO 9696 --- [restartedMain] com.assj.AssjApplication                 : Started AssjApplication in 3.084 seconds (JVM running for 3.49)
+2023-04-11 14:27:43.256  INFO 9696 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-11 14:27:43.256  INFO 9696 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-11 14:27:43.265  INFO 9696 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-11 14:27:43.382  INFO 9696 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-11 14:27:43.443  INFO 9696 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-11 14:27:43.527  INFO 9696 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 14:27:43.992  INFO 9696 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 14:32:39.207  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 14:32:39.221  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 14:35:17.156  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 14:35:17.162  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 14:36:30.496  INFO 9696 --- [http-nio-8080-exec-9] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 14:36:30.502  INFO 9696 --- [http-nio-8080-exec-9] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 14:42:42.488  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 14:42:42.502  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 14:42:42.506  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 14:56:00.376  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 14:56:00.379  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 14:56:00.384  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 14:56:00.448  INFO 9696 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 14:56:00.455  INFO 9696 --- [http-nio-8080-exec-1] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 15:26:11.393  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:26:11.396  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:26:11.401  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:30:05.991  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:30:06.000  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:30:06.004  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:40:02.894  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:40:02.896  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:40:02.897  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:40:02.900  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:40:02.905  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:40:02.908  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:42:34.912  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:42:34.917  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:42:34.923  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:50:22.098  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:50:22.100  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:50:22.103  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:50:22.398  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:50:22.400  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:50:22.404  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:53:05.573  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:53:05.579  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:53:05.581  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:53:05.584  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:53:05.596  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:53:05.598  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 15:56:50.311  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 15:56:50.313  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 15:56:50.317  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:02:18.693  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:02:18.693  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:02:18.695  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:02:18.695  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:02:18.702  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:02:18.704  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:02:18.706  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:02:18.707  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:02:18.712  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:12:36.880  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:12:36.880  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:12:36.880  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:12:36.880  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:12:36.884  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:12:36.884  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:12:36.884  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:12:36.884  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:12:36.892  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:12:36.892  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:12:36.892  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:12:36.893  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:15:44.954  INFO 9696 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:15:44.967  INFO 9696 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:15:59.962  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:15:59.969  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:15:59.982  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:16:01.273  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:16:01.277  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:16:01.283  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:16:06.278  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:16:06.280  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:16:06.286  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:16:08.955  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:16:08.960  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:26:00.885  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:26:00.898  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:26:00.899  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:26:00.903  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:26:00.905  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:26:00.907  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:39:32.389  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:39:32.391  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:39:32.394  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:39:32.397  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:39:32.398  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:39:32.401  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:40:16.392  INFO 9696 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:40:16.395  INFO 9696 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:40:21.555  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:40:21.555  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:40:21.558  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:40:21.560  INFO 9696 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:40:21.564  INFO 9696 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:41:16.100  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:41:16.103  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:41:16.239  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:41:16.243  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:41:16.245  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:45:44.938  INFO 9696 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:45:44.943  INFO 9696 --- [http-nio-8080-exec-8] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:46:28.183  INFO 9696 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:46:28.187  INFO 9696 --- [http-nio-8080-exec-5] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:46:28.441  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:46:28.443  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:46:28.446  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:46:28.447  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:46:28.448  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:46:28.453  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:52:15.939  INFO 9696 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:52:15.943  INFO 9696 --- [http-nio-8080-exec-10] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:55:01.085 ERROR 9696 --- [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause
+
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248) ~[na:na]
+	at java.base/java.util.Objects.checkIndex(Objects.java:372) ~[na:na]
+	at java.base/java.util.ArrayList.get(ArrayList.java:459) ~[na:na]
+	at com.assj.domain.user.UserController.getUser(UserController.java:93) ~[classes/:na]
+	at com.assj.domain.user.UserController$$FastClassBySpringCGLIB$$97e368d8.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:162) ~[spring-security-core-5.7.6.jar:5.7.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.25.jar:5.3.25]
+	at com.assj.domain.user.UserController$$EnhancerBySpringCGLIB$$efadf30e.getUser(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at com.assj.jwt.JwtFilter.doFilterInternal(JwtFilter.java:80) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2023-04-11 16:55:14.775 ERROR 9696 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause
+
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248) ~[na:na]
+	at java.base/java.util.Objects.checkIndex(Objects.java:372) ~[na:na]
+	at java.base/java.util.ArrayList.get(ArrayList.java:459) ~[na:na]
+	at com.assj.domain.user.UserController.getUser(UserController.java:93) ~[classes/:na]
+	at com.assj.domain.user.UserController$$FastClassBySpringCGLIB$$97e368d8.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:162) ~[spring-security-core-5.7.6.jar:5.7.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.25.jar:5.3.25]
+	at com.assj.domain.user.UserController$$EnhancerBySpringCGLIB$$efadf30e.getUser(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at com.assj.jwt.JwtFilter.doFilterInternal(JwtFilter.java:80) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2023-04-11 16:55:23.428  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 16:55:23.434  INFO 9696 --- [http-nio-8080-exec-6] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 16:57:22.583  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:57:22.583  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:57:22.585  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:57:22.585  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:57:22.587  INFO 9696 --- [http-nio-8080-exec-7] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:57:22.587  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:57:25.485  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:57:25.490  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:57:25.496  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 16:57:25.498  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 16:57:25.500  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 16:57:25.508  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:00:59.045  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:00:59.048  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:00:59.051  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:06:12.477  INFO 9696 --- [http-nio-8080-exec-3] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 17:06:12.494  INFO 9696 --- [http-nio-8080-exec-3] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 17:08:44.376  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:08:44.392  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:08:44.394  INFO 9696 --- [http-nio-8080-exec-9] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:09:03.285  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 17:09:03.289  INFO 9696 --- [http-nio-8080-exec-2] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 17:10:31.676 ERROR 9696 --- [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause
+
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70) ~[na:na]
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248) ~[na:na]
+	at java.base/java.util.Objects.checkIndex(Objects.java:372) ~[na:na]
+	at java.base/java.util.ArrayList.get(ArrayList.java:459) ~[na:na]
+	at com.assj.domain.user.UserController.getUser(UserController.java:93) ~[classes/:na]
+	at com.assj.domain.user.UserController$$FastClassBySpringCGLIB$$97e368d8.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:162) ~[spring-security-core-5.7.6.jar:5.7.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.25.jar:5.3.25]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.25.jar:5.3.25]
+	at com.assj.domain.user.UserController$$EnhancerBySpringCGLIB$$efadf30e.getUser(<generated>) ~[classes/:na]
+	at jdk.internal.reflect.GeneratedMethodAccessor62.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.25.jar:5.3.25]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.71.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at com.assj.jwt.JwtFilter.doFilterInternal(JwtFilter.java:80) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.25.jar:5.3.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.71.jar:9.0.71]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2023-04-11 17:19:13.469  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:19:13.486  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:19:13.488  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:32:52.326  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:32:52.341  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:32:52.343  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:32:52.344  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:32:52.345  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:32:52.346  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:33:25.801  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:33:25.804  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:33:25.808  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:33:25.810  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:33:25.812  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:33:25.814  INFO 9696 --- [http-nio-8080-exec-3] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:40:43.563  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:40:43.570  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:40:43.578  INFO 9696 --- [http-nio-8080-exec-5] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:47:12.632  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:47:12.642  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:47:12.646  INFO 9696 --- [http-nio-8080-exec-8] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:47:12.932  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:47:12.948  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:47:12.957  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 17:55:15.972  INFO 9696 --- [http-nio-8080-exec-4] com.assj.domain.user.UserController      : 회원가입 성공
+2023-04-11 17:55:20.023  INFO 9696 --- [http-nio-8080-exec-7] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 17:55:20.033  INFO 9696 --- [http-nio-8080-exec-7] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 17:55:42.902  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 17:55:42.905  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 17:55:42.909  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:03:25.448  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:03:25.455  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:03:25.457  INFO 9696 --- [http-nio-8080-exec-2] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:05:33.747  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:05:33.747  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:05:33.764  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:05:33.764  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:05:33.766  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:05:33.766  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:06:59.706  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:06:59.708  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:06:59.711  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:06:59.718  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:06:59.719  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:06:59.722  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:14:54.241  INFO 9696 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 시작
+2023-04-11 18:14:54.253  INFO 9696 --- [http-nio-8080-exec-4] com.assj.domain.user.UserService         : 토큰 발행 완료
+2023-04-11 18:18:17.529  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:18:17.532  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:18:17.543  INFO 9696 --- [http-nio-8080-exec-4] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:18:35.316  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:18:35.331  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:18:35.338  INFO 9696 --- [http-nio-8080-exec-10] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:25:13.696  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:25:13.696  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtFilter                   : 토큰이 만료되었습니다
+2023-04-11 18:25:13.698  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:25:13.698  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 시작
+2023-04-11 18:25:13.700  INFO 9696 --- [http-nio-8080-exec-1] com.assj.jwt.JwtToken                    : 토큰재발급 완료
+2023-04-11 18:25:13.700  INFO 9696 --- [http-nio-8080-exec-6] com.assj.jwt.JwtToken                    : 토큰재발급 완료

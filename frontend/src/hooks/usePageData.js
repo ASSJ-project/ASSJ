@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const usePageData = (page, size, data) => {
   const [data, setData] = useState(null);
@@ -9,9 +9,9 @@ const usePageData = (page, size, data) => {
 async function fetchData(page, size, data) {
   try {
     const params = new URLSearchParams();
-    params.append('page', page);
-    params.append('size', size);
-    params.append('filteredData', data);
+    params.append("page", page);
+    params.append("size", size);
+    params.append("filteredData", data);
 
     const url = `/api/company/items?${params}`;
 
@@ -31,10 +31,9 @@ async function fetchData(page, size, data) {
         jobsCd: data.jobsCd,
       };
     });
-    console.log(filteredData);
     setData(filteredData);
   } catch (error) {
-    setError('데이터 fetch 중 에러 발생');
+    setError("데이터 fetch 중 에러 발생");
   } finally {
     setLoading(false);
   }
