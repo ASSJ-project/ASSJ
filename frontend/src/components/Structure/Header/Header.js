@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 
 const HeadContainer = styled.div`
-  width: 100%;
+  width: 90%;
   min-width: 420px;
   height: 10vh;
   margin: auto;

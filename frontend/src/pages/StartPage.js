@@ -6,7 +6,7 @@ import card2 from "../assets/images/start-card2.svg";
 import card3 from "../assets/images/start-card3.svg";
 import card4 from "../assets/images/start-card4.svg";
 import card5 from "../assets/images/start-card5.svg"
-import card6 from "../assets/images/start-card5.png";
+import card6 from "../assets/images/start-card6.svg";
 
 import React, {  useRef } from "react";
 import Button from "@mui/material/Button";
@@ -46,7 +46,7 @@ const StartPage = () => {
     }
     .slick-prev {
       // 양염 버튼 위치
-      z-index: 1;
+      z-index: 1 ;
       left: 30%;
     }
     .slick-next {
